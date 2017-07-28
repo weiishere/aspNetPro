@@ -1,0 +1,1114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width =device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone =no" name="format-detection" />
+    <title>港铁（深圳）+ 4号线大挑战</title>
+    <meta charset="utf-8" />
+    <style>
+        body { text-shadow: none !important; }
+        .clearfix:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; }
+        /*.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper { background: #fff; text-shadow: none !important; }*/
+        #canvas { text-align: center; }
+            #canvas > div { left: 0; top: 0; overflow: hidden !important; }
+
+        .indexWrap { background: url(img/start.png); position: absolute; height: 100%; width: 100%; background-size: 100% 100%; top: 0; left: 0; }
+            .indexWrap div { text-align: center; position: absolute; bottom: 3em; width: 100%; }
+            .indexWrap img { width: 5em; height: 5em; margin: 0.5em; }
+        #phone_validate { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.6); top: 0; left: 0; }
+            #phone_validate > div { position: absolute; background: url(img/dialog.png); width: 100%; height: 22em; background-size: 100% 100%; top: 50%; margin-top: -11em; text-align: center; }
+
+        .shadow { -webkit-text-stroke: 0.04em #f00; -webkit-text-fill-color: blue; }
+        .loading { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: none; }
+            .loading img { width: 100%; height: 100%; }
+    </style>
+</head>
+<body>
+    <div id="canvas">
+        <img src="images/ajax-loader.gif" />
+    </div>
+    <div id="loading_1" class="loading"><img src="img/loading_1.gif" /></div>
+    <div id="loading_2" class="loading"><img src="img/loading_2.gif" /></div>
+    <div style="position:absolute;width:100%;height:100%;top:0;left:0;background:#fff;display:none">
+        <input type="button" value="gogogo" id="login_container" />
+    </div>
+</body>
+</html>
+<script src="jquery-1.8.2.min.js"></script>
+<script src="lufylegend-1.9.10.min.js"></script>
+<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+<!--<script>
+    var obj = new WxLogin({
+        id: "login_container",
+        appid: "wxa86de49f44f05583",
+        scope: "snsapi_login",
+        redirect_uri: "http://teamotto.net/metro/interface/interface.php? time=XXX&token=XXXX&class=user&func=userRegister&",
+        state: "随机数",
+        style: "black",
+    });
+</script>-->
+<script>
+    (function (exp) {
+
+        exp.onresize = function () { LGlobal.resize(); }
+        LGlobal.destroy = true; //保证游戏中的不用的对象能够顺利被释放
+        //LGlobal.preventDefault = false;
+        LGlobal.stageScale = LStageScaleMode.EXACT_FIT;
+        //全局变量区
+        var backLayer, black_bg, passengerLayer;
+        var activePassenger = undefined;
+        var _con_x, _con_y, stairs_1, stairs_2;
+        var game_1_time = 0, game_1_score, game_2_score = 200;
+        var game_1_timer, metro;
+        var thisGameIndex = 1; isLoad_1 = true; isLoad_2 = true;var  _hard;
+
+        var isRuning = false;
+        //获取随机数
+        exp.getRedom = function (minNum, maxNum) {
+            switch (arguments.length) {
+                case 1: return parseInt(Math.random() * minNum + 1);
+                case 2: return parseInt(Math.random() * (maxNum - minNum + 1) + minNum);
+                default: return 0;
+            }
+        }
+        LSprite.prototype.align = function (parent) {
+            if (parent) {
+                this.x = (parent.getWidth() - this.getWidth()) / 2;
+            } else {
+                this.x = (LGlobal.width - this.getWidth()) / 2;
+            }
+        }
+        LSprite.prototype.isActive = false;
+        LSprite.prototype.alignY = function (parent) {
+            if (parent) {
+                this.y = (parent.getHeight() - this.getHeight()) / 2;
+            } else {
+                this.y = (LGlobal.height - this.getHeight()) / 2;
+            }
+
+        }//居中
+        var imgData = new Array(
+            { name: "stopArea", path: "img/stopArea.png" },
+            { name: "btu_dialog", path: "img/btu_dialog.png" },
+            { name: "hard", path: "img/hard.png" },
+            { name: "stopLine", path: "img/stopLine.png" },
+            { name: "myIndexWrap", path: "img/myIndexWrap.png" },
+            { name: "Button_close", path: "img/Button_close.png" },
+            { name: "qlist_bg", path: "img/qlist_bg.png" },
+            { name: "button_endGame", path: "img/Button_endGame.png" },
+            { name: "button_reStart", path: "img/Button_reStart.png" },
+            { name: "button_share", path: "img/Button_share.png" },
+
+            { name: "stionName", path: "img/stionName.png" },
+            { name: "but_brake_1", path: "img/but_brake_1.png" },
+            { name: "but_brake_2", path: "img/but_brake_2.png" },
+            { name: "rainWay_bg", path: "img/rainWay_bg.png" },
+            { name: "over_bg", path: "img/over_bg.png" },
+
+            { name: "number2_0", path: "img/number/number2_0.png" },
+            { name: "number2_1", path: "img/number/number2_1.png" },
+            { name: "number2_2", path: "img/number/number2_2.png" },
+            { name: "number2_3", path: "img/number/number2_3.png" },
+            { name: "number2_4", path: "img/number/number2_4.png" },
+            { name: "number2_5", path: "img/number/number2_5.png" },
+            { name: "number2_6", path: "img/number/number2_6.png" },
+            { name: "number2_7", path: "img/number/number2_7.png" },
+            { name: "number2_8", path: "img/number/number2_8.png" },
+            { name: "number2_9", path: "img/number/number2_9.png" },
+
+            { name: "number1_0", path: "img/number/number1_0.png" },
+            { name: "number1_1", path: "img/number/number1_1.png" },
+            { name: "number1_2", path: "img/number/number1_2.png" },
+            { name: "number1_3", path: "img/number/number1_3.png" },
+            { name: "number1_4", path: "img/number/number1_4.png" },
+            { name: "number1_5", path: "img/number/number1_5.png" },
+            { name: "number1_6", path: "img/number/number1_6.png" },
+            { name: "number1_7", path: "img/number/number1_7.png" },
+            { name: "number1_8", path: "img/number/number1_8.png" },
+            { name: "number1_9", path: "img/number/number1_9.png" },
+
+            { name: "passenger_1", path: "img/passenger/1.png" },
+            { name: "passenger_2", path: "img/passenger/2.png" },
+            { name: "passenger_3", path: "img/passenger/3.png" },
+            { name: "passenger_4", path: "img/passenger/4.png" },
+            { name: "passenger_5", path: "img/passenger/5.png" },
+            { name: "passenger_6", path: "img/passenger/6.png" },
+            { name: "passenger_7", path: "img/passenger/7.png" },
+            { name: "passenger_8", path: "img/passenger/8.png" },
+            { name: "passenger_9", path: "img/passenger/9.png" },
+
+            { name: "stairs_1", path: "img/stairs_1.png" },
+            { name: "stairs_2", path: "img/stairs_2.png" },
+
+            { name: "train_body", path: "img/train_body.png" },
+            { name: "train_head", path: "img/train_head.png" },
+            { name: "game_1_header", path: "img/game_1_header.png" },
+            { name: "btu_play", path: "img/btu_play.png" },
+            { name: "game_1_bg", path: "img/game_1_bg.png" },
+            { name: "game_hader_1_1", path: "img/game_hader_1_1.png" },
+            { name: "game_hader_1_2", path: "img/game_hader_1_2.png" },
+            { name: "game_hader_2_1", path: "img/game_hader_2_1.png" },
+            { name: "game_hader_2_2", path: "img/game_hader_2_2.png" },
+            { name: "ys_btu", path: "img/ys_btu.png" },
+            { name: "zs_header_bg", path: "img/zs_header_bg.png" },
+            { name: "zs_header_1", path: "img/zs_header_1.png" },
+            { name: "mb_bg", path: "img/mb_bg.png" },
+            { name: "dialog_header_1", path: "img/dialog_header_2.png" },
+            { name: "dialog_header_2", path: "img/dialog_header_2.png" },
+            { name: "dialog2", path: "img/dialog2.png" },
+            { name: "dialog", path: "img/dialog.png" },
+            { name: "init_bg", path: "img/init_bg.png" },
+            { name: "start_footer", path: "img/start_footer.png" },
+            { name: "start", path: "img/start.png" },
+            { name: "weibo", path: "img/Button-micro-blog.png" },
+            { name: "weixin", path: "img/Button-micro-channel.png" });
+
+
+        //乘务员游戏数据
+        var levelIndex = 0;
+        var gameLevelData = [
+            { time: 35, out: 8, into: 6 },
+            { time: 30, out: 10, into: 6 },
+            { time: 25, out: 10, into: 6 },
+            { time: 20, out: 10, into: 6 },
+            { time: 15, out: 10, into: 6 },
+            { time: 10, out: 10, into: 6 }
+        ];
+        //列车游戏数据
+        var levelIndex2 = 0;
+        var gameLevelData2 = [
+            { speed: 20, acc: 2.5, name: "清湖1" },
+            { speed: 25, acc: 2.5, name: "清湖2" },
+            { speed: 30, acc: 2.5, name: "清湖3" },
+            { speed: 35, acc: 2.5, name: "清湖4" },
+            { speed: 40, acc: 2.5, name: "清湖5" },
+            { speed: 45, acc: 2.5, name: "清湖6" }
+        ];
+        //排行列表数据
+        var qeueuList = [
+            { name: "第一名", score: 451104445, index: 1 },
+            { name: "第二名", score: 451104446, index: 2 },
+            { name: "第三名", score: 451104447, index: 3 },
+            { name: "第四名", score: 451104448, index: 4 },
+            { name: "第五名", score: 451104449, index: 5 },
+            { name: "第六名", score: 451104450, index: 6 },
+        ];
+        //当前玩家数据
+        var userInfo = { sex: 1, name: "豆豆子", openId: "", score: 10000, index: 28, isFristLogin: true, isNew: false }
+
+        var showCount = [1, 2, 3, 4];//登录判断一次0、开始游戏一次1、乘务员游戏2，列车长游戏3
+        var isShowLoginInfo = function (index) {
+            if (!userInfo.isFristLogin) { return false; }
+            if (showCount[index] == 0) {
+                return false;
+            } else {
+                showCount[index] = 0;
+                return true;
+            }
+        }
+
+
+
+        function main() {
+            LSystem.screen(LStage.FULL_SCREEN);
+            backLayer = new LSprite();
+            backLayer.graphics.drawRect(1, "#cccccc", [0, 0, LGlobal.width, LGlobal.height], true, "#000000");
+            //背景显示
+            addChild(backLayer);
+            loadingLayer = new LoadingSample1();
+            backLayer.addChild(loadingLayer);
+
+            LLoadManage.load(imgData, function (progress) {
+                loadingLayer.setProgress(progress);
+            }, gameInit);
+        }
+        //读取完所有图片，进行游戏标题画面的初始化工作
+        function gameInit(result) {
+            //取得图片读取结果
+            imglist = result;
+            //移除进度条层//移除或者这样写 loadingLayer.remove();
+            backLayer.removeChild(loadingLayer);
+            //加入欢迎页
+            //gameStart(2);
+            //return false;
+            backLayer.addChild(initPages.indexPage());
+            black_bg = new LSprite();
+            black_bg.addChild(new LBitmap(new LBitmapData(imglist["mb_bg"])));
+
+            game_1_score = new Number(0);
+        }
+        //加载界面
+        var initPages = {
+            indexPage: function () {
+                if (userInfo != null && userInfo != "" && userInfo != undefined) {
+                    backLayer.addChild(initPages.initPage());//进入游戏角色选择页
+                    if (isShowLoginInfo(0)) {
+                        backLayer.addChild(new DialogMode({ title: "每天登录可以得到更多的积分" }));
+                    }
+                    return false;
+                }
+
+                var returnPage = new LSprite();
+                returnPage.addChild(new LBitmap(new LBitmapData(imglist["start"])));
+                //var footer = new LBitmap(new LBitmapData(imglist["start_footer"]));
+                //footer.y = LGlobal.height - footer.getHeight();
+                //footer.x = LGlobal.width - footer.getWidth();
+                returnPage.addChild(initPages.footer());
+                //加入按钮
+                var button2 = new LButton(new LBitmap(new LBitmapData(imglist["weixin"])), new LBitmap(new LBitmapData(imglist["weixin"])));
+                button2.x = 157; button2.y = 810;
+                button2.addEventListener(LMouseEvent.MOUSE_UP, function () {
+                    //微信登录2
+                    location.href = "https://api.weibo.com/oauth2/authorize?client_id=1189697522&response_type=code&redirect_uri=http%3A%2F%2Fwww.teamotto.net%2Fmetro%2Finterface%2Fweibo.php";
+                    //backLayer.die();
+                    //backLayer.removeAllChild();
+                    //backLayer.addChild(initPages.initPage());//进入游戏角色选择页
+                    ////加入登录提示
+                    //if (isShowLoginInfo(0)) {
+                    //    backLayer.addChild(new DialogMode({ title: "每天登录可以得到更多的积分" }));
+                    //}
+                });
+
+                var button1 = new LButton(new LBitmap(new LBitmapData(imglist["weibo"])), new LBitmap(new LBitmapData(imglist["weibo"])));
+                button1.x = 315; button1.y = 810;
+                button1.addEventListener(LMouseEvent.MOUSE_UP, function () {
+                    //微博登录1
+                    backLayer.die();
+                    backLayer.removeAllChild();
+                    backLayer.addChild(initPages.initPage());//进入游戏角色选择页
+                    //加入登录提示
+                    if (isShowLoginInfo(0)) {
+                        backLayer.addChild(new DialogMode({ title: "每天登录可以得到更多的积分", text: "" }));
+                    }
+                });
+                returnPage.addChild(button1);
+                returnPage.addChild(button2);
+                return returnPage;
+            },
+            initPage: function () {//加载角色选择页面
+                var returnPage = new LSprite();
+                returnPage.addChild(new LBitmap(new LBitmapData(imglist["init_bg"])));
+                returnPage.addChild(initPages.footer());
+                //加入左上头像
+                var zsHeader = new LSprite();
+                var _header = new LSprite();
+                _header.addChild(new LBitmap(new LBitmapData(imglist["zs_header_" + userInfo.sex])));
+                zsHeader.addChild(new LBitmap(new LBitmapData(imglist["zs_header_bg"])));
+                zsHeader.x = 20; zsHeader.y = 20;
+                zsHeader.addChild(_header);
+                _header.align(zsHeader); _header.y = 7; //_header.alignY(zsHeader);
+                returnPage.addChild(zsHeader);
+                var userName = new LTextField();
+                userName.text = userInfo.name; userName.size = 12; userName.color = "#ae7318"; userName.y = 70;
+                userName.x = (zsHeader.getWidth() - userName.getWidth()) / 2;
+                zsHeader.addChild(userName);
+                //加上右上按钮
+                var ysBtu = new LSprite();
+                ysBtu.addChild(new LBitmap(new LBitmapData(imglist["ys_btu"])));
+                ysBtu.y = 20; ysBtu.x = LGlobal.width - ysBtu.getWidth() - 20;
+                var paihangText = new LTextField();
+                paihangText.text = "排行榜"; paihangText.size = 12; paihangText.color = "#fff"; paihangText.y = 60;
+                paihangText.x = (ysBtu.getWidth() - paihangText.getWidth()) / 2;
+                ysBtu.addChild(paihangText);
+                returnPage.addChild(ysBtu);
+                ysBtu.addEventListener(LMouseEvent.MOUSE_UP, function (e) { backLayer.addChild(initPages.queueList()); });
+                //加入角色选择
+                returnPage.addChild(initPages.selectUser());
+                if (isShowLoginInfo(2)) {
+                    //_hard = initPages.getHard(370, 480, true);
+                    //returnPage.addChild(_hard);
+                }
+                return returnPage;
+            },
+            backBg: function () {
+                var returnPage = new LSprite();
+                black_bg = new LSprite();
+                black_bg.addChild(new LBitmap(new LBitmapData(imglist["mb_bg"])));
+                returnPage.addChild(black_bg);
+                return returnPage;
+            },
+            overPage: function (thisScore, allTotal, reStart, end, share) {
+                var returnPage = new LSprite();
+                returnPage.addChild(new LBitmap(new LBitmapData(imglist["over_bg"])));
+                
+                //重新开始按钮
+                var button_reStart = new LSprite();
+                button_reStart.addChild(new LBitmap(new LBitmapData(imglist["button_reStart"])));
+                button_reStart.align(); button_reStart.y = 495;
+                button_reStart.addEventListener(LMouseEvent.MOUSE_UP, function (e) { gameStart(thisGameIndex); if (reStart) reStart(); });
+                //结束游戏
+                var button_endGame = new LSprite();
+                button_endGame.addChild(new LBitmap(new LBitmapData(imglist["button_endGame"])));
+                button_endGame.align(); button_endGame.y = 562;
+                button_endGame.addEventListener(LMouseEvent.MOUSE_UP, function (e) {
+                    levelIndex = levelIndex2 = 0;//重置游戏关卡数
+                    backLayer.die();
+                    backLayer.removeAllChild();
+                    backLayer.addChild(initPages.initPage());//进入游戏角色选择页
+                    if (end) end();
+                });
+                //分享
+                var button_share = new LSprite();
+                button_share.addChild(new LBitmap(new LBitmapData(imglist["button_share"])));
+                button_share.align(); button_share.y = 629;
+                button_endGame.addEventListener(LMouseEvent.MOUSE_UP, function (e) { if (share) share(); });
+                //分数
+                var _thisScore = new Number(0, 1, 2); _thisScore.y = 378;
+                _thisScore.spacing = 10;
+                _thisScore.x = LGlobal.width / 2;
+                _thisScore.setNumber(thisScore);
+                returnPage.addChild(_thisScore);
+                //累计分数
+                var _allScore = new Number(0, 1, 2); _allScore.y = 427;
+                _allScore.spacing = 20; _allScore.scaleX = _allScore.scaleY = 0.4;
+                _allScore.x = LGlobal.width / 2 + 20;
+                _allScore.setNumber(allTotal);
+                returnPage.addChild(_allScore);
+
+                returnPage.addChild(button_reStart);
+                returnPage.addChild(button_endGame);
+                returnPage.addChild(button_share);
+                return returnPage;
+            },
+            footer: function () {
+                var _footer = new LBitmap(new LBitmapData(imglist["start_footer"]));
+                _footer.y = LGlobal.height - _footer.getHeight();
+                _footer.x = LGlobal.width - _footer.getWidth();
+                return _footer;
+            },
+            selectUser: function () {
+                var returnPage = new LSprite();
+                var header_1 = new LSprite();
+                var header_2 = new LSprite();
+                header_1.addChild(new LBitmap(new LBitmapData(imglist["game_hader_1_1"])));
+                header_2.addChild(new LBitmap(new LBitmapData(imglist["game_hader_2_1"])));
+                header_1.y = 225; header_1.x = 60;
+                header_2.y = 225; header_2.x = 290;
+                var button1 = new LSprite(); button1.y = 225; button1.addChild(new LBitmap(new LBitmapData(imglist["btu_play"])));
+                var button2 = new LSprite(); button2.y = 225; button2.addChild(new LBitmap(new LBitmapData(imglist["btu_play"])));
+                header_1.addChild(button1); header_2.addChild(button2);
+                button1.align(header_1);
+                button2.align(header_2);
+                returnPage.addChild(header_1);
+                returnPage.addChild(header_2);
+                header_1.scaleX = header_1.scaleY = 0.8;
+                header_2.scaleX = header_2.scaleY = 0.8;
+                header_1.addEventListener(LMouseEvent.MOUSE_UP, function (e) { gameStart(1); });
+                header_2.addEventListener(LMouseEvent.MOUSE_UP, function (e) { gameStart(2); });
+                return returnPage;
+            },
+            queueList: function () {
+                var returnPage = new LSprite();
+                returnPage.addChild(new LBitmap(new LBitmapData(imglist["qlist_bg"])));
+                //加入关闭叉叉
+                var close_btu = new LSprite();
+                close_btu.addChild(new LBitmap(new LBitmapData(imglist["Button_close"])));
+                close_btu.x = 480; close_btu.y = 78;
+                close_btu.addEventListener(LMouseEvent.MOUSE_UP, function (e) { returnPage.remove(); });
+                returnPage.addChild(close_btu);
+                //加入列表
+                for (var i = 0; i < qeueuList.length; i++) {
+                    var _item = qeueuList[i];
+                    var _itemLayer = new LSprite();
+                    var t1 = new LTextField(); var t2 = new LTextField();
+                    t1.text = _item.name; t1.size = 10; t1.color = "#fd8a02"; t1.x = 180; t1.y = 20;
+                    _itemLayer.addChild(t1);
+                    t2.text = _item.score; t2.size = 14; t2.color = (i < 3 ? "#fd8a02" : "#d9ac6a"); t2.x = 180; t2.y = 40;
+                    _itemLayer.addChild(t2);
+                    _itemLayer.y = i * 76.5 + 228;
+                    returnPage.addChild(_itemLayer);
+                }
+                var MyItemLayer = new LSprite();
+                var t3 = new LTextField(); var t4 = new LTextField(); var t5 = new LTextField();
+                t3.text = userInfo.name; t3.size = 10; t3.color = "#fd8a02"; t3.x = 180; t3.y = 20;
+                MyItemLayer.addChild(t3);
+                t4.text = userInfo.score; t4.size = 14; t4.color = "#d9ac6a"; t4.x = 180; t4.y = 40;
+                MyItemLayer.addChild(t4);
+
+                var myIndexWrap = new LSprite();
+                myIndexWrap.addChild(new LBitmap(new LBitmapData(imglist["myIndexWrap"])));
+                t5.text = userInfo.index; t5.size = 8; t5.color = "#ffffff"; myIndexWrap.x = 396; myIndexWrap.y = 25;
+                myIndexWrap.addChild(t5);
+                t5.x = (myIndexWrap.getWidth() - t5.getWidth()) / 2; t5.y = 6;
+                MyItemLayer.addChild(myIndexWrap);
+                MyItemLayer.y = 765;
+                returnPage.addChild(MyItemLayer);
+                return returnPage;
+            },
+            getHard: function (x, y,isMove) {
+                var _return = new LSprite();
+                _return.addChild((new LBitmap(new LBitmapData(imglist["hard"]))));
+                if (isMove) {
+                    var _i = 0; var _is = true;
+                    _return.addEventListener(LEvent.ENTER_FRAME, function (e) {
+                        _i++;
+                        if (_i % 5 == 0) { if (_is) { e.x += 5; e.y += 5; _is = false; } else { e.x -= 5; e.y -= 5; _is = true; } }
+                    });
+                }
+                _return.x = x;
+                _return.y = y;
+                return _return;
+            }
+        }
+        //消息页
+        //header, text, size, autoHideTime, callBack
+        function DialogMode(option) {
+            base(this, LSprite, []);
+            var _option = $.extend({
+                header: 1,
+                title:"",
+                text: "",
+                size: 24,
+                autoHideTime: 2000,
+                htmlText:"",
+                buttonText: "OK",
+                isMoreText:false,
+                callback: function () { }
+            }, option || {});
+            var self = this;
+            self.header = _option.header;
+            self.title = _option.title;
+            self.text = _option.text;
+            self.htmlText = _option.htmlText;
+            self.size = _option.size || 50;
+            self.autoHideTime = _option.autoHideTime;
+            self.buttonText = _option.buttonText;
+            self.isMoreText = _option.isMoreText;
+            self.callback = _option.callback;
+            self.setView();
+        }
+        DialogMode.prototype.setView = function () {
+            var self = this;
+            self.addChild(initPages.backBg());
+            var dialogBg = new LSprite();
+            if (self.isMoreText) {
+                dialogBg.addChild(new LBitmap(new LBitmapData(imglist["dialog2"])));
+            } else {
+                dialogBg.addChild(new LBitmap(new LBitmapData(imglist["dialog"])));
+            }
+            
+            dialogBg.align(); dialogBg.y = 315;
+            var header = new LSprite();
+            
+            header.addChild(new LBitmap(new LBitmapData(imglist["dialog_header_" + self.header])));
+            header.align(dialogBg);
+            header.y = -header.getHeight() / 2 + 20;
+            header.x = header.x + 10;
+            dialogBg.addChild(header);
+            self.addChild(dialogBg);
+
+            var content = new LTextField();
+            content.setWordWrap(true, 30);
+            content.width = 315;
+            content.text = self.title; content.size = self.size; content.color = "#ae7318";  content.y = 90;
+            content.x = 54;
+
+            var content2 = new LTextField();
+            
+            content2.width = 315;
+            if (self.htmlText == "") {
+                content2.setWordWrap(true, 30);
+                content2.text = self.text; content2.size = self.size * 0.8; content2.color = "#ae7318"; content2.x = 50; content2.y = 140;
+            } else {
+                content2.setWordWrap(true, 20);
+                content2.htmlText = self.htmlText; content2.color = "#ae7318"; content2.x = 50; content2.y = 140; 
+            }
+            
+            //var shadow = new LDropShadowFilter(5, 90, "#000");//d9ac6a
+            //content.filters = [shadow];
+            dialogBg.addChild(content); dialogBg.addChild(content2);
+            
+            if (self.autoHideTime == 0) {
+                var _button = new LSprite();
+                _button.addChild(new LBitmap(new LBitmapData(imglist["btu_dialog"])));
+
+                var btuText = new LTextField();
+                btuText.text = self.buttonText; btuText.size = 24; btuText.color = "#fff"; btuText.x = (_button.getWidth() - btuText.getWidth()) / 2; btuText.y = (_button.getHeight() - btuText.getHeight()) / 2;
+                _button.addChild(btuText);
+                _button.align(self);
+                if (self.isMoreText) { _button.y = 620; } else { _button.y = 520; }
+
+                self.addChild(_button);
+                _button.addEventListener(LMouseEvent.MOUSE_UP, function (e) {
+                    self.remove();
+                    black_bg.remove();
+                    if (self.callback) self.callback();
+                });
+            } else {
+                var isCall = false;
+                window.setTimeout(function () {
+                    if (isCall) { return false; }
+                    isCall = true;
+                    self.remove();
+                    black_bg.remove();
+                    if (self.callback) self.callback();
+                }, self.autoHideTime);
+                //self.addEventListener(LMouseEvent.MOUSE_UP, function (e) {
+                //    if (isCall) { return false; } isCall = true;
+                //    self.remove();
+                //    black_bg.remove();
+                //    if (self.callBack) self.callBack();
+                //});
+            }
+        }
+
+        //游戏初始化
+        exp.gameStart = function (gameIndex) {
+            thisGameIndex = gameIndex;
+            backLayer.die();
+            backLayer.removeAllChild();
+
+            var fn = function () {
+                if (gameIndex == 1) {
+                    isLoad_1 = false;
+                    //乘务员游戏
+                    //backLayer.addChild(new LBitmap(new LBitmapData(imglist["game_1_bg"])));
+                    //加入乘客层
+                    passengerLayer = new LSprite();
+                    backLayer.addChild(passengerLayer);
+                    //加入乘车乘客
+                    
+                    var y_con = [130, 350, 570, 830], y_index = -1, x_index = 1;
+                    for (var i = 0; i < gameLevelData[levelIndex].into; i++) {
+                        var passenger = lastPassenger = new Passenger(getRedom(1, 3) == 1 ? "sp" : "nor");
+                        passenger.way = "in";
+                        passenger.x = 400;
+                        passenger.bitmap.rotate = 90;
+                        y_index++;
+                        passenger.x -= x_index * 80;
+                        passenger.y = y_con[y_index];
+                        if (y_index == 3) {
+                            y_index = -1;
+                            x_index++;
+                        }
+                        passenger.speedX = getRedom(5, 10) / 10;
+                        passenger.speedY = getRedom(-10, 10) / 10;
+                        passengerLayer.addChild(passenger);
+                    }
+
+                    //列车
+                    var train = new LSprite();
+                    var train_head = new LBitmap(new LBitmapData(imglist["train_head"]));
+                    var train_body = new LBitmap(new LBitmapData(imglist["train_body"])); train_body.y = train_head.getHeight();
+                    train.addChild(train_head); train.addChild(train_body);
+                    train.x = LGlobal.width - train.getWidth() - 20; train.y = LGlobal.height;
+                    LTweenLite.to(train, 2, {
+                        loop: false, ease: LEasing.Sine.easeOut, y: 126, onComplete: function () {
+                            game_1_timer = window.setInterval(function () {
+                                var _t = parseInt(game_1_time.value);
+                                _t -= 1;
+                                game_1_time.setNumber(_t);
+                                if (_t == 0) {
+                                    window.clearInterval(game_1_timer);
+                                    backLayer.addChild(new DialogMode({
+                                        title: "对不起，超时啦，游戏结束", callback: function () {
+                                            backLayer.die();
+                                            backLayer.addChild(initPages.overPage(parseInt(game_1_score.value), game_2_score + parseInt(game_1_score.value) + userInfo.score));
+                                        }
+                                    }));
+                                }
+
+                            }, 1000);
+                            game1();
+                        }
+                    });
+                    backLayer.addChild(train);
+                    //加入拖动--------------------------------------------------------------------------------------------加入拖动
+                    backLayer.addEventListener(LMouseEvent.MOUSE_MOVE, function (e) {
+                        if (!activePassenger) return false;
+                        if (activePassenger.state != "drag") return false;
+                        activePassenger.x = e.offsetX - activePassenger.getWidth() / 2;
+                        activePassenger.y = e.offsetY - activePassenger.getHeight() / 2;
+                        _con_x = e.offsetX;
+                        _con_y = e.offsetY;
+                    });
+                    backLayer.addEventListener(LMouseEvent.MOUSE_UP, function (e) {
+                        if (!activePassenger) return false;
+                        var _passenger = activePassenger;
+                        //拖至电梯
+                        if (LGlobal.hitTestRect(stairs_1, _passenger)) {
+                            if (_passenger.way == "in") {
+                                _passenger.state = "wrong";//拉到了乘车乘客
+                                return true;
+                            }
+                            if (_passenger.type == "sp") {
+                                _passenger.state = "right";//得分
+                            } else {
+                                _passenger.state = "wrong";//拉错乘客
+                            }
+                            //gameState(1);
+                            return true;
+                        }
+                        if (LGlobal.hitTestRect(stairs_2, _passenger)) {
+                            if (_passenger.way == "in") {
+                                _passenger.state = "wrong";//拉到了乘车乘客
+                                return true;
+                            }
+                            if (_passenger.type == "sp") {
+                                _passenger.state = "wrong";//拉错乘客
+                            } else {
+                                _passenger.state = "right"//得分
+                            }
+                            //gameState(1);
+                            return true;
+                        }
+                        //拖至列车
+                        if (LGlobal.hitTestRect(_passenger, train)) {
+                            if (_passenger.way == "out") {
+                                //拉到了乘车乘客
+                                _passenger.state = "wrong";//拉错乘客
+                            } else {
+                                _passenger.state = "right"//得分
+                            }
+                            //gameState(1);
+                            return true;
+                        }
+                        //activePassenger.state = "auto";
+                        activePassenger = undefined;
+                    });
+
+                    backLayer.addChild(new LBitmap(new LBitmapData(imglist["game_1_header"])));
+                    //加入直达电梯
+                    stairs_1 = new LSprite();
+                    stairs_1.addChild(new LBitmap(new LBitmapData(imglist["stairs_1"]))); stairs_1.x = 18; stairs_1.y = 112;
+                    backLayer.addChild(stairs_1);
+                    //加入扶梯
+                    stairs_2 = new LSprite();
+                    stairs_2.addChild(new LBitmap(new LBitmapData(imglist["stairs_2"]))); stairs_2.x = 12; stairs_2.y = 800;
+                    backLayer.addChild(stairs_2);
+                    //加入时间
+                    game_1_time = new Number(0, 0.75); game_1_time.defaultlength = 4;
+                    game_1_time.x = 47; game_1_time.y = 50;
+                    game_1_time.setNumber(gameLevelData[levelIndex].time);
+                    backLayer.addChild(game_1_time);
+                    game_1_score = new Number(0); game_1_score.defaultlength = 5;
+                    game_1_score.x = 158; game_1_score.y = 31;
+                    game_1_score.spacing = 27;
+                    game_1_score.setNumber(0);
+                    backLayer.addChild(game_1_score);
+                    
+                } else if (gameIndex == 2) {
+                    isLoad_2 = false;
+                    //列车员游戏
+                    //backLayer.addChild(new LBitmap(new LBitmapData(imglist["rainWay_bg"])));
+                    //接入停止线
+                    //var stopLine = new LBitmap(new LBitmapData(imglist["stopLine"])); stopLine.x = 226; stopLine.y = 166 - stopLine.getHeight();
+                    var stopLine2 = new LBitmap(new LBitmapData(imglist["stopLine"])); stopLine2.x = 226; stopLine2.y =  230;
+                    var stopArea = new LBitmap(new LBitmapData(imglist["stopArea"])); stopArea.x = 226; stopArea.y = 166; stopArea.scaleY = 3.5;
+                    backLayer.addChild(stopArea);
+                    //backLayer.addChild(stopLine);
+                    backLayer.addChild(stopLine2);
+                    //加入站牌
+                    var staion = new LSprite();
+                    staion.addChild(new LBitmap(new LBitmapData(imglist["stionName"])));
+                    staion.x = 13;
+                    var content = new LTextField();
+                    //content.setWordWrap(true, 80);
+                    content.width = 315;
+                    content.text = gameLevelData2[levelIndex2].name; content.size = 20; content.color = "#ae7318"; content.x = 36; content.y = 27;
+                    //var shadow = new LDropShadowFilter(5, 90, "#000");//d9ac6a
+                    //content.filters = [shadow];
+                    staion.addChild(content);
+                    backLayer.addChild(staion);
+                    //加入列车
+                    metro = new Metro();
+                    metro.y = metro.getHeight();
+                    metro.speed = gameLevelData2[levelIndex2].speed;
+                    metro.ACC = gameLevelData2[levelIndex2].acc;
+                    backLayer.addChild(metro);
+
+                    exp.breakTimer;
+                    window.setTimeout(function () {
+                        //火车驶入
+                        var breakButtonBitmap_1 = new LBitmap(new LBitmapData(imglist["but_brake_1"]));
+                        var breakButtonBitmap_2 = new LBitmap(new LBitmapData(imglist["but_brake_2"]));
+                        var index = 1;
+                        breakTimer = window.setInterval(function () {
+                            index = index == 1 ? 2 : 1;
+                            breakButton.removeAllChild();
+                            breakButton.addChild(new LBitmap(new LBitmapData(imglist["but_brake_" + index])));
+                        }, 200);
+                        backLayer.addEventListener(LEvent.ENTER_FRAME, function () {
+                            metro.run();
+                        });
+                    }, 2000);
+                    //加入按钮
+
+                    //var button02 = new LButton(bitmapUp, bitmapOver); button02.x = (LGlobal.width - button02.getWidth()) / 2;
+                    var _hear;
+                    var breakButton = new LSprite();
+                    breakButton.addChild(new LBitmap(new LBitmapData(imglist["but_brake_1"])));
+                    breakButton.align(); breakButton.y = 810;
+                    backLayer.addChild(breakButton);
+                    breakButton.addEventListener(LMouseEvent.MOUSE_DOWN, function (e) {
+                        if (metro.brake) { return false; }
+                        window.clearInterval(breakTimer);
+                        metro.brake = true;
+                        if (_hear) _hear.remove();
+                    });
+                    //加入手指引导
+                    if (isShowLoginInfo(4)) {
+                        //backLayer.addChild(new DialogMode({
+                        //    title: "列车长游戏！", text: "1、请将列车头准确停止在高亮区域内"
+                        //}));
+                        //_hear = initPages.getHard(320, 860, true)
+                        //backLayer.addChild(_hear);
+                    }
+                    
+                }
+            }
+
+            var fn2 = function () {
+                $("#loading_" + gameIndex).fadeIn(700);
+                window.setTimeout(function () {
+                    $("#loading_1,#loading_2").fadeOut();
+                    if (gameIndex == 1) {
+                        backLayer.addChild(new LBitmap(new LBitmapData(imglist["game_1_bg"])));
+                        backLayer.addChild(new DialogMode({
+                            autoHideTime: 0,
+                            isMoreText: true,
+                            title: "您即将开启站务员体验之旅！", text: "【港铁（深圳）服务提升】“微笑服务”践行以客为本，提升全员服务水平；“增加站务”助力顺畅通行，体验最佳搭乘感受",
+                            callback: function () {
+                                fn();
+                            }
+                        }));
+                    } else {
+                        backLayer.addChild(new LBitmap(new LBitmapData(imglist["rainWay_bg"])));
+                        backLayer.addChild(new DialogMode({
+                            autoHideTime: 0,
+                            isMoreText: true,
+                            title: "您即将开启列车长体验之旅！", text: (getRedom(0, 1) == 0 ? "【港铁（深圳）服务提升】“增加班次”缩短等候时间，提供便捷地铁生活。" : "【港铁（深圳）服务提升】“小小站长”协助乘客服务，安全文明乘车从小做起。"),
+                            callback: function () {
+                                fn();
+                            }
+                        }));
+                    }
+                }, 1000);
+            }
+            var style = "color=\"#ae7318\" size=\"18\"";
+            if ((gameIndex == 1 && isLoad_1 == true) || (gameIndex == 2 && isLoad_2 == true)) {
+                backLayer.addChild(new DialogMode({
+                    autoHideTime: 0,
+                    isMoreText: true,
+                    
+                    title: (gameIndex == 1 ? "乘务员游戏" : "列车长游戏"),
+                    text: (gameIndex == 1 ? "1、将下车的携带大型包裹，行动不便者等人群拖动到直梯上\n2、将下车普通乘客拖动到手扶梯上\n3、将等待上车的乘客拖动到列车上" : "请将列车头准确停止在高亮区域内"),
+                    //htmlText: (gameIndex == 1 ? "<p ><font  " + style + ">将下车的携带大型包裹，行动不便者等人群拖动到直梯上</font></p><p><font  " + style + ">2、将下车普通乘客拖动到手扶梯上</font></p><p><font " + style + ">3、将等待上车的乘客拖动到列车上</font></p>" : "<font " + style + ">请将列车头准确停止在高亮区域内</font>"),
+                    callback: function () { fn2(); }
+                }));
+            } else {
+                fn2();
+            }
+
+            
+            
+        }
+        //乘客游戏开始
+        var game1 = function () {
+            backLayer.addChild(passengerLayer);
+            var _begin_y = 315; var lastPassenger;
+            //加入出站乘客
+
+            var pcount = 0; 
+            var ptimer = window.setInterval(function () {
+                if (pcount == gameLevelData[levelIndex].out) { window.clearInterval(ptimer); return false; }
+                pcount++;
+                var passenger = lastPassenger = new Passenger(getRedom(1, 2) == 1 ? "sp" : "nor");
+                passenger.way = "out";
+                passenger.bitmap.rotate = -90;
+                passenger.x += (pcount / 2) * 20;
+                if (pcount % 2 == 0) {
+                    passenger.y = 280;
+                } else {
+                    passenger.y = 730;
+                }
+                passenger.speedX = 2;//2 - (pcount / 6);//速度逐渐增大
+                //passenger.speedY = getRedom(-10, 10)/10;
+                passenger.state = "auto";
+                passengerLayer.addChild(passenger);
+            }, 800);
+            if (isShowLoginInfo(3)) {
+                //加入手指引导
+                //var _hard1 = initPages.getHard(340, 260, false);
+                //backLayer.addChild(_hard1);
+                //LTweenLite.to(_hard1, 1, {
+                //    x: 340, y: 260, ease: LEasing.Sine.easeIn, onComplete: function (e) { }
+                //}).to(_hard1, 1, {
+                //    x: 30, y: 170, ease: LEasing.Sine.easeIn, onComplete: function (e) { e.x = 280, e.y = 260; }
+                //}).to(_hard1, 1, {
+                //    x: 30, y: 750, ease: LEasing.Sine.easeIn, onComplete: function (e) { e.x = 180, e.y = 320; }
+                //}).to(_hard1, 1, {
+                //    x: 420, y: 260, ease: LEasing.Sine.easeIn, onComplete: function (e) { e.remove(); }
+                //});
+            }
+            backLayer.addEventListener(LEvent.ENTER_FRAME, function () {
+                for (var item in passengerLayer.childList) {
+                    if (passengerLayer.childList.hasOwnProperty(item)) { passengerLayer.childList[item].run(); }
+                }
+            });
+        }
+        //判断游戏1状态
+        var gameState = function (gameIndex) {
+            if (gameIndex == 1) {
+                
+                if (passengerLayer.childList.length <= 0) {
+                    //游戏过关
+                    backLayer.die();
+                    window.clearInterval(game_1_timer);
+                    if (levelIndex == gameLevelData.length - 1) {
+                        backLayer.addChild(new DialogMode({
+                            title: "太厉害了，关卡已全部通过，游戏结束", callback: function () {
+                                backLayer.addChild(initPages.overPage(parseInt(game_1_score.value), game_2_score + parseInt(game_1_score.value) + userInfo.score));
+                            }
+                        }));
+                        return false;
+                    }
+                    backLayer.addChild(new DialogMode({
+                        title: "恭喜，所有乘客已顺利上下列车", text: "即将进入下一站，下一关速度会更快哦！", callback: function () {
+                            levelIndex++;
+                            gameStart(1);
+                        }
+                    }));
+                }
+            } else if (gameIndex == 2) {
+                if (metro.y >= 166 && metro.y <= 300) {
+                    backLayer.addChild(new DialogMode({
+                        title: "恭喜，过关成功！", text: "即将进入下一站，下一关速度会更快哦！", callback: function () {
+                            if (levelIndex2 == gameLevelData2.length - 1) {
+                                backLayer.addChild(new DialogMode({
+                                    title: "太厉害了，关卡已全部通过，游戏结束", callback: function () {
+                                        game_2_score += 100;
+                                        backLayer.addChild(initPages.overPage(game_2_score, game_2_score + parseInt(game_1_score.value) + userInfo.score));
+                                    }
+                                }));
+                                return false;
+                            }
+                            levelIndex2++;
+                            gameStart(2);
+                        }
+                    }));
+                } else {
+                    backLayer.addChild(new DialogMode({
+                        title: "对不起，游戏结束", text: "列车未停到位", autoHideTime: 1000, callback: function () {
+                            //backLayer.die();
+                            backLayer.addChild(initPages.overPage(game_2_score, game_2_score + parseInt(game_1_score.value) + userInfo.score));
+                        }
+                    }));
+                }
+            }
+        }
+
+        //乘客
+        function Passenger(type) {
+            base(this, LSprite, []);
+            var self = this;
+            self.type = type;
+            self.setView();
+        }
+        Passenger.prototype.type = 1;
+        Passenger.prototype.speedY = 0;
+        Passenger.prototype.speedX = 0;
+        Passenger.prototype.wayX = "left";
+        Passenger.prototype.way = "in";//out
+        Passenger.prototype.state = "hold";
+        Passenger.prototype.score = 100;
+        Passenger.prototype.bitmap;
+        Passenger.prototype.setView = function () {
+            var self = this; var index = 0;
+            if (self.type == "sp") {
+                self.score = 200;
+                index = getRedom(1, 4);
+                if (index == 2) { index = 3; }//不要儿童乘客
+            } else {
+                self.score = 100;
+                index = getRedom(5, 9);
+            }
+            self.x = 337;
+            self.scaleX = self.scaleY = 0.7;
+            self.bitmap = new LBitmap(new LBitmapData(imglist["passenger_" + index]));
+            self.addChild(self.bitmap);
+            self.rotateCenter = false;
+            self.bitmap.rotateCenter = false;
+            self.addEventListener(LMouseEvent.MOUSE_DOWN, function (e) {
+                self.state = "drag";
+                activePassenger = self;
+                _con_x = e.offsetX;
+                _con_y = e.offsetY;
+                activePassenger.x = e.offsetX - activePassenger.getWidth() / 2;
+                activePassenger.y = e.offsetY - activePassenger.getHeight() / 2;
+
+                self.bitmap.rotate = 0;//将角度归0，不然会影响碰撞检测
+            });
+        }
+        Passenger.prototype.run = function () {
+            var self = this;
+            if (self.state == "hold") {
+                //self.rotate = -90;
+            } else if (self.state == "auto") {
+                if (self.way == "in") { return false; }//乘车乘客不动
+                if (self.x < 22) {
+                    self.x = 22; self.speedX = self.speedX * -1; self.wayX = "right"
+                }
+                if (self.x > 370 - self.getHeight()) {
+                    self.x = 370 - self.getHeight(); self.speedX = self.speedX * -1; self.wayX = "left";
+                }
+                if (LGlobal.hitTestRect(stairs_1, self) || LGlobal.hitTestRect(stairs_2, self)) {
+                    self.x += self.getHeight();
+                    self.speedX = self.speedX * -1
+                    self.wayX = "right";
+                }
+
+                if (self.wayX == "left") {
+                    self.bitmap.rotate = -Math.atan(self.speedY / self.speedX) * 180 / Math.PI - 90;
+                } else {
+                    self.bitmap.rotate = -Math.atan(self.speedY / self.speedX) * 180 / Math.PI + 90;
+                }
+                if (self.y <= 90 || self.y >= LGlobal.height) {
+                    //乘客走失
+                    self.remove();
+                    //gameLevelData[levelIndex].out--;
+                    window.clearInterval(game_1_timer);
+                    backLayer.addChild(new DialogMode({
+                        title: "对不起，乘客走失..", callback: function () {
+                            window.clearInterval(game_1_timer);
+                            backLayer.die();
+                            backLayer.addChild(initPages.overPage(parseInt(game_1_score.value), parseInt(game_1_score.value) + userInfo.score));
+                        }
+                    }));
+                    //gameState(1);
+                }
+                self.x -= self.speedX;
+                self.y += self.speedY;
+            } else if (self.state == "wrong") {
+                window.clearInterval(game_1_timer);
+                backLayer.die();
+                backLayer.addChild(new DialogMode({
+                    title: "对不起，游戏结束", text: "未将乘客拖动至正确位置", callback: function () {
+                        backLayer.die();
+                        backLayer.addChild(initPages.overPage(parseInt(game_1_score.value), parseInt(game_1_score.value) + userInfo.score));
+                    }
+                }));
+            } else if (self.state == "right") {
+                self.state = "hold";
+                game_1_score.setNumber(parseInt(game_1_score.value) + self.score);
+                LTweenLite.to(self, 0.3, {
+                    alpha: 0, scaleY: 0, scaleX: 0, onComplete: function () {
+                        self.remove();
+                        gameState(1);
+                    }
+                });
+            }
+        }
+
+        function Metro() {
+            base(this, LSprite, []);
+            var self = this;
+            self.setView();
+        }
+        Metro.prototype.setView = function () {
+            var train = new LSprite();
+            var train_head = new LBitmap(new LBitmapData(imglist["train_head"]));
+            var train_body = new LBitmap(new LBitmapData(imglist["train_body"])); train_body.y = train_head.getHeight();
+            var train_body2 = new LBitmap(new LBitmapData(imglist["train_body"])); train_body2.y = train_head.getHeight() + train_body.getHeight();
+            train.addChild(train_head); train.addChild(train_body); train.addChild(train_body2);
+            this.addChild(train);
+            this.scaleX = this.scaleY = 0.8;
+            this.align(); //train.y = LGlobal.height;
+            this.x += 8;
+        }
+        Metro.prototype.brake = false;
+        Metro.prototype.isStop = false;
+        Metro.prototype.ACC = 2;
+        Metro.prototype.speed = 100;
+        Metro.prototype.run = function () {
+            var self = this;
+            if (self.speed > 0) {
+                self.y -= self.speed;
+                if (self.brake == true) {
+                    self.speed -= self.ACC;
+                } else {
+                    if (self.y < -self.getHeight()) {
+                        self.y = self.getHeight();
+                        self.speed = 0;
+                    }
+                }
+            } else {
+                if (self.isStop == false) {
+                    gameState(2);
+                    self.isStop = true;
+                }
+            }
+        }
+
+        function Number(num, scale, sharpType) {
+            base(this, LSprite, []);
+            var self = this;
+            self.sharpType = sharpType || "1";
+            self.value = num;
+            self.scale = scale || 1;
+            self.setView(num);
+        }
+        Number.prototype.value = 0;
+        Number.prototype.changeSpeed = 0.1;
+        Number.prototype.defaultlength = 0;
+        Number.prototype.spacing = 0;//数字间隔
+        Number.prototype.scale = 1;//放大倍数
+        Number.prototype.sharpType = "1";//数字图形类别
+        Number.prototype.singleWidth = 0;
+        Number.prototype.setView = function (num) {
+            var self = this;
+            var digit = (num + "").split("");
+            var spriteWrap = new LSprite();
+            spriteWrap.x = 0;
+            for (var i = 0; i < digit.length; i++) {
+                var sprite = new LSprite();
+                var num = parseInt(digit[i]);
+                sprite.addChild(new LBitmap(new LBitmapData(imglist["number" + self.sharpType + "_" + num])));
+                sprite.scaleX = sprite.scaleY = self.scale;
+                spriteWrap.y = sprite.getHeight() / 2;
+                sprite.y = -sprite.getHeight() / 2;
+                sprite.x = self.singleWidth = spriteWrap.getWidth() + self.spacing;//i * (sprite.width * self.scale + self.spacing);
+                spriteWrap.addChild(sprite);
+                self.addChild(spriteWrap);
+            }
+        }
+        Number.prototype.setNumber = function (num, callBack) {
+            var self = this;
+            self.value = num;
+            if (self.defaultlength != 0) {
+                var _t = parseInt(num);
+                var returnValue = "";
+                var ss = self.defaultlength - (_t + "").length;
+                for (var i = 0; i < ss; i++) { returnValue += "0"; }
+                returnValue += _t;
+                num = returnValue;
+            }
+            var spriteWrap = self.getChildAt(0);
+            LTweenLite.to(spriteWrap, self.changeSpeed, {
+                scaleY: 0, onComplete: function () {
+                    self.removeAllChild();
+                    self.setView(num);
+                    spriteWrap = self.getChildAt(0);
+                    spriteWrap.scaleY = 0;
+                    LTweenLite.to(spriteWrap, self.changeSpeed, {
+                        scaleY: 1, onComplete: function () {
+                            if (callBack) callBack.call(self);
+                        }
+                    });
+                }
+            });
+        }
+        var loadImages = function (url, callBack) {
+            var img = new Image(); //创建一个Image对象，实现图片的预下载
+            img.onload = function () { img.onload = null; callBack(img); }
+            img.src = url;
+        }
+        init(30, "canvas", 559, 994, function () {
+            main();
+        });
+    })(window);
+
+</script> 

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width =device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone =no" name="format-detection" />
+    <title>港铁（深圳）4号线体验员</title>
+    <meta charset="utf-8" />
+    <style>
+        body { text-shadow: none !important; }
+        .clearfix:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; }
+        /*.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper { background: #fff; text-shadow: none !important; }*/
+        #canvas { text-align: center; }
+            #canvas > div { left: 0; top: 0; overflow: hidden !important; }
+
+        .indexWrap { background: url(img/start.png); position: absolute; height: 100%; width: 100%; background-size: 100% 100%; top: 0; left: 0; }
+            .indexWrap div { text-align: center; position: absolute; bottom: 3em; width: 100%; }
+            .indexWrap img { width: 5em; height: 5em; margin: 0.5em; }
+        #phone_validate { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.6); top: 0; left: 0; }
+            #phone_validate > div { position: absolute; background: url(img/dialog.png); width: 100%; height: 22em; background-size: 100% 100%; top: 50%; margin-top: -11em; text-align: center; }
+
+        .shadow { -webkit-text-stroke: 0.04em #f00; -webkit-text-fill-color: blue; }
+        .loading { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: none; }
+            .loading img { width: 100%; height: 100%; }
+    </style>
+</head>
+<body>
+    <form id="myform" action="" method="post">
+        <!--{&quot;weiboId&quot;:2269849831,&quot;name&quot;:&quot;\u9ec4\u5c0f\u660f\u4e0d\u660f&quot;,&quot;nickname&quot;:&quot;\u9ec4\u5c0f\u660f\u4e0d\u660f&quot;,&quot;score&quot;:&quot;0&quot;,&quot;mobile&quot;:&quot;&quot;,&quot;loginTime&quot;:1445957400,&quot;sex&quot;:1,&quot;id&quot;:&quot;27&quot;,&quot;isNew&quot;:false,&quot;isFirstLogin&quot;:false,&quot;type&quot;:&quot;weibo&quot;,&quot;rank&quot;:1}-->
+        <input type="hidden" name="userdata" value="{&quot;weiboId&quot;:2269849831,&quot;name&quot;:&quot;\u9ec4\u5c0f\u660f\u4e0d\u660f&quot;,&quot;nickname&quot;:&quot;\u9ec4\u5c0f\u660f\u4e0d\u660f&quot;,&quot;score&quot;:&quot;0&quot;,&quot;mobile&quot;:&quot;&quot;,&quot;loginTime&quot;:1445957400,&quot;sex&quot;:1,&quot;id&quot;:&quot;27&quot;,&quot;isNew&quot;:true,&quot;isFirstLogin&quot;:true,&quot;type&quot;:&quot;weibo&quot;,&quot;rank&quot;:1}">
+        <input type="hidden" name="levelData" value="[{&quot;id&quot;:&quot;1&quot;,&quot;name&quot;:&quot;\u798f\u7530\u7ad9&quot;,&quot;acc&quot;:&quot;2.5&quot;,&quot;speed&quot;:&quot;20&quot;,&quot;time&quot;:&quot;30&quot;,&quot;level&quot;:&quot;1&quot;},{&quot;id&quot;:&quot;3&quot;,&quot;name&quot;:&quot;\u6e2f\u94c1\u7ad9&quot;,&quot;acc&quot;:&quot;2&quot;,&quot;speed&quot;:&quot;25&quot;,&quot;time&quot;:&quot;25&quot;,&quot;level&quot;:&quot;2&quot;},{&quot;id&quot;:&quot;4&quot;,&quot;name&quot;:&quot;\u56fd\u8d38\u7ad9&quot;,&quot;acc&quot;:&quot;3&quot;,&quot;speed&quot;:&quot;30&quot;,&quot;time&quot;:&quot;15&quot;,&quot;level&quot;:&quot;3&quot;},{&quot;id&quot;:&quot;5&quot;,&quot;name&quot;:&quot;\u897f\u4e8c\u65d7\u7ad9&quot;,&quot;acc&quot;:&quot;3&quot;,&quot;speed&quot;:&quot;35&quot;,&quot;time&quot;:&quot;10&quot;,&quot;level&quot;:&quot;4&quot;},{&quot;id&quot;:&quot;6&quot;,&quot;name&quot;:&quot;\u4e1c\u76f4\u95e8&quot;,&quot;acc&quot;:&quot;2.5&quot;,&quot;speed&quot;:&quot;2.5&quot;,&quot;time&quot;:&quot;8&quot;,&quot;level&quot;:&quot;5&quot;}]">
+        <input type="hidden" name="stationData" value="[{&quot;id&quot;:&quot;1&quot;,&quot;time&quot;:&quot;20&quot;,&quot;into_person&quot;:&quot;8&quot;,&quot;out_person&quot;:&quot;5&quot;,&quot;level&quot;:&quot;1&quot;},{&quot;id&quot;:&quot;2&quot;,&quot;time&quot;:&quot;15&quot;,&quot;into_person&quot;:&quot;10&quot;,&quot;out_person&quot;:&quot;10&quot;,&quot;level&quot;:&quot;2&quot;},{&quot;id&quot;:&quot;3&quot;,&quot;time&quot;:&quot;10&quot;,&quot;into_person&quot;:&quot;20&quot;,&quot;out_person&quot;:&quot;20&quot;,&quot;level&quot;:&quot;3&quot;},{&quot;id&quot;:&quot;4&quot;,&quot;time&quot;:&quot;5&quot;,&quot;into_person&quot;:&quot;8&quot;,&quot;out_person&quot;:&quot;8&quot;,&quot;level&quot;:&quot;4&quot;}]">
+        <input type="hidden" name="rankingData" value="[{&quot;id&quot;:&quot;11&quot;,&quot;weiboId&quot;:&quot;3543469470&quot;,&quot;name&quot;:&quot;\u6df1\u5733\u6c90\u6e38&quot;,&quot;nickname&quot;:&quot;\u6df1\u5733\u6c90\u6e38&quot;,&quot;score&quot;:&quot;0&quot;},{&quot;id&quot;:&quot;13&quot;,&quot;weiboId&quot;:&quot;2269849831&quot;,&quot;name&quot;:&quot;\u9ec4\u5c0f\u660f\u4e0d\u660f&quot;,&quot;nickname&quot;:&quot;\u9ec4\u5c0f\u660f\u4e0d\u660f&quot;,&quot;score&quot;:&quot;0&quot;},{&quot;id&quot;:&quot;22&quot;,&quot;weiboId&quot;:&quot;5747075900&quot;,&quot;name&quot;:&quot;\u7528\u62375747075900&quot;,&quot;nickname&quot;:&quot;\u7528\u62375747075900&quot;,&quot;score&quot;:&quot;0&quot;},{&quot;id&quot;:&quot;21&quot;,&quot;weiboId&quot;:&quot;2871056641&quot;,&quot;name&quot;:&quot;bluesky_in&quot;,&quot;nickname&quot;:&quot;bluesky_in&quot;,&quot;score&quot;:&quot;0&quot;}]">
+        <input type="hidden" name="msg" value="">
+    </form>
+    <div id="canvas">
+        <img src="images/ajax-loader.gif" />
+    </div>
+    <div id="loading_1" class="loading"><img src="img/loading_1.gif" /></div>
+    <div id="loading_2" class="loading"><img src="img/loading_2.gif" /></div>
+    <div style="position:absolute;width:100%;height:100%;top:0;left:0;background:#fff;display:none">
+        <input type="button" value="gogogo" id="login_container" />
+    </div>
+</body>
+</html>
+<script src="jquery-1.8.2.min.js"></script>
+<script src="lufylegend-1.9.10.min.js"></script>
+<script src="lufylegend.ui-0.13.0.min.js"></script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="md5.js"></script>
+<script src="script.js?v=v2.2"></script>
+<!--<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>-->
+
+<!--<script>
+    var obj = new WxLogin({
+        id: "login_container",
+        appid: "wxa86de49f44f05583",
+        scope: "snsapi_login",
+        redirect_uri: "http://teamotto.net/metro/interface/interface.php? time=XXX&token=XXXX&class=user&func=userRegister&",
+        state: "随机数",
+        style: "black",
+    });
+</script>-->
+ 

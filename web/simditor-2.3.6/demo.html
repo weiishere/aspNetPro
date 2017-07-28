@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title></title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="styles/simditor.css" />
+    <link href="styles/mobile.css" rel="stylesheet" />
+    <!--html源码-->
+    <link href="styles/simditor-html.css" rel="stylesheet" />
+    <script src="scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/module.js"></script>
+    <script type="text/javascript" src="scripts/hotkeys.js"></script>
+    <script type="text/javascript" src="scripts/uploader.js"></script>
+    <script type="text/javascript" src="scripts/simditor.js"></script>
+    <!--html源码-->
+    <script src="scripts/beautify-html.js"></script>
+    <script src="scripts/simditor-html.js"></script>
+
+    <!--<script type="text/javascript" src="scripts/mobilecheck.js"></script>
+    <script type="text/javascript">
+        if(mobilecheck()){
+            $('<link/>', {
+                media: 'all',
+                rel: 'stylesheet',
+                type: 'text/css',
+                href: 'styles/mobile.css'
+            }).appendTo('head')
+        }
+    </script>-->
+</head>
+<body>
+    <textarea id="editor" placeholder="" autofocus></textarea>
+</body>
+</html>
+<script>
+    var editor = new Simditor({
+        textarea: $('#editor'),
+        placeholder: '这里输入文字...',
+        toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment', '|', 'html'],
+        pasteImage: true,
+        defaultImage: 'assets/images/image.png',
+        upload: location.search === '?upload' ? {
+            url: '/upload'
+        } : false
+    });
+    window.setTimeout(function () { console.log(editor.getValue()); }, 10000);
+    $("input").bind("blur", function () {
+        $(this).parent();
+    })
+</script>

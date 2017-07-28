@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width =device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone =no" name="format-detection" />
+    <title>中秋顶费</title>
+    <meta charset="utf-8" />
+    <link href="jquery.mobile-1.4.2.min.css" rel="stylesheet" />
+    <style>
+        #canvas > div { left: 0; top: 0; }
+        .tableList { height: 116px; width: 500px; }
+    .tableList td:first-child p { margin-left: 10px; }
+    .tableList td { height: 116px; text-align: center; vertical-align: middle; }
+        .tableList td div { background: #f5f3f1; display: block; width: 100px; border-radius: 2px; margin-right: 10px; margin-right: 10px; }
+        .tableList td > div { display: block; width: 100px; height: 116px; }
+        .tableList td:first-child > div{margin-left: 10px}
+        .tableList td div img { width: 90px; height: 90px; padding: 5px 5px 0 5px; }
+        .tableList td div span { display: block; line-height: 21px; color: #000; font-size: 12px; }
+        .tableList td div p { height: 90px; width: 90px; border: 5px solid #f5f3f1;  border-bottom: 0; background-size: auto 100%; margin: 0!important;}
+    .tableList .feefg { background: #f5f3f1 url(img/compensate.png?t=1) 0 0 no-repeat; background-size: 100% 100%; }
+    </style>
+</head>
+<body>
+    <div data-role="page" id="index">
+        <div data-role="content">
+            <p>点击链接来查看滑动效果（从右向左滑动到下一页）</p>
+            <a href="#game" data-transition="slide">滑动到页面二</a>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <div style="width:94%;height:130px;border:solid 2px #fff;overflow:auto !important">
+                <table class="tableList">
+                    <tr></tr>
+                </table>
+            </div>
+            <button id="btu_go">go to page2</button>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>2</p>
+        </div>
+    </div>
+
+    <div data-role="page" id="game">
+        <div data-role="content">
+            <div id="canvas">
+                <img src="http://img14.360buyimg.com/cms/jfs/t865/49/1034073230/6017/6f27d16f/556c0030N1f282f1f.gif" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="jquery-1.8.2.min.js"></script>
+<script src="jquery.mobile-1.4.2.min.js"></script>
+
+<script>
+    $.mobile.changePage("dingfei.html#game");
+    var html = "<td><div class='feefg'></div></td><td><div class='feefg'></div></td><td><div class='feefg'></div></td><td><div class='feefg'></div></td><td><div class='feefg'></div></td>";
+    $(".tableList tr").append(html);
+</script>

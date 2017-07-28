@@ -1,0 +1,5 @@
+F:\MyProject\疯狂的月饼\CrazyCake\CrazyCake\bin\CrazyCake.dll
+F:\MyProject\疯狂的月饼\CrazyCake\CrazyCake\bin\CrazyCake.pdb
+F:\MyProject\疯狂的月饼\CrazyCake\CrazyCake\obj\Release\CrazyCake.csprojResolveAssemblyReference.cache
+F:\MyProject\疯狂的月饼\CrazyCake\CrazyCake\obj\Release\CrazyCake.dll
+F:\MyProject\疯狂的月饼\CrazyCake\CrazyCake\obj\Release\CrazyCake.pdb

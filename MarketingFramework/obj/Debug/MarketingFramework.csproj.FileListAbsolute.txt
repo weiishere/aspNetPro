@@ -1,0 +1,6 @@
+R:\MyProject\疯狂的月饼\CrazyCake\MarketingFramework\bin\MarketingFramework.dll.config
+R:\MyProject\疯狂的月饼\CrazyCake\MarketingFramework\bin\MarketingFramework.dll
+R:\MyProject\疯狂的月饼\CrazyCake\MarketingFramework\bin\MarketingFramework.pdb
+R:\MyProject\疯狂的月饼\CrazyCake\MarketingFramework\obj\Debug\MarketingFramework.csprojResolveAssemblyReference.cache
+R:\MyProject\疯狂的月饼\CrazyCake\MarketingFramework\obj\Debug\MarketingFramework.dll
+R:\MyProject\疯狂的月饼\CrazyCake\MarketingFramework\obj\Debug\MarketingFramework.pdb

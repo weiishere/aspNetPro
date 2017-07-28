@@ -1,0 +1,381 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta content="width =device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no" name="format-detection" /><!--禁用识别手机号-->
+    <title>天天抽奖</title>
+    <meta charset="utf-8" />
+    <style>
+        html, body { height: 100%; margin: 0; font-size: 20px; background-color: #ec4f6d;width:100%;overflow:hidden}
+        input, button, select, textarea { outline: none; -webkit-appearance: none; }
+        .mainWrap {position:absolute;left:0;top:0;width: 100%; min-height: 35rem; padding-bottom: 3rem; text-align: center; background-color: #ec4f6d; overflow: auto; -webkit-transform:translate(100%, 0);}
+
+        .tran{ -webkit-transition: all 0.3s ease-out;}
+        .comeIn {-webkit-transform:translate(0, 0) !important; }
+        .moveOut {-webkit-transform:translate(-100%, 0) !important; }
+
+        .hidden { display: none !important; }
+        .show { display: block !important; }
+        .butStyle { background: url(img/btu_share.png) center no-repeat; background-size: 100%; height: 2.7rem; line-height: 2.7rem; font-size: 1rem; color: #e83854; }
+        #descPage > img { width: 100%; }
+        #descPage label { color: #f5a1b1; font-size: 0.5rem; display: inline-block; width: 100%; margin: 0.1rem 0; }
+        .roleBtuWrap img { width: 40%; margin-top: 0.2rem; margin-bottom: 0.5rem; }
+
+        #indexPage { background-image: url(img/3.png); background-repeat: no-repeat; background-size: 100%; }
+            #indexPage h1 { font-size: 1rem; color: #fee27a; margin-top: 19rem; font-weight: normal; }
+            #indexPage h2 { font-size: 0.8rem; width: 88%; margin: 0 auto; color: #fff; font-weight: normal; line-height: 1rem; }
+            #indexPage h5 { font-size: 0.7rem; font-weight: normal; color: #fee27a; margin: 0.5rem 0; }
+
+        .errorPageWrap { width: 80%; padding: 0.5rem; height: 7rem; border-radius: 0.5rem; margin-top: 40% !important; padding-top: 0.5rem; line-height: 1.2rem; }
+            .errorPageWrap div { font-size: 0.8rem; }
+            .errorPageWrap button { width: 100%; height: 2rem; margin-top: 2rem; font-size: 0.8rem; background: #FFE372; border-radius: 0.2rem; color: #E04539; border: 0; box-shadow: 1px 1px 3px #333; }
+        #phonePage, #errorPage { background-image: url(img/main_bg3.png); background-repeat: no-repeat; background-size: 100%; height: 100%; padding-bottom: 0; min-height: inherit; }
+        #gamePage { background-repeat: no-repeat; background-size: 100%; height: 100%; padding-bottom: 0; min-height: inherit; }
+            #gamePage h1 { margin-top: -0.5rem; font-size: 1rem; color: #fff; font-weight: normal; }
+                #gamePage h1 strong { color: #fee27a; font-size: 1.5rem; margin: 0 0.3rem; }
+            #gamePage h4 { color: #f7b3c0; font-size: 0.8rem; font-weight: normal; margin: 0.5rem 0; background: url(img/speaker.png) no-repeat; background-size: 5% 110%; display: inline-block; padding-left: 0.8rem; }
+        .price_wrap { background: url(img/price_wrap.png); background-size: 100% 100%; height: 5rem; margin-bottom: 1rem; }
+            .price_wrap table { text-align: left; width: 95%; margin: 0 auto; height: 100%; }
+            .price_wrap h2 { font-size: 0.85rem; line-height: 1rem; margin: 0.2rem 0 0.2rem 0; color: #fcedc1; }
+            .price_wrap span { font-size: 0.7rem; color: #fcedc1; }
+            .price_wrap button { border: 0; padding: 0; background: url(img/btu.png) no-repeat; border-radius: 0.2rem; color: #E04539; background-size: 100% 100%; width: 4.2rem; height: 1.5rem; font-size: 0.7rem; }
+            .price_wrap .disabled { color: #999 !important; text-shadow: -1px -1px 1px #fff; }
+            .price_wrap img { width: 2.5rem; height: 2.5rem; margin: 1rem 0.2rem 1rem 1rem; }
+        #gamePage .zhuanpanWrap { position: relative; width: 16rem; height: 20rem; margin: 0 auto; text-align: center; background: url(img/zhuanpanwrap.png) center no-repeat; background-size: 100%; }
+            #gamePage .zhuanpanWrap .zhuanpan { width: 10rem; margin-top: 7.8rem; margin-left: 0.3rem; height: 10rem; background: url(img/zhuanpan.png); background-size: 100% 100%; display: inline-block; -webkit-transition: all 4s ease-out; }
+        .zhuanpan_no_transition { -webkit-transition: none !important; }
+        #gamePage .pointer { position: absolute; left: 0.5rem; right: 0; margin: auto; top: 10.5rem; background: url("img/pointer2.png"); width: 4rem; height: 4.3rem; background-size: 100% 100%; z-index: 500; -webkit-transform: scale(1, 1); -webkit-transition: all 0.3s ease-out; }
+            #gamePage .pointer:active { -webkit-transform: scale(1.2, 1.2) !important; }
+        .rotate { -webkit-transform: rotate(380deg) !important; }
+
+        .dialogWrap { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 800; }
+            .dialogWrap > div { background: #fff; position: absolute; z-index: 8001; -webkit-transform: translate(0, -50px); top: 0; bottom: 0; right: 0; left: 0; margin: auto; -webkit-transition: all 0.3s ease-out; opacity: 0; }
+            .dialogWrap .close { position: absolute; z-index: 600; width: 2rem; height: 2rem; right: -0.3rem; top: -0.3rem; z-index: 8002; }
+                .dialogWrap .close img { width: 100%; height: 100%; }
+        .roleWrap { width: 90%; position: relative; height: 20rem; border-radius: 0.5rem; text-align: left; line-height: 1.4rem; }
+            .roleWrap div { height: 100%; overflow: auto; margin: 0 0.5rem; font-size: 0.8rem; }
+        .show { -webkit-transform: translate(0, 0) !important; opacity: 1 !important; }
+        .phoneInputWrap { width: 90%; height: 15.3rem; border-radius: 0.5rem; }
+            .phoneInputWrap h1 { font-size: 1rem; font-weight: normal; margin-top: 1rem; color: #2b2b2b; }
+            .phoneInputWrap h2 { font-size: 0.85rem; font-weight: normal; color: #333; line-height: 1.5rem; }
+            .phoneInputWrap input { border: 0; border: solid 1px #ddd; padding: 0; font-size: 1rem; -webkit-appearance: none; }
+                .phoneInputWrap input[type="tel"] { height: 2.5rem; width: 90%; background: #eee; border-radius: 0; }
+                .phoneInputWrap input[type="number"] { height: 1.8rem; width: 57%; vertical-align: middle; border-radius: 0.2rem; font-size: 0.8rem; }
+            .phoneInputWrap .btuGetCode { margin-left: 3%; width: 30%; border: solid 1px #c9c9c9; height: 1.8rem; vertical-align: middle; border-radius: 0.2rem; }
+            .phoneInputWrap .getSubmit { width: 100%; border-top: solid 1px #eee; margin-top: 0.5rem; padding-top: 0.5rem; }
+                .phoneInputWrap .getSubmit button { width: 90%; background: #d3213d; border: 0; height: 2.8rem; vertical-align: middle; color: #fff; font-size: 1rem; }
+
+        #txt_phone2 { width: 90%; height: 2rem; border: solid 1px #ccc; font-size: 1rem; }
+        .alertWrap { position: fixed; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 8999; }
+        .alert { width: 80%; display: table; overflow: auto; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: #fff; border-radius: 0.7rem; -webkit-transform: scale(0.8, 0.8); opacity: 0; -webkit-transition: all 0.2s ease-out; z-index: 20000; }
+        .alertActive { opacity: 1; -webkit-transform: scale(1, 1) !important; }
+        .alert h1 { font-size: 1rem; text-align: center; }
+        .alert span { font-size: 0.9rem; padding: 1rem; padding-top: 0; display: block; text-align: center; }
+        .alert .buttonWrap { width: 100%; height: 2rem; border-radius: 0 0 0.7rem 0.7rem; overflow: hidden; }
+        .alert button { border: 0; border-top: solid 1px #999; background: #fff; width: 50%; float: left; height: 2rem; font-size: 1rem; color: #ef5557; }
+        /*alert .buttonWrap:before {float:left; content: ""; width: 100%;  background: #999; width: 100%; height: 1px;
+                                  -webkit-transform: scaleY(0.5); transform: scaleY(0.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }*/ . .alert button:active { background: #ccc; }
+        .alert button:first-child { border-radius: 0 0 0 0.7rem; }
+        .alert button:nth-child(2n) { border-left: solid 1px #999; border-radius: 0 0 0.7rem 0; }
+
+        .singleBtu { border-radius: 0 0 0.7rem 0.7rem !important; width: 100% !important; }
+        #alertWrap { display: none; }
+        iframe { display: none; }
+        .footer_app { position: fixed; width: 100%; color: #fff; height: 4.5rem; text-align: center; bottom: 0; background: url(http://img14.360buyimg.com/cms/jfs/t2278/276/643203285/29229/6b04c654/561e4032Ndddfd9d1.png) no-repeat; background-size: 100% 100%; z-index: 10000; }
+            .footer_app p { margin: 5px 0; font-size: 0.85rem; }
+                .footer_app p button { margin: 0; border: 0; width: 70%; height: 2.1rem; background: #d53745; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 8px; }
+
+        .weakLayer { position: absolute; z-index: 10000; background: url(http://img11.360buyimg.com/cms/jfs/t1735/188/547580560/32139/3caefcff/55d355a1N90688a61.png); top: 0; left: 0; width: 100%; height: 100%; background-size: 100% 100%; display: none; }
+        #loading { position: fixed; left: 0; top: 0; width: 100%; font-size: 0.7rem; height: 100%; text-align: center; z-index: 500000; background: rgba(0,0,0,0.5); color: #eee; display: none; }
+            #loading > div { width: 7rem; margin: 0 auto; margin-top: 50%; background: #000; padding: 1rem; border-radius: 0.5rem; opacity: 0.8; }
+            #loading img { margin-bottom: 1rem; width: 1.5rem; }
+    </style>
+</head>
+<body>
+    <div class="mainWrap" id="descPage">
+        <img src="img/1.png" />
+        <div class="butStyle" style="margin-top: 0.5rem;">领取抽奖机会</div>
+        <label>活动时间：2015.12.3-2015.12.31</label>
+        <div class="roleBtuWrap">
+            <img src="img/role_button.png" />
+        </div>
+        <img src="img/2.png" /><br /><br />
+    </div>
+
+    <div class="mainWrap" id="indexPage">
+        <h1>恭喜您获得一次抽奖机会</h1>
+        <h2>
+            <span id="pendData_">2015-12-31</span>前使用账户<span id="userPhone">用户名</span>登录京东钱包，参与活动“<span id="promotionName">天天抽奖</span>”即可进行抽奖
+        </h2>
+        <h5>快去下载钱包进行抽奖吧~</h5>
+        <div class="butStyle" id="goApp" style="margin-top: 1rem;">前往抽奖</div>
+    </div>
+
+    <div class="mainWrap" id="phonePage">
+        <div class="dialogWrap">
+            <div class="phoneInputWrap">
+                <h1>等等，就差这一步了</h1>
+                <h2>请输入手机号码领取</h2>
+                <input type="tel" id="txt_PhoneNumber" placeholder="请输入您的手机号" />
+                <div style="margin-top:0.5rem">
+                    <input placeholder="请输入验证码" type="number" id="text_verifyCode" /><button id="btu_getsms" class="btuGetCode">获取验证码</button>
+                </div>
+                <p class="getSubmit">
+                    <button id="btu_postVali">领取</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mainWrap" id="errorPage">
+        <div class="dialogWrap">
+            <div class="errorPageWrap">
+                <div>错误信息</div>
+                <button>前往抽奖</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="gamePage" class="mainWrap">
+        <div class="zhuanpanWrap">
+            <div class="pointer"></div>
+            <div class="zhuanpan"></div>
+        </div>
+
+        <h1>- 您的剩余抽奖次数为<strong>-</strong>次 -</h1>
+        <h4 style="display:none">阿**获得8.8元现金红包</h4>
+        <div class="roleBtuWrap">
+            <img src="img/role_button.png" />
+        </div>
+        <div id="price_wrap">
+            <i></i>
+        </div>
+
+    </div>
+
+    <div class="alertWrap" id="alertWrap">
+        <div class="alert">
+            <h1>消息标题</h1>
+            <span>
+                **
+            </span>
+            <div class="buttonWrap">
+
+            </div>
+        </div>
+    </div>
+    <div class="weakLayer"></div>
+    <div class="dialogWrap" style="display:none" id="roleLayer">
+
+        <div class="roleWrap">
+            <span class="close"><img src="img/close2.png" /></span>
+            <div>
+                <br />
+                活动时间：2015年12月3日00:00 -2015年12月31日23:59<br />
+                活动平台：京东钱包APP客户端<br />
+                活动内容：活动期间，京东钱包用户登陆京东钱包APP-今天页面，即可参加抽奖。<br />
+                <br />
+                一、活动规则<br />
+                1、	本次大抽奖的奖品为：京东钱包账户积分、手机充值优惠券神秘礼包、万元小金库体验金（1日收益）、1元话费优惠券、1元红包、特定实物奖品。<br />
+                2、	同一用户每天1次抽奖机会，分享抽奖活动页面到微信朋友圈或登录朋友圈内指定活动页面，当天可再获1次抽奖机会。同一用户每天最多可获得2次抽奖机会。<br />
+                3、	本次活动的所有奖品，均由主办方为您代扣代缴个人所得税，您无需为此另行缴纳个税。<br />
+                4、	在本次活动中，同一用户累计中奖金额不能超过5000元。<br />
+                5、	同一京东钱包账户、同一京东钱包绑定手机号、同一身份证号、同一京东账户、同一微信账户、同一股票资金帐号、同一银行卡号等与用户身份相关的信息，满足任一条件均视为同一用户。<br />
+                6、	在本活动期间，如存在违规行为（包括但不限于恶意套取资金、机器作弊、虚假交易等违反诚实信用原则行为），主办方将取消您的中奖资格，并有权撤销相关违规交易和奖励，必要时追究法律责任。<br />
+                7、	如出现不可抗力或情势变更的情况（包括但不限于重大灾害事件、活动受政府机关指令需要停止举办或调整的、活动遭受严重网络攻击或因系统故障需要暂停举办的），京东钱包有权暂停或取消本次活动，并可依相关法律法规的规定主张免责。<br />
+                8、	本活动规则及其未尽事宜同时受《京东钱包服务协议》及相关公告、规则约束。<br />
+                9、	在法律允许的范围内，本公司对本活动有解释权。<br />
+                10、	本次活动与Apple Inc.无关。<br />
+                二、奖品查询和使用规则：<br />
+                (一)	实物奖品<br />
+                1、	实物类奖品将在用户获奖之日起10个工作日内，由京东钱包工作人员与用户联系确定奖品领取方式。<br />
+                (二)	京东钱包账户积分<br />
+                1、	用户可在京东钱包“我的-积分-积分记录”查询获赠的京东钱包账户积分。<br />
+                2、	获赠积分可与该京东钱包账户内原有积分，累计使用；<br />
+                3、	积分使用规则详情请在查阅京东钱包APP《积分说明》。<br />
+                (三)	手机充值优惠券神秘礼包：<br />
+                1、	手机充值优惠券神秘礼包分为两类：（1）5元手机充值优惠券；（2）60元手机充值优惠券包（内含12张面额5元的手机充值优惠券）。中奖用户随机获得其中一种；<br />
+                2、	查询：用户可在京东钱包“我的-卡券”中查询获赠的手机充值优惠券；<br />
+                3、	发放时间：5元手机充值优惠券将在获奖之日发放到京东钱包“我的－优惠券”中；60元手机充值优惠券包将在活动结束后20个工作日内发放；<br />
+                4、	有效期：5元手机充值优惠券有效期为自发奖之日起3个自然日，过期作废；60元手机充值优惠券包有效期为2016年2月1日至2017年1月31日期间，分12个月使用，每个自然月仅可使用一张，2016年2月起每月最后一个自然日过期一张，过期作废。<br />
+                5、	已完成京东钱包实名认证的用户可在优惠券有效期内使用；未完成京东钱包实名认证的用户须在优惠券有效期内进行实名认证，否则视为放弃盖章优惠券。<br />
+                6、	手机充值优惠券仅限在京东钱包客户端使用银行卡充值手机话费时使用，且单笔话费充值实付金额大于或等于95元时方可使用；<br />
+                7、	手机话费充值时输入充值手机号及金额，点击“立即充值”后，即可选择可使用的券；<br />
+                8、	同一订单只能使用一张券，且不能与其他优惠活动同时享受。手机充值优惠券不可拆分使用、不可转赠、不可找零、不可兑现。手机充值优惠券与其他优惠券券不能叠加使用。<br />
+                9、	 当用券订单发生退款时，在券有效期内的，则券退回至用户的账户，券退回后有效期不变；如已过有效期则券不再退还，仅退用户实付金额。<br />
+                (四)	万元小金库体验金：<br />
+                1、	小金库体验金不能用于提现、支付、转账，仅可在京东钱包“理财－京东小金库”中查询和使用；<br />
+                2、	体验金生效日（D日）：已开通京东小金库的用户，体验金自中奖之日起生效；未开通京东小金库的用户，须在体验金领取之日起算第3个自然日23：59：59前，按照流程开通小金库帐户，体验金自开通小金库之日起生效。未能在体验金领取之日起算第3个自然日23：59：59前，按照流程开通小金库帐户的，视为放弃领奖，小金库体验金不生效；<br />
+                3、	本次活动体验期：本次活动的体验期为自体验金生效之日当天。体验期结束后，体验金自动失效；<br />
+                4、	体验金收益计算方法：体验金收益=体验金数额*D日万份收益/10000；<br />
+                5、	体验金收益发放：小金库体验金收益在D+1日可在京东钱包小金库中看到，在D+2日将以货币基金份额的形式发放至用户的小金库账户中。<br />
+                （五）1元话费优惠券：<br />
+                1、	查询：用户可在京东钱包“我的-卡券”中查询获赠的手机充值优惠券；<br />
+                2、	发放时间：1元手机充值优惠券将在获奖之日发放到京东钱包“我的－优惠券”中；<br />
+                3、	有效期：1元手机充值优惠券有效期为自发奖之日起3个自然日，过期作废；<br />
+                4、	已完成京东钱包实名认证的用户可在优惠券有效期内使用；未完成京东钱包实名认证的用户须在优惠券有效期内进行实名认证，否则视为放弃盖章优惠券。<br />
+                5、	手机充值优惠券仅限在京东钱包客户端使用银行卡充值手机话费时使用，且单笔话费充值实付金额大于或等于10元时方可使用；<br />
+                6、	手机话费充值时输入充值手机号及金额，点击“立即充值”后，即可选择可使用的券；<br />
+                7、	同一订单只能使用一张券，且不能与其他优惠活动同时享受。手机充值优惠券不可拆分使用、不可转赠、不可找零、不可兑现。手机充值优惠券与其他优惠券券不能叠加使用。<br />
+                8、	当用券订单发生退款时，在券有效期内的，则券退回至用户的账户，券退回后有效期不变；如已过有效期则券不再退还，仅退用户实付金额。<br />
+                （五）1元红包<br />
+                1、	1元红包将在获奖之日发放到京东钱包“我的-卡包-红包”中。<br />
+                2、	已完成实名认证的用户可自动兑现至京东钱包账户余额； 未完成实名认证的用户需在获奖后3个工作日内完成京东钱包实名认证，方可兑现到京东钱包账户余额。未能在获奖日起算第3个工作日23：59：59完成实名认证的，视为放弃领奖。<br />
+                <br />
+            </div>
+        </div>
+    </div>
+
+    <section class="footer_app" id="J_openBtn" style="display:none">
+        <p>京东钱包诚意之作</p>
+        <p>
+            <button id="J_confirm" onclick="openApp()">打开京东钱包</button>
+        </p>
+    </section>
+    <div id="loading">
+        <div>
+            <img src="img/laoding.gif" /><br />加载中，请稍后...
+        </div>
+    </div>
+</body>
+</html>
+<script src="jquery-1.8.2.min.js"></script>
+<script>
+
+    //------------------------------------------------------------------------------------------------
+    //手机验证
+    $.fn.phoneValidate = function (btu, option) {
+        var _self = this;
+        var getTime = function () {
+            var time = _option.requestTime;
+            btu.attr("disabled", true);
+            btu.html(_option.requestText.replace("requestText", time));
+            var timer = window.setInterval(function () {
+                if (time == 1) {
+                    btu.attr("disabled", false);
+                    window.clearInterval(timer);
+                    btu.html(_option.readyText);
+                    return false;
+                }
+                btu.html(_option.requestText.replace("requestText", --time));
+            }, 1000);
+        }
+        var _option = $.extend({
+            readyText: "获取验证码",
+            requestTime: 60,
+            requestText: "requestText 's后重获",
+            ajaxfn: undefined,
+            ajaxUrl: "",
+            callBack: function (data) { },
+            error: function (data) { }
+        }, option || {})
+        btu.click(function () {
+            if (!/^1\d{10}$/.test($("#txt_PhoneNumber").val())) {
+                //openAlert("", "请输入正确的手机号码！");
+                _C.loading().tips("请输入正确的手机号码！");
+                return false;
+            }
+            getTime();
+            if (_option.ajaxfn) {
+                _option.ajaxfn.call(_self);
+                return false;
+            }
+            if (_option.ajaxUrl == "") return false;
+            _option.ajaxUrl = _option.ajaxUrl.indexOf("?") == -1 ? _option.ajaxUrl + "?timer=" + Math.random() : _option.ajaxUrl + "&timer=" + Math.random();
+            requestAjax(_option.ajaxUrl, {}, { entranceId: Config.entranceId, mobile: $(_self).val() }, function (data) {
+                _option.callBack.call(_self, data);
+            });
+            /*
+            $.ajax({
+                type: "get",
+                url: _option.ajaxUrl,
+                dataType: "json",
+                data: { entranceId: Config.entranceId, mobile: $(_self).val() },
+                success: function (data) {
+                    _option.callBack.call(_self, data);
+                },
+                error: function (data) {
+                    _option.error.call(_self, data);
+                }
+            });*/
+        });
+    }
+    //messagesBox
+    var openAlert = function (title, text, buttonEvent) {
+        if (!title && !text) { return false; }
+        $("#alertWrap").show().find("h1").html(title);
+        $("#alertWrap").find("span").html(text);
+        window.setTimeout(function () { $(".alert").addClass("alertActive"); }, 10);
+        var buHtml = "";
+        if (buttonEvent) {
+            buttonEvent.forEach(function (i) { buHtml += "<button " + (buttonEvent.length == 1 ? 'class=\"singleBtu\"' : '') + ">" + i.name + "</button>"; });
+        } else {
+            buHtml = "<button class=\"singleBtu\">OK</button>";
+        }
+        $("#alertWrap").find(".buttonWrap").empty().append(buHtml);
+        var self = this;
+
+        self.closeAlert = function (fn) {
+            $(".alert").removeClass("alertActive");
+            window.setTimeout(function () {
+                $("#alertWrap").fadeOut("fast", function () {
+                    if (fn) fn();
+                });
+            }, 50);
+        }
+        $("#alertWrap button").each(function (i, item) {
+            $(this).unbind("click").click(function () {
+                if (!buttonEvent) { self.closeAlert(); return false; }
+                if (buttonEvent[i].hasOwnProperty("fn")) {
+                    buttonEvent[i].fn.call(self);
+                } else {
+                    self.closeAlert(function () { });
+                }
+            });
+        });
+    }
+
+    function Page(domId, fn) {
+        this.domId = domId;
+        this.showBack = function () { }
+        this.show = function () {
+            if (window.set) {
+                set["lastPage"].hide();
+            }
+            $("#" + this.domId).addClass("tran").addClass("comeIn");
+            //$(".mainWrap").hide();
+            //$("#" + this.domId).show();
+            this.showBack();
+            if (!window.hasOwnProperty("set")) { window.set = {}; }
+            set["lastPage"] = this;
+        }
+        this.hide = function () {
+            $("#" + this.domId).addClass("moveOut");
+            var domId = this.domId;
+            window.setTimeout(function () {
+                $("#" + domId).removeClass("tran").removeClass("comeIn").removeClass("moveOut");
+            }, 300);
+        }
+        if (fn) { fn.call(this); }
+        if (!window.hasOwnProperty("pages")) { window.pages = []; }
+        pages.push(domId);
+    }
+    //去抽奖主页
+    var indexPage = new Page("indexPage", function () { });
+    //介绍页
+    var descPage = new Page("descPage", function () { });
+    //手机验证页
+    var phonePage = new Page("phonePage", function () {});
+    //错误页
+    var errorPage = new Page("errorPage", function () { });
+
+    descPage.show();
+    //游戏页
+    window.setTimeout(function () {indexPage.show() },2000);
+    
+    window.setTimeout(function () { descPage.show() }, 5000);
+
+    var gamePage = new Page("gamePage", function () { });
+    gamePage.showBack = function () { }
+</script>

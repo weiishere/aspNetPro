@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" name="viewport" content="initial-scale=0.5;user-scalable=no">
+
+    <title>七夕活动</title>
+    <meta charset="utf-8" />
+    <style>
+        body { margin: 0; padding: 0; background: #fff; height: 100%; }
+        html { height: 100%; }
+        .hide { display: none; }
+        .startPage { background: #fa6683 url(img/bg.png) no-repeat; background-size: 100%; width: 100%; height: 100%; position: absolute; z-index: 2; }
+            .startPage .btuWrap { position: absolute; width: 100%; bottom: 8%; text-align: center; }
+                .startPage .btuWrap button { margin: 0; border: 0; background: url(img/btu.png) no-repeat; background-size: 100%; width: 60%; height: 8em; }
+                .startPage .btuWrap a { color: #fff; font-weight: bold; margin-top: 0.7em; font-size: 2em; display: inline-block; }
+        .loadingBg { position: fixed; top: 0px; left: 0px; background: #fff; width: 100%; height: 100%; text-align: center; display: none; }
+            .loadingBg img { margin-top: 50%; width: 30%; }
+            .loadingBg div { width: 100%; text-align: center; position: absolute; top: 55%; color: #808080; font-size: 2em; }
+        .hdmb { width: 100%; min-height: 100%; background: #fff; position: absolute; z-index: 10000; top: 0; display: none; }
+            .hdmb img { width: 100%; }
+            .hdmb div { margin: 5%; }
+    </style>
+</head>
+<body>
+    <section id="game_page" data-role="page" style="overflow: hidden; height: 100%;position:relative">
+        <div id="canvas">loading...</div>
+    </section>
+    
+    <div style="position:absolute;top:0;left:0;width:100%;height:50%;background:#fa6683">
+        <br/>
+        <img id="btu" src="img/btu_2.png" />
+        Please modify the contents of the text field.
+        <input type="text" oninput="OnInput (event)" onpropertychange="OnPropChanged (event)" value="Text field" />
+        <input type="text" id="input_test" value="Text field" />
+    </div>
+</body>
+</html>
+<script src="jquery-1.8.2.min.js"></script>
+<!--<script src="http://hammerjs.github.io/dist/hammer.min.js"></script>-->
+<script src="lufylegend-1.9.1.min.js"></script>
+
+<script src="script.js"></script>
+<script>
+    // Firefox, Google Chrome, Opera, Safari, Internet Explorer from version 9
+    function OnInput(event) {
+        console.log("The new content: " + event.target.value);
+        //alert("The new content: " + event.target.value);
+    }
+    // Internet Explorer
+    function OnPropChanged(event) {
+        if (event.propertyName.toLowerCase() == "value") {
+            console.log("The new content: " + (event.target || event.srcElement).value);
+            //alert("The new content: " + event.srcElement.value);
+        }
+    }
+    var loadFile = {
+        loadJs: function (file) {
+            var scriptTag = document.getElementById('loadScript');
+            var head = document.getElementsByTagName('head').item(0);
+            if (scriptTag) head.removeChild(scriptTag);
+            script = document.createElement('script');
+            script.src = file;
+            script.type = 'text/javascript';
+            script.id = 'loadScript';
+            head.appendChild(script);
+        }, loadCss: function (file) {
+            var cssTag = document.getElementById('loadCss');
+            var head = document.getElementsByTagName('head').item(0);
+            if (cssTag) head.removeChild(cssTag);
+            css = document.createElement('link');
+            css.href = file;
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
+            css.id = 'loadCss';
+            head.appendChild(css);
+        },
+        loadJsAndRun: function (scripts, callback) {
+            if (typeof (scripts) != "object") var scripts = [scripts];
+            var HEAD = document.getElementsByTagName("head").item(0) || document.documentElement;
+            var s = new Array(), last = scripts.length - 1, recursiveLoad = function (i) {
+                s[i] = document.createElement("script");
+                s[i].setAttribute("type", "text/javascript");
+                s[i].onload = s[i].onreadystatechange = function () {
+                    if (!/*@cc_on!@*/0 || this.readyState == "loaded" || this.readyState == "complete") {
+                        this.onload = this.onreadystatechange = null; this.parentNode.removeChild(this);
+                        if (i != last) recursiveLoad(i + 1); else if (typeof (callback) == "function") callback();
+                    }
+                }
+                s[i].setAttribute("src", scripts[i]);
+                HEAD.appendChild(s[i]);
+            };
+            recursiveLoad(0);
+        }
+    }
+    //loadFile.loadJs("http://hammerjs.github.io/dist/hammer.min.js");
+    //window.setTimeout(function () {
+    //    //alert(Hammer);
+    //    (new Hammer(document.getElementById("btu"))).on('tap', function (evt) {
+    //        alert(0);
+    //        console.log(evt);
+    //    });
+    //}, 5000);
+
+    //loadFile.loadJsAndRun("http://hammerjs.github.io/dist/hammer.min.js", function () {
+        //(new Hammer(document.getElementById("btu"))).on('tap', function (evt) {
+        //    alert(0);
+        //    console.log(evt);
+        //})
+    //});
+
+    $.fn.watch = function (callback) {
+        return this.each(function () {
+            //缓存以前的值  
+            $.data(this, 'originVal', $(this).val());
+            //event  
+            $(this).on('keyup', function () {
+                var originVal = $(this, 'originVal');
+                var currentVal = $(this).val();
+
+                if (originVal !== currentVal) {
+                    $.data(this, 'originVal', $(this).val());
+                    callback(currentVal);
+                }
+            });
+        });
+    }
+    $("input:text").watch(function (value) { console.log(value); });
+
+    $.format = function (string) {
+        var args = arguments;
+        var pattern = new RegExp("%([1-" + arguments.length + "])", "g");
+        return String(string).replace(pattern, function (match, index) {
+            return args[index];
+        })
+    }
+    $.makeFunc = function () {
+        var args = Array.prototype.slice.call(arguments);
+        var func = $.format;
+        return function () {
+            return func.apply(null, args.concat(Array.prototype.slice.call(arguments)));
+        };
+    }
+    //使用范例:
+    var majorTom = $.makeFunc("This is Major Tom to ground control. I’m %1.");
+    alert(majorTom("stepping through the door"));
+</script>

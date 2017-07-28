@@ -1,0 +1,143 @@
+﻿html, body { min-width: 320px; height: 100%; margin: 0; padding: 0; font-size: 20px; }
+        a { text-decoration: underline; }
+        input, button, select, textarea { outline: none; -webkit-appearance: none; }
+        .outWrap { height: 100%; width: 100%; position: absolute; background: #fff; }
+        .mainWrap { position: absolute; left: 0; top: 0; right:0;width: 100%; min-height: 100%; text-align: center; background-color: #fb584c; overflow: auto; }
+        .mainWrapMar { padding-bottom: 3rem !important; }
+
+        .tran { -webkit-transition: all 0.3s ease-out; }
+        .moveRight { -webkit-transform: translate3d(100%, 0,0) !important; }
+        .comeIn { -webkit-transform: translate3d(0, 0,0) !important; }
+        .moveLeft { -webkit-transform: translate3d(-100%, 0,0) !important; }
+        * { margin: 0; padding: 0; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+        .hidden { display: none; }
+        .show { display: block !important; }
+        /*header { position: absolute; z-index: 2; top: 0; left: 0; width: 100%; height: 44px; line-height: 44px; background-color: #3e74b9; text-align: center; color: #FFF; }*/
+        .mainBody { position: relative; width: 100%; height: 100%; overflow: hidden; }
+        .view-container { position: relative; width: 100%; height: 100%; }
+        .page-container { position: absolute; z-index: 1; top: 0; left: 0; right: 0; text-align: center;  padding: 0; overflow: auto;
+                          background-color:#ff6a00; -webkit-transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; }
+            .page-container content { min-height: 100%; width: 100%; }
+        .page-num { position: absolute; top: 50%; left: 50%; width: 50px; height: 50px; margin-top: -25px; margin-left: -25px; font-size: 72px; }
+        /* 差速滑动组合 */
+        .slideSlow { -webkit-transition: -webkit-transform 400ms cubic-bezier(0.42, 0, 0.58, 1.0) 0.1s; -ms-transition: transform 400ms cubic-bezier(0.42, 0, 0.58, 1.0) 0.1s; }
+        .slideFast { -webkit-transition: -webkit-transform 300ms cubic-bezier(0.42, 0, 0.58, 1.0); -ms-transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1.0); }
+        .slideSlowBack { -webkit-transition: -webkit-transform 400ms cubic-bezier(0.42, 0, 0.58, 1.0); -ms-transition: transform 400ms cubic-bezier(0.42, 0, 0.58, 1.0); }
+        .slideFastBack { -webkit-transition: -webkit-transform 300ms cubic-bezier(0.42, 0, 0.58, 1.0) 0.1s; -ms-transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1.0) 0.1s; }
+        .pageInt { -webkit-transform: translateX(0); transform: translateX(0); }
+        .pageOld { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+        .pageNew { -webkit-transform: translateX(100%); transform: translateX(100%); }
+
+
+
+        #indexPage content { background-image: url(img/indexPage_bg.png); background-repeat: no-repeat; background-size: 100%; background-color: #fb584c; color: #ffe78c; line-height: 1.7rem; font-size: 0.8rem; }
+        #indexPage .mainBtu { margin: 0 auto; width: 100%; height: 3rem; margin-top: 110%; text-align: center; }
+            #indexPage .mainBtu img { height: 100%; }
+            #indexPage .mainBtu:active { -webkit-transform: scale(0.95, 0.95); }
+        #indexPage a { color: #ffe78c; line-height: 3rem; }
+
+        #gamePage content { background: #fff url(img/gamePage_bg.png); background-repeat: no-repeat; background-size: 100%; line-height: 1.7rem; }
+        #gamePage .priceItem { width: 3rem; position: absolute; left: 40%; top: 2rem; -webkit-transform: scale(0.2, 0.2); }
+            #gamePage .priceItem img { width: 100%; }
+        #gamePage .TrimmingsItem { width: 1.5rem; position: absolute; top: 5rem; opacity: 0.7; }
+            #gamePage .TrimmingsItem img { max-width: 100%; }
+        #gameResultPage content { background: #ed393a url(img/gameResult_bg2.png); background-size: 100%; }
+        #prizeResultPage content { background: #ed393a; }
+        #gameResultPage .descDiv_3 { line-height: 2rem; color: #bc1e00; font-size: 0.8rem; }
+        #gameResultPage .mainWrap1, #prizeResultPage .mainWrap1 { background: url(img/gameResult_bg.png); background-repeat: no-repeat; background-size: 100% 100%; position: absolute; top: 0; left: 0; right: 0; margin: auto; height: 20rem; }
+        #gameResultPage .priceShowWrap { width: 11rem; height: 6rem; background: url(img/price_bg.png); background-size: 100% 100%; margin: 1rem auto; margin-top: 2rem; position: relative; }
+            #gameResultPage .priceShowWrap strong { font-size: 6.5rem; color: #fff; position: absolute; left: 2rem; top: -0.8rem; display: none; }
+        #gameResultPage .descDiv, #prizeResultPage .descDiv { padding: 0 1.5rem; font-size: 0.6rem; line-height: 1rem; color: #bc1e00; }
+        #gameResultPage button, #prizeResultPage button { width: 40%; height: 2.2em; background: url(img/btu2.png); background-size: 100% 100%; color: #cd2229; border: 0; margin-top: 0.2rem; font-size: 0.8rem; }
+        #gameResultPage .pmdWrap, #prizeResultPage .pmdWrap { position: absolute; top: 22rem; font-size: 0.5rem; width: 100%; }
+            #gameResultPage .pmdWrap ul { list-style: none; margin: 0; padding: 0; text-align: center; width: 100%; line-height: 1rem; color: #fff; }
+
+            #prizeResultPage .pmdWrap a { font-size: 1rem; color: #fff; }
+        #prizeResultPage .priceShowWrap_1 { width: 13rem; height: 9rem; background: url(img/prizeResult_1.png); background-size: 100% 100%; margin: 1rem auto; margin-top: 2rem; position: relative; }
+            #prizeResultPage .priceShowWrap_1 span { position: absolute; width: 100%; bottom: 0.5rem; left: 0; font-size: 10px; color: #fff; }
+        #prizeResultPage .priceShowWrap_2 { width: 13rem; height: 9rem; background: url(img/prizeResult_2.png); background-size: 100% 100%; margin: 1rem auto; margin-top: 2rem; position: relative; }
+
+
+        #phonePage content { background: #fff url(img/phonePage_bg.png); background-repeat: no-repeat; background-size: 100%; height: 100%; padding-bottom: 0; min-height: inherit; }
+
+        .dialogWrap { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 800; }
+            .dialogWrap > div { background: #fff; position: absolute; z-index: 8001; -webkit-transform: translate(0, -50px); top: 0; bottom: 0; right: 0; left: 0; margin: auto; -webkit-transition: all 0.3s ease-out; opacity: 0; }
+            .dialogWrap .close { position: absolute; z-index: 600; width: 2rem; height: 2rem; right: -0.3rem; top: -0.3rem; z-index: 8002; }
+                .dialogWrap .close img { width: 100%; height: 100%; }
+        .roleWrap { width: 90%; position: relative; height: 20rem; border-radius: 0.5rem; text-align: left; line-height: 1.4rem; }
+            .roleWrap div { height: 100%; overflow-y:scroll;overflow-x:hidden; margin: 0 0.5rem; font-size: 0.8rem; color: #333; }
+        .show { -webkit-transform: translate(0, 0) !important; opacity: 1 !important; }
+        .phoneInputWrap { width: 95%; height: 14.7rem; border-radius: 0.5rem; bottom: 30% !important; background-color: #ffecc2 !important; }
+            .phoneInputWrap h1 { font-size: 1rem; font-weight: normal; margin-top: 1rem; color: #bc1e00; font-weight: bold; }
+            .phoneInputWrap h2 { font-size: 0.85rem; font-weight: normal; color: #bc1e00; line-height: 1.5rem; }
+            .phoneInputWrap input { border: 0; border: solid 1px #ddd; padding: 0; font-size: 1rem; -webkit-appearance: none; }
+                .phoneInputWrap input#txt_PhoneNumber { height: 2.5rem; width: 90%; background: #fff; border-radius: 0; }
+                .phoneInputWrap input#text_verifyCode { height: 1.8rem; width: 57%; vertical-align: middle; border-radius: 0.2rem; font-size: 0.8rem; }
+            .phoneInputWrap .btuGetCode { margin-left: 3%; width: 30%; border: solid 1px #c9c9c9; height: 1.8rem; vertical-align: middle; border-radius: 0.2rem; background: #ffecc2; }
+            .phoneInputWrap .getSubmit { width: 100%; border-top: solid 1px #c9c9c9; margin-top: 0.5rem; padding-top: 0.5rem; }
+                .phoneInputWrap .getSubmit button { width: 90%; background: #ff6559; border: 0; height: 2.8rem; vertical-align: middle; color: #fff; font-size: 1rem; }
+
+        .floatWindow { width: 60%; min-height: 1.3rem; display: table; margin: auto; overflow: auto; position: absolute; z-index: 100000; top: 0; left: 0; bottom: 0; right: 0; background: rgba(51, 51, 51, 0.85); color: #fff; text-shadow: 0 0 transparent; border: solid 1px #666; border-radius: 0.3em; opacity: 0; font-size: 0.5rem; line-height: .8rem; }
+        .floatWindow_bottom { top: auto; bottom: 5%; }
+        .floatWindow_top { bottom: auto; top: 5%; }
+        .floatWindow h2 { width: 100%; text-align: center; }
+        .floatWindow p { border: solid 0px #000; margin: 0.3rem;font-size:0.7rem; text-align: center;line-height:1rem}
+
+        #txt_phone2 { width: 90%; height: 2rem; border: solid 1px #ccc; font-size: 1rem; }
+        .alertWrap { position: fixed; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 8999; }
+        .alertWrap .alert { width: 80%; display: table; overflow: auto; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: #fff; border-radius: 0.7rem; -webkit-transform: scale(0.8, 0.8); opacity: 0; -webkit-transition: all 0.2s ease-out; z-index: 20000; }
+        .alertWrap .alertActive { opacity: 1; -webkit-transform: scale(1, 1) !important; }
+        .alertWrap .alert h1 { font-size: 1.2rem; text-align: center; line-height: 1.6rem; }
+        .alertWrap .alert span { font-size: 0.9rem; padding: 1rem; padding-top: 0.5rem; display: block; text-align: center; }
+        .alertWrap .alert .buttonWrap { width: 100%; height: 2rem; border-radius: 0 0 0.7rem 0.7rem; overflow: hidden; }
+        .alertWrap .alert button { border: 0; border-top: solid 1px #999; background: #fff; width: 50%; float: left; height: 2rem; font-size: 1rem; color: #ef5557; }
+            /*alert .buttonWrap:before {float:left; content: ""; width: 100%;  background: #999; width: 100%; height: 1px;
+                                  -webkit-transform: scaleY(0.5); transform: scaleY(0.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }*/
+            .alertWrap .alert button:active { background: #ccc; }
+            .alertWrap .alert button:first-child { border-radius: 0 0 0 0.7rem; }
+            .alertWrap .alert button:nth-child(2n) { border-left: solid 1px #999; border-radius: 0 0 0.7rem 0; }
+        .alertWrap .singleBtu { border-radius: 0 0 0.7rem 0.7rem !important; width: 100% !important; }
+        #alertWrap { display: none; }
+
+
+        .alertWrap2 { position: fixed; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.1); z-index: 8999; }
+        .alertWrap2 .alert { width: 90%; display: table; overflow: auto; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: rgba(0,0,0,0.8); 
+                             border-radius: 0.3rem; -webkit-transform: scale(0.8, 0.8); opacity: 0; -webkit-transition: all 0.2s ease-out; z-index: 20000;color:#ffe659 }
+        .alertWrap2 .alertActive { opacity: 1; -webkit-transform: scale(1, 1) !important; }
+        .alertWrap2 .alert h1 { font-size: 1.2rem; text-align: center; line-height: 3rem; }
+            .alertWrap2 .alert i {position:absolute;width:1.3rem;height:1.3rem;right:0.3rem;top:0.3rem;display:none;cursor:pointer;background:url(img//close.png);background-size:100% 100%}
+        .alertWrap2 .alert span { font-size: 0.9rem; padding: 1rem; padding-top: 0.5rem; display: block; text-align: center; }
+        .alertWrap2 .alert .buttonWrap { width: 100%;text-align:center;padding:0.5rem 0 1rem 0; height: 2rem; border-radius: 0 0 0.7rem 0.7rem; overflow: hidden; }
+        .alertWrap2 .alert button { border: solid 1px #fff; background: #770803; width: 50%; height: 2rem; 
+                                    font-size: 1rem; color: #FFF100;box-shadow:0 0 0.3rem #fff}
+            /*alert .buttonWrap:before {float:left; content: ""; width: 100%;  background: #999; width: 100%; height: 1px;
+                                  -webkit-transform: scaleY(0.5); transform: scaleY(0.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }*/
+            .alertWrap2 .alert button:active { background: #ccc; }
+            .alertWrap2 .alert button:first-child { border-radius: 0 0 0 0.7rem; }
+            .alertWrap2 .alert button:nth-child(2n) { border-left: solid 1px #999; border-radius: 0 0 0.7rem 0; }
+        .alertWrap2 .singleBtu { border-radius: 0.7rem !important; width: 80% !important; }
+        #alertWrap2 { display: none; }
+
+
+        .footer_app { position: fixed; width: 100%; color: #fff; height: 4.5rem; text-align: center; bottom: 0; background: url(http://img14.360buyimg.com/cms/jfs/t2278/276/643203285/29229/6b04c654/561e4032Ndddfd9d1.png) no-repeat; background-size: 100% 100%; z-index: 10000; }
+            .footer_app p { margin: 5px 0; font-size: 0.85rem; }
+                .footer_app p button { margin: 0; border: 0; width: 70%; height: 2.1rem; background: #d53745; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 8px; }
+
+        .weakLayer { position: absolute; z-index: 10000; background: url(http://img11.360buyimg.com/cms/jfs/t1735/188/547580560/32139/3caefcff/55d355a1N90688a61.png); top: 0; left: 0; width: 100%; height: 100%; background-size: 100% 100%; display: none; }
+        #loading { position: fixed; left: 0; top: 0; width: 100%; font-size: 0.7rem; height: 100%; text-align: center; z-index: 500000; background: rgba(0,0,0,0.5); color: #eee; display: none; }
+            #loading > div { width: 7rem; margin: 0 auto; margin-top: 50%; background: #000; padding: 1rem; border-radius: 0.5rem; opacity: 0.8; }
+            #loading img { margin-bottom: 1rem; width: 1.5rem; }
+
+
+            table, tr, td { margin: 0; padding: 0; }
+.trickets-list-wrap { width: 100%; height: 130px; overflow: auto; }
+.tableList { height: 116px; width: 500px; }
+    .tableList td:first-child p { margin-left: 10px; }
+    .tableList td { height: 116px; text-align: center; vertical-align: middle; }
+        .tableList td div { background: #f5f3f1; display: block; width: 100px; border-radius: 2px; margin-right: 10px; margin-right: 10px; }
+        .tableList td > div { display: block; width: 100px; height: 116px; }
+        .tableList td:first-child > div{margin-left: 10px}
+        .tableList td div img { width: 90px; height: 90px; padding: 5px 5px 0 5px; }
+        .tableList td div span { display: block; line-height: 21px; color: #000; font-size: 12px; }
+        .tableList td div p { height: 90px; width: 90px; border: 5px solid #f5f3f1;  border-bottom: 0; background-size: auto 100%; margin: 0!important;}
+    .tableList .feefg { background: #f5f3f1 url(../img/compensate.png?t=1) 0 0 no-repeat; background-size: 100% 100%; }

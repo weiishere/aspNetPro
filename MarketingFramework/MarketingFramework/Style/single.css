@@ -1,0 +1,10 @@
+﻿.outWrap { width:1100px !important}
+.leftBar,#viewListWrap,#modelEditView i { display:none !important}
+
+/*#modelEditView form i { display:inline-block !important;height:10px;width:10px;position:relative;overflow:hidden}
+#modelEditView form i::after { position:absolute;width:10px;height:10px;background:#808080;content:"";left:0;top:0}*/
+
+#trg_more { display:none !important;}
+#ModelCodeTrg { display:none !important}
+.bgArea { cursor:default !important}
+

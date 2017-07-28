@@ -1,0 +1,659 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+		<title>
+			看我礼不礼你
+		</title>
+		<link rel="stylesheet" href="./css/css.css">
+	</head>
+	<body>
+		<section class="mainBody">
+			<div id="pages" class="view-container" style="">
+				<!-- 对话页面 -->
+				<div class="mainWrap page-container pageNew" id="dialoguePage">
+					<content>
+						<div class="dialogue-con">
+							<ul>
+								<li>
+									<img class="left" src="./img/dialogue_02.png" alt="">
+								</li>
+								<li>
+									<img class="left" src="./img/dialogue_03.png" alt="">
+								</li>
+								<li>
+									<img class="right" src="./img/dialogue_04.png" alt="">
+								</li>
+								<li>
+									<img class="left" src="./img/dialogue_05.png" alt="">
+								</li>
+								<li>
+									<img class="right" src="./img/dialogue_06.png" alt="">
+								</li>
+								<li>
+									<img class="left" src="./img/dialogue_07.png" alt="">
+								</li>
+								<li id="J_dialogueNext">
+									<img class="right" src="./img/dialogue_08.png" alt="">
+								</li>
+								<li>
+									<img class="right" src="./img/dialogue_09.png" alt="">
+								</li>
+							</ul>
+						</div>
+					</content>
+				</div>
+				<!-- 介绍 -->
+				<div class="mainWrap page-container pageNew" id="introducePage">
+					<content>
+						<ul class="introduce">
+							<li>
+								<img src="./img/introduce_02.jpg" alt="">
+							</li>
+							<li>
+								<img src="./img/introduce_03.jpg" alt="">
+							</li>
+							<li class="introduce-btn">
+								<img src="./img/introduce_04.jpg" alt="">
+								<a href="javascript:;" id="J_camera">
+								</a>
+								<span class="J_rule" role = "checkRole">
+								</span>
+							</li>
+							<li class="trickets-list">
+								<img src="./img/introduce_05.jpg" alt="">
+								<div class="trickets-list-wrap J_tricketsList">
+									<!-- 需要计算ol宽度 -->
+									<ol>
+										<li>
+											<img src="./img/people.jpg" alt="">
+											<p>
+												已报销580元
+											</p>
+										</li>
+										<li>
+											<img src="./img/people.jpg" alt="">
+											<p>
+												已报销580元
+											</p>
+										</li>
+										<li>
+											<img src="./img/people.jpg" alt="">
+											<p>
+												已报销580元
+											</p>
+										</li>
+										<li>
+											<img src="./img/people.jpg" alt="">
+											<p>
+												已报销580元
+											</p>
+										</li>
+										<li>
+											<img src="./img/people.jpg" alt="">
+											<p>
+												已报销580元
+											</p>
+										</li>
+										<li>
+											<img src="./img/people.jpg" alt="">
+											<p>
+												已报销580元
+											</p>
+										</li>
+										<li>
+											<img src="./img/people.jpg" alt="">
+											<p>
+												已报销580元
+											</p>
+										</li>
+									</ol>
+								</div>
+							</li>
+							<li class="footer-more">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<img src="./img/introduce_06.jpg" alt="">
+							</li>
+						</ul>
+					</content>
+				</div>
+				<!-- 上传失败 -->
+				<div class="mainWrap page-container pageNew" id="failPage">
+					<content>
+						<div class="fail">
+							<img src="./img/fail.jpg" alt="">
+							<span>
+							</span>
+						</div>
+					</content>
+				</div>
+				<!-- 手机号 -->
+				<div class="mainWrap page-container pageNew" id="phonePage">
+					<content>
+						<div class="phone-num">
+							<img src="./img/phone_02.jpg" alt="">
+							<img src="./img/phone_03.jpg" alt="">
+							<div class="face-img">
+								<img src="./img/phone_05.png" alt="">
+								<div class="img-wrap">
+									<img class="J_faceImg" src="http://img.hb.aicdn.com/5d447cf962e02cde19aa26a399f0483b7aa3c764ed69-K2bM59_fw658">
+								</div>
+							</div>
+							<div class="face-num">
+								<img src="./img/phone_06.png" alt="">
+								<img class="fn-rotate-sun" src="./img/phone_08.png" alt="">
+									<p class="J_faceText">
+										你的颜值简直天生丽质风华绝代！
+										<br>
+										美美哒过年吧！
+									</p>
+									<span class="J_faceNum">
+										83
+									</span>
+							</div>
+						</div>
+						<div class="phone-msg">
+							<img src="./img/phone_04.jpg" alt="">
+							<input type="tel" name='phone' id="txt_PhoneNumber" placeholder="请输入您的手机号"
+							/>
+							<input placeholder="请输入验证码" name="verifyCode" type="tel" id="text_verifyCode"
+							/>
+							<button id="btu_getsms" name="getCode" class="btuGetCode">
+								获取验证码
+							</button>
+							<button id="btu_postVali" name="next">
+							</button>
+						</div>
+					</content>
+				</div>
+				<!-- 领奖成功 -->
+				<div class="mainWrap page-container pageNew" id="prizePage">
+					<content>
+						<div class="phone-num">
+							<img src="./img/phone_02.jpg" alt="">
+							<img src="./img/phone_03.jpg" alt="">
+							<div class="face-img">
+								<img src="./img/phone_05.png" alt="">
+								<div class="img-wrap">
+									<img class="J_faceImg" src="http://img.hb.aicdn.com/5d447cf962e02cde19aa26a399f0483b7aa3c764ed69-K2bM59_fw658">
+								</div>
+							</div>
+							<div class="face-num">
+								<img src="./img/phone_06.png" alt="">
+								<img class="fn-rotate-sun" src="./img/phone_08.png" alt="">
+								<p class="J_faceText">
+									你的颜值简直天生丽质风华绝代！
+									<br>
+									美美哒过年吧！
+								</p>
+								<span class="J_faceNum">
+									83
+								</span>
+							</div>
+						</div>
+						<div class="prize-info J_prizeInfo">
+							<!--文案变化：元现金红包 现金红包-->
+							<p>
+								<span>
+									5
+								</span>
+								元话费优惠券
+							</p>
+							<em>
+								5
+							</em>
+							<i>
+								话费券
+							</i>
+							<img src="./img/prize_02.jpg" alt="">
+						</div>
+						<ul class="introduce">
+							<li class="trickets-list">
+								<img src="./img/introduce_05.jpg" alt="">
+								<div class="trickets-list-wrap J_tricketsList">
+									<!-- 需要计算ol宽度 -->
+									<ol>
+										<li>
+											<img src="./img/people.jpg" alt="">
+											<p>
+												已报销580元
+											</p>
+										</li>
+										<li>
+											<img src="./img/people.jpg" alt="">
+											<p>
+												已报销580元
+											</p>
+										</li>
+										<li>
+											<img src="./img/people.jpg" alt="">
+											<p>
+												已报销580元
+											</p>
+										</li>
+										<li>
+											<img src="./img/people.jpg" alt="">
+											<p>
+												已报销580元
+											</p>
+										</li>
+										<li>
+											<img src="./img/people.jpg" alt="">
+											<p>
+												已报销580元
+											</p>
+										</li>
+									</ol>
+								</div>
+							</li>
+							<li class="footer-more">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<img src="./img/introduce_06.jpg" alt="">
+							</li>
+						</ul>
+					</content>
+				</div>
+				<!-- 点 赞 -->
+				<div class="mainWrap page-container pageNew" id="supportPage">
+					<content>
+						<div>
+							<div class="support-con">
+								<img src="./img/support_02.jpg" alt="">
+								<img src="./img/support_03.jpg" alt="">
+								<div class="support-detail">
+									<div class="user-wrap">
+										<div class="user-logo">
+											<img class="J_userLogo" src="http://userapi.17k.com/c20536879_180.img" alt="">
+										</div>
+										<span class="user-name J_userName">
+											火车票
+										</span>
+									</div>
+									<p>
+										我刷脸赚得了N元话费优惠券， 快来支持我全额报销路费！
+									</p>
+									<div class="user-face">
+										<img class="J_faceImg" src="http://img.hb.aicdn.com/5d447cf962e02cde19aa26a399f0483b7aa3c764ed69-K2bM59_fw658">
+									</div>
+									<span class="support-rule" role = "checkRole">
+									</span>
+									<a href="javascript:;" class="support-btn J_supportBtn">
+									</a>
+									<a href="javascript:;" class="support-play J_supportPlay">
+									</a> 
+								</div>
+							</div>
+							<ul class="introduce">
+								<li class="trickets-list">
+									<img src="./img/introduce_05.jpg" alt="">
+                                    <div class="trickets-list-wrap J_tricketsList" style="height:6rem">
+                                        <!-- 需要计算ol宽度 -->
+                                        <table style="width:40rem" id="tableList">
+                                            <tr></tr>
+                                        </table>
+                                        <ol style="display:none">
+                                            <li>
+                                                <img src="./img/people.jpg" alt="">
+                                                <p>
+                                                    已报销580元
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <img src="./img/people.jpg" alt="">
+                                                <p>
+                                                    已报销580元
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <img src="./img/people.jpg" alt="">
+                                                <p>
+                                                    已报销580元
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <img src="./img/people.jpg" alt="">
+                                                <p>
+                                                    已报销580元
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <img src="./img/people.jpg" alt="">
+                                                <p>
+                                                    已报销580元
+                                                </p>
+                                            </li>
+                                        </ol>
+                                    </div>
+								</li>
+
+                                <script>
+                                    var table = document.querySelector("#tableList");
+                                    var tr = table.getElementsByTagName("tr")[0];
+                                    for (var i = 0; i <= 10; i++) {
+                                        var td = document.createElement("td");
+                                        td.innerHTML = "<img src='./img/people.jpg' alt=''><p> 已报销580元</p>";
+                                        tr.appendChild(td);
+                                    }
+                                </script>
+
+
+
+								<li class="footer-more">
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+									<img src="./img/introduce_06.jpg" alt="">
+								</li>
+							</ul>
+						</div>
+					</content>
+				</div>
+				<!-- 投票结果 -->
+				<div class="mainWrap page-container pageNew" id="resultPage">
+					<content>
+						<div class="result-con">
+							<img src="http://pux.wangyin.com/kwx/result_05.jpg" alt="">
+							<img src="http://pux.wangyin.com/kwx/result_06.jpg" alt="">
+							<div class="result-top">
+								<div class="user-logo">
+									<img class="J_userLogo" src="http://userapi.17k.com/c20536879_180.img" alt="">
+								</div>
+								<p class="user-name J_userName">
+									火车票
+								</p>
+							</div>
+							<div class="user-face">
+								<img class="J_faceImg" src="http://img.hb.aicdn.com/5d447cf962e02cde19aa26a399f0483b7aa3c764ed69-K2bM59_fw658">
+							</div>
+						</div>
+						<div class="result-list">
+							<p>
+								已有<span class="J_voterNum"></span>人为你投票
+							</p>
+							<ul class="J_voterList">
+								<li>
+									<span>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</span>
+								</li>
+								<li>
+									<span>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</span>
+								</li>
+								<li>
+									<span>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</span>
+								</li>
+								<li>
+									<span>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</span>
+								</li>
+								<li>
+									<span>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</span>
+								</li>
+								<li>
+									<span>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</span>
+								</li>
+								<li>
+									<span>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</span>
+								</li>
+								<li>
+									<span>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</span>
+								</li>
+								<li>
+									<span>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</span>
+								</li>
+								<li>
+									<a href="javacript:;">
+										查看
+										<br>
+										更多
+									</a>
+								</li>
+							</ul>
+							<span class="result-rule" role = "checkRole">
+							</span>
+							<span class="J_rule" role = "checkRole">
+								</span>
+						</div>
+					</content>
+				</div>
+				<!-- 投票人列表 -->
+				<div class="mainWrap page-container pageNew" id="listPage">
+					<content>
+						<div class="list-con">
+							<img src="./img/list_03.png" alt="">
+							<ul class="J_userList">
+								<li>
+									<div>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</div>
+									<span>
+										防火防贼防前任
+									</span>
+								</li>
+								<li>
+									<div>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</div>
+									<span>
+										防火防贼防前任
+									</span>
+								</li>
+								<li>
+									<div>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</div>
+									<span>
+										防火防贼防前任
+									</span>
+								</li>
+								<li>
+									<div>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</div>
+									<span>
+										防火防贼防前任
+									</span>
+								</li>
+								<li>
+									<div>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</div>
+									<span>
+										防火防贼防前任
+									</span>
+								</li>
+								<li>
+									<div>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</div>
+									<span>
+										防火防贼防前任
+									</span>
+								</li>
+								<li>
+									<div>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</div>
+									<span>
+										防火防贼防前任
+									</span>
+								</li>
+								<li>
+									<div>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</div>
+									<span>
+										防火防贼防前任
+									</span>
+								</li>
+								<li>
+									<div>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</div>
+									<span>
+										防火防贼防前任
+									</span>
+								</li>
+								<li>
+									<div>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</div>
+									<span>
+										防火防贼防前任
+									</span>
+								</li>
+								<li>
+									<div>
+										<img src="http://userapi.17k.com/c20536879_180.img" alt="">
+									</div>
+									<span>
+										防火防贼防前任
+									</span>
+								</li>
+							</ul>
+						</div>
+					</content>
+				</div>
+				<div class="weakLayer">
+				</div>
+				<div class="dialogWrap" style="display:none" id="roleLayer">
+					<div class="roleWrap">
+						<span class="close">
+							<img src="img/close2.png" />
+						</span>
+						<div>
+							<br />
+							活动时间
+							<br />
+							2015年12月24日 0:00：00—2016年1月3日 23:59：59
+							<br />
+							活动流程：
+							<br />
+							１.点击“领取好礼”按钮进入游戏，点击屏幕上掉落的礼物中的一个，查看圣诞老人给你捎的话；
+							<br />
+							２.分享指定活动页面至微信好友（包括群）或朋友圈即可获得一张5元话费充值满减券（以下简称“满减券”）;
+							<br />
+							3 .活动结束后，自活动期间成功充值话费且金额大于或等于100元的用户中抽取一名幸运用户，送12张面值为100元的话费抵用券（以下简称“抵用券”）
+							<br />
+							活动细则：
+							<br />
+							1、分享微信活动页面的，满减券将实时发放至您在指定活动页面输入手机号码绑定的京东钱包账户中。分享京东钱包活动页面的，满减券将实时发放至相应的京东钱包账户中。
+							<br />
+							2.券的使用规则
+							<br />
+							1）仅限京东钱包客户端手机话费充值使用，用户充值面额大于或等于100元时方可使用；
+							<br />
+							2）充值时输入充值手机号及选择充值面额，即可选择可使用的券；
+							<br />
+							3）同一订单只能使用一张券，且不能与其他优惠活动同时享受，券不可拆分使用、不可转赠、不可找零、不可兑现；
+							<br />
+							4）满减券有效期为３个自然日，自到账之日起算，券过期作废；
+							<br />
+							5）抵用券须在2016年1月1日至2016年12月31日期间使用，每个自然月仅可使用一张，分12个月使用，抵用券在相应自然月内有效；
+							<br />
+							6）如使用券的订单发生退款，在券有效期内的，则券退回至用户的账户，券退回后有效期不变，如已过有效期则自退回之时起有效期延长24小时；　
+							<br />
+							3.抵用券中奖用户名单将在活动结束后10个工作日内公告，抵用券在活动结束后10个工作日内发放到用户参加活动的京东钱包账户中；
+							<br />
+							4.同一用户仅有一次获得5元满减券的机会，同一京东钱包账户、同一身份证号、同一银行卡号、同一手机号码，同一手机设备，满足任一条件均视为同一用户。
+							<br />
+							5.参与活动的用户须为通过实名认证的京东钱包个人用户。用户可登录京东钱包，通过“我的”-“安全保护”-“实名认证”查看实名认证情况。
+							<br />
+							6.本次活动涉及的时间点（包括但不限于活动时间、成功完成信用卡还款的时间、发奖时间等）以网银在线计算机系统后台记录为准。
+							<br />
+							7.在本活动期间，如存在违规行为（包括但不限于恶意套取资金、机器作弊、虚假交易等违反诚实信用原则行为），主办方将取消您的中奖资格，并有权撤销相关违规交易，必要时追究法律责任。
+							<br />
+							8.如出现不可抗力或情势变更的情况（包括但不限于重大灾害事件、活动受政府机关指令需要停止举办或调整的、活动遭受严重网络攻击或因系统故障需要暂停举办的），京东钱包有权暂停或取消本次活动，并可依相关法律法规的规定主张免责。
+							<br />
+							9.用户参与此活动即视为知晓并同意此活动细则。
+							<br />
+							10.本活动规则及其未尽事宜同时受《京东钱包服务协议》及相关公告、规则约束。
+							<br />
+							11.在法律允许的范围内，本公司对本次活动有解释权。
+							<br />
+							本次活动与 Apple Inc.无关
+							<br />
+							<br />
+						</div>
+					</div>
+				</div>
+				<section class="footer_app hidden" id="J_openBtn">
+					<p>
+						京东钱包诚意之作
+					</p>
+					<p>
+						<button id="J_confirm">
+							打开京东钱包
+						</button>
+					</p>
+				</section>
+				<div class="alertWrap2" id="alertWrap">
+					<div class="alert">
+						<i>
+						</i>
+						<h1>
+							消息标题
+						</h1>
+						<span>
+							**
+						</span>
+						<div class="buttonWrap">
+						</div>
+					</div>
+				</div>
+				<div id="loading">
+					<div>
+						<img src="img/laoding.gif" />
+						<br />
+						加载中，请稍后...
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+
+</html>
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/wx-sdk.js"></script>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/mApp.js"></script>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/jdp-sdk.js"></script>
+<script src="js/fastclick.js"></script>
+<script src="js/common.js"></script>
+<script src="js/appprocess.js"></script>
+<script src="js/wxprocess.js"></script>
+<script>
+
+window.addEventListener('load',function(){
+	var bWx = true;
+	if(bWx){
+		wxprocess();
+	}else{
+		appprocess();
+	}
+}, false)
+</script>

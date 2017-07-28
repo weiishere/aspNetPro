@@ -1,0 +1,31 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>demo</title>
+    <script src='http://static.jdpay.com/basic/dist/js/m-public/mApp.js'></script>
+    <style>
+        body { margin: 0; }
+        .checkStatus { width: 100%; position:relative;color: #333;height:6rem;background:url(http://img12.360buyimg.com/cms/jfs/t1969/257/2742534104/18377/1aaefdf3/56ea1a04N161ebf38.jpg) top right no-repeat;background-size:100% auto }
+            .checkStatus > div { position:absolute;top:0;bottom:0;left:5%;margin:auto;height:3.8rem }
+            .checkStatus h1 { font-size: 1.6rem; margin: 0; }
+                .checkStatus h1 b { color: #f15353;}
+            .checkStatus span { margin-top: 0.5rem; font-size: 1rem; color: #999; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="checkStatus">
+        <div>
+            <h1><b>9.9%</b>特供限量抢</h1>
+            <span>旺财欢迎新同学</span>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var _mApp = mApp();
+    var mAppConfig = _mApp.config();
+    document.querySelector(".checkStatus").onclick = function () { _mApp.start('WANGCAI'); }
+</script>

@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>中国加油 泳夺金牌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <link href="//static.jdpay.com/basic/dist/css/m.css" rel="stylesheet" />
+    <style>
+        button { border: 0; outline: none; }
+        .alertWrap { position: fixed; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 8999; }
+            .alertWrap .alert { width: 80%; height: 5rem; display: table; overflow: auto; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background-size: 100% 100%; background-color: transparent; background-image: url(//img14.360buyimg.com/cms/jfs/t3124/179/45852835/36656/b293bf5e/57a1c9e0N0c02ddd5.png); border-radius: 0.7rem; -webkit-transform: scale(0.8, 0.8); opacity: 0; -webkit-transition: all 0.2s ease-out; z-index: 20000; }
+            .alertWrap .alertActive { opacity: 1; -webkit-transform: scale(1, 1) !important; }
+            .alertWrap .alert h1 { font-size: .5rem; text-align: center; }
+            .alertWrap .alert span { font-size: .5rem; padding-top: 2.65rem; display: block; text-align: center; color: #e94539; }
+            .alertWrap .alert .buttonWrap { width: 100%; height: .5rem; overflow: hidden; bottom: 0.3rem !important; top: auto; position: absolute; }
+            .alertWrap .alert button { border: 0; background: #d73542; width: 45.5%; float: left; height: .5rem; font-size: 0.2rem; color: #fff; background-color: transparent; }
+                .alertWrap .alert button:active { background: none; }
+                .alertWrap .alert button:first-child { color: #000; margin-left: 3%; width: 35%; margin-left: 0.5rem; }
+                .alertWrap .alert button:nth-child(2n) { color: #fff; margin: 0 3%; border: 0; width: 35%; margin-left: 0.2rem; }
+            .alertWrap .singleBtu { width: 94% !important; border-radius: 0.7rem !important; }
+
+
+        .floatWindow { width: 60%; min-height: 0.5rem; display: table; margin: auto; overflow: auto; position: absolute; z-index: 100000; top: 0; left: 0; bottom: 0; right: 0; background: rgba(51, 51, 51, 0.85); 
+                       color: #fff; text-shadow: 0 0 transparent; border: solid 1px #666; border-radius: 0.3rem; opacity: 0; font-size: 0.5rem; line-height: .8rem; -webkit-transition: all 0.3s ease-out;overflow:hidden }
+        .floatWindow_bottom { top: auto; bottom: 5%; }
+        .floatWindow_top { bottom: auto; top: 5%; }
+        .floatWindow h2 { width: 100%; text-align: center; }
+        .floatWindow p { margin: 0.1rem; font-size: 0.2rem; text-align: center; line-height: 0.3rem; }
+        .floatWindow.showFloat { opacity: 1; width: 50%; }
+
+        .loading { /* more info: http://www.zhangxinxu.com/wordpress/?p=3357 */ width: 3px; height: 3px; border-radius: 100%; box-shadow: 0 -10px 0 1px currentColor, /* top, 1px expand */ 10px 0px currentColor, /* right */ 0 10px currentColor, /* bottom */ -10px 0 currentColor, /* left */ -7px -7px 0 .5px currentColor, /* left-top, 0.5px expand */ 7px -7px 0 1.5px currentColor, /* right-top, 1.5px expand */ 7px 7px currentColor, /* right-bottom */ -7px 7px currentColor; /* left-bottom */ -webkit-animation: spin 1s steps(8) infinite; animation: spin 1s steps(8) infinite; /*center*/ position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto; }
+        #loading { position: fixed; left: 0; top: 0; width: 100%; font-size: 0.7rem; height: 100%; text-align: center; z-index: 5000000; background: rgba(0,0,0,0.5); color: #eee; display: none; }
+            #loading > div { width: 2rem; margin: 0 auto; margin-top: 50%; background: #000; padding: 0.3rem; border-radius: 0.2rem; opacity: 0.8; font-size: 0.2rem; }
+            #loading img { margin-bottom: 0.2rem; width: 0.5rem; }
+
+        #page1 { background: #fff url(https://img12.360buyimg.com/cms/jfs/t3187/237/90076325/137559/2b08163a/57a45a4eN8fca0f0f.jpg) no-repeat; background-size: 100%; }
+            #page1 > div, #page2 > div { margin: 0 auto; font-size: 0.3rem; }
+            #page1 .mainTitle { -webkit-transform: translate3d(0,-120%,0); width: 3.5rem; height: 2.5rem; margin: 0 auto; margin-top: 0.3rem; background: url(https://img12.360buyimg.com/cms/jfs/t3193/83/188702037/47204/631abe39/57a9b895Nd7df7f4b.png) no-repeat; background-size: cover; }
+                #page1 .mainTitle.effect { -webkit-transform: translate3d(0,0%,0); -webkit-animation: effect 0.6s ease-out; }
+        #page2 { background: #fff url(https://img12.360buyimg.com/cms/jfs/t2596/123/4037098069/21529/225fee36/57a43babNb6f81027.jpg) no-repeat; background-size: 100% 100%; }
+
+        @-webkit-keyframes effect {
+            0% { -webkit-transform: translate3d(0,-150%,0); }
+            70% { -webkit-transform: translate3d(0,10%,0); }
+            100% { -webkit-transform: translate3d(0,0,0); }
+        }
+
+        #page1 .linksWrap { text-align: center; color: #4998cb; line-height: 1rem; }
+            #page1 .linksWrap a { color: #4998cb; font-size: 0.22rem; text-decoration: none; }
+        #page1 .mainButton { width: 3.2rem; height: 1.03rem; margin: 0 auto; -webkit-transform: translate3d(0,300%,0); opacity: 0; margin-top:0.6rem }
+            #page1 .mainButton button { width: 3.2rem; height: 1.03rem; background: url(https://img10.360buyimg.com/cms/jfs/t2677/9/3831382085/2996/bb20a865/579f183eNfcbd8e50.png) no-repeat; background-size: 100%; 
+                                        font-size: 0.3rem;color: #da3705; text-shadow: 0px 1px 0px #ddd; }
+            #page1 .mainButton.effect { -webkit-transform: translate3d(0,0%,0); -webkit-animation: effect2 0.6s ease-out; opacity: 1; }
+            #page1 .mainButton.effect2 { -webkit-transform: translate3d(0,0%,0); -webkit-animation: effect3 0.6s infinite; }
+
+        @-webkit-keyframes effect2 {
+            0% { -webkit-transform: translate3d(0,200%,0); }
+            70% { -webkit-transform: translate3d(0,-10%,0); }
+            100% { -webkit-transform: translate3d(0,0,0); }
+        }
+
+        @-webkit-keyframes effect3 {
+            0% { -webkit-transform: scale(1,1); }
+            50% { -webkit-transform: scale(1.05,1.05); }
+            100% { -webkit-transform: scale(1,1); }
+        }
+
+        @-webkit-keyframes effect4 {
+            0% { -webkit-transform: translate3d(0,0%,0); }
+            70% { -webkit-transform: translate3d(0,10%,0); }
+            100% { -webkit-transform: translate3d(0,-150%,0); }
+        }
+
+        #page1 .wangcaiButton { margin-top: 1.9rem; width: 100%; text-align: center; }
+            #page1 .wangcaiButton button { width: 3.5rem; height: 0.6rem; font-size: 0.25rem; background: #1c83c6; color: #fff; }
+
+        #page2 .mainTitle { width: 4.2rem; -webkit-transform: translate3d(0,-150%,0);margin: 0 auto;padding-bottom: 0.1rem; height: 1.75rem; margin-top: 0.5rem; background: url(https://img11.360buyimg.com/cms/jfs/t2773/270/3981394175/18148/12516f4c/57a43299N880ee54f.png) no-repeat; background-size: 100%; }
+            #page2 .mainTitle.effect { -webkit-transform: translate3d(0,0%,0); -webkit-animation: effect 0.6s ease-out;}
+            #page2 .mainTitle.effect2 { -webkit-animation: effect4 0.6s ease-out; -webkit-transition: all 0.3s ease-out; -webkit-transform: translate3d(0,-150%,0);}
+
+        #page2 .swimmer { width: 4.2rem; height: 3rem; margin: 0 auto; background: url(https://img11.360buyimg.com/cms/jfs/t2767/315/3914395592/236708/bce31c66/57a193e3N131275b2.png) no-repeat; background-size: cover; background-position-x: 52%; }
+            #page2 .swimmer.frame1 { background-position-x: 102%; }
+            #page2 .swimmer.frame2 { background-position-x: 2%; }
+            #page2 .swimmer.frame3 { background-position-x: 52%; }
+            #page2 .swimmer.baginTra { -webkit-transition: all 0.5s ease-out; }
+            #page2 .swimmer.bagin { -webkit-transform: translate3d(0,-70%,0) scale(0.8,0.8); }
+
+        #page2 .mainButton { width: 3.5rem; height: 2rem; margin-top: 0.6rem; position: absolute; width: 100%; height: 25%; background: #0b324c; bottom: 0; text-align: center; }
+            #page2 .mainButton button { width: 3.5rem; height: 1.13rem; margin-top: 0.55rem; background: url(https://img11.360buyimg.com/cms/jfs/t3073/127/47118912/31188/164f3a4b/57a1a0ceN078a9306.png) no-repeat; background-size: cover; font-size: 0.35rem; color: #da3705; text-shadow: 0px 1px 0px #ddd; }
+                #page2 .mainButton button:active { background-position-y: 92%; }
+        #page2 .timeWrap { position: absolute; width: 100%; top: 0.05rem; font-size: 0.8rem; color: #fff; text-align: center; opacity: 0.7; visibility: hidden; -webkit-transform: scale(0.2,0.2); }
+            #page2 .timeWrap.show { visibility: initial; -webkit-transform: scale(1,1); -webkit-transition: all 0.3s ease-out; }
+            #page2 .timeWrap.effect {visibility: initial;-webkit-animation: effecttime 0.8s linear;-webkit-transform: scale(1,1); }
+            @-webkit-keyframes effecttime {
+            0% { -webkit-transform: scale(0.7,0.7);opacity:1 }
+            60% { -webkit-transform: scale(1.5,1.5);opacity:0.4 }
+            80% { -webkit-transform: scale(2,2);opacity:0 }
+            100% { -webkit-transform: scale(2,2);opacity:0 }
+        }
+
+        #page3 { background: #fff; }
+            #page3 content > div { width: 100%; text-align: center; }
+            #page3 ul { float: left; width: 90%; margin: 0 5%; list-style: none; }
+                #page3 ul li { float: left; width: 33%; border-bottom: solid 1px #eee; margin-top: 0.35rem; }
+                    #page3 ul li div { background: url(https://img14.360buyimg.com/cms/jfs/t3259/216/70333429/21993/52a033d1/57a2e63eNe28a8111.png) no-repeat; background-size: cover; width: 75%; height: 1.2rem; margin: 0 auto; text-align: center; font-size: 0.45rem; line-height: 1.5rem; color: #e94539; text-shadow: 0 0 0.05rem #999; }
+                    #page3 ul li h4 { width: 100%; text-align: center; font-weight: normal; font-size: 0.2rem; line-height: 0.5rem; color: #999; }
+        #page4 { background: #fff; }
+            #page4 content > div { padding:0.15rem;font-size:0.2rem;line-height:0.32rem;}
+        #pageDefault .mainLoad { }
+        #page1 .loadingWrap { width: 3.2rem; height: 0.2rem; border: solid 0.05rem #145885; border-radius: 0.2rem; background: #fff; position: absolute; left: 0; right: 0; margin: auto; top: 3.5rem; }
+            #page1 .loadingWrap span { position: absolute; top: -200%; color: #eac52e; font-size: 0.3rem; width: 0.8rem; margin-left: -0.4rem; text-align: center; -webkit-transition: all 0.1s ease-out; }
+            #page1 .loadingWrap div { width: 0%; height: 100%; background: url(https://img10.360buyimg.com/cms/jfs/t2839/75/4096581057/321/32882738/57a8493cN533ebd10.gif); background-position-x: 0; border-radius: 0.2rem; -webkit-animation: effectload 10000s infinite; -webkit-transition: all 0.1s ease-out; }
+            #page1 .loadingWrap.effect {-webkit-transform: scale(1,0);overflow:hidden;-webkit-transition: all 0.3s ease-out;border:0;opacity:0.5 }
+
+        @-webkit-keyframes effectload {
+            0% { background-position-x: 0; -webkit-transition-timing-function: linear; }
+            100% { background-position-x: 10000rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="page out" id="page1" role="homePage">
+        <content>
+            <div class="mainTitle"></div>
+            <div class="mainButton">
+                <button>距开始夺金还有9天</button>
+            </div>
+            <div class="loadingWrap">
+                <span>0%</span><div></div>
+            </div>
+            <div class="linksWrap"><a href="javascript:;">活动规则</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;">我的金牌</a></div>
+            <div class="wangcaiButton">
+                <button>立即赚钱</button>
+            </div>
+            <br />
+        </content>
+    </section>
+    <section class="page out" id="page2">
+        <content>
+            <div class="mainTitle"></div>
+            <div class="swimmer"></div>
+            <div class="mainButton">
+                <button></button>
+            </div>
+            <div class="timeWrap">
+                0:00
+            </div>
+        </content>
+    </section>
+    <section class="page out" id="page3">
+        <content>
+            <span>你还未获得金牌哦~</span>
+        </content>
+    </section>
+    <section class="page out" id="page4">
+        <content>
+            <div>
+                活动时间：2016年8月5日-2016年8月21日（本活动所列时间均为北京时间）<br />
+                活动名称：全民夺金!20亿理财金等你抢。<br /><br />
+                <h3>活动规则：</h3>
+                1、用户参与游戏并获胜的即可获得一块金牌奖励或一笔随机金额的京东旺财理财金（简称理财金），每块金牌对应一个随机数字。<br /><br />
+                2、用户转发活动至微信可额外获得一次参与游戏机会，同一用户每天最多有2次参与游戏机会。<br /><br />
+                如用户获得金牌对应的随机数字与2016年里约奥运会中国队夺得的金牌总数相同即可获得瓜分20亿理财金的资格。中国队获得金牌数以中国奥委会官网公布为准，官方网址：http://www.olympic.cn/<br /><br />
+                3、同一用户仅可获得一个瓜分理财金的资格，同一用户获得的理财金收益最多不超过4999元人民币。<br /><br />
+                4、用户所瓜分的理财金将在活动结束后5个工作日内发放，发奖情况请关注钱包公告。用户通过游戏获得的理财金实时发放。您可进入京东钱包-旺财-我的-持有中查询。<br /><br />
+                5、京东旺财理财金使用规则：<br /><br />
+                &nbsp;（1）理财金为京东旺财虚拟体验金本金，不能进行提现、消费、转赠、为他人付款等其他操作，历史年化投资回报率3.9%。<br /><br />
+                &nbsp;（2）理财金有效期为3个自然日，自理财金到账之日起算。在有效期内成功购买京东旺财任意产品满1000元后即时激活生效，否则视为放弃中奖，理财金不生效。购买成功的定义为：订单状态显示为持有中，您可在京东钱包-京东旺财-我的--持有中查询购买状态。<br /><br />
+                &nbsp;（3）理财金体验期为1个自然日，自理财金生效之日（含）起算。体验期届满后理财金本金收回，您可享受1天收益，收益以京东旺财实际显示为准。理财金到期收益在京东钱包-我的页-账户余额中查询收益记录。<br /><br />
+                &nbsp;（4）理财金收益计算方法：理财金份额*历史年化投资回报率/365*1。理财金收益到账规则：D日理财金到账且生效， D+1日理财金收益可见，D+2日理财金收益结转至钱包账户余额中。<br /><br />
+                6、同一京东钱包账户、手机号、身份证号、京东账户、微信账户、银行卡号、终端设备等与用户身份相关的信息，其中任意一项或者多项存在相同、相似或非真实有效等情况的，均可能被认定为同一用户，按照活动规则中的同一用户处理。<br /><br />
+                7、本活动的数据以京东钱包系统记录为准，本活动规则及其未尽事宜同时受《京东钱包服务协议》及相关公告、规则约束。<br /><br />
+                8、在本活动期间，如存在违规行为（包括但不限于恶意套取资金、机器作弊、虚假交易等违反诚实信用原则行为），主办方将取消您的中奖资格，并有权撤销相关违规交易和奖励，必要时追究法律责任。<br /><br />
+                9、如出现不可抗力或情势变更的情况（包括但不限于重大灾害事件、活动受政府机关指令需要停止举办或调整的、活动遭受严重网络攻击或因系统故障需要暂停举办的），京东钱包有权暂停或取消本次活动，并可依相关法律法规的规定主张免责。<br /><br />
+                10、本公司可以根据本活动的实际举办情况对活动规则进行变动或调整，相关改动或调整将公布在活动页面上，并于公布时即使生效。<br /><br />
+                11、本活动规则及其未尽事宜同时受《京东钱包服务协议》及相关公告、规则约束。<br /><br />
+                12、在法律允许的范围内，本公司对本活动有解释权。<br /><br />
+                此活动与Apple Inc.无关。<br />
+            </div>
+        </content>
+    </section>
+
+</body>
+</html>
+<script type="text/template" id="tp_goldsList">
+    <%
+        if(Model.length==0){
+        %>
+        <div>您还未获得金牌哦~</div>
+        <%
+        }else{
+            %>
+                <ul>
+                    <% for(var i=0;i<Model.length;i++){ %>
+                        <li>
+                            <div><%=Model[i].gold %></div><h4><%=(new Date((Model[i].getTime+"").replace(/-/g, "/")).Format("MM月dd日")) %></h4>
+                        </li>
+                        <% }%>
+                </ul>
+            <%
+        }
+    %>
+</script>
+<script src="//static.jdpay.com/basic/dist/js/m-public/??zepto.min.js,mobilebone.js,mApp.js,fastclick.js,m.js,share524.js"></script>
+<script>
+    //_mApp.jdWalletReady(function (clientInfo) {
+    //    if (clientInfo.isInApp) {
+    //        //在钱包里
+    //    } else {
+    //        //不在钱包里
+    //        //window.location.href = 'https://qianbao.jd.com/p/page/download.htm?url=https%3A%2F%2Fm.jdpay.com%2Fmarketing%2Fentrance%3FentranceId%3D2016080516260000011&module=ACTIVITY';
+    //    }
+    //});
+    
+    var delayCommon = function () {
+        if (arguments.length == 0) { return; }
+        var moveItem = Array.prototype.slice.call(arguments);
+        var index = 0;
+        var lostTime = 0;
+        var thisTime = moveItem[0].time;
+        var length = moveItem.length;
+        var timer = window.setInterval(function () {
+            if (lostTime == thisTime) {
+                lostTime = 0;
+                var _index = index;
+                index++;
+                moveItem[_index].fn();
+                if (index == length) {
+                    window.clearInterval(timer);
+                } else {
+                    thisTime = moveItem[index].time;
+                }
+            }
+            lostTime += 10;
+        }, 10);
+    }
+    var load = function (progress, done) {
+        var imgList = [
+            "https://img12.360buyimg.com/cms/jfs/t3187/237/90076325/137559/2b08163a/57a45a4eN8fca0f0f.jpg",
+            "https://img12.360buyimg.com/cms/jfs/t3193/83/188702037/47204/631abe39/57a9b895Nd7df7f4b.png",
+            "https://img12.360buyimg.com/cms/jfs/t2596/123/4037098069/21529/225fee36/57a43babNb6f81027.jpg",
+            "https://img10.360buyimg.com/cms/jfs/t2677/9/3831382085/2996/bb20a865/579f183eNfcbd8e50.png",
+            "https://img11.360buyimg.com/cms/jfs/t2773/270/3981394175/18148/12516f4c/57a43299N880ee54f.png",
+            "https://img11.360buyimg.com/cms/jfs/t2767/315/3914395592/236708/bce31c66/57a193e3N131275b2.png",
+            "https://img11.360buyimg.com/cms/jfs/t3073/127/47118912/31188/164f3a4b/57a1a0ceN078a9306.png",
+            "https://img14.360buyimg.com/cms/jfs/t3259/216/70333429/21993/52a033d1/57a2e63eNe28a8111.png",
+            "https://img10.360buyimg.com/cms/jfs/t2839/75/4096581057/321/32882738/57a8493cN533ebd10.gif"
+        ];
+        var isDoneCount = imgList.length;
+        var loadIndex = 0;
+        var loadImg = function () {
+            var url = imgList[loadIndex];
+            var img = new Image();
+            var _done = function () {
+                if (loadIndex != isDoneCount - 1) {
+                    progress(parseInt((loadIndex / isDoneCount) * 100));
+                    loadIndex++;
+                    loadImg();
+                } else {
+                    progress(100);
+                    window.setTimeout(function () { done(); }, 800);
+                }
+            }
+            img.onload = function () { _done(); }
+            img.onerror = function () { _done(); }
+            img.src = url;
+        }
+        loadImg();
+    }
+    var Trip = function (option) {
+        $("body").append("<div class='pageLoading2'></div>");
+        var _option = typeof option === "string" ? { content: option } : option;
+        var setting = $.extend({
+            title: "",
+            content: "",
+            position: "center",//"bottom"//"top"
+            timeout: 2000,
+            callBack: function () { },
+            closeBack: function () { }
+        }, _option || {});
+        var className = new Object();
+        className["center"] = ""; className["bottom"] = "floatWindow_bottom"; className["top"] = "floatWindow_top";
+        var _window = "<div id=\"floatWindow\" class=\"floatWindow " + className[setting.position] + "\"><h2>" + setting.title + "</h2><p>" + setting.content + "</p></div>";
+        if ($("#floatWindow").size() == 0) { $("body").append(_window); }
+        //$("body").one("click", function () { if ($("#floatWindow").size() != 0) { _close(); return false; } });
+        var floatWindow = $("#floatWindow");
+        window.setTimeout(function () {
+            floatWindow.addClass("showFloat").css({ "height": floatWindow.height() * 1.1 });
+            setting.callBack();
+        }, 50);
+        var _close = function () {
+            if (floatWindow.size() != 0) {
+                floatWindow.removeClass("showFloat").css({ "height": $("#floatWindow").height() * 0.99 });
+                window.setTimeout(function () {
+                    $("#floatWindow").remove();
+                    $(".pageLoading2").remove();
+                    setting.closeBack();
+                }, 150);
+            }
+        }
+        var _timer = window.setInterval(function () { _close(); window.clearInterval(_timer); }, setting.timeout);
+        if (typeof event !== "undefined") event.stopPropagation();
+    }
+</script>
+<script>
+    var serverConfig = { url: "https://qianbao.jd.com", activityId: "57a31a7bbb6b26420907006a" }
+    Config.entranceId = "2016080516260000011";
+    //Config.auth = "4c00b8958efec79598452bbcdc1e03e9";
+    $("html").css("font-size", $(window).width() / 5).find("body").css("font-size", 20);
+    document.addEventListener("touchstart", function () { }, true);
+    PageCommon.init();
+    //PageCommon.init("page3", { defaultTransition: "zoom" });
+    var WCrequester = RequestFactory({
+        url: 'marketing/gameprize/index',
+        param: {},
+        dataStruct: 'data',
+        modelName: 'Model',
+        htmlTemp: $('#page1 .mainTitle').html()
+    });
+    //var pageLoad = new Page("pageDefault", {
+    //    showBack: function () {
+
+    //    }
+    //});
+    var remainDay = this.remainDay = parseInt((((Date.parse("2016/8/5")) - (Date.now())) / 1000 / 60 / 60 / 24));
+    var isLoaded = false;
+    if (remainDay <= 0) {
+        $("#page1 .mainButton button").bind("touchstart", function () {
+            page2.show({ isCache: false });
+        }).html("立即夺金").css("font-size", "0.5rem");
+    }
+    $("#page1 a").eq(0).bind("touchstart", function () {
+        page4.show();
+    });
+    $("#page1 a").eq(1).bind("touchstart", function () {
+        page3.show();
+    });
+    $("#page1 .wangcaiButton button").bind("touchstart", function () {
+        _mApp.start('WANGCAI');
+        //requestAjax("https://m.jdpay.com/marketing/gameprize/index?timer=" + parseInt(Math.random() * 10000), {}, {
+        //    "entranceId": Config.entranceId, "auth": Config.auth,
+        //}, function (data) {
+        //    //var data = eval("(" + '{"code":"A00003","customerId":"360000000000129757","data":{"description":"已经领过啦，请给其他小伙伴机会吧！"},"msg":"已经领过啦，请给其他小伙伴机会吧！"}' + ")");
+        //    if (data.code == "A00000") {
+        //        Trip("领取成功请前往我的-京东旺财查看并激活哦。");
+        //    } else if (data.code == "A00002") {
+        //        Trip(data.msg);
+        //    } else {
+        //        Trip("关爱新用户，人人有责，机会留给新人吧！");
+        //    }
+        //});
+    });
+    load(function (progress) {
+        $("#page1 .loadingWrap").children("span").html(progress + "%").css("left", progress + "%");
+        $("#page1 .loadingWrap").children("div").css("width", progress + "%");
+    }, function () {
+        isLoaded = true;
+        $("#page1 .loadingWrap").addClass("effect"); 
+        delayCommon(
+            {
+                time: 300, fn: function () {
+                    $("#page1 .mainTitle,#page1 .mainButton").addClass("effect");
+                }
+            },
+            {
+                time: 500, fn: function () {
+                    var delayObj = [];
+                    if (remainDay >= 0) {
+                        for (var i = 0; i <= (9 - remainDay) ; i++) {
+                            delayObj.push({
+                                time: 80, fn: (function (i) {
+                                    return function (u) {
+                                        $("#page1 .mainButton button").html("距开始夺金还有" + (9 - i) + "天");
+                                    }
+                                })(i)
+                            });
+                        }
+                    } else {
+                        delayObj.push({
+                            time: 10, fn: function () {
+                                $("#page2 .swimmer").removeClass("effect").addClass("effect2");
+                            }
+                        });
+                    }
+                    delayCommon.apply(this, delayObj);
+                }
+            }
+       );
+    });
+    var page1 = new Page("page1", {
+        init: function () { },
+        showBack: function () {
+            if (isLoaded) { return false; }
+            var _self = this;
+            
+        }
+    });
+    var page2 = new Page("page2", {
+        init: function () {
+            var i = 1, con = -70, sc = 0.8;
+            this.isBegin = false;
+            var _self = this;
+            this.swim = function () {
+                if (!this.isBegin) { return; }
+                if (i != 1) { return; }
+                var _t = window.setInterval(function () {
+                    $("#page2 .swimmer").removeClass(function (index, css) {
+                        return (css.match(/\b(frame)\S+/g) || []).join(' ');
+                    }).addClass("frame" + i);
+                    if (i == 3) { i = 1; window.clearInterval(_t); } else { i++; }
+                }, 50);
+                $("#page2 .swimmer").css("-webkit-transform", "translate3d(0," + (con += 5) + "%,0) scale(" + (sc += 0.003) + "," + (sc += 0.003) + ")");
+                if (con >= 40) {
+                    window.clearInterval(_self.timer2);
+                    //获取一个金牌
+                    requestAjax(serverConfig.url + "/p/activity/takeGold", {}, { id: serverConfig.activityId, "sid": getParameterByName("sid"), "auth": (Config.auth || ""), per: "0.8" }, function (data) {
+                        //console.log(data.data);
+                        i = 1, con = -70, sc = 0.8;
+                        var _show = function () {
+                            $("#page2 .mainTitle").removeClass("effect2");
+                            $("#page2 .swimmer").removeClass("bagin baginTra").attr("style", "");
+                            $("#page2 .timeWrap").removeClass("show");
+                            $(".mainButton button").show();
+                        }
+                        if (data.code == "1") {
+                            $(".mainButton button").hide();
+                            openAlert(" ", data.data.goldNum, [{ name: "我知道了", fn: function () { this.closeAlert(); _show(); page1.show(); } }, { name: "去看看", fn: function () { this.closeAlert(function () { _show(); page3.show({ isCache: false }); }); } }]);
+                        } else {
+                            Trip({
+                                content: "差一点就拿到金牌了！养足精神，明天再战！", timeout: 2000, callBack: function () {
+                                    _show();
+                                    page1.show();
+                                }
+                            });
+                        }
+                    });
+
+                }
+            }
+            $("#" + _self.id).delegate(".mainButton button", "touchstart", function () {
+                _self.swim();
+            });
+        },
+        showBack: function () {
+            var _self = this;
+            _self.isBegin = false;
+            var time = $("#page2 .timeWrap");
+            delayCommon(
+                {
+                    time: 100, fn: function () {
+                        $("#page2 .mainTitle").addClass("effect");
+                    }
+                },
+                {
+                    time: 1000, fn: function () {
+                        $("#page2 .mainTitle").addClass("effect2");
+                    }
+                },
+                {
+                    time: 600, fn: function () {
+                        $("#page2 .swimmer").addClass("bagin baginTra");
+                        //$("#page2 .mainTitle").addClass("effect");
+                    }
+                }, {
+                    time: 500, fn: function () {
+                        time.addClass("effect").html(3);
+                        window.setTimeout(function () { time.removeClass("effect") },600);
+                    }
+                }, {
+                    time: 1000, fn: function () {
+                        time.addClass("effect").html(2); window.setTimeout(function () { time.removeClass("effect") }, 600);
+                    }
+                }, {
+                    time: 1000, fn: function () {
+                        time.addClass("effect").html(1); window.setTimeout(function () { time.removeClass("effect") },600);
+                    }
+                }, {
+                    time: 1000, fn: function () {
+                        time.html("GO").addClass("show");
+                    }
+                },
+                {
+                    time: 1000, fn: function () {
+                        $("#page2 .swimmer").removeClass("baginTra");
+                        time.html("0:00").addClass("show");
+                        _self.isBegin = true;
+                        _self.goTime = 0;
+                        _self.timer2 = window.setInterval(function () {
+                            _self.goTime++;
+                            var s = parseInt(_self.goTime % 60);
+                            time.html(parseInt(_self.goTime / 60) + ":" + (s < 10 ? "0" + s : s));
+                        }, 1000);
+                    }
+                }
+            );
+        } 
+    });
+    var page3 = new Page("page3", {
+        showBack: function () {
+            requestAjax(serverConfig.url + "/p/activity/getUserGolds", {}, {
+                id: serverConfig.activityId, "sid": getParameterByName("sid"), "auth": (Config.auth || ""),
+            }, function (data) {
+                console.log(JSON.stringify(data));
+                var pageMod = new PageMod($("#tp_goldsList").html(), data.data, function () {
+                    $("#page3 content").html(this.resultHtml);
+                }, {});
+            });
+            //获取金牌列表
+        }
+    });
+    var page4 = new Page("page4", {
+        showBack: function () { }
+    });
+    Mobilebone.init();
+    //shareInit('狂欢奥运 瓜分20亿理财金', '参与活动夺取金牌有机会瓜分20亿理财金,全民夺金行动就差你了! ', 'https://m.jdpay.com/marketing/entrance?entranceId=2016080516260000011', '狂欢奥运 瓜分20亿理财金', '');
+    shareInit('真不可思议，竟然得了10000块奖金！', '只要速度够快，你也能得10000块奖金！还有20亿等着分呐！ ', 'http://plogin.m.jd.com/cgi-bin/m/mlogin?appid=100&tgId=&returnurl=https://qianbao.jd.com/p/page/d46VwAT8FGwM.htm', '中国加油 泳夺金牌', '');
+</script>

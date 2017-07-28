@@ -1,0 +1,62 @@
+﻿html, body { height: 100%; margin: 0; font-size: 20px; }
+        input, button, select, textarea { outline: none; }
+        .mainWrap { width: 100%; height:35rem;text-align: center; background-color: #ec4f6d; overflow: auto; display: none; }
+        .hidden { display: none !important; }
+        .show { display: block !important; }
+        .butStyle { background: url(img/btu_share.png) center no-repeat; background-size: 100%; height: 2.7rem; line-height: 2.7rem; font-size: 1rem; color: #e83854; }
+        #descPage > img { width: 100%; }
+        #descPage label { color: #f5a1b1; font-size: 0.5rem; display: inline-block; width: 100%; margin: 0.1rem 0; }
+        .roleBtuWrap img { width: 40%; margin-top: 0.2rem; margin-bottom: 0.5rem; }
+
+        #indexPage { background-image: url(img/3.png); background-repeat: no-repeat; background-size: 100%; }
+            #indexPage h1 { font-size: 1rem; color: #fee27a; margin-top: 19rem; font-weight: normal; }
+            #indexPage h2 { font-size: 0.8rem; width: 88%; margin: 0 auto; color: #fff; font-weight: normal; line-height: 1rem; }
+            
+
+        #phonePage, #errorPage { background-image: url(img/main_bg3.png); background-repeat: no-repeat; background-size: 100%; }
+        #gamePage {background-repeat:no-repeat;background-size:100%}
+        #gamePage h1{ margin-top:-0.5rem;font-size:1rem;color:#fff;font-weight:normal}
+            #gamePage h1 strong { color:#fee27a;font-size:1.5rem;margin:0 0.3rem}
+            #gamePage h4 { color:#f7b3c0;font-size:0.8rem;font-weight:normal;margin:0.5rem 0;background:url(img/speaker.png) no-repeat;background-size:5% 110%;background-position-x:4rem }
+            .price_wrap {background:url(img/price_wrap.png);background-size:100% 100%;height:5rem;margin-bottom:1rem}
+                .price_wrap table {text-align: left;width:95%;margin:0 auto }
+                .price_wrap h2 { font-size:0.9rem;line-height:1rem;margin:0.6rem 0 0.2rem 0;color:#fcedc1 }
+                .price_wrap span { font-size:0.7rem;color:#fcedc1}
+                .price_wrap button { border:0;padding:0;background:url("img/buton_go.png");background-size:100% 100%; width:4rem;height:1.5rem;margin-top:1.5rem}
+                .price_wrap img { width:3.1rem;height:3.1rem;margin:0.8rem 0 0 0.5rem}
+        #gamePage .zhuanpanWrap {position:relative;width:18rem;height:22rem;margin:0 auto;text-align:center;background:url(img/zhuanpanwrap.png) center no-repeat;background-size:100%}
+            #gamePage .zhuanpanWrap .zhuanpan {width:11rem;margin-top:8.6rem;margin-left:0.3rem;height:11rem;background:url(img/zhuanpan.png);background-size:100% 100%;display:inline-block;-webkit-transition: all 4s ease-out; }
+#gamePage .pointer { position:absolute;left:0.5rem;right:0; margin:auto;top:12rem;background:url("img/pointer2.png");width:4rem;height:4rem;background-size:100% 100%}
+.rotate { -webkit-transform:rotate(380deg) !important;}
+    
+        .dialogWrap { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.3); top:0;left:0}
+            .dialogWrap > div { background: #fff; position: absolute; -webkit-transform: translate(0, -50px); top: 0; bottom: 0; right: 0; left: 0; margin: auto; -webkit-transition: all 0.3s ease-out; opacity: 0; }
+        .show { -webkit-transform: translate(0, 0) !important; opacity: 1 !important; }
+        .phoneInputWrap { width: 90%; height: 15.3rem; border-radius: 0.5rem; }
+            .phoneInputWrap h1 { font-size: 1rem; font-weight: normal; margin-top: 1rem; color: #2b2b2b; }
+            .phoneInputWrap h2 { font-size: 0.85rem; font-weight: normal; color: #333; line-height: 1.5rem; }
+            .phoneInputWrap input { border: 0; border: solid 1px #ddd; padding: 0; font-size: 1rem; }
+                .phoneInputWrap input[type="tel"] { height: 2.8rem; width: 90%; background: #eee; }
+                .phoneInputWrap input[type="number"] { height: 2rem; width: 57%; vertical-align: middle; border-radius: 0.2rem; }
+            .phoneInputWrap .btuGetCode { margin-left: 3%; width: 30%; border: solid 1px #c9c9c9; height: 2rem; vertical-align: middle; border-radius: 0.2rem; }
+            .phoneInputWrap .getSubmit { width: 100%; border-top: solid 1px #eee; margin-top: 0.5rem; padding-top: 0.5rem; }
+                .phoneInputWrap .getSubmit button { width: 90%; background: #d3213d; border: 0; height: 2.8rem; vertical-align: middle; color: #fff; font-size: 1rem; }
+        .errorWrap { width: 90%; height: 5rem; border-radius: 0.5rem; padding-top: 1rem; }
+
+        .alertWrap { position: fixed; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+        .alert { width: 80%; display: table; overflow: auto; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: #fff; border-radius: 0.7rem; -webkit-transform: scale(0.8, 0.8); opacity: 0; -webkit-transition: all 0.2s ease-out; }
+        .alertActive { opacity: 1; -webkit-transform: scale(1, 1) !important; }
+        .alert h1 { font-size: 1rem; text-align: center; }
+        .alert span { font-size: 0.9rem; padding: 1rem; padding-top: 0; display: inline-block; text-align: left; }
+        .alert button { border: 0; border-top: solid 1px #999; background: #fff; width: 50%; float: left; height: 2rem; font-size: 1rem; color: #ef5557; }
+            .alert button:active { background: #ccc; }
+            .alert button:first-child { border-radius: 0 0 0 0.7rem; }
+            .alert button:nth-child(2n) { border-left: solid 1px #999; border-radius: 0 0 0.7rem 0; }
+        .singleBtu { border-radius: 0 0 0.7rem 0.7rem !important; width: 100% !important; }
+        #alertWrap { display: none; }
+        iframe { display:none}
+        .footer_app { position: fixed; width: 100%; color: #fff; height: 6rem; text-align: center; bottom: 0; background: url(http://img14.360buyimg.com/cms/jfs/t2278/276/643203285/29229/6b04c654/561e4032Ndddfd9d1.png) no-repeat; background-size: 100% 100%; z-index: 10000; }
+    .footer_app p { margin: 10px 0; font-size: 0.85rem; }
+        .footer_app p button { margin: 0; border: 0; width: 70%; height: 2.1rem; background: #d53745; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 8px; }
+
+.weakLayer { position:absolute;z-index:10000;background:url(http://img11.360buyimg.com/cms/jfs/t1735/188/547580560/32139/3caefcff/55d355a1N90688a61.png);top:0;left:0;width:100%;height:100%;background-size:100% 100%;display:none}

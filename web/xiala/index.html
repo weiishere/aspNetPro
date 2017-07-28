@@ -1,0 +1,545 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>京东钱包彩蛋</title>
+    <style>
+        div[guid='p4_v1_m9_77063607'], div[guid='p4_v1_m9_67318332'], div[guid='p2_p2_v4_m1_48203935'] { -webkit-animation: change 10s linear infinite; }
+        div[guid='p2_p2_v4_m9_15939131'] { opacity: 0; }
+        .downEffect { -webkit-animation: change2 1.5s linear; opacity: 1 !important; }
+
+        @-webkit-keyframes change {
+            0% { -webkit-transform: rotate(0deg); }
+            50% { -webkit-transform: rotate(180deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @-webkit-keyframes change2 {
+            0% { -webkit-transform: translate3d(0,-200%,0); }
+            60% { -webkit-transform: translate3d(0,5%,0); }
+            70% { -webkit-transform: translate3d(0,-5%,0); }
+            85% { -webkit-transform: translate3d(0,2%,0); }
+            100% { -webkit-transform: translate3d(0,0,0); }
+        }
+
+        @-webkit-keyframes fly1 {
+            0% { -webkit-transform: translate3d(0,0,0) rotate(0deg); }
+            100% { -webkit-transform: translate3d(0,40rem,0) rotate(720deg); opacity: 0; }
+        }
+        /*@-webkit-keyframes fly2 {
+            0% { -webkit-transform: translate3d(0,0,0) rotate(0deg);; }
+            100% { -webkit-transform: translate3d(0,40rem,0) rotate(-720deg); opacity: 0; }
+        }
+        @-webkit-keyframes fly3 {
+            0% { -webkit-transform: translate3d(0,0,0); }
+            100% { -webkit-transform: translate3d(0,30rem,0); opacity: 0; }
+        }
+        @-webkit-keyframes fly4 {
+            0% { -webkit-transform: translate3d(0,0,0); }
+            100% { -webkit-transform: translate3d(0,30rem,0); opacity: 0; }
+        }*/
+        .flyItem { background: url(https://img12.360buyimg.com/cms/jfs/t2875/197/1547759763/14315/a72422ce/5742b30dN0267a434.png); position: fixed; width: 6rem; height: 2rem; top: -0.8rem; background-position: 0 0; -webkit-animation: fly1 4s linear; background-size: 100%; z-index: 100; -webkit-animation-duration: 10s; }
+    </style>
+</head>
+
+
+
+<body>
+    <link href="//static.jdpay.com/basic/dist/css/m.css" rel="stylesheet" />
+    <div id="page_p2_v1" class="page out" role="homePage">
+        <content>
+            <div guid="mainScreen" class="phoneView bgSize-full" style="background-image: url('https://img20.360buyimg.com/cms/jfs/t2596/70/1330904594/19792/12013cc7/573c090eN9a29e9d4.jpg');">
+                <div class="dragArea center brn bgSize-full" dragset="y" guid="p4_v1_m9_67318332" m="m9" con="true" ratio="750,750" style="width: 100%; top: 18%; height: 318px; background-image: url('https://img12.360buyimg.com/cms/jfs/t2878/225/1730450567/68261/936e3e58/5746ae50Nac9c8c6c.png');">
+                    <span zoom="true" class="cu-z"></span>
+                </div>
+                <div class="dragArea center brn bgSize-full" dragset="y" guid="p4_v1_m9_35024949" m="m9" con="true" ratio="1334,750" style="width: 100%; height: 565.616px; background-image: url('http://img13.360buyimg.com/cms/jfs/t2764/233/1642880950/81390/304b12e8/57442704Ne97e56f2.png');">
+                    <span zoom="true" class="cu-z"></span>
+                    <div class="buttonWrap center" dragset="y" guid="p4_v1_m2_94777238" m="m2" style="top: 72.7%; height: 7.6%; width: 75.5%;">
+                        <button class="bgSize-full" style="font-size: 1rem; border-radius: 0.3rem; background-color: rgb(255, 234, 0);">朕要去抢彩蛋</button><span zoom="true" class="cu-z"></span>
+                    </div>
+                </div>
+            </div>
+        </content>
+    </div>
+    <div id="page_p2_v2" class="page out" role="subPage">
+        <content>
+            <div guid="mainScreen" class="phoneView bgSize-full" style="background-image: url('https://img20.360buyimg.com/cms/jfs/t2596/70/1330904594/19792/12013cc7/573c090eN9a29e9d4.jpg');">
+                <div class="dragArea center brn bgSize-full" dragset="y" guid="p4_v1_m9_86176449" m="m9" con="true" style="height: 40.8%; width: 94.7%; top: 24.5%; background-image: none; background-color: rgb(255, 255, 255);">
+                    <span zoom="true" class="cu-z"></span>
+                    <div class="textAreaWrap tc" dragset="y" guid="p4_v1_m3_86103751" m="m3">
+                        <span role="text" style="font-size: 1.5rem; line-height: 2rem;">等等，就差一步啦</span>
+                    </div>
+                    <div class="textAreaWrap tc" dragset="y" guid="p4_v1_m3_68743465" m="m3" style="top: 14.4%;">
+                        <span role="text" style="font-size: 1rem; line-height: 1rem;">请输入手机号领取</span>
+                    </div>
+                    <div class="textInputWrap" dragset="x,y" guid="p4_v1_m4_17791573" m="m4" style="width: 95.4%; height: 19.1%; top: 27%; left: 2.3%;">
+                        <span zoom="true" class="cu-z"></span>
+                        <input type="text" placeholder="请输入你的手机号" maxlength="30" style="font-size: 1rem; background-color: rgb(238, 238, 238);">
+                    </div>
+                    <div class="textInputWrap" dragset="x,y" guid="p4_v1_m4_04371178" m="m4" style="width: 59.6%; height: 17.8%; top: 49.6%; left: 2.6%;">
+                        <span zoom="true" class="cu-z"></span>
+                        <input type="text" placeholder="请在此输入验证码" maxlength="30" style="font-size: 1rem;">
+                    </div>
+                    <div class="buttonWrap" dragset="x,y" guid="p4_v1_m2_4722910" m="m2" style="top: 50%; height: 17.4%; width: 33.1%; left: 64.2%;">
+                        <button class="bgSize-full" style="font-size: 1rem; border-radius: 0.3rem;">获取验证码</button><span zoom="true" class="cu-z"></span>
+                    </div>
+                    <div class="buttonWrap" dragset="x,y" guid="p4_v1_m2_48531824" m="m2" style="top: 71.3%; height: 21.3%; width: 95.4%; left: 2%;">
+                        <button class="bgSize-full" style="font-size: 1.2rem; color: rgb(255, 255, 255); background-color: rgb(204, 51, 102);">领取</button><span zoom="true" class="cu-z"></span>
+                    </div>
+                </div>
+            </div>
+        </content>
+    </div>
+    <div id="page_p2_v4" class="page out" role="subPage">
+        <content>
+            <div guid="mainScreen" class="phoneView bgSize-full" style="background-image: url('https://img20.360buyimg.com/cms/jfs/t2596/70/1330904594/19792/12013cc7/573c090eN9a29e9d4.jpg');">
+                <div class="bgArea center brn bgSize-full" dragset="none" zoomset="x,y" guid="p2_p2_v4_m1_78882407" m="m1" con="true" style="height: 2rem; width: 100%; background-image: none;">
+                    <span zoom="true" class="cu-z"></span>
+                </div>
+                <div class="bgArea center brn bgSize-full" dragset="none" zoomset="x,y" guid="p2_p2_v4_m1_48203935" m="m1" con="true" style="height: 318px; background-image: url('https://img12.360buyimg.com/cms/jfs/t2878/225/1730450567/68261/936e3e58/5746ae50Nac9c8c6c.png');" ratio="750,750">
+                    <span zoom="true" class="cu-z"></span>
+                </div>
+                <div class="dragArea brn bgSize-full" dragset="x,y" guid="p2_p2_v4_m9_15939131" m="m9" con="true" ratio="798,750" style="width: 100%; top: -3%; left: 0%; height: 338.352px; background-image: url('https://img14.360buyimg.com/cms/jfs/t2896/136/1718673643/83476/666efacf/5746c9b2Nadd2d76e.png');">
+                    <span zoom="true" class="cu-z"></span>
+                    <div class="dragArea brn bgSize-full" dragset="x,y" guid="p2_p2_v4_m9_20708232" m="m9" con="true" style="height: 24.4%; width: 31.4%; top: 55.1%; left: 5.7%; background-image: none;">
+                        <span zoom="true" class="cu-z"></span>
+                        <div class="textAreaWrap tr" dragset="y" guid="p2_p2_v4_m3_79873380" m="m3" style="top: 8.8%;">
+                            <span role="text" style="font-size: 4.5rem; line-height: 5rem; color: rgb(231, 15, 73);" class="fwb fsi">-</span>
+                        </div>
+                    </div>
+                    <div class="textAreaWrap tc" dragset="y" guid="p2_p2_v4_m3_69633497" m="m3" style="top: 82.4%;">
+                        <span role="text" style="font-size: 0.8rem; line-height: 1rem;">支付满1元即可使用 有效期至2016年X月X日</span>
+                    </div>
+                </div>
+                <div class="bgArea center brn bgSize-full" dragset="none" zoomset="x,y" guid="p2_p2_v4_m1_76732780" m="m1" con="true" style="height: 3.625rem; width: 98.4%; background-image: none;">
+                    <span zoom="true" class="cu-z"></span>
+                    <div class="buttonWrap center" dragset="y" guid="p2_p2_v4_m2_22647502" m="m2" style="top: 10.7%; height: 75%; width: 93.9%;">
+                        <button class="bgSize-full" style="font-size: 1rem; border-radius: 0.3rem; background-color: rgb(255, 234, 0);">朕要去夺宝</button><span zoom="true" class="cu-z"></span>
+                    </div>
+                </div>
+                <div class="bgArea center brn bgSize-full" dragset="none" zoomset="x,y" guid="p2_p2_v4_m1_88753491" m="m1" con="true" style="height: 8.8125rem; width: 90%; background-image: none;">
+                    <span zoom="true" class="cu-z"></span>
+                    <div class="textAreaWrap tl" dragset="y" guid="p2_p2_v4_m3_82999221" m="m3" style="top: 0%;">
+                        <span role="text" style="font-size: 0.8rem; line-height: 1.1rem; color: rgb(254, 249, 251);">
+                            活动规则<br>
+                            1,您可在2016年6月6日—6月20日期间，每天在京东钱包首页下拉彩蛋领取一张夺宝券<br>
+                            2,夺宝券面值1元，可在京东全包夺宝吧内使用，在支付金额满5元及以上是可自动抵扣1元<br>
+                            3,此夺宝券有效期为3天，请在有效期内使用，过期失效
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </content>
+    </div>
+    <div id="page_p2_v3" class="page out" role="subPage">
+        <content>
+            <div guid="mainScreen" class="phoneView bgSize-full" style="background-image: url('https://img20.360buyimg.com/cms/jfs/t2596/70/1330904594/19792/12013cc7/573c090eN9a29e9d4.jpg');">
+                <div class="dragArea center brn bgSize-full cu-m" dragset="y" guid="p4_v1_m9_77063607" m="m9" con="true" ratio="750,750" style="width: 100%; top: 15.3%; height: 318px; background-image: url('https://img12.360buyimg.com/cms/jfs/t2878/225/1730450567/68261/936e3e58/5746ae50Nac9c8c6c.png');">
+                    <span zoom="true" class="cu-z"></span>
+                </div>
+
+                <div class="bgArea center brn bgSize-full" dragset="none" zoomset="x,y" guid="p2_p2_v3_m1_26396626" m="m1" con="true" ratio="400,319"
+                     style="height: 28.125rem; width: 100.3%; background-image: none;margin-top:-10%;">
+                    <span zoom="true" class="cu-z"></span><div class="dragArea center brn bgSize-full cu-m" dragset="y" guid="p2_p2_v3_m9_09235873" m="m9" con="true" ratio="838,750" style="width: 100%; top: 0%; height: 354.195px; background-image: url('https://img11.360buyimg.com/cms/jfs/t2635/61/1705269680/60939/bebf6a83/5746c7ebN67dc0ada.png');">
+                        <span zoom="true" class="cu-z"></span>
+                        <div class="textAreaWrap tc cu-m" dragset="y" guid="p2_p2_v3_m3_5411963" m="m3" style="top: 18%;width:95%;left:0;right:0;margin:auto;">
+                            <span role="text" style="font-size: 1.4rem; line-height: 2rem; color: rgb(255, 234, 0);">
+                                您已经领过优惠券啦<br>
+                                明天再来吧
+                            </span>
+                        </div>
+                        <div class="buttonWrap center" dragset="y" guid="p2_p2_v3_m2_63122796" m="m2" style="top: 98.3%; height: 10.2%; width: 84.2%;"><button class="bgSize-full" style="font-size: 1rem; border-radius: 0.3rem; background-color: rgb(255, 234, 0);">朕明天再来</button><span zoom="true" class="cu-z"></span></div>
+                    </div>
+                </div><div class="bgArea center brn bgSize-full cu-m" dragset="none" zoomset="x,y" guid="p2_p2_v3_m1_24046889" m="m1" con="true" style="height: 8.6875rem; width: 90%; background-image: none;">
+                    <span zoom="true" class="cu-z"></span><div class="textAreaWrap tl cu-m" dragset="y" guid="p2_p2_v3_m3_60096679" m="m3">
+                        <span role="text" style="font-size: 0.8rem; line-height: 1.1rem; color: rgb(254, 249, 251);">
+                            活动规则<br>
+                            1,您可在2016年6月6日—6月20日期间，每天在京东钱包首页下拉彩蛋领取一张夺宝券<br>
+                            2,夺宝券面值1元，可在京东全包夺宝吧内使用，在支付金额满5元及以上是可自动抵扣1元<br>
+                            3,此夺宝券有效期为3天，请在有效期内使用，过期失效
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </content>
+    </div>
+
+
+    <script src="//static.jdpay.com/basic/dist/js/m-public/??zepto.min.js,mobilebone.js,mApp.js,fastclick.js,m.js,share.js"></script>
+    <script>
+
+        var _mApp = mApp({ eventId: 269070 });
+        var mAppConfig = _mApp.config();
+
+        Config.set();
+        var models = {};
+        var modelGuids = function (guid) {
+            models[guid] = $("*[guid=" + guid + "]");
+        }
+        var mk_m = (function () {
+            var result = {};
+            result.initHeight = function (dom) {
+                var r = $(dom).attr("ratio").split(",");
+                var ratio = parseInt(r[0]) / parseInt(r[1]);
+                var height = $(dom).width() * ratio;
+                $(dom).height(height);
+            }
+            result.openActivityRole = function (guid) {
+                var _html = "<div class='activityRoleTextWrap' style='display:none' id='roleLayer'><div class='RoleTextWrap'><span class='close'><img src='//img12.360buyimg.com/cms/jfs/t1936/186/2409786086/2419/e7d381e0/56dec94eN3e56c191.png'/></span><div>" + $("#hd_roleText" + (guid || "")).html() + "</div></div></div>";
+                $("body").append(_html).find("#roleLayer").show().find(".close").click(function () {
+                    $("#roleLayer>div").removeClass("showRole");
+                    window.setTimeout(function () { $("#roleLayer").remove(); }, 200);
+                });
+                window.setTimeout(function () {
+                    $("#roleLayer>div").addClass("showRole");
+                }, 10);
+            }
+            result.addValidate = function (dom, valiObjName, validateStr, errorWeak) {
+                validateObj[valiObjName] = { "validateStr": validateStr, "result": false, errorWeak: errorWeak }
+                dom.on("blur", function () {
+                    if (!validateStr.test($(this).val())) {
+                        Trip(errorWeak);
+                        //this.focus();
+                        validateObj[valiObjName].result = false;
+                    } else {
+                        validateObj[valiObjName].result = true;
+                    }
+                });
+            }
+            return result;
+        })();
+    </script>
+    <script>
+        window.JdWalletAuth = '';
+        try {
+            Config.entranceId = "20160512140000011";
+            //Config.serverUrl = "http://172.24.5.10:8088";
+            Config.serverUrl = "https://m.jdpay.com";
+            var getRedom = function (minNum, maxNum) {
+                switch (arguments.length) {
+                    case 1: return parseInt(Math.random() * minNum + 1);
+                    case 2: return parseInt(Math.random() * (maxNum - minNum + 1) + minNum);
+                    default: return 0;
+                }
+            }
+            var FlyItem = function (id, duration) {
+                this.id = id;
+                this.item = document.createElement("div");
+                this.item.id = "flyItem_" + (++this.id);
+                this.item.className = "flyItem";
+                this.item.style.left = getRedom(0, 100) + "%";
+                this.item.style.backgroundPositionY = getRedom(0, 8) * 71 + "px";
+                $(this.item).css("-webkit-animation-duration", getRedom(6000, 10000) + "ms");
+            }
+            FlyItem.prototype.run = function () {
+                var self = this;
+                window.setTimeout(function () { $(self.item).remove(); delete self; }, 6000);
+            }
+        } catch (e) {
+            alert("error" + e.message);
+        }
+        function ShareInit(title, content, url, appTitle, shareImg) {
+            var shareData_app = {
+                url: url,
+                title: title,
+                desc: content,
+                appTitle: appTitle,
+                channel: 'WX',
+                callback: "JdWalletShareCallback"
+            }
+            if (shareImg !== "") {
+                shareData_app["iconUrl"] = shareImg;
+            }
+            window.setTimeout(function () {
+                _mApp.jdWalletReady(function (clientInfo) {
+                    window.shareCallback = function () {
+                        try {
+                            _mApp.share(shareData_app);
+                        } catch (e) { };
+                    };
+                    //在钱包
+                    if (clientInfo.isInApp) {
+                        if (_mApp.config().inAndroid) {
+                            _mApp.setTitle(appTitle);
+                            _mApp.setMenu(
+                                [
+                                    {
+                                        "menuTitle": "分享",
+                                        "menuAction": "shareCallback"
+                                    }
+                                ]
+                            )
+                        }
+                        if (_mApp.config().inIos) {
+                            _mApp.setTitle(appTitle);
+                            var timer = setInterval(function () {
+                                if (window.WebViewJavascriptBridge) {
+                                    _mApp.setMenu(
+                                        [
+                                            {
+                                                "menuTitle": "分享",
+                                                "menuAction": "shareCallback"
+                                            }
+                                        ]
+                                    )
+                                    clearInterval(timer);
+                                }
+                            }, 100)
+                        }
+                    }
+                });
+            }, 50);
+        }
+
+        if (location.hash == "") {
+            //alert("打开主页");
+            PageCommon.init("page_p2_v4");
+        } else {
+            //alert("打开分享页");
+            PageCommon.init();
+        }
+
+        (function (guid, data) {
+            if (data.url == 'self') { data.url = location.href; };
+            if (_mApp.config().inIos) {
+                data.url = encodeURIComponent(data.url);
+            }
+
+
+            ShareInit(data.title, data.content, data.url, data.appTitle, data.shareImg);
+            modelGuids(guid);
+        })('p2_p2_v3_m8_06645005', eval("({\"title\":\"悄悄地告诉你京东钱包内有彩蛋，今天页下拉试试看？\",\"content\":\"京东钱包内有彩蛋，今天页下拉，送iPhone？还是E卡？等你来发现！\",\"url\":\"https://qianbao.jd.com/p/page/2yMNTKqpzDwF.htm#&page_p2_v1\",\"appTitle\":\"京东钱包彩蛋\",\"shareImg\":\"\"})"));
+    </script>
+    <script>
+
+        var page_p2_v1 = new Page("page_p2_v1", {
+            showBack: function () {
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('mainScreen', eval("({})"));
+                (function (guid, data) {
+                    mk_m.initHeight($("div[guid=" + guid + "]")[0]);
+                    modelGuids(guid);
+                })('p4_v1_m9_67318332', eval("({})"));
+                (function (guid, data) {
+                    mk_m.initHeight($("div[guid=" + guid + "]")[0]);
+                    modelGuids(guid);
+                })('p4_v1_m9_35024949', eval("({})"));
+                (function (guid, data) {
+                    $("div[guid=" + guid + "]").find('button').click(function () { _mApp.start('HOME'); });
+                    modelGuids(guid);
+                })('p4_v1_m2_94777238', eval("({})"));
+              	shareInit("悄悄地告诉你京东钱包内有彩蛋，今天页下拉试试看？", "京东钱包内有彩蛋，今天页下拉，送iPhone？还是E卡？等你来发现！", "https://qianbao.jd.com/p/page/2yMNTKqpzDwF.htm#&page_p2_v1", "", "");
+            }
+        });
+    </script>
+    <script>
+        var page_p2_v2 = new Page("page_p2_v2", {
+            showBack: function () {
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('mainScreen', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p4_v1_m9_86176449', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p4_v1_m3_86103751', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p4_v1_m3_68743465', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p4_v1_m4_17791573', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p4_v1_m4_04371178', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p4_v1_m2_4722910', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p4_v1_m2_48531824', eval("({})"));
+            }
+        });
+    </script>
+    <script>
+        var page_p2_v4 = new Page("page_p2_v4", {
+            showBack: function () {
+
+
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('mainScreen', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p2_p2_v4_m1_78882407', eval("({})"));
+                (function (guid, data) {
+                    mk_m.initHeight($("div[guid=" + guid + "]")[0]);
+                    modelGuids(guid);
+                })('p2_p2_v4_m1_48203935', eval("({})"));
+                (function (guid, data) {
+                    mk_m.initHeight($("div[guid=" + guid + "]")[0]);
+                    modelGuids(guid);
+                })('p2_p2_v4_m9_15939131', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p2_p2_v4_m1_76732780', eval("({})"));
+                (function (guid, data) {
+                    $("div[guid=" + guid + "]").find('button').click(function () {
+                        location.href = "https://static.jdpay.com/m-duobao/";
+                    });
+                    modelGuids(guid);
+                })('p2_p2_v4_m2_22647502', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p2_p2_v4_m1_88753491', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p2_p2_v4_m3_82999221', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p2_p2_v4_m9_20708232', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p2_p2_v4_m3_79873380', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p2_p2_v4_m3_69633497', eval("({})"));
+
+
+                $(".phoneView").hide();
+                $(function () {
+                    _mApp.jdWalletReady(function (clientInfo) {
+                        //在钱包
+                        if (clientInfo.isInApp) {
+                            _mApp.getInfo(function (json) {
+                                var str = eval("(" + json + ")");
+                                //如果在钱包内
+                                if (str.isLogin == 1) {
+                                    JdWalletAuth = str.auth;
+                                    marketsFunc();
+                                }
+                            });
+                        } else {
+                            marketsFunc();
+                        }
+                    });
+
+
+                    function marketsFunc() {
+                        markets.getPrize(function (data) {
+                            $(".phoneView").show();
+                            if (data.code == "A00000") {
+                                $("div[guid='p2_p2_v4_m3_79873380']").find("span").html(data.data.amount);
+                                $("div[guid='p2_p2_v4_m3_69633497']").find("span").html(data.data.prizeDesc + ",有效期至2016-" + data.data.validDate.split("~")[1]);
+                                window.setTimeout(function () {
+                                    $("div[guid='p2_p2_v4_m9_15939131']").addClass("downEffect");
+                                    var ids = 1;
+                                    window.setInterval(function () {
+                                        var fltItem = new FlyItem(++ids);
+                                        fltItem.run();
+                                        document.getElementsByTagName("body")[0].appendChild(fltItem.item);
+                                    }, 500);
+                                }, 500);
+                            } else {
+                                page_p2_v3.show({
+                                    isCache: false,
+                                    callback: function () {
+                                        if (data.code == "A00003") {
+                                            models.p2_p2_v3_m3_5411963.find("span").html("产品经理说每天发一张就好，免得用户肌肉拉伤，明天再来噢~");
+                                        } else {
+                                            models.p2_p2_v3_m3_5411963.find("span").html(data.msg);
+                                        }
+                                    }
+                                });
+
+                            }
+                        });
+
+                    }
+
+                });
+            }
+        });
+    </script>
+    <script>
+        var page_p2_v3 = new Page("page_p2_v3", {
+            showBack: function () {
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('mainScreen', eval("({})"));
+                (function (guid, data) {
+                    mk_m.initHeight($("div[guid=" + guid + "]")[0]);
+                    modelGuids(guid);
+                })('p4_v1_m9_77063607', eval("({})"));
+                (function (guid, data) {
+                    mk_m.initHeight($("div[guid=" + guid + "]")[0]);
+                    modelGuids(guid);
+                })('p2_p2_v3_m1_26396626', eval("({})"));
+                (function (guid, data) {
+                    mk_m.initHeight($("div[guid=" + guid + "]")[0]);
+                    modelGuids(guid);
+                })('p2_p2_v3_m9_09235873', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p2_p2_v3_m1_24046889', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p2_p2_v3_m3_60096679', eval("({})"));
+                (function (guid, data) {
+                    modelGuids(guid);
+                })('p2_p2_v3_m3_5411963', eval("({})"));
+                (function (guid, data) {
+                    $("div[guid=" + guid + "]").find('button').click(function () { _mApp.close(); });
+                    modelGuids(guid);
+                })('p2_p2_v3_m2_63122796', eval("({})"));
+            }
+        });
+    </script>
+    <script>
+
+
+        window.marketMod = {
+            getPrize: {
+                index: function (opt) {
+                    var _param = opt.param ||
+                        {
+                            entranceId: Config.entranceId,
+                            auth: JdWalletAuth
+                        },
+                        _data = opt.data || {}
+                    ;
+                    requestAjax(
+                        Config.serverUrl + "/marketing/gameprize/index?timer=" + parseInt(Math.random() * 10000),
+                        _data,
+                        _param,
+                        function (data) {
+                            //返回数据
+                            opt.callback && opt.callback.call(this, data);
+                        });
+                },
+            },
+        }
+    </script>
+    <script>
+        window.markets = {
+            getPrize: function (_callback) {
+                marketMod.getPrize.index({
+                    callback: function (data) {
+                        _callback.call(this, data);
+                    }
+                });
+            },
+        }
+
+    </script>
+    <script>Mobilebone.init();</script>
+
+
+
+
+</body>
+
+</html>

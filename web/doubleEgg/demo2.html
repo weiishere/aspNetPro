@@ -1,0 +1,1207 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <title>看我礼不礼你</title>
+    <meta charset="utf-8" />
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    <section class="mainBody">
+        <div id="pages" class="view-container" style="">
+            <div class="mainWrap page-container pageInt" id="indexPage">
+                <content>
+                    <div class="mainBtu">
+                        <img src="img/btu.png" />
+                    </div>
+                    <div>
+                        <img id="imgDemo" src=""/>
+                    </div>
+                    <div>
+                        <a href="javascript:;" role="checkRole">查看活动规则</a>
+                    </div>
+                    <p>ddddd</p>
+                    <p>ddddd</p>
+                    <p>ddddd</p>
+                    <p>ddddd</p>
+                    <p>ddddd</p>
+                </content>
+            </div>
+            <div class="mainWrap page-container pageNew" id="gamePage">
+                <content>
+                    <div id="shiwuLayer"></div>
+                </content>
+            </div>
+            <div class="mainWrap page-container pageNew" id="gameResultPage">
+                <content>
+                    <div class="mainWrap1">
+                        <div class="priceShowWrap">
+                            <strong>5</strong>
+                        </div>
+
+                        <div class="descDiv">
+                            Aha,你这个文艺的家伙！居然选择了一把吉他！我们回忆一下是谁教你哼第一首小曲儿，Ta肯定在牵挂你！送你5元话费券，去京东钱包充话费打个电话给Ta吧~文艺范儿，我礼你！
+                        </div>
+                        <div class="descDiv_3 hidden">
+                            分享之后优惠券立即到账哦~
+                        </div>
+                        <div>
+                            <button>分享领卷</button>
+                            <button>再选一次</button>
+                        </div>
+                    </div>
+                    <div class="pmdWrap">
+                        <br />
+                        <!--<ul>
+                            <li>阿***&nbsp;&nbsp;2015-01-05&nbsp;22:30&nbsp;&nbsp;手机充值优惠券5元</li>
+                            <li>阿***&nbsp;&nbsp;2015-01-05&nbsp;22:30&nbsp;&nbsp;手机充值优惠券5元</li>
+                            <li>阿***&nbsp;&nbsp;2015-01-05&nbsp;22:30&nbsp;&nbsp;手机充值优惠券5元</li>
+                        </ul>-->
+                    </div>
+                </content>
+            </div>
+            <div class="mainWrap page-container pageNew" id="phonePage">
+                <content>
+                    <div class="dialogWrap">
+                        <div class="phoneInputWrap">
+                            <h1>等等，就差这一步了</h1>
+                            <h2>请输入手机号码领取优惠券</h2>
+                            <input type="tel" id="txt_PhoneNumber" placeholder="请输入您的手机号" />
+                            <div style="margin-top:0.5rem">
+                                <input placeholder="请输入验证码" type="tel" id="text_verifyCode" /><button id="btu_getsms" class="btuGetCode">获取验证码</button>
+                            </div>
+                            <p class="getSubmit">
+                                <button id="btu_postVali">领取</button>
+                            </p>
+                        </div>
+                    </div>
+                </content>
+            </div>
+            <div class="mainWrap page-container pageNew" id="prizeResultPage">
+                <content>
+                    <div class="mainWrap1">
+                        <div class="priceShowWrap_1 hidden">
+                            <span><!--有效期：2015.12.5~2015.12.25--></span>
+                        </div>
+                        <div class="priceShowWrap_2 hidden"></div>
+
+                        <div class="descDiv descDiv1 hidden">
+                            5元手机充值优惠券已存入你的钱包账户，手机登录即可使用
+                        </div>
+                        <div class="descDiv descDiv2 hidden">
+                            您已经领取过了哦~<br />把机会留给其他小伙伴吧
+                        </div>
+                        <div>
+                            <button>使用优惠券</button>
+                            <button>查看所有卡券</button>
+                        </div>
+                    </div>
+                    <div class="pmdWrap">
+                        <a href="javascript:;" role="checkRole">查看活动规则</a>
+                    </div>
+                </content>
+
+            </div>
+            <div class="weakLayer">
+
+            </div>
+            <div class="dialogWrap" style="display:block" id="roleLayer">
+                <div class="roleWrap" style="opacity:1">
+                    <span class="close"><img src="img/close2.png" /></span>
+                    <div>
+                        <div style="float:left;width:100rem;height:1rem;background:#000">
+
+                        </div>
+                        <br />
+                        活动时间<br />
+                        2015年12月24日 0:00：00—2016年1月3日 23:59：59<br />
+                        活动流程：<br />
+                        １.点击“领取好礼”按钮进入游戏，点击屏幕上掉落的礼物中的一个，查看圣诞老人给你捎的话；<br />
+                        ２.分享指定活动页面至微信好友（包括群）或朋友圈即可获得一张5元话费充值满减券（以下简称“满减券”）;<br />
+                        3 .活动结束后，自活动期间成功充值话费且金额大于或等于100元的用户中抽取一名幸运用户，送12张面值为100元的话费抵用券（以下简称“抵用券”）<br />
+                        活动细则：<br />
+                        1、分享微信活动页面的，满减券将实时发放至您在指定活动页面输入手机号码绑定的京东钱包账户中。分享京东钱包活动页面的，满减券将实时发放至相应的京东钱包账户中。<br />
+                        2.券的使用规则<br />
+                        1）仅限京东钱包客户端手机话费充值使用，用户充值面额大于或等于100元时方可使用；<br />
+                        2）充值时输入充值手机号及选择充值面额，即可选择可使用的券；<br />
+                        3）同一订单只能使用一张券，且不能与其他优惠活动同时享受，券不可拆分使用、不可转赠、不可找零、不可兑现；<br />
+                        4）满减券有效期为３个自然日，自到账之日起算，券过期作废；<br />
+                        5）抵用券须在2016年1月1日至2016年12月31日期间使用，每个自然月仅可使用一张，分12个月使用，抵用券在相应自然月内有效；<br />
+                        6）如使用券的订单发生退款，在券有效期内的，则券退回至用户的账户，券退回后有效期不变，如已过有效期则自退回之时起有效期延长24小时；　<br />
+                        3.抵用券中奖用户名单将在活动结束后10个工作日内公告，抵用券在活动结束后10个工作日内发放到用户参加活动的京东钱包账户中；<br />
+                        4.同一用户仅有一次获得5元满减券的机会，同一京东钱包账户、同一身份证号、同一银行卡号、同一手机号码，同一手机设备，满足任一条件均视为同一用户。<br />
+                        5.参与活动的用户须为通过实名认证的京东钱包个人用户。用户可登录京东钱包，通过“我的”-“安全保护”-“实名认证”查看实名认证情况。<br />
+                        6.本次活动涉及的时间点（包括但不限于活动时间、成功完成信用卡还款的时间、发奖时间等）以网银在线计算机系统后台记录为准。<br />
+                        7.在本活动期间，如存在违规行为（包括但不限于恶意套取资金、机器作弊、虚假交易等违反诚实信用原则行为），主办方将取消您的中奖资格，并有权撤销相关违规交易，必要时追究法律责任。<br />
+                        8.如出现不可抗力或情势变更的情况（包括但不限于重大灾害事件、活动受政府机关指令需要停止举办或调整的、活动遭受严重网络攻击或因系统故障需要暂停举办的），京东钱包有权暂停或取消本次活动，并可依相关法律法规的规定主张免责。<br />
+                        9.用户参与此活动即视为知晓并同意此活动细则。<br />
+                        10.本活动规则及其未尽事宜同时受《京东钱包服务协议》及相关公告、规则约束。<br />
+                        11.在法律允许的范围内，本公司对本次活动有解释权。<br />
+                        本次活动与 Apple Inc.无关<br />
+
+                        <br />
+                    </div>
+                </div>
+            </div>
+            <section class="footer_app hidden" id="J_openBtn">
+                <p>京东钱包诚意之作</p>
+                <p>
+                    <button id="J_confirm">打开京东钱包</button>
+                </p>
+            </section>
+            <div class="alertWrap" id="alertWrap">
+                <div class="alert">
+                    <h1>消息标题</h1><i></i>
+                    <span>
+                        **
+                    </span>
+                    <div class="buttonWrap">
+
+                    </div>
+                </div>
+            </div>
+            <div id="loading">
+                <div>
+                    <img src="img/laoding.gif" /><br />加载中，请稍后...
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+<script src="jquery-1.8.2.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/wx-sdk.js"></script>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/mApp.js"></script>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/jdp-sdk.js"></script>
+<script src="fastclick.js"></script>
+<script>
+
+    var _mApp = mApp();
+    var mAppConfig = _mApp.config();
+    //切换环境
+    var _host = 'locaHost',
+        _entranceId = '',
+        _wxparam = {},
+        baseUrl = "",//服务器后端地址
+        localUrl = "";//前端配置的地址
+    appUrl = "";
+
+    switch (_host) {
+        //本地
+        case 'locaHost':
+            baseUrl = "http://10.9.45.230:8080";
+            localUrl = "http://192.168.191.1";
+            appUrl = "http://172.24.4.61:8101/";
+            _wxparam.server = 'http://pux.wangyin.com/wechat/users';
+            _wxparam.param = '&appId=wx019d442781829a25&appSecret=d4624c36b6795d1d99dcf0547af5443d';
+            break;
+            //其他人本地
+        case 'locaOtherHost':
+            baseUrl = 'http://10.9.45.8:3000/item/Sweepstake';
+            localUrl = "http://10.9.45.8:3000/item";
+            appUrl = "http://172.24.4.61:8101/";
+            _wxparam.server = 'http://pux.wangyin.com/wechat/users';
+            _wxparam.param = '&appId=wxe4a87b2fbe65b5c3&appSecret=ca8297ffaaa1856900db23c07233097b';
+            break;
+            //闭环
+        case 'beatHost':
+            baseUrl = 'http://172.24.5.10:8333';
+            localUrl = "http://172.25.47.49/activity/item";
+            appUrl = "http://172.24.4.61:8101/";
+            _wxparam.server = 'http://pux.wangyin.com/wechat/users';
+            _wxparam.param = '&appId=wx9db0a88cecd76494&appSecret=4441e4141b5c5dd93a9bc7cc6868ab7e'; 
+            break;
+            //生产
+        case 'productHost':
+            baseUrl = 'http://m.jdpay.com';
+            localUrl = "http://static.jdpay.com/activity/item";
+            appUrl = "http://m.jdpay.com/";
+            _wxparam.server = 'https://m.jdpay.com/open/ticketSignature';
+            _wxparam.param = '';
+            break;
+    }
+
+    (function (exp) {
+        Array.prototype.isContain = function (item) {
+            var isPass = false;
+            for (var i = 0; i < this.length; i++) { if (this[i] == item) { isPass = true; break; } }
+            return isPass;
+        }
+        Array.prototype.removeByIndex = function (index) {
+            if (isNaN(index) || index > this.length) { return false; }
+            for (var i = 0, n = 0; i < this.length; i++) {
+                if (this[i] != this[index]) {
+                    this[n++] = this[i]
+                }
+            }
+            this.length -= 1
+        }
+        Array.prototype.remove = function (item) {
+            var index = this.indexOf(item);
+            if (index > -1) {
+                this.splice(index, 1);
+            }
+        };
+        Array.prototype.getIndexByValue = function (value) {
+            var index = -1;
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == value) { index = i; break; }
+            }
+            return index;
+        }
+        Date.prototype.Format = function (fmt) { //author: meizz
+            var o = {
+                "M+": this.getMonth() + 1,                 //月份
+                "d+": this.getDate(),                    //日
+                "h+": this.getHours(),                   //小时
+                "m+": this.getMinutes(),                 //分
+                "s+": this.getSeconds(),                 //秒
+                "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+                "S": this.getMilliseconds()             //毫秒
+            };
+            if (/(y+)/.test(fmt))
+                fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            for (var k in o)
+                if (new RegExp("(" + k + ")").test(fmt))
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+            return fmt;
+        }
+        exp.Trip = function (option) {
+            var _option = typeof option === "string" ? { content: option } : option;
+            var setting = $.extend({
+                title: "",
+                content: "",
+                position: "center",//"bottom"//"top"
+                timeout: 200000,
+                callBack: function () { }
+            }, _option || {});
+            var className = new Object();
+            className["center"] = ""; className["bottom"] = "floatWindow_bottom"; className["top"] = "floatWindow_top";
+            var _window = "<div id=\"floatWindow\" class=\"floatWindow " + className[setting.position] + "\"><h2>" + setting.title + "</h2><p>" + setting.content + "</p></div>";
+            if ($("#floatWindow").size() == 0) { $("body").append(_window); }
+            $("body").one("click", function () { if ($("#floatWindow").size() != 0) { _close(); return false; } });
+            var floatWindow = $("#floatWindow");
+            floatWindow.animate({ "opacity": 1, "width": "50%", "height": floatWindow.height() * 1.1 }, 200, function () { setting.callBack(); });
+            var _close = function () { if (floatWindow.size() != 0) { floatWindow.animate({ "opacity": 0, "width": "48%", "height": $("#floatWindow").height() * 0.99 }, 150, function () { $(this).remove() }); } }
+            var _timer = window.setTimeout(function () { _close(); }, setting.timeout);
+            if (typeof event !== "undefined") event.stopPropagation();
+        }
+        exp.getRedom = function (minNum, maxNum) {
+            switch (arguments.length) {
+                case 1: return parseInt(Math.random() * minNum + 1);
+                case 2: return parseInt(Math.random() * (maxNum - minNum + 1) + minNum);
+                default: return 0;
+            }
+        }
+        exp.getParameterByName = function (name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        //时间戳转换
+        exp.getLocalTime = function (date_time) {
+            var date_time = new Date(parseInt(date_time)), year = date_time.getFullYear(), month = date_time.getMonth() + 1, date = date_time.getDate();
+            return year + '-' + month + '-' + date;
+        }
+        exp.requestAjax = function (url, option, data, success) {
+            var _option = $.extend({
+                type: "get",
+                dataType: "json",
+                async: true,
+            }, option || {});
+            $.ajax({
+                type: _option.type,
+                dataType: _option.dataType,
+                async: _option.async,
+                url: url,
+                data: data,
+                beforeSend: function () {
+                    $("#loading").show();
+                },
+                success: function (data) {
+                    $("#loading").hide();
+                    success(data);
+                },
+                complete: function () { },
+                error: function (data) {
+                    $("#loading").hide();
+                    alert("内部错误：" + JSON.stringify(data));
+                }
+            });
+        }
+        exp.requestForJsonP = function (url, option, success) {
+            $("#loading").show();
+            var radomId = parseInt(Math.random() * 100000);
+            var _option = $.extend({
+                callbackHeader: "callBack_"+radomId,
+                param: "",
+                error: function () { }
+            }, option || {});
+            exp[_option.callbackHeader] = function (data) {
+                if (data.retCode === 'RM000000') {
+                    if (typeof (success) == "function") success(data);
+                } else {
+                    Trip(data.retMessage);
+                }
+            }
+            
+            var _script = document.createElement("script");
+            _script.id = "jspSctipt_" + radomId;
+            _script.setAttribute("type", "text/javascript");
+            _script.onload = _script.onreadystatechange = function () {
+                if (!/*@cc_on!@*/0 || this.readyState == "loaded" || this.readyState == "complete") {
+                    this.onload = this.onreadystatechange = null; this.parentNode.removeChild(this);
+                    $("#loading").hide();
+                } else {
+                    $("#loading").hide();
+                    Trip("对不起 ，请求发生错误~");
+                    _option.error();
+                }
+            }
+            _script.setAttribute("src", url + "?callback=" + _option.callbackHeader + "&" + _option.param + "&timer=" + parseInt(Math.random() * 100000));
+            (document.getElementsByTagName("head").item(0) || document.documentElement).appendChild(_script);
+        }
+        
+        //requestForJsonP("http://localhost:11592/Handler/jsonPdata.ashx", {  param: "r=ddd&wss=w22" }, function (data) {
+        //    alert("1=" + JSON.stringify(data));
+            
+        //});
+        //requestForJsonP("http://localhost:11592/Handler/jsonPdata2.ashx", { param: "r=ddd&wss=w22" }, function (data) {
+        //    alert("2=" + JSON.stringify(data));
+        //});
+
+        //手机验证
+        exp.phoneNumber = "";
+        $.fn.phoneValidate = function (btu, option) {
+            var _self = this;
+            var getTime = function () {
+                var time = _option.requestTime;
+                btu.attr("disabled", true);
+                btu.html(_option.requestText.replace("requestText", time));
+                var timer = window.setInterval(function () {
+                    if (time == 1) {
+                        btu.attr("disabled", false);
+                        window.clearInterval(timer);
+                        btu.html(_option.readyText);
+                        return false;
+                    }
+                    btu.html(_option.requestText.replace("requestText", --time));
+                }, 1000);
+            }
+            var _option = $.extend({
+                readyText: "获取验证码",
+                requestTime: 60,
+                requestText: "requestText 's后重获",
+                ajaxfn: undefined,
+                ajaxUrl: "",
+                callBack: function (data) { },
+                error: function (data) { }
+            }, option || {})
+            btu.click(function () {
+                if (!/^1\d{10}$/.test($("#txt_PhoneNumber").val())) {
+                    //openAlert("", "请输入正确的手机号码！");
+                    Trip("请输入正确的手机号码！");
+                    return false;
+                }
+                if (_option.ajaxfn) {
+                    _option.ajaxfn.call(_self);
+                    return false;
+                }
+                if (_option.ajaxUrl == "") return false;
+                _option.ajaxUrl = _option.ajaxUrl.indexOf("?") == -1 ? _option.ajaxUrl + "?timer=" + Math.random() : _option.ajaxUrl + "&timer=" + Math.random();
+                requestAjax(_option.ajaxUrl, {}, { entranceId: Config.entranceId, mobile: $(_self).val() }, function (data) {
+                    if (data.code == "A00000") getTime();
+                    phoneNumber = (_self).val();
+                    _option.callBack.call(_self, data);
+                });
+                /*
+                $.ajax({
+                    type: "get",
+                    url: _option.ajaxUrl,
+                    dataType: "json",
+                    data: { entranceId: Config.entranceId, mobile: $(_self).val() },
+                    success: function (data) {
+                        _option.callBack.call(_self, data);
+                    },
+                    error: function (data) {
+                        _option.error.call(_self, data);
+                    }
+                });*/
+            });
+        }
+        //messagesBox
+        exp.openAlert = function (title, text, buttonEvent) {
+            if (!title && !text) { return false; }
+            $("#alertWrap").show().find("h1").html(title);
+            $("#alertWrap").find("span").html(text);
+            window.setTimeout(function () { $(".alert").addClass("alertActive"); }, 10);
+            var buHtml = "";
+            if (buttonEvent) {
+                buttonEvent.forEach(function (i) { buHtml += "<button " + (buttonEvent.length == 1 ? 'class=\"singleBtu\"' : '') + ">" + i.name + "</button>"; });
+            } else {
+                buHtml = "<button class=\"singleBtu\">OK</button>";
+            }
+            $("#alertWrap").find(".buttonWrap").empty().append(buHtml);
+            var self = this;
+
+            self.closeAlert = function (fn) {
+                $(".alert").removeClass("alertActive");
+                window.setTimeout(function () {
+                    $("#alertWrap").fadeOut("fast", function () {
+                        if (fn) fn();
+                    });
+                }, 50);
+            }
+            $("#alertWrap button").each(function (i, item) {
+                $(this).unbind("click").click(function () {
+                    if (!buttonEvent) { self.closeAlert(); return false; }
+                    if (buttonEvent[i].hasOwnProperty("fn")) {
+                        buttonEvent[i].fn.call(self);
+                    } else {
+                        self.closeAlert(function () { });
+                    }
+                });
+            });
+        }
+        exp.browser = {
+            versions: function () {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return {
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                };
+            }()
+        }
+        //if (browser.versions.mobile) { window.addEventListener('load', function () { FastClick.attach(document.body); }, false); }
+        exp.pages = new Array();
+        function Page(domId, option, fn) {
+            this.option = $.extend({
+                isAutoInit: true,
+                isFooterBar: true
+            }, option || {});
+            this.domId = domId;
+            this.indexName = "p_" + domId;
+            this.fn = fn;
+            this.showBack = function () { }
+            this.hideBack = function () { }
+            var $self = $("#" + this.domId);
+            
+            var isSlideing = false;
+            this.show = function (_showBack) {
+                if (isSlideing) { return false; }
+                var _self = this;
+                if (window.set) if (set["lastPage"] == _self) { return false; }
+                isSlideing = true;
+                window.setTimeout(function () { isSlideing = false; }, 400);
+                //$self.show();
+                $self.css({ '-webkit-transform': 'translate3d(0%, 0px, 0px)', '-webkit-transition': '-webkit-transform 250ms cubic-bezier(0.42, 0, 0.58, 1.0)' });
+                if (window.set) {
+                    set["lastPage"].hide();
+                }
+
+                if (!window.hasOwnProperty("set")) { window.set = {}; }
+                set["lastPage"] = _self;
+                urlRoleCommon.pageChangeEven.call(_self);
+                if (_showBack) _showBack.call(_self);
+                if (_self.showBack) _self.showBack.call(_self);
+                if (this.option.isFooterBar) {
+                    //$self.find("content").addClass("mainWrapMar");
+                    $("#J_openBtn").show();
+                }
+            }
+            this.hide = function () {
+                //$("#" + this.domId).hide();
+                $("#" + this.domId).css({ '-webkit-transform': 'translate3d(-100%, 0px, 0px)', '-webkit-transition': '-webkit-transform 250ms cubic-bezier(0.42, 0, 0.58, 1.0) 0.1s' });
+                this.hideBack();
+                $("#J_openBtn").hide();
+            }
+            this.init = function () {
+                if (this.fn) { this.fn(this); }
+            }
+            if (this.option.isAutoInit) this.fn();
+            pages.push(this);
+            //if (!window.hasOwnProperty("pages")) { window.pages = []; }
+            //pages.push(domId);
+        }
+        var urlRoleCommon = (function () {
+            var distoeyState = "", result = {};
+            history.replaceState(location.hash, "", location.href);
+            var _jump = function (callback) {
+                for (var p in pages) {
+                    var item = pages[p];
+                    if (item.__proto__ === Page.prototype) {
+                        if ("#" + item.indexName == location.hash) { _page = item; item.show(function () { if (callback) callback(); }); }
+                    }
+                }
+            }
+            var _page = {};
+            var _tempCallBck = function () { }
+            exp.addEventListener('popstate', function (e) {
+                result.changePageBack();
+            }, false);
+            exp.addEventListener('hashchange', function (e) {
+                _jump(function () {
+                    if (_tempCallBck) _tempCallBck(_page);
+                    _tempCallBck = function () { }
+                    result.changeHashBack();
+                });
+            }, false);
+            result.goActive = function (hash, callBack) {
+                distoeyState = history.state;
+                location.href = hash;
+                //history.pushState(hash, "", hash);
+                if (typeof callBack == "function") { _tempCallBck = callBack; }
+            }
+            result.changePageBack = function () {/*不管hash有没有变动都触发*/ }
+            result.changeHashBack = function () { /*有变动才触发*/ }
+            result.loadDefaultActive = function () { if (location.hash) { _jump(); } }
+            result.pageChangeEven = function () {}
+            return result;
+        })();
+        /*使用urlRoleCommon.goActive("#p_indexPage",function(page){})进行跳转（在pageId前加“p_”）,
+        urlRoleCommon.changePageBack()为全局事件(只要使用goActive就会触发)，
+        urlRoleCommon.changeHashBack()为全局事件(只要使用hash变动就会触发)
+        */
+        exp.urlRoleCommon = urlRoleCommon;
+        exp.Page = Page;
+    })(window);
+    var Config = {
+        entranceId: "2015122300000000002",
+    }
+
+    var isAllowShare = false;
+    var temp = ['qrCode', 'wxOpenId', 'auth', 'code', 'refresh_token', 'entranceId'];
+    temp.forEach(function (item) {
+        Config[item] = getParameterByName(item);
+    });
+    window.wxParam = {
+        appid: '',
+        timestamp: '',
+        noncestr: '',
+        signature: '',
+        link: baseUrl + "/marketing/entrance?entranceId=" + Config.entranceId,
+        title: '看我礼不礼你',
+        desc: '来看看你的气质，还有话费送不停！',
+        imgUrl: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+    }
+    var wxshare = function (fn) {
+        //微信分享插件   
+        wxsdk({
+            debug: false,
+            type: 'jsonp',//可选
+            jsonp: {//jsonp 可配置数据
+                name: 'callbackFn',
+                isEncode: true,
+                server: _wxparam.server, 
+                param: _wxparam.param,
+                fn: function (data) {//默认this指向当前对象 ，后面也是
+                    var r = data.resultData;
+                    this.params.appid = r.appId;
+                    this.params.noncestr = r.nonceStr;
+                    this.params.signature = r.signature;
+                    this.params.timestamp = r.timestamp;
+                }
+            },
+            shareData: {
+                title: wxParam.title,
+                desc: wxParam.desc,
+                link: wxParam.link,
+                imgUrl: wxParam.imgUrl,
+                trigger: function (res) {
+                    //如果触发的收藏 就不执行回调
+                    if (res.shareTo == 'favorite' || res.scene == 'favorite') { this.isTrigger = false; } else { this.isTrigger = true; }
+                },
+                success: function () {
+                    if (mAppConfig.inAndroid) {
+                        window.scrollTo(1, 1);
+                    }
+                    if (!isAllowShare) { return false; }
+                    if (this.isTrigger) {
+                        if (fn) fn();
+                    }
+                },
+                cancel: function () {
+                    if (mAppConfig.inAndroid) {
+                        window.scrollTo(1, 1);
+                    }
+                }
+            }
+        });
+    }
+    wxshare();
+    var isRealName = false;
+    var initPrizeResult = function (param) {
+        requestAjax(baseUrl + "/marketing/gameprize/index?timer=" + Math.random(), {}, param, function (data) {
+            if (data.code == "A00000") {
+                if (data.data.mobile) {
+                    phonePage.show();
+                } else {
+                    prizeResultPage.show(function () {
+                        isRealName = data.data.realname;
+                        $("#" + this.domId).find(".priceShowWrap_1,.descDiv1").show();
+                        $("#" + this.domId).find(".priceShowWrap_1 span").html(data.data.validDate.split("：")[0] + "<br/>" + data.data.validDate.split("：")[1]);
+                        $("#" + this.domId).find(".descDiv1").html(data.data.description);
+                    });
+                }
+            } else if (data.code == "A00003") {
+                prizeResultPage.show(function () {
+                    $("#" + this.domId).find(".priceShowWrap_2,.descDiv2").show();
+                    $("#" + this.domId).find("button").eq(0).hide();
+                });
+            } else {
+                openAlert("", data.msg);
+            }
+            isAllowShare = false;
+        });
+    }
+    function initEventListener() {
+        $("a[role=checkRole]").click(function () {
+            //$(this).parents(".mainWrap").eq(0).append($("#roleLayer").show());
+            $("#roleLayer").show();
+            window.setTimeout(function () { $("#roleLayer>div").addClass("show"); }, 10);
+        });
+        //活动规则层关闭
+        $("#roleLayer").find(".close").click(function () {
+            $("#roleLayer>div").removeClass("show");
+            window.setTimeout(function () { $("#roleLayer").hide(); }, 300);
+        });
+        $("#J_openBtn").click(function () {
+            $(this).animate({ "bottom": "-100%" }, 600);
+        }).find("button").click(function () {
+            _mApp.start();
+            return false;
+        });
+        //分享层提示
+        $(".weakLayer").click(function () {
+            $(this).hide();
+        });
+        $("#btu_postVali").click(function () {
+            //var _url = baseUrl + "/marketing/lottery/get?entranceId=" + Config.entranceId + "&wxOpenId=" + Config.wxOpenId + "&mobile=" + $("#txt_PhoneNumber").val() + "&verifyCode=" + $("#text_verifyCode").val();
+            //如果验证码不是数字
+            if (!/^[0-9]+.?[0-9]*$/.test($("#text_verifyCode").val())) { 
+                Trip("请输入正确的验证码！");
+                return;
+            }
+            if (phoneNumber == "") {
+                Trip("对不起，请验证手机号码！");
+                return false;
+            }
+            requestAjax(baseUrl + "/marketing/gameprize/index?entranceId=" + Config.entranceId + "&wxOpenId=" + Config.wxOpenId + "&mobile=" + phoneNumber + "&verifyCode=" + $("#text_verifyCode").val() + "&timer=" + Math.random(), {}, {}
+            , function (data) {
+                if (data.code == "A00000") {
+                    prizeResultPage.show(function () {
+                        //initPrizeResult($("#" + this.domId), data);
+                        isRealName = data.data.realname;
+                        $("#" + this.domId).find(".priceShowWrap_1,.descDiv1").show();
+                        $("#" + this.domId).find(".priceShowWrap_1 span").html(data.data.validDate.split("：")[0] + "<br/>" + data.data.validDate.split("：")[1]);
+                        $("#" + this.domId).find(".descDiv1").html(data.data.description);
+                    });
+                } else if (data.code == "A00003") {
+                    prizeResultPage.show(function () {
+                        $("#" + this.domId).find(".priceShowWrap_2,.descDiv2").show();
+                    });
+                } else {
+                    openAlert("出错了", data.msg);
+                }
+            });
+        });
+    }
+    initEventListener();
+
+    var priceList = new Array();
+    var trimmingsList = new Array();
+    //主页
+    var isMobile = true;
+    var indexPage = new Page("indexPage", {}, function () {
+
+        var $self = $("#" + this.domId);
+        $self.find(".mainBtu").click(function () {
+            gamePage.init();
+            gamePage.show();
+            return;
+            wx.chooseImage({
+                count: 1, // 默认9
+                sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                success: function (res) {
+                    $("#imgDemo").attr("src", res.localIds);
+                    var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                    wx.uploadImage({
+                        localId: localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
+                        isShowProgressTips: 1, // 默认为1，显示进度提示
+                        success: function (res) {
+                            alert("上传成功" + res.serverId);
+                            var serverId = res.serverId; // 返回图片的服务器端ID
+
+                            
+
+                        }
+                    });
+                }
+            });
+            
+
+        });
+    });
+    //游戏页
+    var gamePage = new Page("gamePage", { isFooterBar: false, isAutoInit: false }, function () { });
+    gamePage.showBack = function () {
+        this.timer1 = window.setInterval(function () {
+            for (var i = 0, l = priceList.length; i < l; i++) {
+                if (priceList[i]) { priceList[i].run(); }
+            }
+            for (var i = 0, l = trimmingsList.length; i < l; i++) {
+                if (trimmingsList[i]) { trimmingsList[i].run(); }
+            }
+        }, 30);
+        this.timer2 = window.setInterval(function () {
+            if (priceList.length >= 5) { return false; }//不超过5个
+            var p = new Price(getRedom(0, 8));
+            p.leftSpeed = getRedom(-10, 10) / 100;
+            priceList.push(p);
+            //console.log(priceList.length);
+        }, 1000);
+        this.timer3 = window.setInterval(function () {
+            if (trimmingsList.length >= 10) { return false; }
+            var t = new Trimmings(getRedom(1, 14));
+            trimmingsList.push(t);
+            var t2 = new Trimmings(getRedom(1, 14));
+            trimmingsList.push(t2);
+            //console.log(priceList.length);
+        }, 2000);
+
+    }
+    gamePage.hideBack = function () {
+        window.clearInterval(this.timer1);
+        window.clearInterval(this.timer2);
+        window.clearInterval(this.timer3);
+        //priceList = [];
+    }
+    //游戏结果页
+    var gameResultPage = new Page("gameResultPage", {isAutoInit:false}, function () {
+        if (Config["auth"] == "" || Config["auth"] == undefined) {
+            $("#" + this.domId).find("button").eq(0).html("立即领券");
+        } else {
+            $("#" + this.domId).find("button").eq(0).html("分享领券");
+            $("#" + this.domId).find(".descDiv_3").show();
+        }
+        $("#" + this.domId).find("button").eq(0).unbind("click").click(function () {
+            //$(".weakLayer").show();
+            //window.setTimeout(function () { $(".weakLayer").hide(); }, 2000);
+            if (Config["auth"]) {
+                //钱包
+                jdp.shareUrl({
+                    url: baseUrl + "/marketing/entrance?entranceId=" + Config.entranceId,
+                    title: wxParam.title,
+                    desc: wxParam.desc,
+                    channel: 'WX',
+                    callback: function (status) {
+                        if (status == "SUCCESS") {
+                            initPrizeResult({ 'auth': Config.auth, 'entranceId': Config.entranceId });
+                            /*requestAjax(baseUrl + "/marketing/gameprize/index?timer=" + Math.random(), {}, {
+                                'auth': Config.auth,
+                                'entranceId': Config.entranceId
+                            }, function (data) {
+                                if (data.code == "A00000") {
+                                    if (data.data.mobile) {
+                                        phonePage.show();
+                                    } else {
+                                        prizeResultPage.show(function () {
+                                            initPrizeResult($("#" + this.domId), data);
+                                        });
+                                    }
+                                } else if (data.code == "A00003") {
+                                    prizeResultPage.show(function () {
+                                        $("#" + this.domId).find(".priceShowWrap_2,.descDiv2").show();
+                                    });
+                                } else {
+                                    openAlert("", data.msg);
+                                }
+                                isAllowShare = false;
+                            });*/
+                        }
+                    }
+                })
+            } else {
+                initPrizeResult({ 'wxOpenId': Config.wxOpenId, 'entranceId': Config.entranceId });
+                /*requestAjax(baseUrl + "/marketing/gameprize/index?timer=" + Math.random(), {},
+                            {
+                                'wxOpenId': Config.wxOpenId,
+                                'entranceId': Config.entranceId
+                            },
+                        function (data) {
+                            if (data.code == "A00000") {
+                                if (data.data.mobile) {
+                                    phonePage.show();
+                                } else {
+                                    prizeResultPage.show(function () {
+                                        initPrizeResult($("#" + this.domId), data);
+                                    });
+                                }
+                            } else if (data.code == "A00003") {
+                                prizeResultPage.show(function () {
+                                    $("#" + this.domId).find(".priceShowWrap_2,.descDiv2").show();
+                                    $("#" + this.domId).find("button").eq(0).hide();
+                                });
+                            } else {
+                                openAlert("", data.msg);
+                            }
+                            isAllowShare = false;
+                        });*/
+            }
+        });
+        $("#" + this.domId).find("button").eq(1).click(function () {
+            gamePage.show();
+        });
+    });
+    var setValidTime = function (day) {
+        try {
+            var date1 = new Date();
+            var date2 = new Date(date1.getTime() + (24 * 60 * 60 * 1000) * day);
+            return { begin: date1.Format('yyyy-MM-dd'), end: date2.Format('yyyy-MM-dd') }
+        } catch (e) {
+            Trip(e);
+        }
+    }
+    gameResultPage.showBack = function () {
+        wxshare(function () { });
+    }
+    //手机输入页
+    var phonePage = new Page("phonePage", { isFooterBar: false }, function () {
+        $("#txt_PhoneNumber").phoneValidate($("#btu_getsms"), {
+            ajaxUrl: baseUrl + "/marketing/sms/sendWithName",//获取code的url，默认post
+            callBack: function (data) {
+                if (data.code != "A00000") {
+                    openAlert("出错了", data.msg);
+                } else {
+                    Trip("短信验证码已经成功发送，请注意查收！");
+                    //openAlert("发送成功", "短信验证码已经成功发送，请注意查收！");
+                }
+            },
+            error: function (data) {
+                alert(JSON.stringify(data));
+            }
+        });
+    });
+    phonePage.showBack = function () {
+        var self = this;
+        window.setTimeout(function () { $("#" + self.domId).find(".dialogWrap>div").addClass("show"); }, 10);
+    }
+    //奖品获取提示页
+    var prizeResultPage = new Page("prizeResultPage", {}, function () {
+        $("#" + this.domId).find("button").eq(0).click(function () {
+            if (!isRealName) {
+                _mApp.start('PHONE_RECHARGE');
+            } else {
+                _mApp.start('REALNAME');
+            }
+        });
+        $("#" + this.domId).find("button").eq(1).click(function () {
+            _mApp.start('ACTIVITY', appUrl + '/user/myCoupon');
+        });
+    });
+
+    //urlRoleCommon.pageChangeEven = function () {
+    //    alert(this.domId);
+    //}
+
+    function Trimmings(type) {
+        this.dom = document.createElement("div");
+        this.dom.className = "TrimmingsItem";
+        this.setView(type)
+    }
+    Trimmings.prototype.top = 5;
+    Trimmings.prototype.setView = function (type) {
+        var $self = $(this.dom);
+        this.dom.innerHTML = "<img src='img/zhuangshi/s_" + type + ".png' />";
+        document.getElementById("shiwuLayer").appendChild(this.dom);
+        $self.css("left", getRedom(0, 95) + "%");
+        var _self = this;
+    }
+    Trimmings.prototype.run = function () {
+        this.top += 0.05;
+        $(this.dom).css("-webkit-transform", "translate3d(0, " + this.top + "rem,0)");
+        if (this.top > document.documentElement.clientWidth / 20) {
+            document.getElementById("shiwuLayer").removeChild(this.dom);
+            trimmingsList.remove(this);
+            delete this;
+        }
+    }
+
+    function Price(type) {
+        this.dom = document.createElement("div");
+        this.dom.className = "priceItem";
+
+        switch (type) {
+            case 0:
+                this.name = "吉他";
+                this.desc = "Aha,你这个文艺的家伙！居然选择了一把吉他！我们回忆一下是谁教你哼第一首小曲儿，Ta肯定在牵挂你！送你5元话费券，去京东钱包充话费打个电话给Ta吧~文艺范儿，我礼你！";
+                this.share = "ta深情地说我好文艺，还非要送我… …";
+                this.money = 5;
+                break;
+            case 1:
+                this.name = "糖果";
+                this.desc = "哈哈，你个小吃货！这么爱吃糖肯定是有人惯的，嗯… 送你5元话费券，去京东钱包充话费，给最宠爱你的人打个电话吧！小吃货，我礼你！";
+                this.share = "ta性感地叫我小馋猫，还非要送我… …";
+                this.money = 5;
+                break;
+            case 2:
+                this.name = "篮球";
+                this.desc = "Yo~Ho！篮球圣手！科比宣布退役了，感谢他这些年陪着我们，要不… 送5元话费券给你，去京东钱包充话费，给科比打个电话吧哈哈！运动范儿，我礼你！";
+                this.share = "ta脸红地说我身体不错，还非要送我… …";
+                this.money = 5;
+                break;
+            case 3:
+                this.name = "礼盒";
+                this.desc = "眼光不错！挑了一个带包装的，里面藏了什么呢，我们来看看… 呀！是一张5元的话费券，手气不错，去京东钱包充话费，然后向你的伙伴们炫耀一番吧！好奇党，我礼你！";
+                this.share = "ta神秘地说闭上眼睛，还非要送我… …";
+                this.money = 5;
+                break;
+            case 4:
+                this.name = "游戏手柄";
+                this.desc = "撸完这把歇歇吧，听说你都五连冠了！给你5元话费券，去京东钱包充话费，拿你最真实的声音给小伙伴打个电话吧！夜撸党，我礼你！";
+                this.share = "ta坏坏地说撸多了伤身，还非要送我… …";
+                this.money = 5;
+                break;
+            case 5:
+                this.name = "自行车";
+                this.desc = "你喜欢户外？还喜欢阳光？如果… 你还喜欢吃五毛钱一包的辣条… 那我能不能冒昧问一句：你还单身吗？！我们约会去吧…U R my sunshine!我礼你！";
+                this.share = "ta说要带我出门，还非要送我… …";
+                this.money = 5;
+                break;
+            case 6:
+                this.name = "袜子";
+                this.desc = "你居然真的信圣诞老人！好吧，浪漫如你，我肯定得留下点什么。请收下这张带烟囱灰的5元话费券，到京东钱包充话费吧，打个电话给圣诞老人说以后别从烟囱进来！漫漫的，我礼了你！";
+                this.share = "ta说我穿得真少，还非要送我… …";
+                this.money = 5;
+                break;
+            case 7:
+                this.name = "桃心";
+                this.desc = "难道你单身？如果是的话，请坐地铁到经海路下，到斜对面京东大厦，跟保安大哥说找钱包君相亲的，别怕停机，先给你5元话费券，到京东钱包充话费再来刷脸！啥也别说了，我礼你！";
+                this.share = "ta突然问我是不是单身，还非要送我… …";
+                this.money = 5;
+                break;
+            case 8:
+                this.name = "京东钱包";
+                this.desc = "你的眼光总是这么独到、高端、犀利而有富有内涵、哲学和机智，否则，你根本不会选择这个！啥也别说了，5元话费券送给你，去京东钱包充话费，然后悄悄联系我！我看好你，太给礼！";
+                this.share = "ta说最爱我的眼眸，还非要送我… …";
+                this.money = 5;
+                break;
+        }
+        this.setView(type);
+    }
+    Price.prototype.name = "";
+    Price.prototype.desc = "";
+    Price.prototype.share = "";
+    Price.prototype.img = "";
+    Price.prototype.leftSpeed = 0.1;
+    Price.prototype.top = 5;
+    Price.prototype.left = ((document.documentElement.clientWidth / 20) / 2) - 1.5;
+    Price.prototype.speed = -1.2;//初速度
+    Price.prototype.G = 0.1;//重力加速度
+    Price.prototype.scale = 0.25;
+    Price.prototype.index = 0;
+    //var peiceIndex = 0;
+    Price.prototype.setView = function (type) {
+        var $self = $(this.dom);
+        //this.dom.id = "priceItem_" + (++peiceIndex);
+        this.dom.innerHTML = "<img src='img/liwu/p" + type + ".png' />";
+        document.getElementById("gamePage").appendChild(this.dom);
+        var _self = this;
+        $self.one("click", function () {
+            gameResultPage.init();
+            gameResultPage.show(function () {
+                $("#" + this.domId).find(".descDiv").html(_self.desc);
+                $("#" + this.domId).find("strong").html(_self.money);
+                wxParam.title = _self.share;
+                wxParam.desc = _self.desc;
+                isAllowShare = true;
+            });
+        });
+    }
+    Price.prototype.run = function () {
+        var $self = $(this.dom);
+        this.top += this.speed;
+        if (this.speed <= 0.22) {
+            this.speed += this.G;
+        }
+        this.left += this.leftSpeed;
+        if (this.scale < 1) {
+            this.scale += 0.02;
+        } else {
+            this.scale = 1;
+        }
+        //-webkit-transform: translate(0, -50px);
+        //$(this.dom).css("left", this.left + "rem").css("-webkit-transform", "scale(" + this.scale + ", " + this.scale + ") translate3d(0, " + this.top + "rem,0) ");
+        $(this.dom).css("left", this.left + "rem").css({ "-webkit-transform": "translate3d(0, " + this.top + "rem,0) " }).find("img").css({ "width": (this.scale) * 100 + "%" });
+        if (this.top > document.documentElement.clientWidth / 20) {
+            document.getElementById("gamePage").removeChild(this.dom);
+            priceList.remove(this);
+            delete this;
+        }
+    }
+    _mApp.getInfo(function (data) {
+        if (data == "" || data == null || data == undefined) { Trip("对不起，钱包君打盹了，请重新进入试试吧~"); }
+        var userInfo = eval("(" + data + ")");
+        Config["auth"] = userInfo.auth;
+
+        $("#J_openBtn").remove();
+        window.JdWalletShareCallback = function (args) {
+            if (!isAllowShare) { return false; }
+            if (args == 'SUCCESS') {
+                initPrizeResult({ 'auth': Config.auth, 'entranceId': Config.entranceId });
+
+                /*requestAjax(baseUrl + "/marketing/gameprize/index?timer=" + Math.random(), {}, {
+                    'auth': Config.auth,
+                    'entranceId': Config.entranceId
+                }, function (data) {
+                    if (data.code == "A00000") {
+                        if (data.data.mobile) {
+                            phonePage.show();
+                        } else {
+                            prizeResultPage.show(function () {
+                                initPrizeResult($("#" + this.domId), data);
+                            });
+                        }
+                    } else if (data.code == "A00003") {
+                        prizeResultPage.show(function () {
+                            $("#" + this.domId).find(".priceShowWrap_2,.descDiv2").show();
+                        });
+                    } else {
+                        openAlert("", data.msg);
+                    }
+                    isAllowShare = false;
+                });*/
+            }
+        };
+        window.shareCallback = function () {
+            try {
+                _mApp.share({
+                    url: baseUrl + "/marketing/entrance?entranceId=" + Config.entranceId,
+                    title: wxParam.title,
+                    desc: wxParam.desc,
+                    channel: 'WX',
+                    callback: "JdWalletShareCallback"
+                })
+            } catch (e) { };
+        };
+        if (mAppConfig.inAndroid) {
+            _mApp.setTitle("看我礼不礼你");
+            _mApp.setMenu(
+                [
+                    {
+                        "menuTitle": "分享",
+                        "menuAction": "shareCallback"
+                    }
+                ]
+            )
+        }
+        if (mAppConfig.inIos) {
+            _mApp.setTitle("看我礼不礼你");
+            var timer = setInterval(function () {
+                if (window.WebViewJavascriptBridge) {
+                    _mApp.setMenu(
+                        [
+                            {
+                                "menuTitle": "分享",
+                                "menuAction": "shareCallback"
+                            }
+                        ]
+                    )
+                    clearInterval(timer);
+                }
+            }, 100)
+        }
+
+    });
+    window.jdWalletReady = function (callback) {
+        var me = this,
+           UA = window.navigator.userAgent,
+           isIosUA = /iPad|iPhone|iPod/.test(UA),
+           isWalletClientUA = /WalletClient/.test(UA),
+           clientInfo = {};
+
+        if (!callback || typeof callback !== 'function') throw '必要参数`callback`错误';
+
+        //判断是否是在 京东钱包 Android 客户端内
+        if (typeof window.android === 'object' && isWalletClientUA) {
+            clientInfo.name = 'android';
+            clientInfo.isInApp = true;
+            callback.call(this, clientInfo);
+
+            //判断是否是在 iOS 浏览器
+        } else if (isIosUA) {
+            //在APP里面
+            if (isWalletClientUA) {
+
+                clientInfo.name = 'ios';
+                clientInfo.isInApp = true;
+                callback.call(this, clientInfo);
+            } else {
+                //IOS APP 第一次取不到UA信息，尝试每100ms获取一次，总共10次
+                tryToGetClientInfo(10, 100);
+            }
+        } else {
+            callback.call(this, clientInfo);
+        }
+
+        function tryToGetClientInfo(times, interval) {
+            var i = 0;
+            (function checkStatus() {
+
+                timmer = setTimeout(function () {
+
+                    if (isWalletClientUA) {
+                        clientInfo.name = 'ios';
+                        clientInfo.isInApp = true;
+                    }
+                    if (!clientInfo.isInApp && i < times) {
+                        checkStatus();
+                    } else {
+                        clearInterval(timmer);
+                        callback.call(me, clientInfo);
+                    }
+                    i++;
+                }, interval);
+            }());
+        }
+
+        document.addEventListener('WebViewJavascriptBridgeReady', function () {
+            clientInfo.name = 'ios';
+        }, false);
+    }
+    indexPage.show();
+    
+    //urlRoleCommon.loadDefaultActive();
+    //Trip("dddddd", { timeout: 50000 });
+    //window.setTimeout(function () {
+    //    if (!Config.wxOpenId && !Config.auth) {
+    //        openAlert("提示", "请在微信或者京东钱包中参加此活动哦~", [{
+    //            name: "go", fn() {
+    //                urlRoleCommon.goActive("#p_gamePage", function (page) { alert(page.domId); this.closeAlert(); });
+    //            }
+    //        }, {
+    //            name: "tz", fn() {
+    //                history.back();
+    //                //urlRoleCommon.goActive("#p_indexPage");
+    //            }
+    //        }]);
+    //    }
+    //}, 500);
+</script>
+

@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.js"></script>
+    <title></title>
+    <style>
+        html, body { height: 100%; background: #eee; color: #333; font-family: 'Microsoft YaHei'; font-size: 16px; margin: 0; height: 100%; width: 100%; }
+        body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin: 0; padding: 0; }
+
+        .jshop-sku-price-hint, .tryme, #m_common_header, .download-jrApp { display: none !important; }
+        a, img { -webkit-touch-callout: none; }
+        /*body { margin: 0; -webkit-user-select: none; user-select: none; -ms-touch-action: none; }*/
+
+        .bgSize-full { background-size: 100% 100% !important; }
+        .bgSize-cover { background-size: cover !important; }
+        .bgSize-contain { background-size: contain !important; }
+        .bgSize-none { background-size: auto; }
+        .brn { background-repeat: no-repeat !important; }
+        .bgsize100 { background-size: 100% 100%; }
+        .w100 { width: 100% !important; }
+        .h100 { height: 100% !important; }
+        .tl { text-align: left; }
+        .tc { text-align: center; }
+        .tr { text-align: right; }
+        .center { margin: 0 auto; left: 0; right: 0; }
+        .phoneView { position: relative; width: 100%; min-height: 100%; overflow: auto; background-size: cover; background: #fff; overflow: hidden; }
+        html, body { height: 100%; width: 100%; }
+        .page { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+            .page content { display: block; height: 100%; overflow: auto; -webkit-overflow-scrolling: touch; }
+            .page.out { display: none; }
+        .buttonsWrap { width: 100%; position: absolute; }
+            .buttonsWrap .buttonWrap { width: 50%; position: relative; float: left; }
+        .buttonWrap { position: absolute; width: 50%; text-align: center; top: 0; left: 0; height: 3rem; padding: 0; }
+            .buttonWrap button { border: 0; margin: 0; padding: 0; width: 100%; height: 100%; display: inline-block; background: #fff; font-size: 1.5em; -webkit-transition: all 0.3s ease-out;}
+            .buttonWrap .transparent { background-color: transparent; }
+            .buttonWrap button:active {  -webkit-transform: scale(0.9,0.9); background:rgba(0,0,0,0.5);background-position:bottom;background-size:100%}
+
+        
+    </style>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="page_v1" class="page in" role="homePage">
+        <content>
+            <div guid="mainScreen" class="phoneView bgSize-full" style="background-image: none; background-color: rgb(88, 15, 166);">
+                <div class="bgArea center brn bgSize-full" dragset="none" zoomset="x,y" guid="p1_v1_m1_85842613" m="m1" con="true" ratio="1334,750" style="height: 565.616px; background-image: url('http://img13.360buyimg.com/cms/jfs/t2860/151/1645012442/160590/cc35f88/574555f6Ndaf6f5cc.jpg');"><span zoom="true" class="cu-z"></span><div class="buttonWrap center" dragset="y" guid="p1_v1_m2_17904347" m="m2" style="top: 84.6%; height: 52px; width: 189px;"><button class="bgSize-full" style="font-size: 1.5rem; background-image: url('http://img13.360buyimg.com/cms/jfs/t2641/100/1666146988/11410/6e82b9db/574556a8Nd1982a16.png'); background-color: transparent;"></button><span zoom="true" class="cu-z"></span></div></div>
+            </div>
+        </content>
+    </div>
+    
+    <script>
+        var models = {};
+        var modelGuids = function (guid) {
+            models[guid] = $("*[guid=" + guid + "]");
+        }
+        var mk_m = (function () {
+            var result = {};
+            result.initHeight = function (dom) {
+                var r = $(dom).attr("ratio").split(",");
+                var ratio = parseInt(r[0]) / parseInt(r[1]);
+                var height = $(dom).width() * ratio;
+                $(dom).height(height);
+            }
+            return result;
+        })();
+    </script>
+    <script>
+        (function (guid, data) {
+            modelGuids(guid);
+        })('mainScreen', eval("({})"));
+        (function (guid, data) {
+            mk_m.initHeight($("div[guid=" + guid + "]")[0]);
+            modelGuids(guid);
+        })('p1_v1_m1_85842613', eval("({})"));
+        (function (guid, data) {
+            modelGuids(guid);
+            function is_weixn() {
+                var ua = navigator.userAgent.toLowerCase();
+                if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                    alert("true");
+                    return true;
+                } else {
+                    alert("false");
+                    return false;
+                }
+            }s
+        })('p1_v1_m2_17904347', eval("({})"));
+
+
+        var topicData = [
+            { index: 1, body: "钱包内可以支持上线充值", key: "true", weak: "" }
+        ];
+    </script>
+
+</body>
+</html>

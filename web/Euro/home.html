@@ -1,0 +1,803 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta charset="utf-8" />
+    <title>竞猜欧洲杯瓜分10亿礼金</title>
+    <style>
+        html, body {  color: #333; font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif; margin: 0; height: 100%; width: 100%; }
+        body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin: 0; padding: 0; }
+        input, button, select, textarea { outline: none; }
+        a, img { -webkit-touch-callout: none; }
+        body { background: url(//img13.360buyimg.com/cms/jfs/t2668/343/2514209588/22193/c61d62df/57691283N0a0ee18d.gif); }
+        .bg2 { overflow: hidden; }
+
+        .matchWrap { height: 0.45rem; background: url(//img11.360buyimg.com/cms/jfs/t2869/105/2496558304/63080/678a2fd6/5769128eNce26c1eb.png) no-repeat; background-position-y: 0.09rem; background-position-x: 55%; background-size: 65%; }
+            .matchWrap .matchTitle { text-align: center; height: .1rem; line-height: .1rem; color: #c8ae81; font-weight: normal; font-size: 0.035rem; }
+        .matchBox { display: -webkit-box; position: relative; height:0.34rem }
+            .matchBox .item { -webkit-box-flex: 2; text-align: center; overflow: hidden; color: #fff;overflow:hidden }
+                .matchBox .item span { width: .16rem; height: .16rem; border-radius: .16rem; overflow: hidden; display: inline-block; border: solid 0.015rem rgba(0,0,0,0.3); }
+                .matchBox .item div label { display: none; }
+                .matchBox .item.choose div, .matchBox .item.choose div label { color: #f9ed12; display:inline-block; }
+                .matchBox .item.choose div label { width: 0.20rem; height: 0.065rem; }
+                .matchBox .item.choose span { /*border-color: #387e1e;*/border-color:#f9ed12 }
+                .matchBox .item.choose button { display: none !important; }
+                .matchBox .item div { padding-top: 0.03rem; overflow:hidden;line-height:0.07rem}
+                .matchBox .item button { background: -webkit-linear-gradient(#39891c, #387e1e); width: 0.20rem; height: 0.065rem; border: 0; padding: 0; color: #fff; border-radius: 0.006rem; display: block; margin: 0 auto; }
+                .matchBox .item h4 { font-weight: normal; color: #c8ae81; }
+                .matchBox .item span img { width: 110%; height: 110%; margin-left: -5%; margin-top: -5%; }
+            .matchBox .item_center { -webkit-box-flex: 3; overflow: hidden; text-align: center; color: #fff; position: relative; width: 17%; height:0.325rem}
+                .matchBox .item_center span { position: absolute; bottom: 0; height: 0.047rem; left: 0; width: 100%; text-align: center; font-size: 0.035rem; }
+
+        .phoneView { overflow: initial !important; }
+        .page { min-height: 100% !important; height: auto !important; }
+
+        .unMatchWrap { padding: 0.08rem 0; text-align: center; }
+            .unMatchWrap > div { display: inline-block; width: 32%; color: #c8ae81; text-align: center; }
+                .unMatchWrap > div span { display: inline-block; width: 90%; background-size: 100% 100%; overflow: hidden; height: 0.2rem; }
+                    .unMatchWrap > div span h5 { color: #fff; font-size: 0.03rem; margin-top: 50%; font-weight: normal; }
+                .unMatchWrap > div h4 { font-weight: normal; font-size: 0.009rem; line-height: 0.2rem; }
+        .phoneView { overflow: initial !important; }
+
+        .matchResultList { list-style: none; color: #c8ae81;  }
+            .matchResultList li { width: 95%; line-height: 0.07rem; margin-left: 3%; }
+                .matchResultList li.choose { color: #fff17e; }
+                .matchResultList li img { height: 0.06rem; vertical-align: middle; }
+        #MatchedList { padding:0.02rem 0}
+
+        .alertWrap { position: fixed; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 8999; }
+            .alertWrap .alert { width: 80%; display: table; overflow: auto; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: #44932e; border-radius: 0.03rem; -webkit-transform: scale(0.8, 0.8); opacity: 0; -webkit-transition: all 0.2s ease-out; z-index: 20000; }
+            .alertWrap .alertActive { opacity: 1; -webkit-transform: scale(1, 1) !important; }
+            .alertWrap .alert h1 { font-size: 0.05rem; text-align: center; line-height: 0.08rem; color: #fff17e; }
+                .alertWrap .alert h1 div { overflow: hidden; }
+
+            .alertWrap .alert span { font-size: 0.04rem; padding: .03rem; padding-bottom: 0.03rem; display: block; text-align: center; color: #fff17e; }
+            .alertWrap .alert .buttonWrap { width: 100%; height: .12rem; border-radius: 0 0 0.03rem 0.03rem; overflow: hidden; bottom: 0 !important; position: initial; }
+            .alertWrap .alert button { border: 0; border-top: solid 1px #367625; background: #44932e; width: 50%; float: left; height: .12rem; font-size: .035rem; color: #fff17e; }
+                .alertWrap .alert button:active { background: #2a611a; }
+                .alertWrap .alert button:first-child { border-radius: 0 0 0 0.03rem; }
+                .alertWrap .alert button:nth-child(2n) { border-left: solid 1px #367625; border-radius: 0 0 0.03rem 0; }
+            .alertWrap .singleBtu { border-radius: 0 0 0.03rem 0.03rem !important; width: 100% !important; }
+        .RoleTextWrap span.close { background:url(//img14.360buyimg.com/cms/jfs/t2722/50/2561879166/20804/f30bd46d/576a362dN7c6a0239.png) center no-repeat;
+                                   background-size: 70% 70%; }
+            .RoleTextWrap span.close:active {-webkit-animation: round 0.4s linear infinite; }
+            .RoleTextWrap span.close img { display:none}
+
+            .alertWrap p { font-weight: normal; font-size: 0.03rem;color:#344e39;position:absolute;width:100%;bottom:0.05rem;left:0;text-align:center }
+        .alertImg { width: 0.15rem; height: 0.15rem; margin-top: 0.02rem; border-radius: 0.15rem; border: solid 0.01rem #29581c; overflow: hidden; text-align: center; display: inline-block !important; }
+        .alertWrap .alert h1 img { width: 110%; height: 110%; margin-top: -5%; margin-left: -5%; }
+
+        button { outline: none; }
+        .floatWindow { width: 60%; min-height: 0.05rem; display: table; margin: auto; overflow: auto; position: absolute; z-index: 100000; top: 0; left: 0; bottom: 0; right: 0; background: rgba(51, 51, 51, 0.85); color: #fff; text-shadow: 0 0 transparent; border: solid 1px #666; border-radius: 0.03rem; opacity: 0; font-size: 0.05rem; line-height: .08rem; -webkit-transition: all 0.3s ease-out; }
+        .floatWindow_bottom { top: auto; bottom: 5%; }
+        .floatWindow_top { bottom: auto; top: 5%; }
+        .floatWindow h2 { width: 100%; text-align: center; }
+        .floatWindow p { border: solid 0px #000; margin: 0.03rem; font-size: 0.07rem; text-align: center; line-height: 0.02rem; }
+        .floatWindow.showFloat { opacity: 1; width: 50%; }
+        /**/
+
+        .mainHeaderBg { width: 100%; background: url(//img10.360buyimg.com/cms/jfs/t2791/182/2612661489/95057/fc6d0ee4/576ab1e3N56527554.jpg) no-repeat; background-size: 100%; 
+                        height: 1.3rem; -webkit-transform: scale(1.5, 1.5);  position: relative; }
+            .mainHeaderBg.effect { -webkit-transform: scale(1, 1); opacity: 1;-webkit-transition: all 0.5s ease-out; }
+            .mainHeaderBg .mb { position: absolute; left: 0; top: 0; width: 100%; height: 90%; background: -webkit-linear-gradient(#000000, transparent); opacity: 1;}
+                .mainHeaderBg .mb.effect { opacity: 0; -webkit-transition: all 0.8s ease-out;  }
+        .mainHeaderBg .logo { position:absolute;left:0.04rem;top:-0.12rem; width:0.28rem;display:none}
+            .mainHeaderBg .logo img { width:100%;}
+        .mainLoad { height: .3rem; width: 100%; background: rgba(51,51,51,0); z-index: 99; position: absolute; left: 0; top: 0; bottom: 0; margin: auto; -webkit-transform: scale(1,1); }
+            .mainLoad div { margin: 0 auto; color: #fff; font-size: .04rem; text-align: center; margin-top: 22%; }
+            .mainLoad.effect { -webkit-transform: scale(1,0); opacity: 0.5; -webkit-transition: all 0.3s linear; }
+        .fontTitle { width: 100%; height: 0.3rem; background: url(//img10.360buyimg.com/cms/jfs/t2719/277/2547730717/210303/f0515edc/57691283N6728f009.png); background-size: 100% 100%; 
+                     -webkit-transform: translate3d(0,150%,0) scale(0.8,0.8); opacity: 0; text-align: center; position: relative; z-index: 200; }
+            .fontTitle.effect { -webkit-transform: translate3d(0,50%,0) scale(1,1); opacity: 1; -webkit-transition: all 0.4s linear; }
+            .fontTitle div { position: absolute; bottom: -0.04rem; -webkit-transform: translate3d(0,220%,0); font-size: .035rem; width: 100%; height: 0.18rem; opacity: 0; text-align: center; }
+                .fontTitle div img { width:100%}
+                /*.fontTitle div:first-child { bottom: -50%; }*/
+                .fontTitle div:first-child.effect { opacity: 1; -webkit-transition: all 0.4s linear; -webkit-transform: translate3d(0,85%,0); }
+                .fontTitle div:nth-child(2).effect { opacity: 1; -webkit-transition: all 0.4s linear; -webkit-transform: translate3d(0,180%,0); }
+                .fontTitle div span { padding: 0 0.05rem; line-height: 0.055rem; height: 0.05rem; color: #333; background: #ffed7e; border-radius: 0.5rem; display: inline-block; margin-top: 0.01rem; }
+            .fontTitle div:nth-child(3) { position: absolute; bottom: -0.22rem; left: 0; right: 0; height: 0.06rem;opacity: 1;  -webkit-transform: translate3d(0,0%,0); }
+            .fontTitle div:nth-child(3).effect {opacity: 1;  }
+            .fontTitle button { background: rgba(255,239,94,0.8); border: 0; padding: 0; -webkit-transform: scale(0,1); font-size: .035rem; height: 0.06rem; margin: auto; width: 0.23rem; border-radius: 0.03rem; line-height:0.06rem }
+                .fontTitle button.effect { -webkit-transform: scale(1,1); -webkit-transition: all 0.2s linear; }
+
+
+        .football { width: .1rem; height: .1rem; border-radius: .1rem; z-index: 100; position: absolute; left: 0; right: 0; margin: auto; top: 0; bottom: 0; }
+            .football span { position: absolute; top: 0; width: .1rem; height: .1rem; border-radius: .1rem; background: url(//img10.360buyimg.com/cms/jfs/t2887/327/2569489667/46349/7acc8869/576a7a78N2f028f69.png) center; background-size: 110% 110%; box-shadow: 0 0 0.01rem #ffd800; -webkit-animation: round 1s linear infinite; }
+            .football.dropEffect3 { -webkit-transform: translate3d(0,-100%,0) scale(0.4,0.4) !important; }
+            .football.dropEffect1 { -webkit-animation: drop 1.7s linear; opacity: 0; }
+            .football.dropEffect2 { -webkit-transform: translate3d(0, 0%,0) scale(0.4,0.4); -webkit-transition: all 0.4s linear;}
+                .football.dropEffect2 span { -webkit-animation: none; }
+        .flyItem { background: url(https://img12.360buyimg.com/cms/jfs/t2875/197/1547759763/14315/a72422ce/5742b30dN0267a434.png); border: solid 1px #000; position: fixed; width: 0.2rem; height: 0.0639rem; top: 71px; background-position: 0 0; -webkit-animation: fly1 10s linear; background-size: 100%; z-index: 150; }
+        #loading { display: none !important; }
+
+        .activityRole { position: absolute; width: 0.7rem; text-align: center; height: 0.05rem; line-height: 0.05rem; }
+            .activityRole a { text-decoration: none; }
+        .activityRoleTextWrap { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 800; }
+            .activityRoleTextWrap > div { background: #fff; position: absolute; z-index: 8001; -webkit-transform: translate(0, -50px); top: 0; bottom: 0; right: 0; left: 0; margin: auto; -webkit-transition: all 0.2s ease-out; opacity: 0; }
+            .activityRoleTextWrap .close { position: absolute; z-index: 600; width: 0.12rem; height: 0.12rem; right: -0.04rem; top: -0.04rem; z-index: 8002; }
+                .activityRoleTextWrap .close img { width: 100%; height: 100%; }
+        .RoleTextWrap { width: 90%; position: relative; height: 0.95rem; border-radius: 0.01rem; text-align: left; line-height: 0.042rem;font-size:0.032rem;
+                        background:#fff url(//img10.360buyimg.com/cms/jfs/t2635/326/2574205068/16136/8f8dc56c/576a48e5Ncb1e3212.jpg) center top no-repeat !important;background-position-y:0.03rem !important;
+                        background-size:50% 8% !important;
+        }
+            .RoleTextWrap > div { height: 100%; max-height: 1.8rem; overflow: auto; margin: 0.15rem 0.02rem 0.02rem 0.02rem; padding: 0.02rem; -webkit-overflow-scrolling: touch;height: 0.7rem; }
+            .RoleTextWrap > div::-webkit-scrollbar-track { background-color: #b46868; } /* 滚动条的滑轨背景颜色 */
+            .RoleTextWrap > div::-webkit-scrollbar-thumb { background-color: rgba(0, 0, 0, 0.2); } /* 滑块颜色 */
+            .RoleTextWrap > div::-webkit-scrollbar-button { background-color: #7c2929; } /* 滑轨两头的监听按钮颜色 */
+            .RoleTextWrap > div::-webkit-scrollbar-corner { background-color: black; }
+
+
+        .showRole { -webkit-transform: translate(0, 0) !important; opacity: 1 !important; }
+
+        @-webkit-keyframes fly1 {
+            0% { -webkit-transform: translate3d(0,0,0) rotate(0deg); }
+            100% { -webkit-transform: translate3d(0,1rem,0) rotate(720deg); opacity: 0; }
+        }
+        .roundEff { -webkit-animation: round 1s linear infinite;}
+        @-webkit-keyframes round {
+            0% { -webkit-transform: rotate(0deg); }
+            50% { -webkit-transform: rotate(180deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @-webkit-keyframes drop {
+            0% { -webkit-transform: translate3d(0,-100%,0) scale(0.4,0.4); -webkit-animation-timing-function: ease-out; }
+            20% { -webkit-transform: translate3d(0,-400%,0) scale(0.7,0.7); opacity: 1; -webkit-animation-timing-function: ease-in; }
+            60% { -webkit-transform: translate3d(0,300%,0) scale(0.9,0.9); opacity: 1; -webkit-animation-timing-function: ease-out; }
+            70% { -webkit-transform: translate3d(0,150%,0) scale(0.9,0.9); opacity: 1; -webkit-animation-timing-function: ease-in; }
+            80% { -webkit-transform: translate3d(0,300%,0) scale(0.9,0.9); opacity: 1; }
+            100% { -webkit-transform: translate3d(0,-300%,0) scale(1.5,1.5); -webkit-animation-timing-function: ease-in; }
+        }
+        #palyingList { padding-bottom:0.06rem}
+        .playingWrap { width: 100%; font-size: 0.035rem; z-index: 220; margin-bottom: 0.04rem; display: none;-webkit-transform: translate3d(0, -0.54rem,0); }
+            .playingWrap h2 { display: block; height: 0.12rem; font-size: 0.04rem; background: -webkit-linear-gradient(rgba(22,22,22,0.7), rgba(5,5,5,0.7));/*background: rgba(0,0,0,0.7)*/; 
+                               margin: 0 auto; border-radius: 0.01rem 0.01rem 0 0; 
+                              text-align: center; line-height: 0.11rem; color: #fff17e; width: 90%;-webkit-transform: scale(1,0); }
+                .playingWrap h2.effect { -webkit-transform: scale(1,1);/*-webkit-transition: all 0.3s linear;*/}
+            .playingWrap > div { background: rgba(0,0,0,0.4); width: 90%; min-height:0.3rem;margin: 0 auto; border-radius: 0 0 0.01rem 0.01rem; -webkit-transform: scale(0,1);
+                                 background-image: url(//img12.360buyimg.com/cms/jfs/t2881/161/2555783808/14147/abfeb5bf/576a767dN67e6467f.jpg);
+                                 background-position: center top; background-repeat: no-repeat; background-size: 100%;
+            }
+                .playingWrap > div.effect {-webkit-transform: scale(1,1);/*-webkit-transition: all 0.3s linear;*/ }
+
+        .bottomWrap { width: 100%; padding: 0; font-size: 0; text-align: center; margin-bottom: 0.05rem; display: none;  -webkit-transform: translate3d(0, -0.54rem,0);}
+            .bottomWrap > img { margin: 0; }
+            .bottomWrap a { width: 90%; display: inline-block; margin-bottom: 0.02rem; }
+                .bottomWrap a img { width: 100%; }
+            /*.playingWrap.effect, .bottomWrap.effect { opacity: 1; -webkit-animation: up 0.7s ease-out; -webkit-transform: translate3d(0, -0.54rem,0); }*/
+
+        @-webkit-keyframes up {
+            0% { -webkit-transform: translate3d(0, 0,0); }
+            50% { -webkit-transform: translate3d(0, -0.57rem,0); }
+            100% { -webkit-transform: translate3d(0, -0.54rem,0); }
+        }
+        .hide { display:none !important}
+        #hd_roleText_guid { font-size: 0.02rem;  }
+    </style>
+</head>
+<body class="bg2">
+    <div class="mainHeaderBg">
+        <div class="logo"><img src="https://img14.360buyimg.com/cms/jfs/t2776/116/2596728116/36746/fe81f3ed/576a98b1N39cf5ea2.jpg" /></div>
+        <div class="mb"></div>
+        <div class="fontTitle">
+            <div><img src="https://img11.360buyimg.com/cms/jfs/t2929/4/852134492/62277/341f4398/576a98b0Ne66e02f9.png"/></div>
+            <!--<div><span>预测正确最多平分10亿旺财理财金</span></div>-->
+            <div><button id="activityRole">活动规则</button></div>
+        </div>
+    </div>
+    <div class="mainLoad">
+        <div>0%</div>
+    </div>
+    <div class="football"><span></span></div>
+
+    <div class="playingWrap">
+        <h2 id="playingTitle">1/4决赛 竞赛中</h2>
+        <div id="palyingList">
+            <!--<div class="matchWrap">
+                <h4 class="matchTitle">06-31 03:00 场次28</h4>
+                <div class="matchBox">
+                    <div class="item">
+                        <span>
+                            <img src="比利时.jpg" />
+                        </span>
+                        <h4>法国</h4>
+                        <div>
+                            <button>支持一下</button>
+                        </div>
+                    </div>
+                    <div class="item_center">
+                        <span>
+                        </span>
+                    </div>
+                    <div class="item">
+                        <span>
+                            <img src="比利时.jpg" />
+                        </span>
+                        <h4>罗马利亚</h4>
+                        <div>
+                            <button>支持一下</button>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <div class="playingWrap">
+        <h2>未开始场次</h2>
+        <div id="unPlayList">
+            <div class="unMatchWrap">
+                <!--<div>
+                    <span name="gameType" ratio="580,750" style="background-image:url(img/p1.png)">
+                        <h5>7月1日-7月3日</h5>
+                    </span>
+                </div>
+                <div>
+                    <span name="gameType" ratio="580,750" style="background-image:url(img/p1.png)">
+                        <h5>7月1日-7月3日</h5>
+                    </span>
+                </div>
+                <div>
+                    <span name="gameType" ratio="580,750" style="background-image:url(img/p2.png)">
+                        <h5>7月1日-7月3日</h5>
+                    </span>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="playingWrap" style="margin-bottom:0" id="playingWrap3">
+        <h2>已结束</h2>
+        <div id="MatchedList">
+            <!--<ul class="matchResultList">
+                <li>1/8 法国VS罗马利亚 2:0 未参与</li>
+                <li class="choose">1/8 法国VS罗马利亚 2:0 猜错了</li>
+                <li>1/8 法国VS罗马利亚 2:0 未参与</li>
+                <li class="choose">1/8 法国VS罗马利亚 2:0 <img src="http://img12.360buyimg.com/cms/jfs/t2941/170/842054113/9990/c25a7e4d/57692ff1N9c043a8b.png" /></li>
+                <li>1/8 法国VS罗马利亚 2:0 未参与</li>
+                <li class="choose">1/8 法国VS罗马利亚 2:0 猜错了</li>
+                <li>1/8 法国VS罗马利亚 2:0 未参与</li>
+            </ul>-->
+        </div>
+    </div>
+    <div class="bottomWrap">
+        <img style="width:100%" src="//img14.360buyimg.com/cms/jfs/t2803/24/2497884254/64868/3d15424a/576931d2N8289dfa2.png" />
+        <a href="javascript:;" role="adv_1" class="hide"><img tsrc="//img13.360buyimg.com/cms/jfs/t2719/271/2564315668/43747/f5da4a2e/57691283N6e475196.png" /></a>
+        <a href="javascript:;" role="adv_2"><img tsrc="//img11.360buyimg.com/cms/jfs/t2692/253/2629212285/88075/dfc6839f/576bad78N636b348c.png" /></a>
+        <a href="javascript:;" role="adv_3"><img tsrc="//img14.360buyimg.com/cms/jfs/t2590/317/2599879977/78059/78a83686/576bad78Nda5f6730.png" /></a>
+        <a href="javascript:;" role="adv_4"><img tsrc="//img14.360buyimg.com/cms/jfs/t2587/240/2558078240/67392/3d87714a/576bad78N4be7e5c2.png" /></a>
+    </div>
+    <div id="hd_roleTextguid" class="hide">
+        <div>
+            <div>活动时间：2016年6月21日-2016年7月11日 （本活动所列时间均为北京时间）</div>
+            <div>活动名称：荣耀欧洲杯！猜胜负逐鹿10亿冠军礼金（旺财理财金）</div>
+            <div>活动内容：活动期间参与竞猜欧洲杯淘汰赛阶段比赛(1/8、1/4、半决赛、决赛)，预测对场次正确胜负最多的用户有资格平分10亿旺财理财金。</div>
+            <div>
+                <br>
+            </div>
+            <div>活动规则：</div>
+            <div>1、用户可参与竞猜欧洲杯淘汰赛1/8、1/4、半决赛、决赛4个比赛阶段全部15场比赛，预测正确胜负场次最多的用户有资格平分10亿元旺财理财金。同一用户获得的理财金收益最多不超过4999元人民币。</div>
+            <div>
+                <br>
+            </div>
+            <div>2、每阶段淘汰赛，用户参与竞猜任意一场，即可获得10000元旺财理财金虚拟本金一份，同一比赛阶段同一用户仅可获得一份旺财理财金。</div>
+            <div>
+                <br>
+            </div>
+            <div>3、活动结束后5个工作日内，对获奖结果进行公示，请留意京东钱包公告。</div>
+            <div>
+                <br>
+            </div>
+            <div>4、每日8点-9点为活动数据维护时间，用户不可进行操作，各阶段比赛场次胜负以官方公布的比赛结果为准。</div>
+            <div>
+                <br>
+            </div>
+            <div>5、用户获得的理财金将在活动结束后10个工作日内发放, 你可进入京东钱包-旺财-我的-持有中查询。</div>
+            <div>
+                <br>
+            </div>
+            <div>6、竞猜方式：</div>
+            <div>1)活动竞猜时间:2016年6月23日9点至2016年7月11日2点，每场比赛竞猜截止时间以具体场次为准。</div>
+            <div>2)6月23日9点开始,通过活动页面上每阶段的比赛对阵表，用户可支持每场比赛中的任意球队获胜。</div>
+            <div>3)每场比赛竞猜截止时间见《场次明细》。竞猜截止前，用户可以随时更改支持球队，且以用户最后一次选择支持的球队为准；比赛开始前1小时内、已结束场次、进行中场次不可进行竞猜操作。</div>
+            <div>4)每阶段比赛全部场次结束后方可开始下一阶段的场次竞猜。</div>
+            <div>5)	《场次明细》<br/>
+                <img style="width:96%;margin-left:2%" src="https://img10.360buyimg.com/cms/jfs/t2959/163/862256994/111288/4fad65d2/576aa3d7Nf184bdac.jpg"/>
+            </div>
+            <div>6)每场比赛胜负以官方（网址：<a href="http://www.uefa.com/uefaeuro-finals/">http://www.uefa.com/uefaeuro-finals/</a>）公布的最终比分为准。</div>
+            <div>7)用户竞猜胜负和每场比赛胜负会在活动页面中展示，最终结果以页面记录为准。</div>
+            <div>
+                <br>
+            </div>
+            <div>7、理财金使用规则：</div>
+            <div>1)活动期间用户均获得年化收益率3.86%,持有期限1天的旺财理财金.；</div>
+            <div>2)理财金需购买旺财任意产品，单笔满1000元方可激活。理财金有效期为3个自然日，自到账之日起算。在旺财理财金有效期内成功购买旺财任意产品满1000元即可激活生效（理财金生效日（D日）），逾期未激活的，视为放弃领奖。购买成功的定义为：订单状态显示为持有中。</div>
+            <div>3)理财金为京东旺财虚拟金额，不能进行提现、消费、转赠、为他人付款等其他操作。</div>
+            <div>4)理财金体验期为1个自然日，自理财金生效之日（含）起算。体验期届满后理财金收回，您可享受1天收益，收益以京东旺财实际显示为准。</div>
+            <div>5)理财金收益计算方法：理财金份额*年化收益/365*1。理财金收益到账规则：D日：理财金到账且生效， D+1日理财金收益可见，D+2日理财金收益结转至钱包账户余额中。</div>
+            <div>6)理财金到期收益在京东钱包-我的页-账户余额中查询收益记录。</div>
+            <div>
+                <br>
+            </div>
+            <div>8、同一京东钱包账户、手机号、身份证号、京东账户、微信账户、银行卡号、终端设备等与用户身份相关的信息，其中任意一项或者多项存在相同、相似或非真实有效等情况的，均可能被认定为同一用户，按照活动规则中的同一用户处理。</div>
+            <div>
+                <br>
+            </div>
+            <div>9、本活动的数据以京东钱包系统记录为准，本活动规则及其未尽事宜同时受《京东钱包服务协议》及相关公告、规则约束。 </div>
+            <div>
+                <br>
+            </div>
+            <div>10、在本活动期间，如存在违规行为（包括但不限于恶意套取资金、机器作弊、虚假交易等违反诚实信用原则行为），主办方将取消您的中奖资格，并有权撤销相关违规交易和奖励，必要时追究法律责任。</div>
+            <div>
+                <br>
+            </div>
+            <div>11、如出现不可抗力或情势变更的情况（包括但不限于重大灾害事件、活动受政府机关指令需要停止举办或调整的、活动遭受严重网络攻击或因系统故障需要暂停举办的），京东钱包有权暂停或取消本次活动，并可依相关法律法规的规定主张免责。</div>
+            <div>
+                <br>
+            </div>
+            <div>12、本公司可以根据本活动的实际举办情况对活动规则进行变动或调整，相关改动或调整将公布在活动页面上，并于公布时即使生效。</div>
+            <div>
+                <br>
+            </div>
+            <div>13、本活动规则及其未尽事宜同时受《京东钱包服务协议》及相关公告、规则约束。</div>
+            <div>
+                <br>
+            </div>
+            <div>14、在法律允许的范围内，本公司对本活动有解释权。</div>
+            <div>
+                <br>
+            </div>
+            <div>此活动与Apple Inc.无关。</div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="//static.jdpay.com/basic/dist/js/m-public/??zepto.min.js,fastclick.js,mApp.js,m.js,share524.js"></script>
+<script src="activityData.js"></script>
+<script>
+    var _url = "http://plogin.m.jd.com/cgi-bin/m/mlogin?appid=100&tgId=&returnurl=https://qianbao.jd.com/p/activity/576b69e605d3474103b2f33b.htm";
+        _mApp.getInfo(function (data) {
+            userInfo = eval("(" + data + ")");
+            Config.auth = userInfo.auth;
+            if (_mApp.config().inIos) {
+                _url = encodeURIComponent(_url);
+            }
+        });
+        shareInit('欧洲杯除了激情、尖叫、射射射射射....门，还有10亿理财金！', '真正的强者，敢于直面每一次成功与失败。花生毛豆凉扎啤，电视呐喊黑眼圈，都为了荣耀和梦想。瓜分10亿理财金，for King of European！', _url, '竞猜欧洲杯瓜分10亿礼金');
+
+</script>
+<script type="text/template" id="templ_1">
+    <% for(var i=0;i<Model.length;i++){
+             if(Model[i].type==activityCommon.typeOfPlaying.key){ %>
+                        <div class="matchWrap">
+                            <h4 class="matchTitle"><%=Model[i].gameTitle %></h4>
+                            <div class="matchBox">
+                                <%
+                                    if(Model[i].chooseId==Model[i].palyer1._id){
+                                        %><div class="item choose"><%
+                                    }else{
+                                        %><div class="item"><%
+                                    }
+                                %>
+                                    <span>
+                                        <img src="<%=Model[i].palyer1.avatar %>" />
+                                    </span>
+                                    <h4><%=Model[i].palyer1.name %></h4>
+                                    <div>
+                                        <% if(Model[i].canVote){
+                                            %><button gameId="<%=Model[i].gameId %>" id="<%=Model[i].palyer1._id %>">支持一下</button><label>已支持</label><%
+                                        }else{
+                                            if(Model[i].score){
+                                                %><%=Model[i].score.split("-")[0] %><%
+                                            }else{
+                                                if(Model[i].chooseId==Model[i].palyer1._id){
+                                                    %>已支持<%
+                                                }
+                                            }
+                                        } %>
+                                        
+                                    </div>
+                                </div>
+                                <div class="item_center">
+                                    <%
+                                        if(Model[i].score!=""){
+                                            %><span>已结束</span><%
+                                        }else{
+                                            if(!Model[i].canVote){
+                                                %><span>竞猜截止</span><%
+                                            }else{
+                                                %><span>竞猜中</span><%
+                                            }
+                                        }
+                                    %>
+                                </div>
+                                <%
+                                    if(Model[i].chooseId==Model[i].palyer2._id){
+                                        %><div class="item choose"><%
+                                    }else{
+                                        %><div class="item"><%
+                                    }
+                                %>
+                                    <span>
+                                        <img src="<%=Model[i].palyer2.avatar %>" />
+                                    </span>
+                                    <h4><%=Model[i].palyer2.name %></h4>
+                                    <div>
+                                        <% if(Model[i].canVote){
+                                            %><button gameId="<%=Model[i].gameId %>" id="<%=Model[i].palyer2._id %>">支持一下</button><label>已支持</label><%
+                                        }else{
+                                            
+                                            if(Model[i].score){
+                                                %><%=Model[i].score.split("-")[1] %><%
+                                            }else{
+                                                if(Model[i].chooseId==Model[i].palyer2._id){
+                                                    %>已支持<%
+                                                }
+                                            }
+                                        } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    <%}}%>
+</script>
+<script type="text/template" id="templ_2">
+    <% for(var i=0;i<Model2.length;i++){  %>
+            <div>
+                <span name="gameType" ratio="580,750" style="background-image:url(<%=Model2[i].img %>)">
+                    <h5><%=Model2[i].date %></h5>
+                </span>
+            </div>
+        <% }%>
+</script>
+<script type="text/template" id="templ_3">
+    <ul class="matchResultList">
+        <% for(var i=0;i<Model3.length;i++){ 
+               if(Model3[i].score!=""){
+                     %><li>
+                       <% if(Model3[i].isTrue=="0"){ %><li><% }else{ %><li class="choose"><% }%>
+                            <%=(Model3[i].type+" "+Model3[i].gameTitle+" "+Model3[i].score) %> 
+                            <%
+                                    if(Model3[i].isTrue=="0"){
+                                        %>未参与<%
+                                    }else if(Model3[i].isTrue=="1"){
+                                        %>猜错了！<%
+                                    }else{
+                                        %><img src="//img12.360buyimg.com/cms/jfs/t2941/170/842054113/9990/c25a7e4d/57692ff1N9c043a8b.png" /><%
+                                    }
+                            %>
+                        </li">
+                    <%
+               }
+         }%>
+    </ul>
+</script>
+
+<script>
+    $("html").css("font-size", $(window).width()).find("body").css("font-size", 100);
+    //window.addEventListener('load', function () { FastClick.attach(document.body); }, false);
+    var load = function (progress, done) {
+        var imgList = [
+            "https://img12.360buyimg.com/cms/jfs/t2983/294/860067273/64868/3d15424a/5769128eN97bd9680.png",
+            "https://img11.360buyimg.com/cms/jfs/t2869/105/2496558304/63080/678a2fd6/5769128eNce26c1eb.png",
+            "https://img12.360buyimg.com/cms/jfs/t2881/161/2555783808/14147/abfeb5bf/576a767dN67e6467f.jpg",
+            "https://img10.360buyimg.com/cms/jfs/t2791/182/2612661489/95057/fc6d0ee4/576ab1e3N56527554.jpg",
+            "https://img10.360buyimg.com/cms/jfs/t2719/277/2547730717/210303/f0515edc/57691283N6728f009.png",
+            "https://img13.360buyimg.com/cms/jfs/t2668/343/2514209588/22193/c61d62df/57691283N0a0ee18d.gif",
+            "https://img10.360buyimg.com/cms/jfs/t2887/327/2569489667/46349/7acc8869/576a7a78N2f028f69.png",
+            "https://img12.360buyimg.com/cms/jfs/t2941/170/842054113/9990/c25a7e4d/57692ff1N9c043a8b.png",
+            "https://img14.360buyimg.com/cms/jfs/t2803/24/2497884254/64868/3d15424a/576931d2N8289dfa2.png",
+            "https://img13.360buyimg.com/cms/jfs/t2719/271/2564315668/43747/f5da4a2e/57691283N6e475196.png",
+            "https://img11.360buyimg.com/cms/jfs/t2692/253/2629212285/88075/dfc6839f/576bad78N636b348c.png",
+            "https://img14.360buyimg.com/cms/jfs/t2590/317/2599879977/78059/78a83686/576bad78Nda5f6730.png",
+            "https://img14.360buyimg.com/cms/jfs/t2587/240/2558078240/67392/3d87714a/576bad78N4be7e5c2.png",
+            "https://img14.360buyimg.com/cms/jfs/t2722/50/2561879166/20804/f30bd46d/576a362dN7c6a0239.png",
+            "https://img10.360buyimg.com/cms/jfs/t2635/326/2574205068/16136/8f8dc56c/576a48e5Ncb1e3212.jpg",
+            "https://img11.360buyimg.com/cms/jfs/t2929/4/852134492/62277/341f4398/576a98b0Ne66e02f9.png",
+            "https://img14.360buyimg.com/cms/jfs/t2776/116/2596728116/36746/fe81f3ed/576a98b1N39cf5ea2.jpg",
+            "https://img10.360buyimg.com/cms/jfs/t2959/163/862256994/111288/4fad65d2/576aa3d7Nf184bdac.jpg"
+        ];
+        var isDoneCount = imgList.length;
+        var loadIndex = 0;
+        var loadImg = function () {
+            var url = imgList[loadIndex];
+            var img = new Image();
+            var _done = function () {
+                if (loadIndex != isDoneCount - 1) {
+                    progress(parseInt((loadIndex / isDoneCount) * 100));
+                    loadIndex++;
+                    loadImg();
+                } else {
+                    progress(100);
+                    window.setTimeout(function () { done(); }, 800);
+                }
+            }
+            img.onload = function () { _done(); }
+            img.onerror = function () { _done(); }
+            img.src = url;
+        }
+        loadImg();
+    }
+    var delayCommon = function () {
+        if (arguments.length == 0) { return; }
+        var moveItem = Array.prototype.slice.call(arguments);
+        var index = 0;
+        var lostTime = 0;
+        var thisTime = moveItem[0].time;
+        var length = moveItem.length;
+        var timer = window.setInterval(function () {
+            if (lostTime == thisTime) {
+                lostTime = 0;
+                var _index = index;
+                index++;
+                moveItem[_index].fn();
+                if (index == length) {
+                    window.clearInterval(timer);
+                } else {
+                    thisTime = moveItem[index].time;
+                }
+            }
+            lostTime += 10;
+        }, 10);
+    }
+    //$(".football,.mainLoad,.mb").hide();
+    load(function (progress) {
+        $(".mainLoad div").html(progress + "%");
+    }, function () {
+        //$("body").removeClass("bg2");
+        //$(".mainHeaderBg").addClass("effect");
+        //$(".football").addClass("dropEffect2");
+        //return;
+        
+        delayCommon(
+        {
+            time: 0, fn: function () {
+                $(".mainLoad").addClass("effect");
+                $(".mainHeaderBg").show();
+            }
+        },
+        {
+            time: 600, fn: function () {
+                
+                $(".mainHeaderBg").addClass("effect");
+                $(".football").addClass("dropEffect2");
+            }
+        },
+        {
+            time: 600, fn: function () {
+                $(".mb").addClass("effect");
+            }
+        },
+        {
+            time: 1000, fn: function () {
+                $(".football").addClass("dropEffect1");
+            }
+        },
+        {
+            time: 1500, fn: function () {
+                $(".football").addClass("hide");
+                $(".fontTitle").addClass("effect");
+            }
+        },
+        {
+            time: 20, fn: function () {
+                $("body").removeClass("bg2");
+                $(".fontTitle div,.fontTitle button").addClass("effect");
+                $(".playingWrap,.bottomWrap").show();
+                laodDate();
+                window.setTimeout(function () {
+                    //$(".playingWrap h2").addClass("effect");
+                    $(".playingWrap>div,.playingWrap h2").addClass("effect");
+                    $(".logo").show();
+                    //$("#playingTitle").addClass("effect");
+                    $(".bottomWrap a>img").each(function () {
+                        $(this).attr("src", $(this).attr("tsrc"));
+                    });
+                }, 200);
+            }
+        }
+        );
+    });
+    window.requestAjax = function (url, option, data, success, complete) {
+        var _option = $.extend({
+            type: "get",
+            dataType: "json",
+            async: true,
+        }, option || {});
+        var cImg = "";
+        if ($("#loading").size() == 0) {
+            cImg = $(".alertImg").addClass("roundEff").find("img").attr("src");
+            $(".alertImg").addClass("roundEff").find("img").attr("src", "https://img10.360buyimg.com/cms/jfs/t2887/327/2569489667/46349/7acc8869/576a7a78N2f028f69.png");
+            $(".buttonWrap").css("visibility", "hidden");
+            $(".alert").find("p").removeClass("hide");
+        }
+        window.setTimeout(function () {
+            $.ajax({
+                type: _option.type,
+                dataType: _option.dataType,
+                async: _option.async,
+                url: url,
+                data: data,
+                beforeSend: function () {
+                    $("#loading").show();
+                },
+                success: function (data) {
+                    success(data);
+                },
+                complete: function () {
+                    $(".alertImg").removeClass("roundEff").find("img").attr("src", cImg);
+                    $(".buttonWrap").css("visibility", "initial");
+                    $(".alert").find("p").addClass("hide");
+                    if (complete) complete();
+                },
+                error: function (data) {
+                    alert("内部错误：" + JSON.stringify(data));
+                }
+            });
+        }, 1000);
+    }
+    var laodDate = function () {
+        Config.serverUrl = '/';
+        //构造比赛类型
+        window.activityCommon = (function (mainData) {
+            var result = {};
+            result.matchType = [
+                { key: "1/8", name: "1/8决赛", img: "", date: "6月25-6月28日" },
+                { key: "1/4", name: "1/4决赛", img: "//img12.360buyimg.com/cms/jfs/t2737/289/2528591351/21271/1217cb92/57690503Ncc72f66d.png", date: "7月1-7月4日" },
+                { key: "1/2", name: "半决赛", img: "//img12.360buyimg.com/cms/jfs/t2881/64/2576321362/22663/bf2c000d/57690504N2646b711.png", date: "7月7-7月8日" },
+                { key: "1/1", name: "决赛", img: "//img10.360buyimg.com/cms/jfs/t2647/320/2523810183/21541/df8b67a7/57690504N403729fc.png", date: "7月11日" }
+            ];
+            result.typeOfPlaying = result.matchType[0];//正在进行的淘汰赛阶段
+            //var today = Date.parse(new Date("2016-07-01T02:50:52.000Z"));
+            var today = mainData.currentTime;
+            var _t = 2467341452000, latelyGame = mainData.gamesInfo[0];
+            mainData.gamesInfo.forEach(function (item) {
+                var timestamp = Date.parse(new Date(item.startTime));
+                if (Math.abs(today - timestamp) < _t) {
+                    _t = Math.abs(today - timestamp);
+                    latelyGame = item;
+                }
+            });
+            //获取正在进行的淘汰赛阶段
+            result.matchType.forEach(function (item) {
+                if (item.key == latelyGame.type) {
+                    result.typeOfPlaying = item;
+                }
+            });
+            result.getPlayer = function (id) {
+                for (var i in mainData.playersInfo) {
+                    var item = mainData.playersInfo[i];
+                    if (item._id == id) return item;
+                }
+            }
+            //是否猜中
+            var voteResult = function (game) {
+                for (var i in mainData.voteInfo) {
+                    var item = mainData.voteInfo[i];
+                    if (item.gameId == game._id) {
+                        if (game.result == item.result) return item.result + "|2"; else return item.result + "|1";
+                    }
+                }
+                return "|0";//未参与
+            }
+            //构造正在进行的比赛数据
+            result.matchs = [];
+            mainData.gamesInfo.forEach(function (item) {
+                var _voteResult = voteResult(item).split("|");
+                result.matchs.push({
+                    gameTitle: item.title,
+                    gameId: item._id,
+                    palyer1: result.getPlayer(item.players[0]),
+                    palyer2: result.getPlayer(item.players[1]),
+                    type: item.type,
+                    result: item.result,//胜者
+                    score: item.score,//比分
+                    chooseId: _voteResult[0],//选择的队伍
+                    isTrue: _voteResult[1],//是否猜中，未参与为0，未猜中1，猜中2,
+                    canVote: item.canVote//是否过期
+                });
+            });
+            return result;
+        })(activityInfo.data);
+        var pageMod = new PageMod($("#templ_1").html(), activityCommon.matchs, function () {
+            $("#palyingList").html(this.resultHtml);
+        }, {});
+        $("#playingTitle").html(activityCommon.typeOfPlaying.name + " 竞赛中");
+        var typeIndex = activityCommon.matchType.indexOf(activityCommon.typeOfPlaying);
+        var matchType2 = activityCommon.matchType.splice(typeIndex + 1);
+        var pageMod2 = new PageMod($("#templ_2").html(), matchType2, function () {
+            $("#unPlayList .unMatchWrap").html(this.resultHtml);
+        }, { modelName: "Model2" });
+        var pageMod3 = new PageMod($("#templ_3").html(), activityCommon.matchs, function () {
+            $("#MatchedList").html(this.resultHtml);
+        }, { modelName: "Model3" });
+        //window.setTimeout(function () {
+        //    $(".playingWrap>div").addClass("effect");
+        //}, 20);
+        if ($("#MatchedList li").size() == 0) { $("#playingWrap3").hide(); }
+        $("#palyingList").delegate("button", "click", function () {
+            var _self = this;
+            var player = activityCommon.getPlayer(_self.id);
+            openAlert("<div><h5 class='alertImg'><img src=''/></h5><p class='hide'>数据加载中，请稍后...</p><div>支持" + player.name + "队", player.shortName, [{ name: "取消", fu: function () { this.closeAlert(); } }, {
+                name: "支持", fn: function () {
+                    //alert($(_self).parent(".matchWrap").size());
+                    var that = this;
+                    requestAjax(Config.serverUrl + "p/activity/postVote", { type: "post" },
+                        {
+                            "playerId": player._id,
+                            "activityId": "576b69e605d3474103b2f33b",//getParameterByName("id")
+                            "sid": getParameterByName("sid"),
+                            "auth": Config.auth,
+                            "gameId": $(_self).attr("gameId")
+                        }, function (data) {
+                            if (data.code == "1") {
+                                $(_self).parents(".matchWrap").eq(0).find(".item").removeClass("choose");
+                                $(_self).parents(".item").eq(0).addClass("choose");
+                                that.closeAlert(function () {
+                                    //Trip("你已经成功支持" + player.name + "队！~");
+                                    $(".alertImg").removeClass("roundEff");
+                                    $(".buttonWrap").show();
+                                    $(".alert").find("p").addClass("hide");
+                                });
+
+                            } else {
+                                Trip("对不起，操作失败（" + data.msg + "）");
+                            }
+                        }, function () { });
+                }
+            }]);
+            $(".alert h1 img").attr("src", player.avatar);
+        });
+        $("#activityRole").click(function () { mk_m.openActivityRole("guid"); });
+        $(".bottomWrap a").click(function () {
+            debugger
+            var role = $(this).attr("role");
+            if (role == "adv_1") {
+                //扫一扫
+                var _url = encodeURIComponent('https://sale.jd.com/m/act/krUzDfByeHQF1.html');
+                mApp({
+                    config: {
+                        url: 'https://qianbao.jd.com/p/page/download.htm?reffer=wangcai2&channel=reffer'
+                    }
+                }).start('ACTIVITY', _url);
+            }
+            if (role == "adv_2") {
+                //拍立返
+                if (_mApp.config().inAndroid) {
+                    mApp({
+                        config: {
+                            url: 'https://qianbao.jd.com/p/page/download.htm?reffer=wangcai2&channel=reffer'
+                        }
+                    }).start('PAILIFAN');
+                } else {
+                    mApp({
+                        config: {
+                            url: 'https://qianbao.jd.com/p/page/download.htm?reffer=wangcai2&channel=reffer'
+                        }
+                    }).start('NJRS');
+                }
+            }
+            if (role == "adv_3") {
+                //加油卡
+                var _url = encodeURIComponent('https://qianbao.jd.com/p/page/K4a7nJW1Hlad.htm');
+                mApp({
+                    config: {
+                        url: 'https://qianbao.jd.com/p/page/download.htm?reffer=wangcai2&channel=reffer'
+                    }
+                }).start('ACTIVITY', _url);
+            }
+            if (role == "adv_4") {
+                //特卖首页
+                var _url = encodeURIComponent('https://static.jdpay.com/m-jdsale/index.html');
+                mApp({
+                    config: {
+                        url: 'https://qianbao.jd.com/p/page/download.htm?reffer=wangcai2&channel=reffer'
+                    }
+                }).start('ACTIVITY', _url);
+            }
+        });
+      window.addEventListener('load', function () { FastClick.attach(document.body); }, false);
+    }
+</script>
+<script type="text/javascript">jQuery = $;var jaq=jaq||[];jaq.push(["account","UA-J2011-12"]);jaq.push(["domain","jr.jd.com"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src="https://jrclick.jd.com/wl.dev.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script>
+<script type="text/javascript">var jaq=jaq||[];jaq.push(["account","UA-J2011-12"]);jaq.push(["domain","jr.jd.com"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src="https://cscssl.jd.com/joya.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script>

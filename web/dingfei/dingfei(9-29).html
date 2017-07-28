@@ -1,0 +1,1047 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta content="width =device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <style>
+            #progressWrap { position:absolute;left:0;top:0;height:100%;width:100%;font-size:1rem;background:#fff;text-align:center;font-size:3em}
+        #progressWrap img {margin-top:30%}
+    </style>
+</head>
+<body>
+
+    
+    
+    <div>
+        <div id="canvas">
+            
+        </div>
+    </div>
+    <div style="" id="progressWrap">
+        <img src="http://img14.360buyimg.com/cms/jfs/t865/49/1034073230/6017/6f27d16f/556c0030N1f282f1f.gif" alt="" /><br/>
+        <span id="progress">0%</span>
+    </div>
+    
+    
+    <div class="roleWrap" id="roleWrap">
+        <div></div>
+        
+    </div>
+    <div id="share_weak"></div>
+    <div class="sharePage" id="sharePage">
+        <div class="priceWrap">
+            ￥<h2 id="h_money">50</h2>元
+        </div>
+        <div class="shareContent">
+            吓死本宝宝了！你在10s内一共顶了 <strong id="hitCount">70</strong> 次金币<br />
+            <span>手速击败了82%的全国人民</span><br />
+            可获得<b>8</b>元话费充值优惠券
+        </div>
+        <div class="btusWrap">
+            <input type="button" id="btu_share" data-role="none" value="分享领券" />
+            <input type="button" id="btu_again" data-role="none" value="再玩一次" />
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+window.isDev = true;
+
+    window.sharecode = '';
+
+    window.dataForWeixin = {
+        appId: "",
+        MsgImg: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+        TLImg: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+        url: 'http://sale.jd.com/app/act/nBFIWElyCG.html',
+        title: '超级Joy迎国庆，京东钱包送话费',
+        desc: '玩游戏，话费送不停，还有机会赢一整年话费（最高5000元）',
+        Channel: '',
+        fakeid: "",
+        callback: function () {
+            var url = isDev ? 'http://sale.jd.com/app/act/I8MstoTHxJuQC3fN.html' : 'http://sale.jd.com/app/act/bvWJG2mKL1.html',
+              //entranceid = isDev ? "2015061500000000001" : "2015061800000000001"
+              entranceid = "2015092100000000001"
+            ;
+            window.location.href = url + '?param=flag_' + entranceid + '_' + sharecode;
+        },
+        appCallback: "shareCallback"
+    };
+    window.sharecode = '';
+    window.shareCallback = function (args) {
+
+        var url = isDev ? 'http://sale.jd.com/app/act/I8MstoTHxJuQC3fN.html' : 'http://sale.jd.com/app/act/bvWJG2mKL1.html',
+                //entranceid = isDev ? "2015061500000000001" : "2015061800000000001"
+                entranceid = "2015092100000000001"
+        ;
+        if (args == 'SUCCESS') {
+            window.location.href = url + '?param=flag_' + entranceid + '_' + sharecode;
+        }
+    };
+
+    var n = window.navigator,
+            ua = n.userAgent,
+            Util = {
+                baseUrl: 'http://sale.jd.com/app/act/KBuoE641DZmxgYf.html', //京东域，做打开app用
+                androidDownload: 'http://m.jdpay.com/basic/download/android/wangyin.apk',
+                iosDownload: 'https://itunes.apple.com/us/app/wang-yin-qian-bao/id832444218?ls=1&mt=8',
+                inWx: (ua.search(/micromessenger/ig) == -1) ? false : true,
+                inIosApp: (ua.search(/safari/ig) == -1 && ua.indexOf('jdapp') == -1) ? true : false,
+                inAndroid: ua.indexOf('Android') > -1 || ua.indexOf('Linux') > -1,
+                inIos: ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1,
+                //检查后缀
+                check_domain: function (host) {
+                    var pattern = "/^aero$|^cat$|^coop$|^int$|^museum$|^pro$|^travel$|^xxx$|^com$|^net$|^gov$|^org$|^mil$|^edu$|^biz$|^info$|^name$|^ac$|^mil$|^co$|^ed$|^gv$|^nt$|^bj$|^hz$|^sh$|^tj$|^cq$|^he$|^nm$|^ln$|^jl$|^hl$|^js$|^zj$|^ah$|^hb$|^hn$|^gd$|^gx$|^hi$|^sc$|^gz$|^yn$|^xz$|^sn$|^gs$|^qh$|^nx$|^xj$|^tw$|^hk$|^mo$|^fj$|^ha$|^jx$|^sd$|^sx$/i";
+                    if (str.match(pattern)) {
+                        return 1;
+                    }
+                    return 0;
+                },
+                //返回域
+                get_domain: function () {
+                    var host = document.domain.replace(/^www\./, ""), arr = host.split('.'), len = arr.length, domain;
+                    if (len == 3) {
+                        domain = arr[1] + '.' + arr[2];
+                    } else if (len > 3) {
+                        var ip_pat = "^[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*$";
+                        if (host.match(ip_pat)) {
+                            return host;
+                        }
+                        if (Util.check_domain(arr[len - 2])) {
+                            domain = arr[len - 3] + "." + arr[len - 2] + "." + arr[len - 1];
+                        } else {
+                            domain = arr[len - 2] + "." + arr[len - 1];
+                        }
+                    }
+                    return domain;
+                },
+                //判断是否在app内
+                inApp: function () {
+                    if (Util.inAndroid) {
+                        return typeof (android) != 'undefined' ? true : false;
+                    } else if (Util.inIos) {
+                        return this.inIosApp;
+                    } else {
+                        return false;
+                    }
+                }
+            };
+
+    window.Util = Util;
+
+    function json2str(json) {
+        var str = '';
+        for (var i in json) {
+            str += '&' + i + '=' + json[i]
+        };
+        return str;
+    };
+
+    //打开弹出提示
+    function showLayer() {
+        var downLoadUrl = Util.inIos ? Util.iosDownload : Util.androidDownload;
+        if (!document.querySelector('.J_layerDom')) {
+            var lDom = document.createElement('div');
+            lDom.className = 'J_layerDom';
+            lDom.style.cssText = 'display: none; position: fixed; z-index: 3000; left: 50%; top: 50%; margin: -85px 0 0 -140px; width: 280px; padding: 20px 0; text-align: center; background: rgba(0,0,0, .8); border-radius: 6px; color: #fff';
+            lDom.innerHTML = '<p style="margin-bottom: 30px; font-size: 18px;">您还未安装京东钱包客户端</p><a href="' + downLoadUrl + '" class="J_appDownload" style="display: block; width: 90%; margin-left: 5%; font-size: 16px; line-height: 40px; border-radius: 3px; text-decoration:none;font-weight: bold; background: #d9434b; color: #fff; ">立即下载</a>';
+            document.body.appendChild(lDom);
+        } else {
+            document.querySelector('.J_layerDom').style.display = 'block';
+        }
+        setTimeout(function () {
+            document.querySelector('.J_layerDom').style.display = 'none';
+        }, 6000);
+    };
+
+    //构造iframe激活app
+    function openIframe(json) {
+        var str = json2str(json.params);
+        var ifrSrc = 'wangyin://wallet/start?module=' + json.name + str;
+        if (!ifrSrc) return;
+        var ifr = document.createElement('iframe');
+        ifr.src = ifrSrc;
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+        setTimeout(function () {
+            document.body.removeChild(ifr);
+        }, 2000);
+        setTimeout(function () {
+            showLayer()
+        }, 300);
+    };
+    function openWithIframe(ifrSrc) {
+        var ifr = document.createElement('iframe');
+        ifr.src = ifrSrc;
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+        setTimeout(function () {
+            document.body.removeChild(ifr);
+        }, 2000);
+    };
+    //通过打开京东域的链接
+    function openLink(json) {
+        var url = Util.baseUrl;
+        if (json.name == 'ACTIVITY') {
+            url += '?url=' + json.params.browserUrl;
+        };
+        window.location.href = url + '#' + json.name;
+    };
+
+    //android客户端打开
+    function openAndroid(json) {
+        try {
+            json.name = json.name == 'LOGIN' ? 'HOME' : json.name;
+            if (json.name == 'ACTIVITY') {
+                android.start(json.params.browserUrl);
+            } else if (json.name == 'CLOSE') {
+                android.close();
+            } else if (json.name == 'TITLE') {
+                android.setTitleName(json.params.text);
+            } else {
+                android.start(json.name, JSON.stringify(json.params), json.callback);
+            }
+        } catch (err) {
+            alert('请升级最新版京东钱包');
+        }
+    };
+
+    //ios客户端打开
+    function openIos(json) {
+        var str = json.params ? json2str(json.params) : '',
+                url = 'native://start?name=' + json.name + str + '&callback=' + json.callback;
+        if (json.name == 'CLOSE') {
+            url = 'native://close';
+        } else if (json.name == 'ACTIVITY') {
+            url = 'native://start?name=' + json.params.browserUrl;
+        } else if (json.name == 'TITLE') {
+            url = 'native://setTitleName?titleName=' + json.params.text;
+        };
+        openWithIframe(url);
+        /*  try{
+         safari.open = url; //兼容iphone 4
+         }catch(err){
+         window.location.href = url;
+         }*/
+    };
+
+
+    /**
+     * @param json {name:module name,params:params,callback:function}
+     * android && inapp
+     * ios && inapp
+     * inwx && check domain
+     */
+    function openModel(json) {
+        if (Util.inAndroid && Util.inApp()) {
+            openAndroid(json);
+        } else if (Util.inIos && Util.inIosApp && !Util.inWx) {
+            openIos(json);
+        } else if (Util.inWx) {
+            if (Util.get_domain() == 'jd.com') {
+                openIframe(json);
+            } else {
+                openLink(json);
+            }
+        } else {
+            openIframe(json);
+        }
+    };
+
+
+    var App = window.App || {};
+    App.noop = function () { };
+    App.open = function () {
+        var len = arguments.length,
+                _this = this,
+                json = {
+                    name: '',
+                    params: {},
+                    callback: 'App.noop'
+                },
+                param;
+        json.name = arguments[0] ? arguments[0].toUpperCase() : 'LOGIN';
+        _this.noop = function () { };
+        if (len == 2) {
+            if (typeof (arguments[1]) == 'function') {
+                _this.noop = arguments[1];
+            } else {
+                param = arguments[1];
+            }
+        } else if (len == 3) {
+            if (typeof (arguments[2]) == 'function') {
+                _this.noop = arguments[2];
+            }
+            param = arguments[1];
+        };
+
+        switch (json.name) {
+            case 'FUND':
+                if (param) json.params.code = param;
+                break;
+            case 'JRB':
+                if (arguments[1]) {
+                    json.params.forceLogin = 'JRB';
+                    json.params.action = arguments[1];
+                    json.params.channel = 'web';
+                }
+                break;
+            case 'ACTIVITY':
+                json.params.browserUrl = param;
+                break;
+            case 'TITLE':
+                json.params.text = param;
+                break;
+            default:
+                break;
+        }
+        openModel(json);
+    };
+    App.close = function () {
+        openModel({ name: 'CLOSE' });
+    };
+    App.share = function (json) {
+        var json = json || window.dataForWeixin;
+        if (Util.inAndroid && Util.inApp()) {
+            android.shareWebPage(json.url, json.title, json.desc, json.Channel, json.appCallback);
+        } else if (Util.inIos && Util.inIosApp && !Util.inWx) {
+            var url = 'native://shareWebPage?url=' + json.url + '&webTitle=' + json.title + '&webDesc=' + json.desc + '&callback=' + json.appCallback;
+            try {
+                safari.open = url; //兼容iphone 4
+            } catch (err) {
+                window.location.href = url;
+            }
+        } else if (Util.inWx) {
+            window.dataForWeixin.url = json.url;
+            window.dataForWeixin.title = json.title;
+            window.dataForWeixin.desc = json.desc;
+            onBridgeReady();
+        }
+    }
+    App.buriedPointOnce = function (eventId) {
+        if (Util.inAndroid && Util.inApp()) {
+            android.buriedPointOnce(eventId);
+        } else if (Util.inIos && Util.inIosApp && !Util.inWx) {
+            var url = 'native://buriedPointOnce?eventId=' + eventId;
+            openWithIframe(url);
+        }
+    }
+    window.App = App;
+
+    var onBridgeReady = function () {
+        if (!dataForWeixin) {
+            return;
+        }
+        // qq
+        WeixinJSBridge.on('menu:share:qq',
+                function (argv) {
+                    WeixinJSBridge.invoke('shareQQ', {
+                        "appid": dataForWeixin.appId,
+                        "img_url": dataForWeixin.MsgImg,
+                        "img_width": "120",
+                        "img_height": "120",
+                        "link": dataForWeixin.url,
+                        "desc": dataForWeixin.desc,
+                        "title": dataForWeixin.title
+                    },
+                            function (res) {
+                                isDev && alert(res.err_msg);
+                                switch (res.err_msg) {
+
+                                    case 'send_app_msg:cancel':
+
+                                        //用户取消
+                                        isDev && alert("用户取消");
+                                        break;
+
+                                    case 'send_app_msg:confirm':
+                                        isDev && alert("发送完成");
+                                        (dataForWeixin.callback)();
+
+
+                                    case 'send_app_msg:ok':
+
+                                        // send_app_msg:confirm 发送成功
+                                        isDev && alert("发送成功");
+                                        (dataForWeixin.callback)();
+
+                                        break;
+
+                                    case 'send_app_msg:fail':
+
+                                    default:
+                                        isDev && alert("发送失败");
+                                        // send_app_msg:fail　发送失败
+                                        break;
+
+                                }
+                            });
+                });
+        //微信好友
+        WeixinJSBridge.on('menu:share:appmessage',
+              function (argv) {
+                  WeixinJSBridge.invoke('sendAppMessage', {
+                      "appid": dataForWeixin.appId,
+                      "img_url": dataForWeixin.MsgImg,
+                      "img_width": "120",
+                      "img_height": "120",
+                      "link": dataForWeixin.url,
+                      "desc": dataForWeixin.desc,
+                      "title": dataForWeixin.title
+                  },
+                          function (res) {
+                              isDev && alert(res.err_msg);
+                              switch (res.err_msg) {
+
+                                  case 'send_app_msg:cancel':
+
+                                      //用户取消
+                                      isDev && alert("用户取消");
+                                      break;
+
+                                  case 'send_app_msg:confirm':
+                                      isDev && alert("发送完成");
+                                      (dataForWeixin.callback)();
+
+                                  case 'send_app_msg:ok':
+
+                                      // send_app_msg:confirm 发送成功
+                                      isDev && alert("发送成功");
+                                      (dataForWeixin.callback)();
+
+                                      break;
+
+                                  case 'send_app_msg:fail':
+
+                                  default:
+                                      isDev && alert("发送失败");
+                                      // send_app_msg:fail　发送失败
+                                      break;
+
+                              }
+                          });
+              });
+        // 微信朋友圈
+        WeixinJSBridge.on('menu:share:timeline',
+                function (argv) {
+                    WeixinJSBridge.invoke('shareTimeline', {
+                        "img_url": dataForWeixin.TLImg,
+                        "img_width": "120",
+                        "img_height": "120",
+                        "link": dataForWeixin.url,
+                        "desc": dataForWeixin.title,
+                        "title": dataForWeixin.title
+                    },
+                     function (res) {
+                         isDev && alert(res.err_msg);
+                         switch (res.err_msg) {
+
+                             case 'share_timeline:cancel':
+
+                                 //用户取消
+                                 isDev && alert("用户取消");
+                                 break;
+
+
+                             case 'share_timeline:ok':
+
+                                 // send_app_msg:confirm 发送成功
+                                 isDev && alert("发送成功");
+                                 (dataForWeixin.callback)();
+
+                                 break;
+
+                             case 'share_timeline:fail':
+
+                             default:
+                                 isDev && alert("发送失败");
+                                 // send_app_msg:fail　发送失败
+                                 break;
+
+                         }
+                     });
+                });
+        //微博
+        WeixinJSBridge.on('menu:share:weibo',
+                function (argv) {
+                    WeixinJSBridge.invoke('shareWeibo', {
+                        "content": dataForWeixin.title,
+                        "url": dataForWeixin.url
+                    },
+                            function (res) {
+                                isDev && alert(res.err_msg);
+                                switch (res.err_msg) {
+
+                                    case 'share_weibo:cancel':
+
+                                        //用户取消
+                                        isDev && alert("用户取消");
+                                        break;
+
+                                    case 'share_weibo:confirm':
+                                        isDev && alert("发送完成");
+                                        (dataForWeixin.callback)();
+                                    case 'share_weibo:ok':
+
+                                        // send_app_msg:confirm 发送成功
+                                        isDev && alert("发送成功");
+                                        (dataForWeixin.callback)();
+
+                                        break;
+
+                                    case 'share_weibo:fail':
+
+                                    default:
+                                        isDev && alert("发送失败");
+                                        // send_app_msg:fail　发送失败
+                                        break;
+
+                                }
+                            });
+                });
+    };
+    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+
+
+    var _ = function (dom) {
+        return document.querySelector(dom);
+    };
+
+    function fromNoTitle() {
+        var bNeed = location.search.indexOf('from=notitle') == -1 ? false : true,
+            sTitle = _('#J_titleCon').innerHTML;
+        if (bNeed) {
+            App.open('title', sTitle);
+            _('#J_title').style.display = 'none';
+        }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var layerBg = document.querySelector('.layerBg'), shareLayer = document.querySelector('.shareLayer');
+        //shareLayer.addEventListener("click", function (e) {
+        //    layerBg.style.display = "none";
+        //    shareLayer.style.display = 'none';
+        //});
+    });
+
+    _('#J_titleBackBtn') && (_('#J_titleBackBtn').ontouchstart = function () {
+        App.close();
+    });
+
+    _('#J_share') && (_('#J_share').ontouchstart = function () {
+        App.share();
+    });
+
+    _('.J_confirm') && (_('.J_confirm').ontouchstart = function () {
+        App.open();
+    });
+
+    _('#J_openApp') && (_('#J_openApp').onclick = function () {
+        App.open('PHONE_RECHARGE');
+    });
+    if (Util.inApp() && !Util.inWx) {
+        App.open('title', '七夕，话费送不停！');
+        //_('#J_title') && _('#J_title').style.display = 'block';
+        // _('#J_title').parentNode.style.paddingTop = '50px';
+    } else if (Util.inAndroid || Util.inIos) {
+        _('.J_openBtn') && (_('.J_openBtn').style.display = 'block');
+        // _('body').style.paddingBottom = '70px';
+
+    };
+</script>
+
+<script>
+function seriesLoadScripts(scripts, callback) {
+    if (typeof (scripts) != "object") var scripts = [scripts];
+    var HEAD = document.getElementsByTagName("head").item(0) || document.documentElement;
+    var s = new Array(), last = scripts.length - 1, recursiveLoad = function (i) {  //递归
+        s[i] = document.createElement("script");
+        s[i].setAttribute("type", "text/javascript");
+        s[i].onload = s[i].onreadystatechange = function () { //Attach handlers for all browsers
+            if (!/*@cc_on!@*/0 || this.readyState == "loaded" || this.readyState == "complete") {
+                this.onload = this.onreadystatechange = null; this.parentNode.removeChild(this);
+                if (i != last) recursiveLoad(i + 1); else if (typeof (callback) == "function") callback();
+            }
+        }
+        s[i].setAttribute("src", scripts[i]);
+        HEAD.appendChild(s[i]);
+    };
+    recursiveLoad(0);
+}
+    seriesLoadScripts(["https://rawgit.com/madrobby/zepto/master/src/zepto.js", "http://lufylegend.com/js/lufylegend-1.9.10.min.js", "http://hammerjs.github.io/dist/hammer.min.js"], function () {
+        (new Hammer(document.querySelector("#btu_again"))).on('tap', function (evt) {
+            document.querySelector(".sharePage").style.display = "none";
+            gameStart();
+        });
+        (new Hammer(document.querySelector("#btu_share"))).on('tap', function (evt) {
+            //$("#share_weak").fadeIn();
+            document.querySelector("#share_weak").style.display = "block";
+            window.setTimeout(function () {
+                document.querySelector("#share_weak").style.display = "none";
+                //$("#share_weak").fadeOut();
+            }, 2000);
+        });
+        (new Hammer(document.querySelector(".roleWrap"))).on('tap', function (evt) {
+            //alert(document.querySelector(".roleWrap").style.display);
+            $("#roleWrap").hide();
+            //$(".roleWrap").fadeOut();
+        });
+        (function (exp) {
+            exp.onresize = function () { LGlobal.resize(); }
+            LGlobal.destroy = true; //保证游戏中的不用的对象能够顺利被释放
+            //LGlobal.preventDefault = false;
+            var timer, timer2; sound = new LSound();
+            var isPlaying = false;
+            LGlobal.align = LStageAlign.BOTTOM_MIDDLE;
+            var moneyText, raminTime, moneyBox, joy;//钱,时间
+            var gameTime = 10;
+            function clone(obj) {
+                var o;
+                if (typeof obj == "object") {
+                    if (obj === null) {
+                        o = null;
+                    } else {
+                        if (obj instanceof Array) {
+                            o = [];
+                            for (var i = 0, len = obj.length; i < len; i++) {
+                                o.push(clone(obj[i]));
+                            }
+                        } else {
+                            o = {};
+                            for (var j in obj) {
+                                o[j] = clone(obj[j]);
+                            }
+                        }
+                    }
+                } else {
+                    o = obj;
+                }
+                return o;
+            }
+            var shareInfoFactory = {
+                hitCount: 0,
+                data: [
+                    { len: { min: 0, max: 20 }, info: "你敢再慢点么！你在10s内一共顶了N次金币<br /><span>手速已经在全国用户中垫底了</span><br />可获得<b>2</b>元话费充值优惠券", money: 2 ,ps:"5"},
+                    { len: { min: 20, max: 30 }, info: "你可以更快的！你在10s内一共顶了N次金币<br /><span>手速击败了 60% 的全国用户</span><br />可获得<b>3</b>元话费充值优惠券", money: 3, ps: "60" },
+                    { len: { min: 30, max: 40 }, info: "哎呦，不错呦！你在10s内一共顶了N次金币<br /><span>手速击败了 70% 的全国用户</span><br />可获得<b>5</b>元话费充值优惠券", money: 5, ps: "70" },
+                    { len: { min: 40, max: 45 }, info: "单身20年的手速！你在10s内一共顶了N次金币<br /><span>手速击败了 80% 的全国用户</span><br />可获得<b>6</b>元话费充值优惠券", money: 6, ps: "80" },
+                    { len: { min: 45, max: 1000 }, info: "吓死本宝宝了！你在10s内一共顶了N次金币<br /><span>手速击败了 90% 的全国用户</span><br />可获得<b>8</b>元话费充值优惠券", money: 8, ps: "90" }
+                ],
+                get: function (count) {
+                    this.hitCount = count;
+                    for (var i = 0; i < this.data.length; i++) {
+                        var _data = this.data[i];
+                        console.log(count);
+                        if (_data.len.min <= count && count < _data.len.max) {
+                            //var _str = new String(_data.info);
+                            var _info = _data.info.replace(/N/g, count);
+                            // var outData = jQuery.extend({}, _data, { info: _info });
+                            var outData = clone(_data); outData.info = _info;
+                            return outData;
+                        }
+                    }
+                    return this.data[0];
+                }
+            }
+            var isRuning = false;
+            //获取随机数
+            exp.getRedom = function (minNum, maxNum) {
+                switch (arguments.length) {
+                    case 1: return parseInt(Math.random() * minNum + 1);
+                    case 2: return parseInt(Math.random() * (maxNum - minNum + 1) + minNum);
+                    default: return 0;
+                }
+            }
+            LSprite.prototype.align = function () { this.x = (LGlobal.width - this.getWidth()) / 2; }//居中
+            LButton.prototype.align = function () { this.x = (LGlobal.width - this.getWidth()) / 2; }//居中
+
+            var imgData = new Array(
+                { name: "styleimg_1", path: "http://img10.360buyimg.com/cms/jfs/t1894/322/341513896/21996/d6e8e828/55ffcd3fN8305382e.png" },
+                { name: "styleimg_2", path: "http://img13.360buyimg.com/cms/jfs/t1279/14/507220590/16193/6ae004a5/5582748bN68c1aad8.png" },
+                { name: "styleimg_4", path: "http://img10.360buyimg.com/cms/jfs/t2311/142/308287642/2891/a2a35651/55ffccc3N77870c67.png" },
+                { name: "styleimg_5", path: "http://img10.360buyimg.com/cms/jfs/t2311/142/308287642/2891/a2a35651/55ffccc3N77870c67.png" },
+
+                 { name: "role", path: "http://img14.360buyimg.com/cms/jfs/t2083/23/432940214/230970/d5872f72/5609ffd9Nc1756c12.gif" },
+                { name: "close", path: "http://img13.360buyimg.com/cms/jfs/t2146/23/329596115/4730/428fa54c/56012f77N0c3e2959.png" },
+                { name: "price_bg", path: "http://img10.360buyimg.com/cms/jfs/t2305/92/338104713/5698/fc245fbb/56012f77Na2e627ef.png" },
+                { name: "qxgzmb", path: "http://img10.360buyimg.com/cms/jfs/t2311/142/308287642/2891/a2a35651/55ffccc3N77870c67.png" },
+                { name: "bg", path: "http://img14.360buyimg.com/cms/jfs/t1942/197/442080059/102305/c792d90b/5609f45aNdad55f7a.png" },
+                { name: "btu_1", path: "http://img14.360buyimg.com/cms/jfs/t1774/267/1659266019/7497/77132ad5/55ffcc84N10be9d3e.png" },
+                { name: "btu_1_hover", path: "http://img13.360buyimg.com/cms/jfs/t2026/90/320075934/7495/72fb6abe/55ffcc84Nfd3d6e0f.png" },
+                { name: "game_bg", path: "http://img12.360buyimg.com/cms/jfs/t2026/83/346033562/11263/2a59af22/55ffcc84Ncc9fb65b.png" },
+                { name: "floor", path: "http://img10.360buyimg.com/cms/jfs/t2056/169/330444264/101608/dad9b658/55ffcc85Nff3b454e.png" },
+                { name: "headerWrap", path: "http://img11.360buyimg.com/cms/jfs/t1825/234/1624837473/5635/a7c3de0f/55ffcc84Nb4370cf0.png" },
+                { name: "moneyBox", path: "http://img13.360buyimg.com/cms/jfs/t2068/231/303253281/11742/aa7a5d67/55ffccc3Nc09b89be.png" },
+                { name: "joy_1", path: "http://img12.360buyimg.com/cms/jfs/t2047/219/320487950/16764/e0e7a97c/55ffccc3N6ea62c68.png" },
+                { name: "joy_2", path: "http://img12.360buyimg.com/cms/jfs/t1762/151/1625848058/12380/8612b664/55ffccc3Ne892ad6c.png" },
+                { name: "joy_3", path: "http://img14.360buyimg.com/cms/jfs/t1828/242/1651296075/11208/e212d611/55ffccc3N7fb7d37c.png" });
+            
+            function main() {
+                LGlobal.stageScale = LStageScaleMode.EXACT_FIT;
+                LSystem.screen(LStage.FULL_SCREEN);
+                backLayer = new LSprite();
+                backLayer.graphics.drawRect(1, "#cccccc", [0, 0, LGlobal.width, LGlobal.height], true, "#000000");
+                //背景显示
+                addChild(backLayer);
+                loadingLayer = new LoadingSample1();
+                backLayer.addChild(loadingLayer);
+
+                LLoadManage.load(imgData, function (progress) {
+                    document.getElementById("progress").innerHTML = progress + "%";
+                    loadingLayer.setProgress(progress);
+                    if (progress == 100) {
+                        document.getElementById("progressWrap").style.display = "none";
+                    }
+                }, gameInit);
+            }
+            //读取完所有图片，进行游戏标题画面的初始化工作
+            function gameInit(result) {
+                //取得图片读取结果
+                imglist = result;
+                //移除进度条层//移除或者这样写 loadingLayer.remove();
+                backLayer.removeChild(loadingLayer);
+                //加入欢迎页
+                backLayer.addChild(initPages.indexPage());
+                //backLayer.addChild(initPages.resultPage());
+                onup();//加入音频
+            }
+            //加载界面
+            var initPages = {
+                indexPage: function () {
+                    var returnPage = new LSprite();
+                    returnPage.addChild(new LBitmap(new LBitmapData(imglist["bg"])));
+                    //加入按钮
+                    var button = new LButton(new LBitmap(new LBitmapData(imglist["btu_1"])), new LBitmap(new LBitmapData(imglist["btu_1"])));
+                    button.align();
+                    button.y = 740;
+                    button.addEventListener(LMouseEvent.MOUSE_UP, function () {
+                        gameStart();
+                        if (isPlaying == true && LGlobal.ios == true) {
+                            sound.play();
+                        }
+                    });
+                    //加入查看活动按钮
+                    var btu = new LSprite();
+                    var link = new LTextField();
+                    link.text = "查看活动规则"; link.size = 26; link.color = "#a78352";
+                    btu.addChild(link);
+                    btu.align();
+                    btu.y = 950;
+                    btu.addEventListener(LMouseEvent.MOUSE_DOWN, function () {
+                        //alert("打开规则");
+                        //LGlobal.preventDefault = false;
+                        $("#roleWrap").show();
+
+                        //document.querySelector(".roleWrap").style.display = "block";
+                    });
+                    returnPage.addChild(button);
+                    returnPage.addChild(btu);
+                    return returnPage;
+                },
+                gamePage: function () {
+                    var returnPage = new LSprite();
+                    var bg = new Background();
+                    returnPage.addChild(bg);//背景
+                    isRuning = false;
+                    gameTime = 10;
+                    var floor = new LBitmap(new LBitmapData(imglist["floor"]));
+                    floor.y = LGlobal.height - floor.getHeight();
+                    returnPage.addChild(floor);//草地
+                    returnPage.addChild(new LBitmap(new LBitmapData(imglist["headerWrap"])));//顶部
+                    moneyText = new LTextField();
+                    moneyText.text = "0"; moneyText.size = 32; moneyText.color = "#ffc000"; moneyText.x = 120; moneyText.y = 15;
+                    raminTime = new LTextField();
+                    raminTime.text = gameTime + "'00''"; raminTime.size = 32; raminTime.color = "#ffc000"; raminTime.x = 500; raminTime.y = 15;
+                    returnPage.addChild(moneyText);//钱
+                    returnPage.addChild(raminTime);//时间
+                    moneyBox = new MoneyBox();
+                    returnPage.addChild(moneyBox);
+                    joy = new Joy();
+                    returnPage.addChild(joy);
+                    returnPage.addEventListener(LEvent.ENTER_FRAME, function () {
+                        bg.run(); moneyBox.run(); joy.run();
+                        if (LGlobal.hitTestRect(moneyBox, joy)) {
+                            moneyBox.hit(); joy.hit();
+                        }
+                    });
+                    var stime = 60;
+                    LMouseEventContainer.set(LMouseEvent.MOUSE_DOWN, true);
+                    returnPage.addEventListener(LMouseEvent.MOUSE_DOWN, function () {
+                        if (isRuning == false && joy.state != 1) {
+                            isRuning = true;
+                            var _gameTime = --gameTime;
+                            if (!timer) {
+                                timer = window.setInterval(function () {
+
+                                    if (stime == 0) {
+                                        stime = 100;
+                                        _gameTime--;
+                                        //console.log(_gameTime + "|" + stime);
+                                    }
+                                    raminTime.text = _gameTime + "'" + stime + "''";
+                                    if (_gameTime == -1 && stime == 100) {
+                                        raminTime.text = "0'" + stime + "00''";
+
+                                        window.clearInterval(timer); timer = null;
+                                        gameOver();
+                                        stime = 0;
+                                    }
+
+                                    stime--;
+                                }, 10);
+                            }
+                        }
+                        if (joy.state == 2 && isRuning == true) {
+                            joy.state = 3;
+                            joy.setView();
+                        }
+                        //return false;
+                    });
+                    returnPage.addEventListener(LMouseEvent.MOUSE_UP, function () { });
+                    return returnPage;
+                },
+                resultPage: function () {
+                    var returnPage = new LSprite();
+                    returnPage.addChild(new LBitmap(new LBitmapData(imglist["game_bg2"])));
+
+                    var moneyWrap = new LSprite();
+                    moneyWrap.addChild(new LBitmap(new LBitmapData(imglist["price_bg"]))); moneyWrap.align(); moneyWrap.y = 40;
+                    returnPage.addChild(moneyWrap);
+                    var _money = new LTextField();
+                    _money.setWordWrap(true, 40); _money.y = 260;  
+                    
+                    //_money.htmlText = "<font color=\"#FFF\" size='30'>你可以更快的！你在10s内一共顶了N次金币</font>\n<font color=\"#fffff\" size='30'>手速击败了 60% 的全国用户</font>\n<font color=\"#fffff\" size='30'>可获得<b>3</b>元话费充值优惠券</font>";
+                    _money.x = (backLayer.getWidth() - _money.getWidth()) / 2;
+
+                    returnPage.addChild(_money);
+                    return returnPage;
+                }
+            }
+
+            //游戏开始
+            exp.gameStart = function () {
+                backLayer.die();
+                backLayer.removeAllChild();
+                backLayer.addEventListener(LEvent.ENTER_FRAME, function () {
+                    if (isPlaying) {
+                        if (!sound.playing) {
+                            sound.play();
+                        }
+                    }
+                });
+                //sound.play();
+                //LGlobal.preventDefault = false;
+                //backLayer.addChild(initPages.resultPage());
+                backLayer.addChild(initPages.gamePage());
+            }
+
+            //游戏结束
+            var gameOver = function (type, food) {
+                //LGlobal.preventDefault = false;
+                backLayer.die();
+                backLayer.removeAllChild();
+                var _si = shareInfoFactory.get(parseInt(moneyText.text));
+                document.querySelector(".sharePage").style.display = "block";
+                //backLayer.addChild(initPages.resultPage());
+                document.querySelector(".shareContent").innerHTML = _si.info;
+                var shareContent = document.querySelector(".shareContent");
+                try {
+                    dataForWeixin.title = "玩游戏拼手速，我的手速击败了" + _si.ps + "%的全国人民，还被送了" + _si.money + "元话费！";//shareContent.innerText;
+                } catch (e) {}
+                document.querySelector("#h_money").innerHTML = _si.money;
+
+                
+                window.setTimeout(function () {
+                    //console.log(_si.info);
+                    //$.mobile.changePage("#share", "slide");
+                    //$(".sharePage").show();
+                    //$(".shareContent").html(_si.info);
+                    //$(".priceWrap h2").html(_si.money);
+                }, 1000);
+            }
+            function MoneyBox() {
+                base(this, LSprite, []);
+                var self = this;
+                self.setView();
+            }
+            MoneyBox.prototype.setView = function () {
+                var self = this;
+                self.addChild(new LBitmap(new LBitmapData(imglist["moneyBox"])));
+                self.align(); self.y = 290;
+            }
+            MoneyBox.prototype.state = 1;
+            MoneyBox.prototype.run = function () {
+                var _self = this;
+                switch (_self.state) {
+                    case 1:
+                        _self.y = 260;
+                        break;
+                    case 2:
+                        //上升
+                        _self.y -= 5;
+                        if (_self.y <= 250) {
+                            _self.state = 3;
+                        }
+                        break;
+                    case 3:
+                        //回落
+                        _self.y += 5;
+                        if (_self.y >= 260) {
+                            _self.state = 1;
+                        }
+                        break;
+                }
+            }
+            MoneyBox.prototype.hit = function () {
+                var money1 = new LTextField();
+                money1.text = "+1"; money1.size = 44; money1.color = "#ffc000";
+                money1.x = (this.getWidth() - money1.getWidth()) / 2;
+                money1.y = -40;
+                //money1.x = (LGlobal.width - this.getWidth()) / 2; money1.y = this.y;
+                this.addChild(money1);
+                var tween = LTweenLite.to(money1, 0.8, {
+                    y: -150, alpha: 0, loop: false, ease: LEasing.Sine.easeOut, onComplete: function () { money1.remove(); }
+                });
+                var moneyValue = parseInt(moneyText.text);
+                //alert(moneyValue);
+                moneyText.text = ++moneyValue;
+                if (moneyValue == 10) { moneyText.x -= 16; } else if (moneyValue == 20) { moneyText.x = 109; }
+                this.state = 2;
+                window.sharecode = moneyText.text;
+            }
+
+            function Joy() {
+                base(this, LSprite, []);
+                var self = this;
+                self.setView();
+            }
+            Joy.prototype.setView = function () {
+                var _self = this;
+                _self.removeAllChild();
+                switch (_self.state) {
+                    case 1:
+                        _self.y = 580;
+                        _self.addChild(new LBitmap(new LBitmapData(imglist["joy_1"])));
+                        break;
+                    case 2:
+                        _self.y = 580;
+                        _self.addChild(new LBitmap(new LBitmapData(imglist["joy_2"])));
+                        break;
+                    case 3:
+                        _self.addChild(new LBitmap(new LBitmapData(imglist["joy_3"])));
+                        break;
+                    case 4:
+                        _self.addChild(new LBitmap(new LBitmapData(imglist["joy_3"])));
+                        break;
+                }
+            }
+            Joy.prototype.state = 1;
+            Joy.prototype.weight = 0.93;
+            Joy.prototype.run = function () {
+                var _self = this;
+                switch (_self.state) {
+                    case 1:
+                        var _x = (LGlobal.width - _self.getWidth()) / 2 + 10;
+                        if (_self.x >= _x) {
+                            _self.state = 2;
+                            _self.setView();
+                        } else {
+                            _self.x += 5;
+                        }
+                        break;
+                    case 2://预备状态
+                        _self.x = _self.x;
+                        break;
+                    case 3://起跳状态
+                        if (_self.y <= moneyBox.y) {
+                            _self.state = 4;
+                            _self.setView();
+                        }
+                        _self.y = _self.y * _self.weight * 0.98;
+                        break;
+                    case 4://下落状态
+                        if (_self.y >= 570) {
+                            _self.state = 2;
+                            _self.setView();
+                        } else {
+                            _self.y = _self.y * _self.weight * 1.17;
+                        }
+                        break;
+                }
+            }
+            Joy.prototype.hit = function () {
+                this.state = 4;
+            }
+
+            function Background() {
+                base(this, LSprite, []);
+                var self = this;
+                self.setView();
+            }
+            Background.prototype.setView = function () {
+                var self = this;
+                var bg1 = new LSprite(); var bg2 = new LSprite();
+                bg1.addChild(new LBitmap(new LBitmapData(imglist["game_bg"])));
+                bg2.addChild(new LBitmap(new LBitmapData(imglist["game_bg"])));
+                bg2.x = LGlobal.width;
+                self.addChild(bg1); self.addChild(bg2);
+            }
+            Background.prototype.speed = 2;
+            Background.prototype.run = function () {
+                var _self = this;
+                _self.x -= _self.speed;
+                if (_self.x <= -LGlobal.width) {
+                    _self.x = 0;
+                }
+            }
+
+            function onup(e) {
+                isPlaying = false;
+                //var url = "supermary.";
+                //sound.load(url + "wav");
+                //sound.addEventListener(LEvent.COMPLETE, function () {
+                //    sound.play();
+                //    isPlaying = true;
+                //});
+            }
+
+            var loadImages = function (url, callBack) {
+                var img = new Image(); //创建一个Image对象，实现图片的预下载
+                img.onload = function () { img.onload = null; callBack(img); }
+                img.src = url;
+            }
+            init(30, "canvas", 640, 1008, function () {
+                main();
+            });
+        })(window);
+    });
+</script> 
+
+<style>
+    * { margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    #canvas { text-align: center; }
+        #canvas > div { left: 0; top: 0; overflow: hidden !important; }
+    .sharePage { background: url("http://img10.360buyimg.com/cms/jfs/t2311/142/308287642/2891/a2a35651/55ffccc3N77870c67.png"); position: fixed; padding: 0; left: 0; right: 0; bottom: 0; top: 0; display: none; font-size: 1rem; }
+    .priceWrap { height: 4em; margin-top: 25%; background: url("http://img10.360buyimg.com/cms/jfs/t1894/322/341513896/21996/d6e8e828/55ffcd3fN8305382e.png") center; background-size: 100% 100%; color: #fff; font-size: 2em; text-align: center; }
+        .priceWrap h2 { display: inline-block; line-height: 2em; font-size: 1.7em; }
+    .shareContent { text-align: center; color: #fff; line-height: 3em; margin-top: 3em; font-size: 16px; }
+        .shareContent b, .shareContent span { color: #ffc000; font-size: 1.2em; margin: 0 0.2em; }
+        .shareContent strong { font-size: 2rem; color: #ffc000; }
+        .shareContent b { font-size: 2em; }
+    .btusWrap { text-align: center; margin: 2em auto; }
+        .btusWrap input { width: 42%; height: 2em; border: 0; padding: 0; border-radius: 2em; font-size: 1.5em; font-weight: bold; }
+            .btusWrap input:first-child { background: #cd0208; color: #fef800; }
+            .btusWrap input:last-child { background: #fff; color: #cd0208; }
+
+    #share_weak { position: fixed; width: 100%; height: 100%; display: none; z-index: 5000; background: rgba(0,0,0,0.8) url("http://img13.360buyimg.com/cms/jfs/t1279/14/507220590/16193/6ae004a5/5582748bN68c1aad8.png") no-repeat; background-size: 100% 40%; }
+
+    .hide { display: none; }
+    .show { display: block; }
+    .roleWrap { height: 100%; position: fixed; width: 100%; padding: 0; left: 0; top: 0; background-color: #fff; font-size: 0.8em; display: none; z-index: 10; overflow: auto; }
+        .roleWrap > div { width: 100%; background-image: url(http://img14.360buyimg.com/cms/jfs/t2083/23/432940214/230970/d5872f72/5609ffd9Nc1756c12.gif); background-repeat: no-repeat; background-size: 100% 100%; height: 300%; }
+            .roleWrap > div div { margin: 0 auto; width: 80%; margin-bottom: 2em; background: #fff; }
+        .roleWrap .close { position: fixed; right: 1em; top: 1em; width: 10%; width: 4em; height: 4em; background: url(http://img13.360buyimg.com/cms/jfs/t2146/23/329596115/4730/428fa54c/56012f77N0c3e2959.png); background-size: 100% 100%; }
+
+</style>

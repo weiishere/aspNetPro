@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>mobilebone</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <link href="Style/mobilebone.css" rel="stylesheet" />
+    <style>
+                    table, tr, td { margin: 0; padding: 0; }
+.trickets-list-wrap { width: 100%; height: 130px; overflow: auto; }
+.tableList { height: 116px; width: 500px; }
+    .tableList td:first-child p { margin-left: 10px; }
+    .tableList td { height: 116px; text-align: center; vertical-align: middle; }
+        .tableList td div { background: #f5f3f1; display: block; width: 100px; border-radius: 2px; margin-right: 10px; margin-right: 10px; }
+        .tableList td > div { display: block; width: 100px; height: 116px; }
+        .tableList td:first-child > div{margin-left: 10px}
+        .tableList td div img { width: 90px; height: 90px; padding: 5px 5px 0 5px; }
+        .tableList td div span { display: block; line-height: 21px; color: #000; font-size: 12px; }
+        .tableList td div p { height: 90px; width: 90px; border: 5px solid #f5f3f1;  border-bottom: 0; background-size: auto 100%; margin: 0!important;}
+    .tableList .feefg { background: #f5f3f1 url(Style/images/compensate.png?t=1) 0 0 no-repeat; background-size: 100% 100%; }
+        .page content{display:block;height:100%;}
+    </style>
+    <script src="Frame/jquery-1.8.2.min.js"></script>
+    <script src="Frame/mobilebone.js"></script>
+</head>
+<body>
+    <div id="pageHome" class="page in">
+        <content>
+            <a href="#page1">调整到page1</a>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <div style="width:100%;height:130px;border:solid 0px #fff;overflow:auto">
+                <table class="tableList">
+                    <tr></tr>
+                </table>
+            </div>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+        </content>
+        
+    </div>
+    <div id="page1" class="page out" style="background:#ff0000" ><a href="#page2">调整到page2</a></div>
+    <div id="page2" class="page out" style="background:#808080" ><a href="#page3">调整到page3</a><button id="btu_go">go to page3</button></div>
+    <div id="page3" class="page out" style="background:#ffd800"><a href="#pageHome">调整到pageHome</a></div>
+    <script src='http://static.jdpay.com/basic/dist/js/m-public/mApp.js'></script>
+    <script src="m.js"></script>
+    <script>
+        var html = "<td><div class='feefg'></div></td><td><div class='feefg'></div></td><td><div class='feefg'></div></td><td><div class='feefg'></div></td><td><div class='feefg'></div></td>";
+        $(".tableList tr").append(html);
+        $("#btu_go").click(function () {
+            pageHome.show(function () {
+                alert(0);
+            });
+        });
+
+        //var PageCommon = (function (pageHome, exp) {
+        //    var result = {
+        //        initFirstPage(pageId) { lastPage = pageId;}
+        //    };
+        //    var pagesList = [];
+        //    var lastPage = pageHome;
+        //    function Page(id, option) {
+        //        var self = this;
+        //        self.id = id;
+        //        self.show = function () {
+        //            console.log(lastPage);
+        //            Mobilebone.transition(document.querySelector("#" + id), document.querySelector("#" + lastPage));
+        //        }
+        //        var _option = $.extend({
+        //            showBack: function () { },
+        //            init: function () { },
+        //            hide: function () { }
+        //        }, option || {});
+        //        for (var i in _option) { self[i] = _option[i]; }
+        //        pagesList.push(self);
+        //    }
+        //    var getPage = function (pageinId, fn) {
+        //        for (var i = 0; i < pagesList.length; i++) {
+        //            if (pagesList[i].id == pageinId) {
+        //                fn.call(pagesList[i]);
+        //                return;
+        //            }
+        //        }
+        //    }
+        //    Mobilebone.callback = function (pagein) {
+        //        //if (pageHome == lastPage) { return false; }
+        //         lastPage = pagein.id;
+        //        getPage(pagein.id, function () { this.showBack(); });
+        //    };
+        //    Mobilebone.onpagefirstinto = function (pagein) {
+        //        getPage(pagein.id, function () { this.init(); });
+        //    };
+        //    Mobilebone.fallback = function (pagein) {
+        //        getPage(pagein.id, function () { this.hide(); });
+        //    };
+        //    exp.Page = Page;
+        //    return result;
+        //})((location.hash ? location.hash.split("&")[1] : "pageHome"), window);
+
+        var pageHome = new Page("pageHome", {
+            showBack: function () {
+                //alert("pageHome in");
+            },
+            init: function () {
+                //alert("pageHome init");
+            }
+        });
+        var page1 = new Page("page1", {
+            showBack: function () {
+                //alert("page1 in");
+            }
+        });
+        var page2 = new Page("page2", {
+            showBack: function () {
+                //alert("page2 in");
+            },
+            init: function () {
+                //alert("page2 init");
+            }
+        });
+        var page3 = new Page("page3", {
+            showBack: function () {
+                //alert("page3 in");
+            }
+        });
+        //page.show();
+
+
+        
+    </script>
+</body>
+</html>

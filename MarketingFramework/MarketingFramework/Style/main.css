@@ -1,0 +1,146 @@
+﻿
+
+html, body { height: 100%; background: #eee; color: #333; font-family: 'Microsoft YaHei'; overflow: auto !important; }
+.outWrap { width: 1340px; margin: 0 auto; margin-bottom: 5px; border: solid 1px #999; background: #fff; padding-bottom: 5px; }
+.leftBar { float: left; width: 100px; height: 100%; box-shadow: 2px 0 4px #999; }
+    .leftBar ul { width: 100%; display: inline-block; padding: 0; float: left; }
+        .leftBar ul li { width: 100px; display: inline-block; position: relative; height: 94px; border-bottom: solid 1px #ddd; border-top: solid 1px #fff; text-align: center; background: #f6f6f6; -webkit-transition: all 0.2s ease-out; float: left; }
+            .leftBar ul li:hover { background: #ddd; cursor: pointer; }
+            .leftBar ul li:last-child { border-bottom: none; }
+            .leftBar ul li div { display: table-cell; vertical-align: middle; height: 94px; }
+            .leftBar ul li h2 { font-size: 14px; width: 100px; color: #666; }
+*[draggable='true'] { cursor: move; }
+textarea { resize: both; }
+input[role="color"], input[role='fontColor'] { text-shadow: 0 0 2px #000; }
+
+/*a  upload */
+.a-upload { width: 60px; padding: 2px; border: solid 1px #666; text-decoration: none; margin-left: 2px; height: 20px; line-height: 20px; position: relative; cursor: pointer; color: #333; background: #fafafa; border-radius: 4px; overflow: hidden; display: inline-block; *display: inline; *zoom: 1; vertical-align: middle; background: #ccc; }
+    .a-upload input { position: absolute; right: 0; top: 0; opacity: 0; filter: alpha(opacity=0); cursor: pointer; }
+    .a-upload:hover { color: #444; background: #eee; border-color: #ccc; text-decoration: none; }
+    .a-upload div { position: absolute; width: 100%; height: 25px; top: 0; right: 0; }
+        .a-upload div.text { z-index: 101; text-align: center; }
+            .a-upload div.text b { font-weight: normal; }
+        .a-upload div.pro { background: #999; z-index: 100; right: 100%; }
+
+.pageLoading { position: fixed; background: rgba(0,0,0,0.5); width: 100%; height: 100%; left: 0; top: 0;display:none }
+    .pageLoading div { width: 100px; height: 40px; line-height: 40px; text-align: center; border-radius: 10px; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; color: #fff; background: #333; }
+
+.disable h2 { color: #ccc !important; text-shadow: 1px 1px 1px #fff; }
+.boderStress { border: solid 1px #ddd !important; box-sizing: border-box !important; box-shadow: inset 0 0 0.5rem #333 !important; }
+
+.subLeftBar { float: left; width: 150px; height: auto; box-shadow: 3px 2px 3px #999; -webkit-transition: all 0.3s ease-out; }
+    .subLeftBar nav { float: left; }
+    .subLeftBar ul { width: 100%; display: inline-block; padding-top: 0px; float: left; }
+        .subLeftBar ul li { width: 150px; display: inline-block; position: relative; height: 54px; border-bottom: solid 1px #ddd; border-top: solid 1px #fff; margin: 0 1px; text-align: center; background: #f7f7f7; -webkit-transition: all 0.2s ease-out; float: left; }
+            .subLeftBar ul li:hover { background: #ddd; cursor: pointer; }
+            .subLeftBar ul li span { position: absolute; right: 0; width: 20px; height: 20px; top: 0; text-align: center; line-height: 15px; font-size: 16px; border: solid 1px #ccc; background: #eee; color: #999; }
+
+            .subLeftBar ul li div { display: table-cell; vertical-align: middle; height: 54px; }
+            .subLeftBar ul li h2 { font-size: 14px; width: 150px; color: #666; }
+    .subLeftBar li.active { background: #ddd; }
+
+.editWrap { float: left; padding: 10px; border: dashed 1px #999; margin-top: 10px; margin-left: 20px; background: #f9f9f9; height: 95%; }
+.phoneViewWrap { float: left; width: 340px; height: 650px; background: #000; margin: 10px 0 0 0; border-radius: 10px; }
+.phoneScreen { min-height: 568px !important; width: 320px !important; height: 540px; overflow: auto; margin: 10px auto; margin-top: 0; background: #fff; }
+#phoneScreen::-webkit-scrollbar { width: 8px; height: 8px; }
+#phoneScreen::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+#phoneScreen::-webkit-scrollbar-button { display: none; }
+
+#phoneScreen .mbEditWrap { position: absolute; width: 100%; height: 100%; left: 0; top: 0; background:#fff;}
+        #phoneScreen .mbEditWrap input { width:100%;height:100%;margin:0;padding:0;border:solid 1px #ccc;}
+    #phoneScreen .mbEditWrap.editable {   }
+        #phoneScreen .mbEditWrap.editable > div[contenteditable] {overflow: auto;width:100%;height:100%;font-size:0.8rem }
+    #phoneScreen .mbEditWrap.editable .bottomButs { position:absolute;left:0;width:100%;height:20px;bottom:-25px;border-top:solid 1px #ccc}
+        #phoneScreen .mbEditWrap.editable .bottomButs input[type="button"] { width:15%;height:20px; vertical-align:top;border:solid 1px #ccc;background:#eee;border-top:0;border-radius:0 0 4px 4px }
+        #phoneScreen .mbEditWrap.editable .upload b { font-size:12px;line-height:12px !important}
+        #phoneScreen .mbEditWrap.editable .bottomButs input[type='text'] { display:none}
+        #phoneScreen .mbEditWrap.editable .bottomButs input[type='file'] { cursor:pointer}
+    #phoneScreen .mbEditWrap .a-upload { width:15%;border:solid 1px #ccc;background:#eee;border-top:0;height:19px;margin:0 5px;padding:0;vertical-align:top;border-radius:0 0 4px 4px;line-height:10px;}
+    #phoneScreen .mbEditWrap .a-upload b{font-size:12px;font-weight:normal;}
+
+.phoneViewWrap .phoneTitle { width: 100%; color: #eee; text-align: center; line-height: 25px; }
+.phoneView { width: 320px !important; overflow: auto; position: relative; background-size: cover; }
+.operationWrap { width: 308px; height: 25px; margin: 15px auto; text-align: center; clear:both}
+    .operationWrap button { width: 77px; height: 25px; background: #333; font-size: 12px; float: left; border: solid 1px #999; border-left: 0; margin: 0; padding: 0; /*box-shadow:inset 0px 0px 10px #eee;*/ color: #ccc; cursor: pointer; }
+        .operationWrap button:first-child { border-left:solid 1px #999}
+        .operationWrap button:hover { background: #ccc; color: #000; }
+
+.showModelList1 { float: left; width: 150px; margin-top: 20px; border: solid 0px #ccc; }
+    .showModelList1 ul { width: 100%; display: inline-block; }
+        .showModelList1 ul li { width: 150px; display: inline-block; position: relative; height: 40px; text-align: center; background: #eee; margin: 5px 5px 5px 0; -webkit-transition: all 0.2s ease-out; float: left; border-left: 0; border: solid 1px #ddd; box-sizing: border-box; }
+            .showModelList1 ul li:hover { background: #ddd; cursor: move; }
+            .showModelList1 ul li div { display: table-cell; vertical-align: middle; height: 40px; }
+            .showModelList1 ul li h2 { font-size: 14px; width: 150px; color: #333; font-weight: normal; }
+
+.showModelList { float: left; width: 160px; margin-top: 20px; border: solid 0px #ccc; height: 600px; overflow: auto; overflow-x: hidden; }
+#showModelList::-webkit-scrollbar { width: 5px; height: 5px; }
+#showModelList::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+#showModelList::-webkit-scrollbar-button { display: none; }
+.showModelList ul { width: 100%; display: inline-block; }
+    .showModelList ul li { width: 150px; display: inline-block; position: relative; height: 40px; text-align: center; background: #eee; margin: 5px 5px 5px 0; border-radius: 0 5px 5px 0; -webkit-transition: all 0.2s ease-out; float: left; border-left: 0; border: solid 1px #ddd; box-sizing: border-box; position: relative; }
+        .showModelList ul li:hover, .showModelList_select { background: #ccc !important; border: solid 1px #999 !important; cursor: pointer; }
+        .showModelList ul li span { position: absolute; right: -5px; width: 20px; height: 20px; top: -5px; line-height: 15px; font-size: 16px; background: #666; color: #fff; border-radius: 20px; box-shadow: 1px 1px 3px #999; }
+        .showModelList ul li div { display: table-cell; vertical-align: middle; height: 40px; }
+        .showModelList ul li h2 { font-size: 14px; width: 150px; color: #333; font-weight: normal; overflow: hidden; }
+
+
+.modelEditView { float: left; width: 360px; margin: 15px; background: #fff; border: solid 1px #ccc; /*line-height: 20px;*/ max-height: 90%; position: relative; }
+    .modelEditView > i { position: absolute; font-size: 0.5rem; right: -1px; top: -17px; color: #999; border: solid 1px #ccc; border-bottom: 0; border-radius: 4px 4px 0 0; padding: 0 3px; }
+    .modelEditView > form > b { position: absolute; width: 16px; height: 16px; background: url(images/code.png); color: #fff; font-size: 0.5rem; right: 1px; top: 1px; text-align: center; cursor: pointer; }
+    .modelEditView .editItemWrap { margin: 5px 7px; border: solid 1px #ccc; background: #f7f7f7; border-radius: 3px; overflow: hidden; }
+        .modelEditView .editItemWrap select { height: 1.7rem; }
+        .modelEditView .editItemWrap h4 { margin: 2px 0 0 5px; }
+        .modelEditView .editItemWrap i { display: inline-block; color: #666; max-width: 96%; }
+        .modelEditView .editItemWrap > i { display: block; border-top: solid 1px #ccc; background: #eee; padding: 2%; margin: 0; width: 96%; }
+    .modelEditView input[type=text], .modelEditView input[type=number] { height: 25px; border: solid 1px #ccc; }
+    .modelEditView form { max-height: 100%; }
+    .modelEditView fieldset { float: left; background: #fff; border-bottom: solid 1px #ccc; width: 100%; margin-top: 5px; overflow-y: auto; overflow-x: hidden; max-height: 580px; }
+        .modelEditView fieldset legend { font-size: 16px; font-weight: bold; margin: 5px; }
+        .modelEditView fieldset input { vertical-align: middle; }
+            .modelEditView fieldset input[type='text'] { min-width: 160px; }
+        .modelEditView fieldset span { width: 100%; display: block; margin: 5px 10px; }
+    .modelEditView .modelEditBtusWrap { text-align: center; float: left; width: 100%; }
+    .modelEditView button { margin: 10px; width: 150px; height: 30px; }
+.moreOption { border-style: dashed !important; }
+
+.dailogWrap { position: fixed; background: rgba(0,0,0,0.2); width: 100%; height: 100%; left: 0; top: 0; visibility: hidden; z-index: 1000000; }
+.open { visibility: initial; }
+    .open > div { visibility: initial !important; -webkit-transition: all 0.3s ease-out; top: 15% !important; /*top:0 !important; bottom:0*/; opacity: 1 !important; }
+.dailogWrap > div { height: 200px; position: absolute; left: 0; right: 0; margin: auto; top: 10%; background: #fff; border-radius: 5px; box-shadow: 0 0 10px #333; visibility: hidden; opacity: 0.7; }
+    .dailogWrap > div .close { position: absolute; z-index: 1000; right: -10px; width: 30px; height: 30px; top: -10px; line-height: 15px; font-size: 16px; text-align: center; line-height: 30px; background: #666; color: #fff; border-radius: 20px; box-shadow: 1px 1px 3px #999; cursor: pointer; }
+    .dailogWrap > div .title { font-size: 16px; height: 40px; background: #eee; line-height: 40px; text-align: center; background: #6e9bfa; color: #fff; border-radius: 5px 5px 0 0; }
+
+.dailogWrap ul { width: 100%; display: inline-block; margin-top: 10px; }
+    .dailogWrap ul li { width: 100%; display: inline-block; position: relative; height: 40px; text-align: center; margin-top: 0px; border-top: solid 1px #ddd; box-sizing: border-box; cursor: pointer; }
+        .dailogWrap ul li:hover { background: #eee; }
+        .dailogWrap ul li div { height: 40px; width: 100%; line-height: 40px; }
+        .dailogWrap ul li h2 { font-size: 14px; width: 100%; color: #333; font-weight: normal; }
+.textAreaWrap { cursor: ns-resize !important; }
+/*.nicEdit-main { max-height:400px !important;overflow-y:auto !important}*/
+.cu-m { cursor: move; }
+.cu-z { cursor: se-resize; }
+.buttonWrap { border: dotted 1px #666; box-sizing: border-box; }
+    .buttonWrap button { cursor: move; }
+
+.editHtmlArea { width: 94%; border: solid 1px #999; height: 20rem; background: #fff; overflow: auto; word-break: break-all; }
+.customeAreaDemo { width: 100%; min-height: 2rem; border: dotted 1px #ccc; }
+
+
+.dragArea { width: 70%; height: 30%; left: 0; top: 0; border: dotted 1px #666; box-sizing: border-box; position: absolute; cursor: move; z-index: 100000; }
+    .buttonsWrap span[zoom='true'], .dragArea span[zoom='true'] { display: block !important; }
+span[zoom='true'] { position: absolute; width: 1rem; height: 1rem; right: 0; bottom: 0; display: block; z-index: 10001; background: #fa7495; border-radius: 1rem 0 0 0; }
+
+.bgArea { cursor: default; border: dotted 1px #666; box-sizing: border-box; cursor: move; }
+/*.bgArea > span[zoom='true'] { cursor: s-resize; }*/
+#headerRunatMod { color: #999; font-size: 0.8rem; font-weight: normal; }
+#modelAddList { margin-top: -2px; width: 150px; position: absolute; }
+    #modelAddList li { margin: 1px 0 0 0; border-radius: 0; width: 148px; line-height: 40px; }
+.activityRole { border: dotted 1px #666; cursor: move; }
+
+.footer-banner, .footer-banner2 { position: absolute !important; }
+
+.textInputWrap input { cursor: move; }
+
+.inputViewName { width: 96%; margin: 1%; padding: 1%; }
+    .inputViewName input { height: 30px; width: 65%; float: left; font-size: 1rem; }
+    .inputViewName button { height: 34px; float: right; width: 30%; }

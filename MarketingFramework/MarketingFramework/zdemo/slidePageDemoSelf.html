@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>slider</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+    <style>
+        html, body { height: 100%; background: #eee; color: #333; font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif; font-size: 16px; margin: 0; width: 100%;}
+        body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin: 0; padding: 0; -webkit-perspective: 1200px;}
+
+        .pages { width:100%;height:100%;position:absolute;left:0;left:0}
+        .page { width: 100%; min-height: 100%; position: absolute; top: 0; left: 0;display:none  }
+
+            .page.in-slider { display:block}
+            .page.out-slider { }
+
+            .trans-slider-a { -webkit-transform: translate3d(0,0,0);-webkit-animation: slider .3s ease-out;overflow:hidden;height:100%  }
+                .trans-slider-a.back {-webkit-transform: translate3d(0,0,0); -webkit-animation: slider-back .3s ease-out;}
+            @-webkit-keyframes slider { 100% { -webkit-transform: translate3d(-100%,0,0)} }
+            @-webkit-keyframes slider-back { 100% { -webkit-transform: translate3d(100%,0,0)} }
+
+            .trans-slider-b {  -webkit-transform: translate3d(100%,0,0);-webkit-animation: slider2 .3s ease-out;display:block;overflow:hidden;height:100%}
+                .trans-slider-b.back {  -webkit-transform: translate3d(-100%,0,0);-webkit-animation: slider2 .3s ease-out;}
+            @-webkit-keyframes slider2 { 100% { -webkit-transform: translate3d(0,0,0) }}
+            
+
+            .page.in-overturn { -webkit-transform: translate3d(0,0,0); z-index:2;display:block;}
+            .page.out-overturn { z-index:1 }
+            .trans-overturn-a { -webkit-transform: translate3d(0,0,0);-webkit-animation: overturn .5s linear; z-index:2;overflow:hidden;height:100% } 
+            @-webkit-keyframes overturn {
+                50% { -webkit-transform: translate3d(0,0,0) rotateY(90deg) scale(0.9,0.9);  }
+                100% { -webkit-transform: translate3d(0,0,0) rotateY(180deg) scale(1,1); z-index:1;overflow:hidden}
+            }
+            .trans-overturn-b {  -webkit-transform: translate3d(0,0,0) rotateY(180deg);-webkit-animation: overturn2 .5s linear;z-index:1;display:block;overflow:hidden;height:100% } 
+            @-webkit-keyframes overturn2 {
+                50% { -webkit-transform: translate3d(0,0,0) rotateY(270deg) scale(0.9,0.9);} 
+                100% { -webkit-transform: translate3d(0,0,0) rotateY(360deg) scale(1,1); z-index:2;}
+            }
+
+            .page.in-zoom { -webkit-transform: translate3d(0,0,0); z-index:2;display:block;}
+            .page.out-zoom { z-index:1;opacity:0 }
+            .trans-zoom-a { -webkit-transform: translate3d(0,0,0);-webkit-animation: zoom .4s ease-out;opacity:1; z-index:2;overflow:hidden;height:100% } 
+            @-webkit-keyframes zoom {
+                100% { -webkit-transform: translate3d(0,0,0) scale(0.8,0.8); opacity:0;z-index:1;overflow:hidden}
+            }
+            .trans-zoom-b {  -webkit-transform: translate3d(0,0,0) scale(0.8,0.8);opacity:0;-webkit-animation: zoom2 .4s ease-out;z-index:1;display:block;overflow:hidden;height:100% } 
+            @-webkit-keyframes zoom2 {
+                100% { -webkit-transform: translate3d(0,0,0) scale(1,1); opacity: 1; z-index: 2; }
+            }
+             
+            
+
+        
+        #page1 { background: #ff6a00; }
+        #page1 { line-height:4rem}
+        #page2 { background: #00ff21; }
+
+
+        .stage { width: 300px; height: 300px; float: left; margin: 15px; position: relative; background: url(bg.jpg) repeat center center; -webkit-perspective: 1200px; 
+                 -moz-perspective: 1200px; -ms-perspective: 1200px; -o-perspective: 1200px; perspective: 1200px; }
+        .container { position: absolute; top: 50%; left: 50%; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; -ms-transform-style: preserve-3d; -o-transform-style: preserve-3d; transform-style: preserve-3d; }
+            .container img { position: absolute; margin-left: -70px; margin-top: -100px; }
+                .container img:nth-child(1) { z-index: 1; opacity: .6; }
+        .s1 img:nth-child(2) { z-index: 2; -webkit-transform: rotateX(45deg); -moz-transform: rotateX(45deg); -ms-transform: rotateX(45deg); -o-transform: rotateX(45deg); transform: rotateX(45deg); }
+        .s2 img:nth-child(2) { z-index: 2; -webkit-transform: rotateY(45deg); }
+        .s3 img:nth-child(2) { z-index: 2; -webkit-transform: rotateZ(45deg); -moz-transform: rotateZ(45deg); -ms-transform: rotateZ(45deg); -o-transform: rotateZ(45deg); transform: rotateZ(45deg); }
+        .s4 img:nth-child(2) { z-index: 2; -webkit-transform: rotate3d(.6,1,.6,45deg); -moz-transform: rotate3d(.6,1,.6,45deg); -ms-transform: rotate3d(.6,1,.6,45deg); -o-transform: rotate3d(.6,1,.6,45deg); transform: rotate3d(.6,1,.6,45deg); }
+    </style>
+</head>
+<body>
+    <div class="pages">
+        <div class="page" id="page1">
+            <br /><br /><br />
+            <h2>page1</h2>
+            <button>go to page2</button>
+            <br />p<br />p<br />p<br />p<br />p<br />p<br />p<br />p<br />p<br />p<br />p<br />p<br />
+        </div>
+        <div class="page" id="page2">
+            <br /><br /><br />
+            <h2>page2</h2>
+            <button>back</button>
+            <br />p<br />p<br />p<br />p<br />p<br />p<br />p<br />p<br />p<br />p<br />p<br />p<br />
+        </div>
+    </div>
+    
+</body>
+</html>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/zepto.min.js"></script>
+<script>
+    var PageCommon = (function () {
+        var result = {};
+        //var defaultTransition = "3d";
+        //var transition = 300;
+        function Page(id, option) {
+            var _self = this;
+            _self.id = id;
+            _self.container = $("#" + id);
+            var o = $.extend({
+                init: function () { },
+                slideBefore: function () { },
+                slideAfter: function () { },
+                hide: function () { }
+            }, option || {});
+            for (var i in o) { _self[i] = o[i] }
+            _self.init();
+            _self.show = function (transition, callback) {
+                var me = this;
+                if (arguments.length == 1) { callback = transition; transition = undefined; }
+                var _dt = transition || result.set.defaultTransition;
+                $("#" + result.thisPage).addClass("trans-" + _dt + "-a");
+                $("#" + me.id).addClass("trans-" + _dt + "-b");
+                me.slideBefore();
+                window.setTimeout(function () {
+                    $("#" + result.thisPage).removeClass(function (index, css) {
+                        return (css.match(/\b(trans|in)-\S+/g) || []).join(' ');
+                    });
+                    $("#" + result.thisPage).addClass("out-" + _dt);
+                    $("#" + me.id).removeClass(function (index, css) {
+                        return (css.match(/\b(trans|out)-\S+/g) || []).join(' ');
+                    });
+                    $("#" + me.id).addClass("in-" + _dt);
+                    me.slideAfter();
+                    if (callback) callback.call(me);
+                    me.back = (function (pa, pb) {
+                        return function (_callback) {
+                            $("#" + pb).addClass("trans-" + _dt + "-a");
+                            $("#" + pa).addClass("trans-" + _dt + "-b");
+                            $("#" + pb + ",#" + pa).addClass("back");
+                            window.setTimeout(function () {
+                                $("#" + pb).removeClass("trans-" + _dt + "-a in-" + _dt);
+                                $("#" + pb).addClass("out-" + _dt);
+                                $("#" + pa).removeClass("trans-" + _dt + "-b out-" + _dt);
+                                $("#" + pa).addClass("in-" + _dt);
+                                $("#" + pb + ",#" + pa).removeClass("back");
+                                result.thisPage = pa;
+                                if (_callback) _callback();
+                            }, transitionArr[_dt]);
+                        }
+                    })(result.thisPage, me.id);
+                    result.thisPage = me.id;
+                }, transitionArr[_dt]);
+            }
+        }
+        result.Page = Page;
+        var transitionArr = {};
+        transitionArr["slider"] = 300;
+        transitionArr["overturn"] = 500;
+        transitionArr["zoom"] = 400;
+        result.init = function (homePage, option) {
+            var _self = this;
+            _self.set = $.extend({
+                defaultTransition: "slider"
+            }, option || {});
+            result.thisPage = homePage;
+            $("#" + homePage).addClass("in-" + _self.set.defaultTransition);
+        }
+        return result;
+    })();
+
+    PageCommon.init("page1", { defaultTransition: "overturn" });
+    var page1 = new PageCommon.Page("page1", {
+        init: function () {
+            console.log(this.id + " has init");
+            $("#" + this.id).delegate("button", "touchstart", function () {
+                //console.table($(this).position());
+                page2.show();
+            });
+        },
+        slideAfter: function () { console.log(this.id + " has slideAfter"); }
+    });
+    var page2 = new PageCommon.Page("page2", {
+        init: function () {
+            console.log(this.id + " has init");
+            $("#" + this.id).delegate("button", "touchstart", function () {
+                page2.back();
+            });
+        },
+        slideAfter: function () { console.log(this.id + " has slideAfter"); }
+    });
+    
+
+    var inPage = "page1";
+    /*function slider(page) {
+        $("#" + inPage + ",#" + page).addClass("slider");
+        $("#" + inPage).removeClass("in").addClass("outLeft");
+        $("#" + page).removeClass("out").addClass("in");
+        window.setTimeout(function () {
+            $("#" + inPage + ",#" + page).removeClass("slider");
+            $("#" + inPage).removeClass("outLeft").addClass("out");
+            inPage = page;
+        }, 200);
+    }
+
+    window.setTimeout(function () {
+        slider("page2");
+    }, 1000);
+
+    window.setTimeout(function () {
+        slider();
+    }, 3000);*/
+
+
+</script>

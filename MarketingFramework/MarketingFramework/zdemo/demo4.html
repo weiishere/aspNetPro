@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <style type="text/css">
+        * { margin: 0; padding: 0; }
+        html,
+        body { height: 100%; background: #fff; }
+        .banner-wrapper img { width: 100%; height: auto; display: block; }
+        .tab { position: relative; overflow: hidden; background: #eee; width: 100%; margin: 0 auto; font-family: sans-serif; line-height: 1.5; font-weight: 300; color: #888; -webkit-font-smoothing: antialiased; }
+        .tabs { display: table; position: relative; overflow: hidden; background: #fff; margin: 0; padding: 0; width: 100%; border-bottom: 1px solid #e0e0e0; }
+            .tabs li { float: left; line-height: 38px; overflow: hidden; width: 21%; padding: 0 2%; text-align: center; position: relative; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+            .tabs a { background-color: #fff; border-bottom: 1px solid #fff; color: #323333; font-weight: 500; font-size: 14px; display: block; letter-spacing: 0; outline: none; text-decoration: none; -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; -webkit-tap-highlight-color: rgba(0,0,0,0); border-bottom: 2px solid #fff; }
+        .tabs_item { display: none; }
+            .tabs_item img { width: 100%; height: auto; display: block; }
+            .tabs_item:first-child { display: block; }
+        .current a { color: #323333; background: #fff; border-bottom: 2px solid #da3e45; }
+    </style>
+    <div class="banner-wrapper">
+        <img src="//img14.360buyimg.com/cms/jfs/t2290/115/1456764769/24902/7b7755df/56a8873aN8634edbf.jpg" class="J_imgLazyload">
+    </div>
+    <script src="http://static.jdpay.com/basic/dist/js/m-public/??jquery1.7.2.js"></script>
+
+    <div class="tab">
+        <ul class="tabs active">
+            <li class="current">
+                <a href="#">使用流程</a>
+            </li>
+            <li>
+                <a href="#">收益</a>
+            </li>
+            <li>
+                <a href="#">定期转入</a>
+            </li>
+            <li>
+                <a href="#">转出规则</a>
+            </li>
+        </ul>
+        <!-- / tabs -->
+        <div class="tab_content">
+            <div class="tabs_item">
+                <img data-imgtype="htmlContent" src="//img13.360buyimg.com/cms/jfs/t2365/76/2104399842/118259/8d27fa34/56b06c1cNb205fa5c.jpg" class="J_imgLazyload" data-srcset="//img13.360buyimg.com/cms/jfs/t2365/76/2104399842/118259/8d27fa34/56b06c1cNb205fa5c.jpg" alt="">
+            </div>
+            <div class="tabs_item">
+                <img data-imgtype="htmlContent" src="//img10.360buyimg.com/cms/jfs/t2275/232/2197852667/141093/2a6b0a1f/56cc00b2N28cf6611.jpg" class="J_imgLazyload" data-srcset="//img10.360buyimg.com/cms/jfs/t2275/232/2197852667/141093/2a6b0a1f/56cc00b2N28cf6611.jpg" alt="">
+            </div>
+            <div class="tabs_item">
+                <img data-imgtype="htmlContent" src="//img14.360buyimg.com/cms/jfs/t2674/257/1813331974/60618/9c74ae94/574bf769N64df46cc.png" class="J_imgLazyload" data-srcset="//img14.360buyimg.com/cms/jfs/t2674/257/1813331974/60618/9c74ae94/574bf769N64df46cc.png" alt="">
+            </div>
+            <div class="tabs_item">
+                <img data-imgtype="htmlContent" src="//img11.360buyimg.com/cms/jfs/t1912/318/1464700919/137147/e1869bad/56b06ae8N70cbd5c3.jpg" class="J_imgLazyload" data-srcset="//img11.360buyimg.com/cms/jfs/t1912/318/1464700919/137147/e1869bad/56b06ae8N70cbd5c3.jpg" alt="">
+            </div>
+            <!-- / tabs_item -->
+        </div>
+        <!-- / tab_content -->
+    </div>
+    <!-- / tab -->
+    <script type="text/javascript">
+        
+        (function ($) {
+            window.onload = function () {
+                $('.tab_content img').each(function () { $(this).attr('src', $(this).data('srcset')) })
+            }
+            $(document).ready(function () {
+                $('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
+
+                $('.tab ul.tabs li a').click(function (g) {
+                    var tab = $(this).closest('.tab'),
+                        index = $(this).closest('li').index();
+
+                    tab.find('ul.tabs > li').removeClass('current');
+                    $(this).closest('li').addClass('current');
+
+                    tab.find('.tab_content').find('div.tabs_item').not('div.tabs_item:eq(' + index + ')').slideUp("fast");
+                    tab.find('.tab_content').find('div.tabs_item:eq(' + index + ')').slideDown("fast");
+
+                    g.preventDefault();
+                });
+                $(".banner-wrapper img").attr("src", "//img14.360buyimg.com/cms/jfs/t2290/115/1456764769/24902/7b7755df/56a8873aN8634edbf.jpg");
+            });
+        })(jQuery);
+        var num = document.documentElement.scrollTop || document.body.scrollTop;
+        window.scrollTo(0, num - 1);
+        window.scrollTo(0, num);
+    </script>
+</body>
+</html>

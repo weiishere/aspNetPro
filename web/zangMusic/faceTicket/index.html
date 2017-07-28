@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+		<title>
+			刷脸赚车票
+		</title>
+		<link rel="stylesheet" href="./css/css.css?t=222">
+	</head>
+	<body>
+		<section class="mainBody">
+			<div id="pages" class="view-container" style="">
+				<!-- 对话页面 -->
+				<div class="mainWrap page-container pageNew" id="dialoguePage">
+					<content>
+						<div class="dialogue-con">
+							<ul>
+								<li>
+									<img class="left" src="./img/dialogue_02.png" alt="">
+								</li>
+								<li>
+									<img class="left" src="./img/dialogue_03.png" alt="">
+								</li>
+								<li>
+									<img class="right" src="./img/dialogue_04.png" alt="">
+								</li>
+								<li>
+									<img class="left" src="./img/dialogue_05.png" alt="">
+								</li>
+								<li>
+									<img class="right" src="./img/dialogue_06.png" alt="">
+								</li>
+								<li>
+									<img class="left" src="./img/dialogue_07.png" alt="">
+								</li>
+								<li id="J_dialogueNext">
+									<img class="right" src="./img/dialogue_08.png" alt="">
+								</li>
+								<li>
+									<img class="right" src="./img/dialogue_09.png" alt="">
+								</li>
+							</ul>
+						</div>
+						<div class="dialogue-fixed">
+							<img src="./img/dialogue_10.png" alt="">
+						</div>
+					</content>
+				</div>
+				<!-- 介绍 -->
+				<div class="mainWrap page-container pageNew" id="introducePage">
+					<content>
+						<ul class="introduce">
+							<li>
+								<img src="./img/introduce_02.jpg" alt="">
+							</li>
+							<li>
+								<img src="./img/introduce_03.jpg" alt="">
+							</li>
+							<li class="introduce-btn">
+								<img src="./img/introduce_04.jpg" alt="">
+								<a href="javascript:;" id="J_camera">
+								</a>
+								<span class="J_rule" role = "checkRole">
+								</span>
+							</li>
+							<li class="trickets-list">
+								<img src="./img/introduce_05.jpg" alt="">
+								<div class="trickets-list-wrap J_tricketsList">
+									<!-- 需要计算ol宽度 -->
+									<ol>
+									</ol>
+								</div>
+							</li>
+							<li class="footer-more">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<img src="./img/introduce_06.jpg" alt="">
+							</li>
+						</ul>
+					</content>
+				</div>
+				<!-- 钱包内介绍 -->
+				<div class="mainWrap page-container pageNew" id="appIntroducePage" style="overflow-y:scroll;-webkit-overflow-scrolling:touch">
+					<content>
+						<ul class="introduce">
+							<li>
+								<img src="./img/introduce_02.jpg" alt="">
+							</li>
+							<li>
+								<img src="./img/introduce_03.jpg" alt="">
+							</li>
+							<li class="introduce-btn">
+								<img src="./img/introduce_07.jpg" alt="">
+								<span class="J_rule" style="top: 43%" role = "checkRole">
+								</span>
+							</li>
+							<li class="trickets-list">
+								<img src="./img/introduce_05.jpg" alt="">
+								<div class="trickets-list-wrap J_tricketsList">
+									<!-- 需要计算ol宽度 -->
+									<ol>
+									</ol>
+								</div>
+							</li>
+							<li class="footer-more">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<img src="./img/introduce_06.jpg" alt="">
+							</li>
+						</ul>
+					</content>
+				</div>
+				<!-- 上传失败 -->
+				<div class="mainWrap page-container pageNew" id="failPage">
+					<content>
+						<div class="fail">
+							<img src="./img/fail.jpg" alt="">
+							<span>
+							</span>
+						</div>
+					</content>
+				</div>
+				<!-- 手机号 -->
+				<div class="mainWrap page-container pageNew" id="phonePage">
+					<content>
+						<div class="phone-num">
+							<img src="./img/phone_02.jpg" alt="">
+							<img src="./img/phone_03.jpg" alt="">
+							<div class="face-img">
+								<img src="./img/phone_05.png" alt="">
+								<div class="img-wrap user-face J_faceImg" style="height: 80%;">
+								</div>
+							</div>
+							<div class="face-num">
+								<img src="./img/phone_06.png" alt="">
+								<img src="./img/phone_08.png" alt="">
+									<p class="J_faceText">
+										你的颜值简直天生丽质风华绝代！
+										<br>
+										美美哒过年吧！
+									</p>
+									<span class="J_faceNum">
+										83
+									</span>
+							</div>
+						</div>
+						<div class="phone-msg">
+							<img src="./img/phone_04.jpg" alt="">
+							<input type="tel" name='phone' id="txt_PhoneNumber" placeholder="请输入您的手机号"
+							/>
+							<input placeholder="请输入验证码" name="verifyCode" type="tel" id="text_verifyCode"
+							/>
+							<button id="btu_getsms" name="getCode" class="btuGetCode">
+								获取验证码
+							</button>
+							<button id="btu_postVali" name="next">
+							</button>
+						</div>
+					</content>
+				</div>
+				<!-- 领奖成功 -->
+				<div class="mainWrap page-container pageNew" id="prizePage">
+					<content>
+						<div class="phone-num">
+							<img src="./img/phone_02.jpg" alt="">
+							<img src="./img/phone_03.jpg" alt="">
+							<div class="face-img">
+								<img src="./img/phone_05.png" alt="">
+								<div class="img-wrap user-face J_faceImg">
+								</div>
+							</div>
+							<div class="face-num">
+								<img src="./img/phone_06.png" alt="">
+								<img src="./img/phone_08.png" alt="">
+								<p class="J_faceText">
+									你的颜值简直天生丽质风华绝代！
+									<br>
+									美美哒过年吧！
+								</p>
+								<span class="J_faceNum">
+									83
+								</span>
+							</div>
+						</div>
+						<div class="prize-info J_prizeInfo">
+							<!--文案变化:元现金红包 现金红包-->
+							<p>
+								<span>
+									5
+								</span>
+								元话费优惠券
+							</p>
+							<em>
+								5
+							</em>
+							<i>
+								话费券
+							</i>
+							<img src="./img/prize_02.jpg" alt="">
+						</div>
+						<ul class="introduce">
+							<li class="trickets-list">
+								<img src="./img/introduce_05.jpg" alt="">
+								<div class="trickets-list-wrap J_tricketsList">
+									<!-- 需要计算ol宽度 -->
+									<ol>
+									</ol>
+								</div>
+							</li>
+							<li class="footer-more" style="padding-bottom: 85px; background-color: #5b0c11;">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<img src="./img/introduce_06.jpg" alt="">
+							</li>
+						</ul>
+					</content>
+				</div>
+				<!-- 点 赞 -->
+				<div class="mainWrap page-container pageNew" id="supportPage">
+					<content>
+						<div>
+							<div class="support-con">
+								<img src="./img/support_02.jpg" alt="">
+								<img src="./img/support_03.jpg" alt="">
+								<div class="support-detail">
+									<div class="user-wrap">
+										<div class="user-logo">
+											<img class="J_userLogo" src="./img/user.png" alt="">
+										</div>
+										<span class="user-name J_userName">
+											火车票
+										</span>
+									</div>
+									<p class="J_expendText">
+										我刷脸赚得了N元话费优惠券， 快来支持我全额报销路费！
+									</p>
+									<div class="user-face J_faceImg" style="height: 36%;">
+									</div>
+									<span class="support-rule" role = "checkRole">
+									</span>
+									<a href="javascript:;" class="support-btn J_supportBtn">
+									</a>
+									<a href="javascript:;" class="support-play J_supportPlay">
+									</a> 
+								</div>
+							</div>
+							<ul class="introduce">
+								<li class="trickets-list">
+									<img src="./img/introduce_05.jpg" alt="">
+									<!-- <div class="trickets-list-wrap J_tricketsList">
+										需要计算ol宽度
+										<ol>
+										</ol>
+									</div> -->
+									<div class="trickets-list-wrap J_tricketsList">
+										 <table id="tableList" >
+									            <tr>  
+									            <!-- 初始结构  注意所有地方都替换 -->
+									            	<td><div></div></td>   
+									            	<td><div></div></td>
+									            	<td><div></div></td>
+									            	<td><div></div></td>
+									            	<td><div></div></td>
+									            	<!-- 切换结构 -->
+									            	<!-- <td><p><img src="img/user.png" alt=""><span>已报销5元</span></p></td>
+									            	<td><p><img src="img/user.png" alt=""><span>已报销5元</span></p></td>
+									            	<td><p><img src="img/user.png" alt=""><span>已报销5元</span></p></td>
+									            	<td><p><img src="img/user.png" alt=""><span>已报销5元</span></p></td>
+									            	<td><p><img src="img/user.png" alt=""><span>已报销5元</span></p></td>
+									            	<td><p><img src="img/user.png" alt=""><span>已报销5元</span></p></td>
+									            	<td><p><img src="img/user.png" alt=""><span>已报销5元</span></p></td>
+									            	<td><p><img src="img/user.png" alt=""><span>已报销5元</span></p></td> -->
+									            </tr>
+									        </table>
+									</div>
+								</li>
+
+								<li class="footer-more">
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+									<img src="./img/introduce_06.jpg" alt="">
+								</li>
+							</ul>
+						</div>
+					</content>
+				</div>
+				<!-- 投票结果 -->
+				<div class="mainWrap page-container pageNew" id="resultPage">
+					<content>
+						<div class="result-con">
+							<img src="./img/result_05.jpg" alt="">
+							<div class="result-top">
+								<div class="user-logo">
+									<img class="J_userLogo" src="./img/user.png" alt="">
+								</div>
+								<p class="user-name J_userName">
+									火车票
+								</p>
+							</div>
+							<div class="user-face J_faceImg" style="height: 44.6%;">
+							</div>
+							<span class="result-rule" role = "checkRole">
+							</span>
+							<div class="result-text J_resultText">
+								你的颜值目前正在被我们的程序员舔屏！我们会尽全力从海量颜值中寻找到您，请保持手机畅通，如您中奖，7个工作日内我们会与您联系！
+							</div>
+						</div>
+						<div class="result-list">
+							<div class="result-number">
+								已有<span class="J_voterNum"></span>人为你投票
+							</div>
+							<ul class="J_voterList">
+							</ul>
+						</div>
+					</content>
+				</div>
+				<!-- 投票人列表 -->
+				<div class="mainWrap page-container pageNew" id="listPage">
+					<content>
+						<div class="list-con">
+							<img src="./img/list_03.png" alt="">
+							<ul class="J_userList">
+							</ul>
+						</div>
+					</content>
+				</div>
+				<div class="weakLayer">
+				</div>
+				<div class="dialogWrap" style="display:none" id="roleLayer">
+					<div class="roleWrap">
+						<span class="close">
+							<img src="img/close2.png" />
+						</span>
+						<div>
+							<br>
+							活动时间：即日起至2016年2月29日23:59:59
+							<br>
+							一. 活动内容：
+							<br>
+							用户仅可通过京东钱包微信公众账号参与“刷脸赚车票，美美哒过年”活动。
+							<br>
+							用户上传火车票、飞机票（实物登机牌、行程单照片均可，电子机票除外）（以下简称交通凭证）、用户与交通凭证合影、自拍照，可随机获得5元、10元话费优惠券，1元、5元现金红包中的一种奖品。
+							<br>
+							用户将参与活动页面分享至微信获得好友支持，每日从获得30个支持及以上的用户中随机抽取30名用户，中奖用户均可获得交通费全额报销。
+							<br>
+							二. 活动规则：
+							<br>
+							1.用户须通过指定渠道上传2016年的交通凭证（以票面实际记载时间为准）方可获得随机奖品。
+							<br>
+							2.用户仅可上传一次照片，每次仅限1张。
+							<br>
+							3.每日从获得30个支持及以上的用户中随机抽取30名用户，中奖用户均可获得交通费全额报销。中奖用户明天每日更新到京东钱包－公告中。同一用户仅有一次获得全额报销交通费的机会，未中奖用户的支持数继续有效。
+							<br>
+							4.报销金额以票面记载价格为准，封顶1000元。
+							<br>
+							5.同一用户仅有一次获得随机奖品的机会，且只能获得一份。
+							<br>
+							6.同一京东钱包账户、京东钱包绑定手机号、身份证号、京东账户、微信账户、银行卡号、终端设备等与用户身份相关的信息，其中任意一项或者多项存在相同、相似或非真实有效等情况的，均可能被认定为同一用户，按照活动规则中的同一用户处理。
+							<br>
+							7.在本活动期间，如存在违规行为（包括但不限于恶意套取资金、机器作弊、虚假交易等违反诚实信用原则行为），主办方将取消您的中奖资格，并有权撤销相关违规交易和奖励，必要时追究法律责任。
+							<br>
+							8.如出现不可抗力或情势变更的情况（包括但不限于重大灾害事件、活动受政府机关指令需要停止举办或调整的、活动遭受严重网络攻击或因系统故障需要暂停举办的），京东钱包有权暂停或取消本次活动，并可依相关法律法规的规定主张免责。
+							<br>
+							9.本活动规则及其未尽事宜同时受《京东钱包服务协议》及相关公告、规则约束。
+							<br>
+							10.在法律允许的范围内，本公司对本活动有解释权。
+							<br>
+							11.本次活动与Apple Inc.无关。
+							<br>
+							三. 奖品的发放
+							<br>
+							用户所得随机奖品将发放至用户在活动页面输入的手机号码绑定的京东钱包账户。
+							<br>
+							四. 话费优惠券使用规则
+							<br>
+							1.话费优惠券将在获奖之日发放到京东钱包"我的-卡包-优惠券"中。
+							<br>
+							2.已完成京东钱包实名认证的用户可在优惠券有效期内使用；未完成京东钱包实名认证的用户须在优惠券有效期内进行实名认证，否则视为放弃该张优惠券。
+							<br>
+							3.优惠券有效期为3个自然日，自到账之日起算，券过期作废。
+							<br>
+							4.手机话费优惠券仅限在京东钱包客户端使用银行卡充值手机话费时使用，且单笔话费充值实付金额大于或等于95元时方可使用。
+							<br>
+							5.同一订单只能使用一张券，且不能与其他优惠活动同时享受。手机话费优惠券不可拆分使用、不可转赠、不可找零、不可兑现。手机话费优惠券与其他优惠券不能叠加使用。
+							<br>
+							6.当用券订单发生退款时，在券有效期内的，则券退回至用户的账户，券退回后有效期不变；如已过有效期则券不再退还，仅退用户实付金额。
+							<br>
+							五. 现金红包的使用规则
+							<br>
+							1.现金红包将在获奖之日发放到京东钱包“我的-卡包-红包”中。
+							<br>
+							2.已完成实名认证的用户可自动兑现至京东钱包账户余额； 未完成实名认证的用户需在获奖后3个工作日内完成京东钱包实名认证，方可兑现到京东钱包账户余额。未能在获奖日起算第3个工作日23:59:59完成实名认证的，视为放弃领奖。
+							<br>
+							六. 报销费用发放规则
+							<br>
+							1.请中奖用户按照京东钱包发送的短信内容提供报销凭证，请您务必保持手机畅通，活动结束后5个工作日内无法联系、未提供报销凭证、提供的报销凭证不符合要求的则视为主动放弃。
+							<br>
+							2.中奖用户提供的交通凭证不得污损，否则不能报销。
+							<br>
+							3.用户提供的交通凭证中记载的姓名或身份证号应与您的京东钱包相应实名认证信息一致。
+							<br>4.报销费用将在活动结束后15个工作日内发放至用户的京东钱包账户余额中。
+
+							<br>
+							<br>
+							<br>
+
+
+						</div>
+					</div>
+				</div>
+				<section class="footer_app hidden" id="J_openBtn">
+					<p>
+						京东钱包诚意之作
+					</p>
+					<p>
+						<button id="J_confirm">
+							打开京东钱包
+						</button>
+					</p>
+				</section>
+				<div class="alertWrap2" id="alertWrap">
+					<div class="alert">
+						<i>
+						</i>
+						<h1>
+							消息标题
+						</h1>
+						<span>
+							**
+						</span>
+						<div class="buttonWrap">
+						</div>
+					</div>
+				</div>
+				<div id="loading">
+					<div>
+						<img src="img/laoding.gif" />
+						<br />
+						加载中，请稍后...
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+
+</html>
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/wx-sdk.js"></script>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/mApp.js"></script>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/jdp-sdk.js"></script>
+<script src="js/fastclick.js"></script>
+<script src="js/common.js?t=222"></script>
+<script src="js/appprocess.js"></script>
+<script src="js/wxprocess.js?t=222"></script>
+<script>
+
+window.addEventListener('load',function(){
+//不用这个加载器
+}, false)
+
+var bWx = true;
+if (bWx) {
+    wxprocess();
+} else {
+    appprocess();
+}
+
+</script>
+
+<script type="text/javascript">
+    var jaq = jaq || [];
+    jaq.push(['account','UA-J2011-12']);
+    jaq.push(['domain','jr.jd.com']);
+    (function() {
+        var ja = document.createElement('script'); ja.type = 'text/javascript'; ja.async = true;
+        ja.src = ('https:' == document.location.protocol ? 'https://jrclick' : 'http://jrclick') + '.jd.com/wl.dev.js';
+        var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ja,s);
+    })();
+</script>

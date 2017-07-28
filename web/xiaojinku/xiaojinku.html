@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>小金库</title>
+    <meta charset="utf-8" />
+    <style>
+        html { }
+        body,
+        div,
+        p { margin: 0; padding: 0; }
+        ul { list-style: none; }
+        body { width: 100%; *cursor: default; overflow: hidden; font: 20px "Microsoft YaHei",Helvetica,STHeiti STXihei,Microsoft JhengHei,Arial; }
+        #pageContain { overflow: hidden; }
+        .page { display: none; width: 100%; height: 100%; overflow: hidden; position: absolute; top: 0; left: 0; }
+        .contain { width: 100%; height: 100%; display: none; position: relative; z-index: 0; }
+        .current .contain, .slide .contain { display: block; }
+        .current { display: block; z-index: 1; }
+        .slide { display: block; z-index: 2; }
+        .swipe { display: block; z-index: 3; transition-duration: 0ms !important; -webkit-transition-duration: 0ms !important; }
+        .page { background: url(https://img12.360buyimg.com/cms/jfs/t3151/269/1650088279/3316/efaa1f3c/57d10d16N893adf58.jpg); }
+        .page .footer { position: absolute; left: 0; right: 0; margin: auto; bottom: 0.5rem; width: 3rem; height: 0.31rem;  background-size: cover; }
+            .page .word { position: absolute; width: 100%;height:40%;top:0;bottom:0;margin:auto;text-align: center; }
+                .page .word span:nth-child(1) { position: absolute; left: 0; right: 0; margin: auto; width: 4rem; height: 1.5rem;  background-size: cover !important;
+                                                 opacity: 0; -webkit-animation: biye_effect2 3s ease-in;top:83% }
+                .page .word span:nth-child(2) { position: absolute; left: 0; right: 0; margin: auto; top:90%; width: 2.9rem; height: 0.65rem;  background-size: cover !important; opacity: 1; 
+                                                -webkit-animation: biye_effect3 3s ease-in; }
+
+        .page1 .fream{ position: absolute; width: 4.5rem; height: 4rem; top: 0.2rem;left: 0; right: 0; margin: auto;background: url(https://img12.360buyimg.com/cms/jfs/t3109/316/1636266736/37839/5f23643c/57d10e23N7a32bb81.png) no-repeat; background-size: cover; }
+            .page1 .biye { position: absolute; width: 3.5rem; height: .8rem; top: 1rem; left: 0; right: 0; margin: auto; background: url(https://img14.360buyimg.com/cms/jfs/t3193/16/1629466666/8523/45c32b7/57d10d17N087e8875.png); background-size: 100% 100%;
+                            -webkit-animation: biye_effect 3s ease-out; /*-webkit-animation-delay:0.5s;*/ opacity: 1; }
+            .page1 .person { position: absolute; width: 1.9rem; height: 3.2rem; top: 0.55rem; left: 0.5rem; background: url(https://img12.360buyimg.com/cms/jfs/t3208/157/1637834306/13033/1bd7a49a/57d10e5bNe6f74d3b.png); background-size: 100% 100%; }
+            .page1 .footer { position: absolute; left: 0; right: 0; margin: auto; bottom: 0.5rem; width: 3rem; height: 0.31rem; background: url(https://img13.360buyimg.com/cms/jfs/t3298/164/1662203159/9885/2b2edefa/57d10de8N4bffdd26.png) no-repeat; background-size: cover; }
+        .page1 .word span:nth-child(1) { background: url(https://img13.360buyimg.com/cms/jfs/t3247/38/1642516742/14208/215fd046/57d10d17N0ca260b4.png) no-repeat; }
+        .page1 .word span:nth-child(2) { background: url(https://img10.360buyimg.com/cms/jfs/t3301/241/1603560180/6411/3f30fbb0/57d10d17N5c39cd73.png) no-repeat;}
+
+        @-webkit-keyframes biye_effect {
+            0% { opacity: 0;-webkit-transform: scale(0.85,0.85); }
+            30% { opacity: 0;-webkit-transform: scale(0.85,0.85); }
+            100% { opacity: 1; -webkit-transform: scale(1,1);}
+        }
+
+        @-webkit-keyframes biye_effect2 {
+            0% { -webkit-transform: scale(0.8,0.8); opacity: 0; }
+            20% { -webkit-transform: scale(1,1); opacity: 1; }
+            80% { -webkit-transform: scale(1,1); opacity: 1; }
+            100% { -webkit-transform: scale(0.8,0.8); opacity: 0; }
+        }
+
+        @-webkit-keyframes biye_effect3 {
+            0% { -webkit-transform: scale(0.8,0.8); opacity: 0; }
+            80% { -webkit-transform: scale(0.8,0.8); opacity: 0; }
+            100% { -webkit-transform: scale(1,1); opacity: 1; }
+        }
+
+        .page2 .fream{ position: absolute; width: 4.5rem; height: 4rem; top: 0.2rem;left: 0; right: 0; margin: auto;background: url(https://img12.360buyimg.com/cms/jfs/t3202/40/1646812563/5737/4822f0b2/57d10e22N28aa6532.png) no-repeat; background-size: cover; }
+        .page2 .msg { position: absolute; width: 3.6rem; height: 2.73rem; top: 0.7rem; left: 0; right: 0; margin: auto; background: url(https://img14.360buyimg.com/cms/jfs/t3217/147/1664187161/19024/8a1ca271/57d10e5bNc93faf03.png) no-repeat; background-size: 100%; -webkit-animation: message 7s linear; }
+        @-webkit-keyframes message {
+            0% { height: 0rem; }2% { height: 0.39rem; }
+            14% { height: 0.39rem; }16% { height: 0.78rem; }
+            28% { height: 0.78rem; }30% { height: 1.17rem; }
+            42% { height: 1.17rem; }44% { height: 1.56rem; }
+            56% { height: 1.56rem; }58% { height: 1.95rem; }
+            70% { height: 1.95rem; }72% { height: 2.34rem; }
+            84% { height: 2.34rem; }86% { height: 2.73rem; }
+        }
+            .page2 .footer { position: absolute; left: 0; right: 0; margin: auto; bottom: 0.5rem; width: 3rem; height: 0.31rem; background: url(https://img12.360buyimg.com/cms/jfs/t3034/106/2073575292/10004/495c4ff7/57d10de8Neabf0e95.png) no-repeat; background-size: cover; }
+                .page2 .word span:nth-child(1) {background: url(https://img10.360buyimg.com/cms/jfs/t3001/329/2058270388/11976/7bb15c4f/57d10d6fNdce03b3c.png) no-repeat }
+                .page2 .word span:nth-child(2) {background: url(https://img12.360buyimg.com/cms/jfs/t3043/318/2082252029/8164/b2a4f393/57d10d6fN5301a8c3.png) no-repeat;width:3.4rem;height:0.63rem }
+
+         .page3 .fream{ position: absolute; width: 4.5rem; height: 4rem; top: 0.2rem;left: 0; right: 0; margin: auto;background: url(https://img10.360buyimg.com/cms/jfs/t3064/120/1644044772/27464/d03b2ccf/57d10e22N37639da7.png) no-repeat; background-size: cover; }
+            .page3 .time { position: absolute; width: 1.2rem; height: .515rem; top: 1.95rem; left: 31%;  background-image: url(https://img11.360buyimg.com/cms/jfs/t3238/303/1673828240/1126/26fcfd70/57d10f42Nc2d5fc04.png);
+                           background-size: 100% 100% !important;-webkit-animation: timeline 4s linear infinite;}
+            @-webkit-keyframes timeline {
+            0% { background-image: url(https://img11.360buyimg.com/cms/jfs/t3175/312/1588592996/1051/c1229383/57d10f04Ne9f59afe.png); }
+            17% { background-image: url(https://img11.360buyimg.com/cms/jfs/t3175/312/1588592996/1051/c1229383/57d10f04Ne9f59afe.png); }17.1% { background-image: url(https://img12.360buyimg.com/cms/jfs/t3103/151/1618283259/1074/2bb10ffe/57d10f03N29c5d24f.png); }
+            34% { background-image: url(https://img12.360buyimg.com/cms/jfs/t3103/151/1618283259/1074/2bb10ffe/57d10f03N29c5d24f.png); }34.1% { background-image: url(https://img10.360buyimg.com/cms/jfs/t3022/39/2062717902/1043/a190aff6/57d10f04N96dd0c8b.png); }
+            51% { background-image: url(https://img10.360buyimg.com/cms/jfs/t3022/39/2062717902/1043/a190aff6/57d10f04N96dd0c8b.png); }51.1% { background-image: url(https://img14.360buyimg.com/cms/jfs/t3142/37/1624272366/1092/7f64e155/57d10f04N7d1c5e44.png); }
+            68% { background-image: url(https://img14.360buyimg.com/cms/jfs/t3142/37/1624272366/1092/7f64e155/57d10f04N7d1c5e44.png); }68.1% { background-image: url(https://img10.360buyimg.com/cms/jfs/t3247/161/1637193538/1056/51fe5134/57d10f04Nc462e823.png); }
+            85% { background-image: url(https://img10.360buyimg.com/cms/jfs/t3247/161/1637193538/1056/51fe5134/57d10f04Nc462e823.png); }85.1% { background-image: url(https://img11.360buyimg.com/cms/jfs/t3238/303/1673828240/1126/26fcfd70/57d10f42Nc2d5fc04.png); }
+        }
+            /*@-webkit-keyframes timeline {
+            0% { background-position-y: 0; }
+            17% { background-position-y: 0; }17.1% { background-position-y: -0.61rem; }
+            34% { background-position-y: -0.59rem; }34.1% { background-position-y: -1.20rem; }
+            51% { background-position-y: -1.19rem; }51.1% { background-position-y: -1.779rem; }
+            68% { background-position-y: -1.779rem; }68.1% { background-position-y: -2.4rem; }
+            85% { background-position-y: -2.4rem; }85.1% { background-position-y: -3.023rem; }
+        }*/
+
+            .page3 .footer { position: absolute; left: 0; right: 0; margin: auto; bottom: 0.5rem; width: 3rem; height: 0.31rem; background: url(https://img11.360buyimg.com/cms/jfs/t3115/82/1639091990/10655/8528e400/57d10de8N3baebb61.png) no-repeat; background-size: cover; }
+        .page3 .word span:nth-child(1) { background: url(https://img13.360buyimg.com/cms/jfs/t3232/6/1609789416/12945/4c8933be/57d10d6fN27b943e8.png) no-repeat; height: 1.53rem;}
+        .page3 .word span:nth-child(2) { background: url(https://img10.360buyimg.com/cms/jfs/t3238/259/1664530819/7809/b5d7d6b0/57d10d6fNa9ee34ae.png) no-repeat; height: 0.62rem;width:3.6rem }
+
+        .page4 .fream{ position: absolute; width: 4.5rem; height: 4rem; top: 0.2rem;left: 0; right: 0; margin: auto;background: url(https://img11.360buyimg.com/cms/jfs/t3157/96/1624022197/49493/bd512b08/57d10e22N6a6ed534.png) no-repeat; background-size: cover;overflow:hidden }
+            .page4 .star { position: absolute; width: .6rem; height: .3rem; top: .5rem; right: .5rem;background: url(https://img11.360buyimg.com/cms/jfs/t3031/347/2003087386/397/690a546c/57d10e5bNb6d88b3a.png); background-size: 100% 100%;
+                            -webkit-animation: slide 1.5s linear infinite; /*-webkit-animation-delay:0.5s;*/ opacity: 1; }
+        @-webkit-keyframes slide {
+            0% { -webkit-transform: translate(0,0); opacity: 0; }10% { -webkit-transform: translate(0,0); opacity: 1; }
+            90% { -webkit-transform: translate(-600%,600%); opacity: 1; }100% { -webkit-transform: translate(-500%,500%); opacity: 0; }
+        }
+        .page4 .star2 { top: .5rem; right: 1.5rem;-webkit-animation: slide 2s linear infinite; }
+        .page4 .star3 { top: 1rem; right: .2rem;-webkit-transform:scale(1.3,1.3);-webkit-animation: slide 1s linear infinite; }
+        .page4 .star4{ top: 0rem; right: 1.3rem;-webkit-transform:scale(0.8,0.8);-webkit-animation: slide 1.7s linear infinite; }
+        .page4 .star5{ top: 2.2rem; right: -0.2rem;-webkit-transform:scale(0.5,0.5);-webkit-animation: slide 3s linear infinite; }
+
+            .page4 .persons { position: absolute; width: 1.5rem; height: 2.8rem; top: 0.9rem; left: 1.5rem; background: url(https://img12.360buyimg.com/cms/jfs/t3187/304/1632533596/4711/a2fa5c64/57d10e5bN9e3751c6.png); background-size: 100% 100%; }
+            .page4 .footer { position: absolute; left: 0; right: 0; margin: auto; bottom: 0.5rem; width: 3rem; height: 0.31rem; background: url(https://img11.360buyimg.com/cms/jfs/t3256/52/1645031438/10407/1aaf3047/57d10de8Ne7001e75.png) no-repeat; background-size: cover; }
+        .page4 .word span:nth-child(1) { background: url(https://img12.360buyimg.com/cms/jfs/t3148/104/1688628318/12971/82d7b723/57d10d6fNdb15a3c4.png) no-repeat;height:1.45rem;width:3.5rem }
+        .page4 .word span:nth-child(2) { background: url(https://img10.360buyimg.com/cms/jfs/t3133/74/1603823653/9012/4355dcea/57d10db7N196331fe.png) no-repeat; height: 1.02rem; width:2.6rem}
+
+        .page5 .iocn { position: absolute;width: .7rem;border:solid 0px #000; height: .7rem; top: 2.3rem; left: 0; right: 0; margin: auto;background: url(https://img11.360buyimg.com/cms/jfs/t3211/195/1601481797/13328/c9c5e4a3/57d10e5bNb4bdd390.png); 
+                       background-size: 420% 330%;}
+        .page5 .iocn1 { background-position:1% 59%;-webkit-transform: translate(-1.55rem,-0.6rem) rotate(720deg) scale(1,1);-webkit-animation: spread1 1.2s ease-out; }
+        .page5 .iocn2 { background-position:18% 2%;-webkit-transform: translate(-0.8rem,-1.7rem) rotate(720deg) scale(1,1);-webkit-animation: spread2 1.2s ease-out;}
+        .page5 .iocn3{ background-position:82% 2%;-webkit-transform: translate(0.8rem,-1.7rem) rotate(720deg) scale(1,1);-webkit-animation: spread3 1.2s ease-out;}
+        .page5 .iocn4{ background-position:99% 59%;-webkit-transform: translate(1.55rem,-0.6rem) rotate(720deg) scale(1,1);-webkit-animation: spread4 1.2s ease-out; }
+        @-webkit-keyframes zoom {
+            0% { -webkit-transform:scale(1,1);}
+            50% { -webkit-transform:  scale(1.05,1.05);}
+            100% { -webkit-transform:scale(1,1); }
+        }
+        @-webkit-keyframes spread1 {
+            0% { -webkit-transform: translate(0,0) rotate(0deg) scale(0,0);}
+            50% { -webkit-transform: translate(0,0) rotate(0deg) scale(0,0);}
+            90% { -webkit-transform: translate(-1.8rem,-0.65rem) rotate(720deg) scale(1.2,1.2); }
+            100% { -webkit-transform: translate(-1.55rem,-0.6rem) rotate(720deg) scale(1,1); }
+        }
+        @-webkit-keyframes spread2 {
+            0% { -webkit-transform: translate(0,0) rotate(0deg) scale(0,0);}
+            50% { -webkit-transform: translate(0,0) rotate(0deg) scale(0,0);}
+            90% { -webkit-transform: translate(-0.85rem,-1.8rem) rotate(720deg) scale(1.2,1.2); }
+            100% { -webkit-transform: translate(-0.8rem,-1.7rem) rotate(720deg) scale(1,1); }
+        }
+        @-webkit-keyframes spread3 {
+            0% { -webkit-transform: translate(0,0) rotate(0deg) scale(0,0);}
+            50% { -webkit-transform: translate(0,0) rotate(0deg) scale(0,0);}
+            90% { -webkit-transform: translate(0.75rem,-1.8rem) rotate(720deg) scale(1.2,1.2); }
+            100% { -webkit-transform: translate(0.8rem,-1.7rem) rotate(720deg) scale(1,1); }
+        }
+        @-webkit-keyframes spread4 {
+            0% { -webkit-transform: translate(0,0) rotate(0deg) scale(0,0);}
+            50% { -webkit-transform: translate(0,0) rotate(0deg) scale(0,0);}
+            90% { -webkit-transform: translate(1.8rem,-0.65rem) rotate(720deg) scale(1.2,1.2); }
+            100% { -webkit-transform: translate(1.55rem,-0.6rem) rotate(720deg) scale(1,1); }
+        }
+
+        .page5 .fream{ position: absolute; width: 4.5rem; height: 4rem; top: 0.2rem;left: 0; right: 0; margin: auto;background: url(https://img10.360buyimg.com/cms/jfs/t3043/168/2032795372/30699/db43caba/57d10e22Na10b5493.png) no-repeat; background-size: cover; }
+            .page5 .pig { position: absolute;width: 1.2rem; height: 1rem; top: 2.05rem; left: 0; right: 0; margin: auto; background: url(https://img11.360buyimg.com/cms/jfs/t3211/195/1601481797/13328/c9c5e4a3/57d10e5bNb4bdd390.png) no-repeat 49% 100%; background-size:290% 270%;-webkit-animation: zoom 1s linear infinite;}
+            .page5 .footer { position: absolute; left: 0; right: 0; margin: auto; bottom: 0.5rem; width: 3rem; height: 0.31rem; background: url(https://img10.360buyimg.com/cms/jfs/t3118/79/1629315964/10276/8e54b739/57d10de8N38ab2b47.png) no-repeat; background-size: cover; }
+        .page5 .word { }
+            .page5 .word span:nth-child(1) { background: url(https://img10.360buyimg.com/cms/jfs/t3052/143/1619317301/13890/8416dc04/57d10db7Nf160d597.png) no-repeat;height:1.8rem;top:75% }
+            .page5 .word span:nth-child(2) { background: url(https://img13.360buyimg.com/cms/jfs/t3298/13/1626258967/5100/3283da3b/57d10db7N5f105259.png) no-repeat; background-size:100% !important;height: 1.6rem;width:3.8rem;text-align:center;top:80% }
+                .page5 .word span:nth-child(2) button { background:#f15353;margin-top:0.7rem;border:0;width:100%;height:0.6rem;color:#fff;border-radius:0.08rem;font-size:100%}
+
+                .loading { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url(https://img12.360buyimg.com/cms/jfs/t3151/269/1650088279/3316/efaa1f3c/57d10d16N893adf58.jpg); z-index: 100000; color: #eee; }
+            .loading div { width: 80%; height:20px; left: 0; right: 0; top: 0;bottom: 0; position: absolute;  margin: auto; border: solid 1px #999; 
+                           background-size: 100% 100%; text-align: center; line-height: 20px; overflow: hidden;border-radius:0.2rem }
+             .loading div i { position: absolute; color: #fff;text-shadow:0 0 2px #000; width: 100%;  text-align: center; z-index: 100001; left: 0;height: 20px; }
+            .loading div span { width: 100%; position: absolute; height: 20px; background: #3c8be1; left: -100%; -webkit-transition: all 0.3s ease; }
+            .up { width: 60px; height: 23px; position: fixed; z-index: 1000; left: 0; right: 0; margin: auto; bottom: 0.05rem; -webkit-animation: upup 0.8s infinite linear; }
+            @-webkit-keyframes upup {
+                0% { -webkit-transform: translate(0,0.15rem); }
+                25% { -webkit-transform: translate(0,0); }
+                50% { -webkit-transform: translate(0,-0.15rem); }
+                75% { -webkit-transform: translate(0,0); }
+                100% { -webkit-transform: translate(0,0.15rem); }
+            }
+    </style>
+</head>
+<body>
+    <div id="pageContain">
+
+        <div class="page page1 current">
+            <div class="contain">
+                <div class="fream">
+                    <span class="biye"></span>
+                    <span class="person"></span>
+                </div>
+                <div class="word">
+                    <span></span>
+                    <span></span>
+                </div>
+                <span class="footer"></span>
+            </div>
+        </div>
+
+        <div class="page page2">
+            <div class="contain">
+                <div class="fream">
+                    <span class="msg"></span>
+                </div>
+                <div class="word">
+                    <span></span>
+                    <span></span>
+                </div>
+                <span class="footer"></span>
+            </div>
+        </div>
+
+        <div class="page page3">
+            <div class="contain">
+                <div class="fream">
+                    <span class="time"></span>
+                </div>
+                <div class="word">
+                    <span></span>
+                    <span></span>
+                </div>
+                <span class="footer"></span>
+            </div>
+        </div>
+
+        <div class="page page4">
+            <div class="contain">
+                <div class="fream">
+                    <span class="star"></span>
+                    <span class="star star2"></span>
+                    <span class="star star3"></span>
+                    <span class="star star4"></span>
+                    <span class="star star5"></span>
+                    <span class="persons"></span>
+                </div>
+                <div class="word">
+                    <span></span>
+                    <span></span>
+                </div>
+                <span class="footer"></span>
+            </div>
+        </div>
+
+        <div class="page page5">
+            <div class="contain">
+                <div class="fream">
+                    <span class="iocn iocn1"></span>
+                    <span class="iocn iocn2"></span>
+                    <span class="iocn iocn3"></span>
+                    <span class="iocn iocn4"></span>
+                    <span class="pig"></span>
+                </div>
+                <div class="word">
+                    <span></span>
+                    <span>
+                        <button>转入小金库</button>
+                    </span>
+                </div>
+                <span class="footer"></span>
+            </div>
+        </div>
+    </div>
+    <ul id="navBar" style="display:none">
+        <li>0</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <div class="loading">
+        <div>
+            <i>0%</i>
+            <span class="progress"></span>
+        </div>
+    </div>
+    <div class="up"><img dsrc="https://img12.360buyimg.com/cms/jfs/t3256/13/1627734670/3896/1678932e/57d1085fN8de29103.png" /></div>
+</body>
+</html>
+<script src="//static.jdpay.com/basic/dist/js/m-public/??zepto.min.js,mApp.js,share524.js"></script>
+<script>
+    function FullPage(ax) { function ad(f, h, k, c) { this.cx = 3 * f; this.bx = 3 * (k - f) - this.cx; this.ax = 1 - this.cx - this.bx; this.cy = 3 * h; this.by = 3 * (c - h) - this.cy; this.ay = 1 - this.cy - this.by } var ac = document.getElementById(ax.id), ay = ac.children, an = ay.length, a = an, af = ax.slideTime || 800, al = ax.effect || {}, az = 0, ag, q, av, aw, aq, K, ab, S, m, O = [], o = [], ak = [], j = [], i, ao, g = null, ar = !1, J = !1, ai, au, ae, N, am, ah, e, aA, at, ap, aj, n, d; if (ay && 1 !== an) { ax.mode && (J = -1 !== ax.mode.indexOf("nav:"), j = ax.mode.split(","), i = j.length); for (au = 0; au < an; au++) { O.push(ay[au].style), o.push(+ay[au].getAttribute("data-step") || 0), ak.push(0) } ag = !!window.addEventListener; q = "ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch; (function () { var b = navigator.userAgent, c = b.indexOf("Android"), f; ae = -1 !== b.indexOf("QQBrowser") ? 200 : 0; -1 !== c && (f = b.substring(c + 7, c + 11).replace(" ", "")); return f || 0 })(); av = function (b) { switch (!0) { case "" === b.webkitTransition: return "webkit"; case "" === b.MozTransition: return "Moz"; case "" === b.msTransition: return "ms"; case "" === b.OTransition: return "O"; default: return "" } }(document.createElement("Chriswang").style); ad.prototype = { epsilon: 0.01, sampleCurveX: function (b) { return ((this.ax * b + this.bx) * b + this.cx) * b }, sampleCurveY: function (b) { return ((this.ay * b + this.by) * b + this.cy) * b }, sampleCurveDerivativeX: function (b) { return (3 * this.ax * b + 2 * this.bx) * b + this.cx }, solveCurveX: function (h, k) { var p, f, l, r; l = h; for (f = 0; 8 > f; f++) { r = this.sampleCurveX(l) - h; if (Math.abs(r) < k) { return l } p = this.sampleCurveDerivativeX(l); if (Math.abs(p) < k) { break } l -= r / p } p = 0; f = 1; l = h; if (l < p) { return p } if (l > f) { return f } for (; p < f;) { r = this.sampleCurveX(l); if (Math.abs(r - h) < k) { break } h > r ? p = l : f = l; l = 0.5 * (f - p) + p } return l }, solve: function (b, c) { return this.sampleCurveY(this.solveCurveX(b, c)) } }; N = function () { aw = document.documentElement.clientWidth || window.innerWidth; aq = document.documentElement.clientHeight || window.innerHeight; ac.style.height = aq + "px" }; au = function (h, k, f, l) { K = h; ab = k; S = f; m = l }; if ("string" === typeof ax.easing) { switch (ax.easing) { case "ease": au(0.25, 0.1, 0.25, 1); break; case "linear": au(0, 0, 1, 1); break; case "ease-in": au(0.42, 0, 1, 1); break; case "ease-out": au(0, 0, 0.58, 1); break; case "ease-in-out": au(0.42, 0, 0.58, 1) } } else { au(ax.easing[0], ax.easing[1], ax.easing[2], ax.easing[3]) } if ("" !== av) { for (; a--;) { O[a][av + "TransitionTimingFunction"] = "cubic-bezier(" + K + "," + ab + "," + S + "," + m + ")" } am = function (h, f, l, p, k) { h = h.style; f = "translate(" + f + "px," + l + "px) translateZ(0)"; k.scale && (f += 0 === p ? " scale(" + k.scale[0] + ")" : " scale(" + k.scale[1] + ")"); k.rotate && (f += 0 === p ? " rotate(" + k.rotate[0] + "deg)" : " rotate(" + k.rotate[1] + "deg)"); h[av + "TransformOrigin"] = "50% 50%"; h[av + "Transform"] = f } } else { ai = new ad(K, ab, S, m), am = function (F, E, C, D) { var B = F.currentStyle, A = F.style, y = parseInt(A.left || B.left, 10), w = parseInt(A.top || B.top, 10), x = E - y, H = C - w, u = +new Date + D, z = 0, v = al.opacity, G; clearInterval(g); g = setInterval(function () { var b; +new Date > u ? (b = v ? "left:" + E + "px;top:" + C + "px;filter:alpha(opacity=" + 100 * v[1] + ");" : "left:" + E + "px;top:" + C + "px;", clearInterval(g)) : (G = u - new Date, z = G / D, z = ai.solve(1 - z, ad.prototype.epsilon), b = "left:" + (y + x * z) + "px;top:" + (w + H * z) + "px;", v && (b += "filter:alpha(opacity=" + ~~(100 * (v[1] * z - v[0] * (1 - z))) + ");")); A.cssText = b }, 13) } } ah = { transform: function (h, c, p) { var k = 0, l = "" !== av || "none" !== h.translate && h.translate ? ae : -50; switch (h.translate) { case "Y": k = p > c ? aq : -aq; am(ay[p], 0, k, 0, h); break; case "X": k = p > c ? aw : -aw; am(ay[p], k, 0, 0, h); break; case "XY": k = { X: p > c ? aw : -aw, Y: p > c ? aq : -aq }; am(ay[p], k.X, k.Y, 0, h); break; default: am(ay[p], 0, 0, 0, h) } setTimeout(function () { am(ay[p], 0, 0, af, h) }, l + 50) }, opacity: function (h, c, l) { var k = ay[l].style; k.opacity = h[0]; setTimeout(function () { k.opacity = h[1] }, 70) } }; aA = ag && q ? navigator.userAgent.indexOf("Firefox") ? function (f, c) { f.addEventListener("click", c, !1) } : function (h, f, k) { h.addEventListener("touchstart", f, !1); k && h.addEventListener("touchmove", function (b) { b.preventDefault() }, !1) } : function (f, c) { f.onclick = c }; at = function (k, h, r) { var l = k.className, p = []; if (-1 !== l.indexOf(h)) { p = l.split(" "); for (l = p.length; l--;) { p[l] === h && (" " === r || "" === r ? p.splice(l, 1) : p[l] = r) } p.length ? k.className = p.join(" ") : (k.removeAttribute("class"), k.removeAttribute("className")) } }; J && (n = function (h, f) { var k = ao[f].className; at(ao[h], "active", " "); ao[f].className = "" === k ? "active" : k + " active" }); ax.continuous && (ap = function (h, f) { var k = an; if (f) { if (h >= an) { for (; k--;) { ak[k] = 0 } } else { if (0 > h) { for (; k--;) { ak[k] = o[k] } } } } return (an + h % an) % an }); e = function (b) { var c = ak[az]; b = c + b; if (0 <= b && b <= o[az]) { if (0 === b) { return at(ay[az], "step1", ""), ak[az] = b, !1 } if (1 === b && 0 === c) { return ay[az].className += " step1", ak[az] = b, !1 } at(ay[az], "step" + c, "step" + b); ak[az] = b; return !1 } return !0 }; aj = function (b, f) { var l = ae, c, k; if (!(ax.beforeChange && "stop" === ax.beforeChange(az, ay[az]) || ar || b === az)) { if (ax.continuous) { b = ap(b, 1) } else { if (b >= an || 0 > b && 0 === ak[az]) { return } } ar = !0; if (!f && !e(b - az)) { return setTimeout(function () { ar = !1 }, af) } for (k in al) { ah[k](al[k], az, b) } l += "" === av ? 20 : 0; c = az; az = b; J && n(c, az); setTimeout(function () { ay[b].className += " slide" }, l); setTimeout(function () { O[b][av + "TransitionDuration"] = af + "ms" }, 20); setTimeout(function () { at(ay[c], "current", ""); at(ay[az], "slide", "current"); ax.callback && ax.callback(az, ay[az]); ar = !1 }, af + ae + 120) } }; N(); au = ay[az].className; ay[az].className = -1 !== au.indexOf("current") ? au : au + " current"; for (ag ? window.addEventListener("resize", N, !1) : window.onresize = N; i--;) { (function (b) { switch (!0) { case "wheel" === b: d = function (c) { c = c || window.event; c.preventDefault ? c.preventDefault() : c.returnValue = !1; ar || (c = -c.wheelDelta || c.detail, aj(az + (0 > c ? -1 : 1))) }; ag && document.addEventListener("DOMMouseScroll", d, !1); window.onmousewheel = document.onmousewheel = d; break; case "touch" === b: if (!ag) { break } (function () { var W = al.transform.scale[0], V = al.transform.scale[1] - W, T = al.transform.rotate[0], U = al.transform.rotate[1] - T, h = al.opacity[0], y = al.opacity[1] - h, v, r, P, H, t, M = {}, E = !1, k = -1 === navigator.userAgent.indexOf("Windows Phone") ? !1 : !0, R, Q, B, s, c, x, p, f; p = !q && k ? window.navigator.msPointerEnabled ? { start: "MSPointerDown", move: "MSPointerMove", end: "MSPointerUp" } : { start: "pointerDown", move: "pointerMove", end: "pointerUp" } : { start: "touchstart", move: "touchmove", end: "touchend" }; document.body.ontouchmove = function (l) { l.preventDefault ? l.preventDefault() : l.returnValue = !1 }; "Y" === al.transform.translate ? (B = function () { var l = az - 1, u = az + 1; ax.continuous && (l = ap(l), u = ap(u)); R = O[l]; Q = O[u]; R && (R[av + "TransitionDuration"] = "0ms", R[av + "Transform"] = "translate(0,-" + aq + "px) translateZ(0)", R[av + "TransformOrigin"] = "50% 100%", ay[l].className += " swipe"); Q && (Q[av + "TransitionDuration"] = "0ms", Q[av + "Transform"] = "translate(0," + aq + "px) translateZ(0)", Q[av + "TransformOrigin"] = "50% 0%", ay[u].className += " swipe") }, x = function (l) { var w = Math.abs(l.y / aq), u = " scale(" + ~~(100 * (W + V * w)) / 100 + ") rotate(" + ~~(T + U * w) + "deg)"; R && 0 < l.y && (R.opacity = ~~(100 * (h + y * w)) / 100, R[av + "Transform"] = "translate(0," + ~~(l.y - aq) + "px) translateZ(0)" + u); Q && 0 > l.y && (Q.opacity = ~~(100 * (h + y * w)) / 100, Q[av + "Transform"] = "translate(0," + ~~(aq + l.y) + "px) translateZ(0)" + u) }, s = function (l, w) { var z = af >> 1, u = az + w; ax.continuous && (u = ap(u)); at(ay[u], "swipe", "slide"); l.opacity = 1; l[av + "TransitionDuration"] = z + "ms"; l[av + "Transform"] = "translate(0," + w * aq + "px) translateZ(0)"; setTimeout(function () { at(ay[u], "slide", ""); setTimeout(function () { ar = !1 }, 50) }, z) }, c = function (w, C) { var D = az + C, z = ~~(af / 1.5), A, u; ax.continuous ? (D = ap(D), A = ay[ap(az - C)], u = !0) : A = ay[az - C]; A && at(A, "swipe", ""); !u && 0 > D || D > an - 1 ? setTimeout(function () { ar = !1 }, 50) : (J && n(az, D), w.opacity = 1, at(ay[D], "swipe", "slide"), w[av + "TransitionDuration"] = z + "ms", w[av + "Transform"] = "translate(0,0) translateZ(0)", setTimeout(function () { at(ay[az], "current", ""); at(ay[D], "slide", "current"); az = D; ax.callback && ax.callback(az, ay[az]); setTimeout(function () { ar = !1 }, 50) }, z)) }) : (B = function () { var l = az - 1, u = az + 1; ax.continuous && (l = ap(l), u = ap(u)); R = O[l]; Q = O[u]; R && (R[av + "TransitionDuration"] = "0ms", R[av + "Transform"] = "translate(-" + aw + "px,0) translateZ(0)", R[av + "TransformOrigin"] = "100% 50%", ay[l].className += " swipe"); Q && (Q[av + "TransitionDuration"] = "0ms", Q[av + "Transform"] = "translate(" + aw + "px,0) translateZ(0)", Q[av + "TransformOrigin"] = "0 50%", ay[u].className += " swipe") }, x = function (l) { var w = Math.abs(l.x / aw), u = " scale(" + ~~(100 * (W + V * w)) / 100 + ") rotate(" + ~~(T + U * w) + "deg)"; R && 0 < l.x && (R.opacity = ~~(100 * (h + y * w)) / 100, R[av + "Transform"] = "translate(" + ~~(l.x - aw) + "px,0) translateZ(0)" + u); Q && 0 > l.x && (Q.opacity = ~~(100 * (h + y * w)) / 100, Q[av + "Transform"] = "translate(" + ~~(aw + l.x) + "px,0) translateZ(0)" + u) }, s = function (l, w) { var z = af >> 1, u = az + w; ax.continuous && (u = ap(u)); at(ay[u], "swipe", "slide"); l.opacity = 1; l[av + "TransitionDuration"] = z + "ms"; l[av + "Transform"] = "translate(" + w * aw + "px,0) translateZ(0)"; setTimeout(function () { at(ay[u], "slide", ""); setTimeout(function () { ar = !1 }, 50) }, z) }, c = function (w, C) { var D = az + C, z = ~~(af / 1.5), A, u; ax.continuous ? (D = ap(D), A = ay[ap(az - C)], u = !0) : A = ay[az - C]; A && at(A, "swipe", ""); !u && 0 > D || D > an - 1 ? setTimeout(function () { ar = !1 }, 50) : (J && n(az, D), at(ay[D], "swipe", "slide"), w.opacity = 1, w[av + "TransitionDuration"] = z + "ms", w[av + "Transform"] = "translate(0,0) translateZ(0)", setTimeout(function () { at(ay[az], "current", ""); at(ay[D], "slide", "current"); az = D; ax.callback && ax.callback(az, ay[az]); setTimeout(function () { ar = !1 }, 50) }, z)) }); v = function (l) { var u = l.touches ? l.touches[0] : l; l.preventDefault(); q && (1 < event.touches.length || event.scale && 1 !== event.scale) || (M = { x: u.pageX - P, y: u.pageY - H }, E ? (l = "X" === ax.effect.transform.translate ? 0 > M.x ? 1 : -1 : 0 > M.y ? 1 : -1, 0 <= ak[az] + l && ak[az] + l <= o[az] || f && x(M)) : (f = Math.abs(M.x) > Math.abs(M.y) ? "X" : "Y", f = f === ax.effect.transform.translate ? !0 : !1, E = !0)) }; r = function (l) { var w = l.changedTouches ? l.changedTouches[0] : l; l = +new Date - t; var z; z = 0; var u = !1; M = { x: w.pageX - P, y: w.pageY - H }; w = Math.abs(M.x); z = Math.abs(M.y); switch (ax.effect.transform.translate) { case "Y": u = 250 > +l && 30 < z || z > 0.3 * aq; z = 0 < M.y ? -1 : 1; break; case "X": u = 250 > +l && 30 < w || w > 0.3 * aw; z = 0 < M.x ? -1 : 1; break; default: u = 350 > +l && 50 < z + w || z > 0.3 * aq || w > 0.3 * aw, z = w > z ? 0 < M.x ? -1 : 1 : 0 < M.y ? -1 : 1 } u && f && e(z) && (!1 !== ax.continuous || (R || -1 !== z) && (Q || 1 !== z)) ? ax.beforeChange && "stop" === ax.beforeChange(az, ay[az]) ? (R && s(R, -1), Q && s(Q, 1)) : -1 === z ? c(R, -1) : c(Q, 1) : (R && s(R, -1), Q && s(Q, 1)); ac.removeEventListener(p.move, v, !1); ac.removeEventListener(p.end, r, !1) }; ac.addEventListener(p.start, function (l) { l = l.touches ? l.touches[0] : l; if (!ar) { ar = !0; P = l.pageX; H = l.pageY; t = +new Date; if (ax.onSwipeStart && "stop" === ax.onSwipeStart(az, ay[az])) { return ar = !1 } M = {}; E = !1; B(); ac.addEventListener(p.move, v, !1); ac.addEventListener(p.end, r, !1) } }, !1) })(); break; case -1 !== b.indexOf("nav:"): (function () { var l = b.split(":")[1], l = document.getElementById(l), k, h; ao = l.children; k = ao.length; h = ao[az].className; if (l && ao) { for (; k--;) { ao[k].setAttribute("data-page", k) } -1 === h.indexOf("active") && (ao[az].className = "" === h ? "active" : h + " active"); k = function (f) { var c; f = f || window.event; f = f.target || f.srcElement; for (c = f.tagName.toLowerCase() ; "li" !== c;) { if ("ul" === c) { return } f = f.parentNode; c = f.tagName.toLowerCase() } aj(+f.getAttribute("data-page"), 1) }; aA(l, k, 1) } })() } })(j[i]) } return { thisPage: function () { return az }, go: function (b) { aj(b) }, next: function () { aj(az + 1) }, prev: function () { aj(az - 1) } } } };
+</script>
+<script>
+    var isLoding = false;
+    var runPage;
+    $("html").css("font-size", $(window).width() / 5).find("body").css("font-size", 20);
+    $(".page5 button").bind("touchstart", function () {
+        _mApp.start('JRB');
+    });
+    var loadCommon = {
+        path: "",
+        imgList: [
+        "https://img12.360buyimg.com/cms/jfs/t3151/269/1650088279/3316/efaa1f3c/57d10d16N893adf58.jpg",//"img/bg.jpg",
+        "https://img10.360buyimg.com/cms/jfs/t3292/96/1541334415/82591/aa6b2aaf/57d10d17N333cbcdc.jpg",//"img/bg_1.jpg",
+        "https://img14.360buyimg.com/cms/jfs/t3193/16/1629466666/8523/45c32b7/57d10d17N087e8875.png",//"img/bg1-1.png"
+        "https://img13.360buyimg.com/cms/jfs/t3247/38/1642516742/14208/215fd046/57d10d17N0ca260b4.png",//"img/font1-1.png"
+        "https://img10.360buyimg.com/cms/jfs/t3301/241/1603560180/6411/3f30fbb0/57d10d17N5c39cd73.png",//"img/font1-2.png"
+        "https://img10.360buyimg.com/cms/jfs/t3001/329/2058270388/11976/7bb15c4f/57d10d6fNdce03b3c.png",//"img/font2-1.png"
+        "https://img12.360buyimg.com/cms/jfs/t3043/318/2082252029/8164/b2a4f393/57d10d6fN5301a8c3.png",//"img/font2-2.png"
+        "https://img13.360buyimg.com/cms/jfs/t3232/6/1609789416/12945/4c8933be/57d10d6fN27b943e8.png",//"img/font3-1.png"
+        "https://img10.360buyimg.com/cms/jfs/t3238/259/1664530819/7809/b5d7d6b0/57d10d6fNa9ee34ae.png",//"img/font3-2.png"
+        "https://img12.360buyimg.com/cms/jfs/t3148/104/1688628318/12971/82d7b723/57d10d6fNdb15a3c4.png",//"img/font4-1.png"
+        "https://img10.360buyimg.com/cms/jfs/t3133/74/1603823653/9012/4355dcea/57d10db7N196331fe.png",//"img/font4-2.png"
+        "https://img10.360buyimg.com/cms/jfs/t3052/143/1619317301/13890/8416dc04/57d10db7Nf160d597.png",//"img/font5-1.png"
+        "https://img13.360buyimg.com/cms/jfs/t3298/13/1626258967/5100/3283da3b/57d10db7N5f105259.png",//"img/font5-2.png"
+        "https://img13.360buyimg.com/cms/jfs/t3298/164/1662203159/9885/2b2edefa/57d10de8N4bffdd26.png",//"img/footer1.png"
+        "https://img12.360buyimg.com/cms/jfs/t3034/106/2073575292/10004/495c4ff7/57d10de8Neabf0e95.png",//"img/footer2.png"
+        "https://img11.360buyimg.com/cms/jfs/t3115/82/1639091990/10655/8528e400/57d10de8N3baebb61.png",//"img/footer3.png"
+        "https://img11.360buyimg.com/cms/jfs/t3256/52/1645031438/10407/1aaf3047/57d10de8Ne7001e75.png",//"img/footer4.png"
+        "https://img10.360buyimg.com/cms/jfs/t3118/79/1629315964/10276/8e54b739/57d10de8N38ab2b47.png",//"img/footer5.png"
+        "https://img12.360buyimg.com/cms/jfs/t3109/316/1636266736/37839/5f23643c/57d10e23N7a32bb81.png",//"img/fream1.png"
+        "https://img12.360buyimg.com/cms/jfs/t3202/40/1646812563/5737/4822f0b2/57d10e22N28aa6532.png",//"img/fream2.png"
+        "https://img10.360buyimg.com/cms/jfs/t3064/120/1644044772/27464/d03b2ccf/57d10e22N37639da7.png",//"img/fream3.png"
+        "https://img11.360buyimg.com/cms/jfs/t3157/96/1624022197/49493/bd512b08/57d10e22N6a6ed534.png",//"img/fream4.png"
+        "https://img10.360buyimg.com/cms/jfs/t3043/168/2032795372/30699/db43caba/57d10e22Na10b5493.png",//"img/fream5.png"
+        "https://img11.360buyimg.com/cms/jfs/t3211/195/1601481797/13328/c9c5e4a3/57d10e5bNb4bdd390.png",//"img/icons.png",
+        "https://img14.360buyimg.com/cms/jfs/t3217/147/1664187161/19024/8a1ca271/57d10e5bNc93faf03.png",//"img/msg.png",
+        "https://img12.360buyimg.com/cms/jfs/t3208/157/1637834306/13033/1bd7a49a/57d10e5bNe6f74d3b.png",//"img/person.png"
+        "https://img12.360buyimg.com/cms/jfs/t3187/304/1632533596/4711/a2fa5c64/57d10e5bN9e3751c6.png",//"img/persons.png"
+        "https://img11.360buyimg.com/cms/jfs/t3031/347/2003087386/397/690a546c/57d10e5bNb6d88b3a.png",//"img/star.png"
+        "https://img11.360buyimg.com/cms/jfs/t3175/312/1588592996/1051/c1229383/57d10f04Ne9f59afe.png",//"img/time_1.png",
+        "https://img12.360buyimg.com/cms/jfs/t3103/151/1618283259/1074/2bb10ffe/57d10f03N29c5d24f.png",//"img/time_2.png",
+        "https://img10.360buyimg.com/cms/jfs/t3022/39/2062717902/1043/a190aff6/57d10f04N96dd0c8b.png",//"img/time_3.png",
+        "https://img14.360buyimg.com/cms/jfs/t3142/37/1624272366/1092/7f64e155/57d10f04N7d1c5e44.png",//"img/time_4.png",
+        "https://img10.360buyimg.com/cms/jfs/t3247/161/1637193538/1056/51fe5134/57d10f04Nc462e823.png",//"img/time_5.png",
+        "https://img11.360buyimg.com/cms/jfs/t3238/303/1673828240/1126/26fcfd70/57d10f42Nc2d5fc04.png",//"img/time_6.png"
+        "https://img12.360buyimg.com/cms/jfs/t3256/13/1627734670/3896/1678932e/57d1085fN8de29103.png"//
+        ],
+        count: 0,
+        load: function (url) {
+            var _self = this;
+            var img = new Image();
+            img.onload = function () {
+                _self.count++;
+            }
+            img.onerror = function () {
+                _self.count++;
+                alert("错误：" + url);
+            }
+            img.src = url;
+        },
+        init: function () {
+            if (isLoding) { return false; }
+            isLoding = true;
+            var _self = this;
+            var imgs = document.getElementsByTagName('img');
+            for (var i = 0; i < imgs.length; i++) {
+                var src = imgs.item(i).getAttribute("dsrc");
+                imgs.item(i).setAttribute("src", src);
+            }
+            _self.imgList.forEach(function (item) {
+                _self.load(_self.path + item);
+            });
+            var length = _self.imgList.length;
+            var _t = window.setInterval(function () {
+                document.querySelector(".loading i").innerText = parseInt((_self.count / length) * 100) + "%";
+                document.querySelector(".progress").style.left = -(((length - _self.count) / length) * 100) + "%";
+                if (_self.count == length) {
+                    isLoding = false;
+                    document.querySelector(".loading").style.display = "none";
+                    window.clearInterval(_t);
+                    runPage = new FullPage({
+                        id: 'pageContain', slideTime: 800, continuous: false,
+                        effect: {
+                            transform: {
+                                translate: 'Y',
+                                scale: [0.1, 1],
+                                rotate: [45, 0]
+                            },
+                            opacity: [0, 1]
+                        },
+                        mode: 'wheel,touch,nav:navBar',
+                        easing: 'ease',
+                        continuous: true
+                    });
+                }
+            }, 100);
+        }
+    }
+    loadCommon.init();
+    shareInit('小金库 可依赖', '全方位支持，你的美好人生', 'https://qianbao.jd.com/p/page/HUsRcOu0rWT3.htm', '小金库 可依赖', '');
+</script>

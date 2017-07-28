@@ -1,0 +1,1925 @@
+﻿<style type="text/css">
+    * { -webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /*-webkit-user-select: none;*/ }
+    /* global */
+    html, body, div, span, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    abbr, address, cite, code,
+    del, dfn, em, img, ins, kbd, q, samp,
+    small, strong, sub, sup, var,
+    b, i,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, figcaption, figure,
+    footer, header, hgroup, menu, nav, section, summary,
+    time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; }
+    html, body { height: 100%; font-family: "Hiragino Sans GB",Arial,Helvetica,"Microsoft Yahei",sans-serif; }
+    ul, ol, li { list-style-type: none; }
+    article, aside, details, figcaption, figure,
+    footer, header, hgroup, menu, nav, section { display: block; }
+    em, q, blockquote { font-style: normal; }
+    a { text-decoration: none; cursor: pointer; }
+        a img { border-width: 0; }
+    img { width: 100%; }
+    input, textarea { outline: none; }
+    .title { position: fixed; left: 0; top: 0; background: #fff; height: 45px; line-height: 45px; width: 100%; text-align: center; color: #333; font-size: 18px; left: 0; top: 0; z-index: 999; }
+    .title-wrap { height: 45px; width: 100%; background: transparent; }
+    .new-a-back-box { position: absolute; top: 0; left: 0; width: 36px; height: 45px; }
+    .new-span-back { display: inline-block; position: absolute; top: 14px; left: 12px; width: 10px; height: 18px; background: url(http://img14.360buyimg.com/cms/jfs/t754/334/936314678/1345/1eedb6f8/5506c58aN2e959c6e.png) no-repeat; background-size: 100%; }
+    .share { display: block; position: absolute; right: 0; top: 0; padding: 0 10px; line-height: 45px; font-size: 14px; }
+    .fix-bottom { box-sizing: border-box; display: -webkit-box; padding: 15px 10px; line-height: 1; position: fixed; background-color: rgba(0,0,0,0.7); bottom: 0; width: 100%; z-index: 999; }
+    .fix-bottom { position: fixed; box-sizing: border-box; left: 0; bottom: 0; width: 100%; padding: 15px 10px; overflow: hidden; line-height: 1; background-color: rgba(0,0,0,0.7); }
+    .fb-logo { color: #fff; font-size: 14px; }
+        .fb-logo img { float: left; width: 40px; margin-right: 10px; vertical-align: bottom; }
+        .fb-logo p { font-size: 18px; margin-bottom: 8px; color: #fff; }
+        .fb-logo span { color: #fff; }
+    .fb-download { float: right; border-radius: 4px; width: 80px; padding: 0 15px; text-align: center; line-height: 40px; font-size: 18px; color: #fff; background: #d7454e; }
+
+    .m-w,
+    .outer-container,
+    .j-custom-2,
+    .mc,
+    .j-custom-wrap,
+    .j-module,
+    body > div:first-child { min-height: 100%; height: 100%; }
+    .d-layout .m-w,
+    .d-layout .outer-container,
+    .d-layout .j-custom-2,
+    .d-layout .mc,
+    .d-layout .j-custom-wrap,
+    .d-layout .j-module { min-height: 50px; height: auto; }
+    body .outer-container { overflow: auto; }
+    .d-layout #loading { display: none; }
+    body .mt20 { margin-top: 20%; }
+    body .btn_f0f0f0 { background-color: #f0f0f0; }
+    .J_header,
+    header { background: #FFF; height: 45px; line-height: 45px; width: 100%; text-align: center; color: #333; font-size: 18px; left: 0; top: 0; z-index: 999; border-bottom: 1px solid #EEE; position: fixed; }
+        .J_header .back,
+        header .back { display: inline-block; position: absolute; top: 14px; left: 12px; width: 22px; height: 18px; background: url(http://img13.360buyimg.com/cms/jfs/t1393/263/225707202/1450/2b9dac26/55667b09N2c7eeab1.png) no-repeat; background-size: 100%; }
+            .J_header .back:after,
+            header .back:after { content: ''; position: absolute; top: -14px; left: -14px; width: 45px; height: 45px; }
+        .J_header h1,
+        header h1 { display: inline-block; color: #333333; font-weight: normal; font-size: 18px; font-family: "microsoft yahei",Verdana,Arial,Helvetica,sans-serif; }
+        .J_header .J_share,
+        header .J_share { display: block; position: absolute; right: 0; top: 0; padding: 0 10px; line-height: 45px; font-size: 14px; }
+    .marketing { height: 100%; min-height: 100%; }
+    .marketing-page { min-height: 110%; }
+    .mkt-bg { background: url(http://img13.360buyimg.com/cms/jfs/t1252/337/1098740989/8849/b048201/5577e93aN7af6dbe5.png) repeat-y 0 0; min-height: 100%; width: 100%; background-size: contain; }
+    .ticket-bg { position: absolute; width: 100%; }
+    .ticket-cont { padding-top: 34%; position: relative; z-index: 100; margin: 0 10%; }
+    .card { width: 85%; margin: auto; position: relative; }
+    .card-cont { position: absolute; top: 0; left: 0; width: 100%; height: 100%; font-size: 1rem; }
+    .card-cont-top { height: 60%; vertical-align: middle; width: 100%; display: -webkit-box; /*旧版*/ display: -webkit-flex; /*新版*/ display: -moz-box; /*旧版*/ display: flex; /*新标准版 opera , firefox*/ -webkit-box-align: center; -moz-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; -webkit-box-pack: center; -moz-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center; }
+        .card-cont-top .amount { font-size: 2rem; color: #FFF; vertical-align: middle; font-weight: normal; -webkit-box-flex: 1.2; -moz-box-flex: 1.2; -webkit-flex: 1.2; flex: 1.2; width: 57%; text-align: center; display: inline-block; line-height: 1; }
+            .card-cont-top .amount .number { font-size: 4.4rem; font-style: normal; display: inline-block; }
+            .card-cont-top .amount .unit { display: inline-block; }
+        .card-cont-top .prizeName { vertical-align: middle; color: #FFF; font-weight: normal; font-size: 1.3rem; -webkit-box-flex: 1; -moz-box-flex: 1; -webkit-flex: 1; flex: 1; width: 39%; line-height: 1.8rem; text-align: center; display: inline-block; }
+    .card-cont-bottom { height: 40%; vertical-align: middle; width: 100%; text-align: center; padding-top: 4%; color: #7a7a7a; font-size: 1rem; }
+        .card-cont-bottom .prizeLimit { color: #fea98f; font-size: 1rem; }
+    .description,
+    .fail-description { color: #fd7139; margin-top: 10%; font-size: 1rem; text-align: center; line-height: 1.6rem; letter-spacing: 2px; }
+    .btn { padding: 5% 0; color: #333; background-color: #fff; display: block; margin-top: 5%; text-align: center; font-size: 1rem; font-weight: normal; position: relative; z-index: 9; }
+        .btn.btn_red { background-color: #fc5761; color: #fff; }
+    .rules { color: #fd7139; margin-top: 10%; font-size: 1rem; text-align: center; padding-bottom: 5%; display: block; }
+    .phoneNumber-box { padding-top: 20%; }
+    .phoneNumber-wrapper { background-color: #fff; border-radius: 10px; color: #333; font-size: 2rem; margin: 0 4%; padding-bottom: 5%; position: relative; z-index: 100; }
+    .phoneNumber { padding: 5%; border-bottom: 1px solid #ddd; text-align: center; }
+        .phoneNumber strong { font-size: 1.2rem; display: block; margin: 3% 0; }
+        .phoneNumber p { font-size: 1rem; padding-bottom: 3%; }
+        .phoneNumber .mobile { letter-spacing: 3px; color: #333; border: 1px solid #DDD; background-color: #EEE; width: 100%; padding: 15px 0; margin-top: 5%; display: block; font-size: 1rem; text-indent: 5%; }
+    .submit { margin: 5% 5% 0 5%; }
+    #loading { width: 100%; height: 100%; background-color: #FFF; position: relative; opacity: .7; position: fixed; z-index: 998; }
+        #loading img { width: 20%; position: absolute; top: 50%; left: 50%; -webkit-transform: translateX(-50%) translateY(-50%); transform: translateX(-50%) translateY(-100%); }
+    .bg-layer { position: fixed; top: 0; left: 0; background: #333; width: 100%; height: 100%; z-index: 9; opacity: .6; }
+    .fail-wrapper { margin: 0 10%; text-align: center; }
+    .fail-pic { text-align: center; padding-top: 30%; }
+    .fail-description { position: relative; z-index: 99; }
+    .fail-pic img { position: relative; z-index: 99; width: 40%; }
+    .realName-box { padding-top: 20%; }
+    .realName-wrapper { background-color: #fff; border-radius: 10px; color: #333; font-size: 2rem; margin: 0 5%; position: relative; z-index: 99; text-align: justify; padding: 5%; overflow: hidden; }
+        .realName-wrapper .realName { padding-bottom: 10%; padding-top: 10%; }
+            .realName-wrapper .realName p { font-size: 1rem; text-align: center; }
+        .realName-wrapper .btn { display: inline-block; width: 47%; /*margin-left: 4%;*/ }
+            .realName-wrapper .btn.realname { display: block; float: right; }
+            .realName-wrapper .btn.cancelRealName { margin-left: 0; float: left; display: block; }
+    .rules-box { padding: 5%; color: #fd7139; font-size: 2rem; text-align: center; line-height: 4rem; letter-spacing: 3px; display: block; overflow: auto; position: absolute; top: 0; left: 0; right: 0; bottom: 0; padding-bottom: 100px; }
+        .rules-box dt { font-size: 2rem; padding-bottom: 5%; }
+        .rules-box dd { text-align: left; font-size: 1rem; line-height: 1.7rem; }
+    .closeRulesBtn { position: absolute; top: 4%; right: 6%; width: 12%; }
+    /*父亲节*/
+
+    .fatherDay { }
+        .fatherDay .mkt-bg { background: url(http://img13.360buyimg.com/cms/jfs/t1042/118/1167663248/115046/1aa89c0c/55822afaNd7f25c45.jpg); background-size: 100% 100%; background-repeat: no-repeat; position: relative; }
+        .fatherDay .wrapper_info { position: absolute; top: 0; left: 0; min-height: 100%; width: 100%; background: url(http://img13.360buyimg.com/cms/jfs/t925/35/1083542773/137512/96d46aeb/557e9860N1977c8d8.jpg) repeat 0 0; }
+        .fatherDay .mobile_info { padding: 5%; color: #5E4F39; }
+            .fatherDay .mobile_info .title_box { color: #5E4F39; font-size: 20px; margin: 5% 0; }
+                .fatherDay .mobile_info .title_box p { font-size: 29px; }
+            .fatherDay .mobile_info .mobile_box { font-size: 28px; padding-left: 20px; line-height: 28px; }
+                .fatherDay .mobile_info .mobile_box span { display: inline-block; vertical-align: middle; }
+            .fatherDay .mobile_info .mobile { background: url(http://img11.360buyimg.com/cms/jfs/t1417/77/416319831/14186/195b59f9/55811198Nf928356c.png) no-repeat 0 0; border: 0; color: #5E4F39; min-height: 45px; background-size: contain; text-indent: 14px; font-size: 16px; display: inline-block; width: 170px; vertical-align: middle; }
+            .fatherDay .mobile_info .submit { background: url(http://img11.360buyimg.com/cms/jfs/t1096/340/1212259967/15272/7a9a7951/55811093N4dbd61c8.png) no-repeat 0 0; display: block; height: 52px; width: 62%; background-size: contain; margin: 10% auto; }
+            .fatherDay .mobile_info .colorac3e3e { color: #ac3e3e; }
+            .fatherDay .mobile_info .tips dd { margin-left: 14px; text-indent: -14px; font-size: 15px; }
+        .fatherDay .f_rules_btn_box { text-align: center; }
+        .fatherDay .f_rules_btn { color: #5E4F39; display: inline-block; margin: auto; font-size: 28px; padding-top: 20px; border-bottom: 1px solid #5E4F39; }
+        .fatherDay .f_rules_box { color: #3f2211; background: url(http://img13.360buyimg.com/cms/jfs/t1537/337/409367482/2749/59419fee/55811981N3d1ddf72.png) repeat 0 0; min-height: 100%; width: 100%; padding-bottom: 20%; position: absolute; top: 0; left: 0; z-index: 100; }
+        .fatherDay .f_rules_content { width: 90%; margin: auto; text-align: center; padding: 5%; }
+            .fatherDay .f_rules_content .f_rules_title { font-size: 30px; line-height: 37px; padding-top: 10px; }
+            .fatherDay .f_rules_content p { font-size: 16px; }
+            .fatherDay .f_rules_content li p { font-size: 14px; }
+        .fatherDay .f_rules_box ul,
+        .fatherDay .f_rules_box li { position: relative; text-align: left; height: auto; padding-bottom: 2px; font-size: 14px; line-height: 26px; }
+        .fatherDay .f_rules_box ul { margin-top: 10px; }
+        .fatherDay .f_rules_box .close { background: url(http://img11.360buyimg.com/cms/jfs/t1381/171/434396346/3254/72b88d8d/55811a93N31798be6.png) no-repeat 0 0; width: 34px; height: 34px; background-size: 100%; position: absolute; top: 2%; right: 4%; z-index: 99; }
+
+
+    .summerSpending .mkt-bg { background: #fff url(http://img12.360buyimg.com/cms/jfs/t1093/113/1338333972/51075/580579b0/5594edeeN2be7ed17.jpg); background-size: 100% auto; background-repeat: no-repeat; position: relative; }
+    .summerSpending .ticket-bg { display: none; }
+    .summerSpending .ticket-cont { padding-top: 14%; }
+    .summerSpending .rules { display: none; }
+    .tanabata .mkt-bg { background: #fff url(http://img12.360buyimg.com/cms/jfs/t1774/249/399336296/23380/52ad469a/55d1b29bNd749a61c.jpg); background-size: 100% auto; background-repeat: no-repeat; position: relative; }
+    .tanabata .ticket-bg { display: none; }
+    .tanabata .ticket-cont { padding-top: 14%; }
+    .tanabata .rules { display: none; }
+</style>
+<script type="text/javascript">
+    //配置本地参数
+
+    window.isDev = true;
+    window._config = {
+        //获取数据
+        _requestUrl : {
+            //生产
+            _product :'http://m.jdpay.com/marketing/gameprize/index.action',
+            //测试
+            _test : 'http://172.24.5.10:8333/marketing/gameprize/index.action',
+            //本地
+            _local   : '/html/res.json'
+        },
+        //微信授权跳转
+        _wx_return : {
+            //生产
+            _product : 'http://m.jdpay.com/marketing/gameprize/entrance.action',
+            //测试
+            _test    : 'http://172.24.5.10:8333/marketing/gameprize/entrance.action',
+            //本地
+            _local   : ''
+        },
+        //是否在钱包内部
+        _isInApp : false ,
+        //是否在微信  微信必要
+        _isInWx: true ,
+        //调试模式
+        _isDebug : false ,
+        // 钱包必传
+        _auth : '',
+        // 微信必传
+        _code : '',
+        //奖品类型
+        _prizeType :'',
+        //是否要实名
+        _isRealname :false,
+        //使用cors请求类型
+        _uesCors : true,
+        //后端反传数据
+        wxCutomer : "",
+        //活动id+分享对应值
+        _param : '',
+        //活动id
+        _entranceid:"",
+        //父亲节活动id
+        //fatherDayId: isDev ? '2015061500000000001' : '2015061800000000001',
+        fatherDayId: '2015061800000000001',
+        //手机充值活动
+        summerSpendingId:'2015071600000000002',
+        //七夕活动：
+        tanabataId:'2015082000000000001',
+        //中秋顶费：
+        dingfeiId:'2015092100000000001',
+        //重试刷新地址
+        _reloadUrl : window.location.href
+    };
+
+    if( isDev ){
+        _config._requestUrl._product = _config._requestUrl._test;
+        _config._wx_return._product = _config._wx_return._test;
+    }
+</script>
+<div class="marketing">
+    <div id="loading">
+        <img src="http://img10.360buyimg.com/cms/jfs/t1351/127/345331852/7879/b2918372/5577e940Ne8bb9083.gif" alt="" />
+    </div>
+    <div id="J_title" style="display:none">
+        <div class="title">
+            <span class="share" id="J_share">分享</span><a id="J_titleBackBtn" class="new-a-back-box" href="javascript:;"><span class="new-span-back"></span></a><span class="title_content"></span>
+        </div>
+        <div class="title-wrap">
+        </div>
+    </div>
+    <div class="fix-bottom J_openBtn" style="display: none;">
+        <div class="fb-download J_confirm">
+            立即打开
+        </div>
+        <div class="fb-logo">
+            <img src="http://img10.360buyimg.com/cms/jfs/t1183/186/686337570/3864/1bbe3315/553dce10Nf1d299e5.png" alt="" />
+            <p>
+                京东钱包客户端
+            </p>
+            <span>理财专家 生活助手</span>
+        </div>
+    </div>
+    <div class="marketing-page mkt-bg">
+        <section class="ticket-box" style="display:none">
+            <div class="ticket-bg">
+                <img src="http://img10.360buyimg.com/cms/jfs/t1630/57/343528131/102886/f4319f4e/5577e93dN2b5c1cd5.png" alt="" />
+            </div>
+            <div class="ticket-cont">
+                <div class="card">
+                    <img src="http://img12.360buyimg.com/cms/jfs/t1084/102/1088183579/20294/d71f977d/5577e93eNb84cbc9e.png" alt="" />
+                    <div class="card-cont">
+                        <div class="card-cont-top">
+                            <div class="amount">
+                                <div class="number">
+                                </div>
+                                <div class="unit">
+                                </div>
+                            </div>
+                            <div class="prizeName">
+                            </div>
+                        </div>
+                        <div class="card-cont-bottom">
+                            <p class="prizeLimit">
+                            </p>
+                            <p class="validDate">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="description">
+                </p>
+                <div class="btn-box">
+                    <a class="retun_btn btn btn_red useBtn">使用优惠券</a><a class="retun_btn btn btn_red cardBtn">查看所有卡券</a>
+                </div>
+                <a class="rules">查看活动规则</a>
+            </div>
+        </section><section class="rules-box" style="display: none;">
+            <dl>
+                <dt>
+                    活动规则
+                </dt>
+                <dd>
+                    1、活动时间：6月15日至6月20日
+                </dd>
+                <dd>
+                    2、每个用户每天有一次领取红包的机会；
+                </dd>
+                <dd>
+                    3、用户领取成功后需在3天内下载京东钱包app并完成实名红包才可到账；
+                </dd>
+                <dd>
+                    4、现金红包将转入用户京东钱包账户余额中，用户可消费或提现；
+                </dd>
+                <dd>
+                    5、钱包优惠券只能在京东钱包内使用指定业务时作为抵扣，不可找赎或兑现；
+                </dd>
+                <dd>
+                    6、京东钱包新老用户均可参与活动。
+                </dd>
+            </dl>
+            <a class="closeRulesBtn closeRules"><img class="closeRules" src="http://img14.360buyimg.com/cms/jfs/t1630/64/334576880/2911/f302c6bf/5577e945N834a76ab.png" alt="" /></a>
+        </section><section class="phoneNumber-box" style="display:none;">
+            <div class="phoneNumber-wrapper">
+                <div class="phoneNumber">
+                    <strong>等等，就差一步啦</strong>
+                    <p class="inputTips">
+                        请输入手机号码领取优惠券
+                    </p>
+                    <input type="tel" class="mobile" name="mobile" id="J_phone_number" maxlength="11" placeholder="请输入手机号码" />
+                </div>
+                <a id="J_phone_submit" class="J_phone_submit submit btn btn_red">领取</a>
+            </div>
+            <div class="bg-layer">
+            </div>
+        </section><section class="phoneNumber-box-fatherDay" style="display:none;">
+            <div class="wrapper_info">
+                <div class="mobile_info">
+                    <div class="title_box">
+                        <p>
+                            输入手机号领取8.8元话费。
+                        </p>
+                        请在京东钱包APP中查看
+                    </div>
+                    <div class="mobile_box">
+                        <span>手机号</span>            <input type="tel" class="mobile" name="mobile" maxlength="11" placeholder="请输入" />
+                    </div>
+                    <a class="submit J_phone_submit"></a>
+                    <dl class="tips">
+                        <dt>
+                            注意事项：
+                        </dt>
+                        <dd class="colorac3e3e">
+                            1.请升级至京东钱包最新版，才可领取并使用手机充值券。
+                        </dd>
+                        <dd>
+                            2.每个手机号只可参与一次活动。
+                        </dd>
+                        <dd>
+                            3.用户需要下载且绑定京东钱包APP才可使用话费。
+                        </dd>
+                        <dd>
+                            4.本次活动解释权归京东钱包所有。
+                        </dd>
+                    </dl>
+                    <div class="f_rules_btn_box">
+                        <a class="f_rules_btn">活动规则</a>
+                    </div>
+                </div>
+            </div>
+        </section><section class="realName-box" style="display:none;">
+            <div class="realName-wrapper">
+                <div class="realName">
+                    <p>
+                        使用优惠券，需要先实名认证哦
+                    </p>
+                </div>
+                <a class="btn cancelRealName btn_f0f0f0">取消</a><a class="retun_btn btn btn_red realname">去实名</a>
+            </div>
+            <div class="bg-layer">
+            </div>
+        </section><section class="fail-box" style="display:none;">
+            <div class="ticket-bg">
+                <img src="http://img10.360buyimg.com/cms/jfs/t1630/57/343528131/102886/f4319f4e/5577e93dN2b5c1cd5.png" alt="" />
+            </div>
+            <div class="fail-wrapper">
+                <div class="fail-pic">
+                    <img src="http://img11.360buyimg.com/cms/jfs/t901/77/1091141714/37427/d7defa78/5577e943Ne0d1669c.png" alt="" />
+                </div>
+                <p class="fail-description">
+                </p>
+                <a class="retun_btn btn btn_red cardBtn mt20" style="display:none;">查看我的卡券</a><a class="retun_btn btn btn_red oneAgin mt20" style="display:none;">重试</a><a class="retun_btn btn btn_red download
+
+mt20" style="display:none;">下载京东钱包来领券</a>
+            </div>
+        </section>
+        <div class="f_rules_box" style="display:none;">
+            <a class="f_close close"></a>
+            <div class="f_rules_content">
+                <p class="f_rules_title">
+                    “爸爸的钱包”<br />
+                    分享赠礼活动规则
+                </p>
+                <p>
+                    活动时间
+                </p>
+                <p>
+                    2015年6月21日0:00:00－2015年6月25日23:59:59
+                </p>
+                <ul>
+                    <li>
+                        1. 用户在微信朋友圈成功分享“爸爸的钱包”活动页面，并在领券页面输入手机号码，可获得价值8.8元人民币的手机充值满减券1张，同一用户在活动期间最多1次领券机会；
+                    </li>
+                    <li>
+                        2.已经完成京东钱包账户实名认证的用户可在领券后，在京东钱包客户端注册并登录京东钱包账户后，在“我的”--“卡券”中查看并使用；未完成实名认证的用户，需在手机充值满减券过期前完成京
+
+                        东钱包账户实名认证，否则视为放弃领券。
+                    </li>
+                    <li>
+                        3.用户在分享成功后，回到的活动页面中输入的手机号码，是领取手机充值满减券的唯一凭证。用户京东钱包账户的实名认证所使用的手机号码必须与本次活动输入的手机号码一致，否则无法领取奖品
+
+                        。活动共设置奖品5万份，发完即止！
+                    </li>
+                    <li>
+                        4.手机充值满减券使用规则：
+                        <p>
+                            （1）仅限在京东钱包客户端进行手机话费充值，且单笔充值100元及以上时可选择使用；
+                        </p>
+                        <p>
+                            （2）充值时输入充值手机号及金额，点击“立即充值”后，即可选择可使用的优惠券；
+                        </p>
+                        <p>
+                            （3）满减券有效期为自领券起15个自然日，过期自动作废。
+                        </p>
+                    </li>
+                    <li>
+                        5.同一钱包账户、同一微信账户、同一手机号、同一身份证号，同一京东帐号均视为同一用户。
+                    </li>
+                    <li>
+                        6. 在本活动期间，如存在违规行为（包含但不限于恶意套取资金、机器作弊、虚假交易等违反诚实信用原则行为），主办方将取消您的领券资格，并有权撤销相关违规交易，不予发放相关奖品，必要
+
+                        时追究法律责任；
+                    </li>
+                    <li>
+                        7.本活动规则及其未尽事宜同时受《京东钱包服务协议》及相关公告、规则约束；
+                    </li>
+                    <li>
+                        8.在法律允许的范围内，本公司对本次活动有解释权。
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jdpay.com/m-marketing/dist/js/plug-in/mApp.js">
+</script><!-- js -->
+<script>
+    //分享和 title是否显示//底部立即下载
+    window.dataForWeixin={
+        appId:"",
+        MsgImg: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+        TLImg: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+        url: 'http://sale.jd.com/app/act/bvWJG2mKL1.html',
+        title: '揪财神 抢红包',
+        desc: '找到小财神，天天领红包',
+        fakeid:"",
+        callback:function(){}
+    };
+
+    ;(function(w,d){
+
+        var n = w.navigator,
+                ua = n.userAgent,
+                Util = {
+                    baseUrl : 'http://sale.jd.com/app/act/KBuoE641DZmxgYf.html', //京东域，做打开app用
+                    androidDownload : 'http://m.jdpay.com/basic/download/android/wangyin.apk',
+                    iosDownload : 'https://itunes.apple.com/us/app/wang-yin-qian-bao/id832444218?ls=1&mt=8',
+                    inWx : (ua.search(/micromessenger/ig) == -1)? false : true,
+                    inIosApp : (ua.search(/safari/ig) == -1 && ua.indexOf('jdapp') == -1)? true : false,
+                    inAndroid : ua.indexOf('Android') > -1 || ua.indexOf('Linux') > -1,
+                    inIos : ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1,
+                    //检查后缀
+                    check_domain : function(host){
+                        var pattern = "/^aero$|^cat$|^coop$|^int$|^museum$|^pro$|^travel$|^xxx$|^com$|^net$|^gov$|^org$|^mil$|^edu$|^biz$|^info$|^name$|^ac$|^mil$|^co$|^ed$|^gv$|^nt$|^bj$|^hz$|^sh$|^tj$|^cq$|^he$|^nm$|^ln$|^jl$|^hl$|
+
+^js$|^zj$|^ah$|^hb$|^hn$|^gd$|^gx$|^hi$|^sc$|^gz$|^yn$|^xz$|^sn$|^gs$|^qh$|^nx$|^xj$|^tw$|^hk$|^mo$|^fj$|^ha$|^jx$|^sd$|^sx$/i";
+                        if(str.match(pattern)){
+                            return 1;
+                        }
+                        return 0;
+                    },
+                    //返回域
+                    get_domain : function () {
+                        var host = d.domain.replace(/^www\./, ""), arr = host.split('.'), len = arr.length, domain;
+                        if(len == 3){
+                            domain = arr[1] +'.'+ arr[2];
+                        }else if(len > 3){
+                            var ip_pat = "^[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*$";
+                            if(host.match(ip_pat)){
+                                return host;
+                            }
+                            if(Util.check_domain(arr[len-2])) {
+                                domain = arr[len-3]+"."+arr[len-2]+"."+arr[len-1];
+                            }else{
+                                domain = arr[len-2]+"."+arr[len-1];
+                            }
+                        }
+                        return domain;
+                    },
+                    //判断是否在app内
+                    inApp : function(){
+                        if(Util.inAndroid){
+                            return  typeof(android) != 'undefined' ? true : false;
+                        }else if(Util.inIos){
+                            return this.inIosApp;
+                        }else{
+                            return false;
+                        }
+                    }
+                };
+
+
+        function json2str(json){
+            var str = '';
+            for(var i in json){
+                str += '&'+i+'='+json[i]
+            };
+            return str;
+        };
+
+        //打开弹出提示
+        function showLayer(){
+            var downLoadUrl = Util.inIos ? Util.iosDownload : Util.androidDownload;
+            if(!document.querySelector('.J_layerDom')){
+                var lDom = document.createElement('div');
+                lDom.className = 'J_layerDom';
+                lDom.style.cssText = 'display: none; position: fixed; z-index: 3000; left: 50%; top: 50%; margin: -85px 0 0 -140px; width: 280px; padding: 20px 0; text-align: center; background: rgba(0,0,0, .8); border-radius: 6px; color: #fff';
+                lDom.innerHTML = '<p style="margin-bottom: 30px; font-size: 18px;">您还未安装京东钱包客户端</p><a href="'+downLoadUrl+'" class="J_appDownload" style="display: block; width: 90%; margin-left: 5%; font-size: 16px; line-height:
+
+                40px; border-radius: 3px; text-decoration:none;font-weight: bold; background: #d9434b; color: #fff; ">立即下载</a>';
+                document.body.appendChild(lDom);
+            }else{
+                document.querySelector('.J_layerDom').style.display = 'block';
+            }
+            setTimeout(function(){
+                document.querySelector('.J_layerDom').style.display = 'none';
+            }, 6000);
+        };
+
+        //构造iframe激活app
+        function openIframe(json){
+            var str = json2str(json.params);
+            var ifrSrc = 'wangyin://wallet/start?module='+json.name+str;
+            if (!ifrSrc) return;
+            var ifr = document.createElement('iframe');
+            ifr.src = ifrSrc;
+            ifr.style.display = 'none';
+            document.body.appendChild(ifr);
+            setTimeout(function() {
+                document.body.removeChild(ifr);
+            }, 2000);
+            setTimeout(function(){
+                showLayer()
+            },300);
+        };
+        function openWithIframe(ifrSrc){
+            var ifr = document.createElement('iframe');
+            ifr.src = ifrSrc;
+            ifr.style.display = 'none';
+            document.body.appendChild(ifr);
+            setTimeout(function() {
+                document.body.removeChild(ifr);
+            }, 2000);
+        };
+        //通过打开京东域的链接
+        function openLink(json){
+            var url = Util.baseUrl;
+            if(json.name == 'ACTIVITY'){
+                url += '?url='+json.params.browserUrl;
+            };
+            window.location.href = url+'#'+json.name;
+        };
+
+        //android客户端打开
+        function openAndroid(json){
+            try{
+                json.name = json.name == 'LOGIN' ? 'HOME' : json.name;
+                if(json.name == 'ACTIVITY'){
+                    android.start(json.params.browserUrl);
+                }else if(json.name == 'CLOSE'){
+                    android.close();
+                }else if(json.name == 'TITLE'){
+                    android.setTitleName(json.params.text);
+                }else{
+                    android.start(json.name,JSON.stringify(json.params), json.callback);
+                }
+            }catch(err){
+                alert('请升级最新版京东钱包');
+            }
+        };
+
+        //ios客户端打开
+        function openIos(json){
+            var str = json.params ? json2str(json.params) : '',
+                    url = 'native://start?name='+json.name+str+'&callback='+json.callback;
+            if(json.name == 'CLOSE'){
+                url = 'native://close';
+            }else if(json.name == 'ACTIVITY'){
+                url = 'native://start?name='+json.params.browserUrl;
+            }else if(json.name == 'TITLE'){
+                url = 'native://setTitleName?titleName='+json.params.text;
+            };
+            openWithIframe(url);
+            /*  try{
+             safari.open = url; //兼容iphone 4
+             }catch(err){
+             window.location.href = url;
+             }*/
+        };
+
+
+        /**
+         * @param json {name:module name,params:params,callback:function}
+         * android && inapp
+         * ios && inapp
+         * inwx && check domain
+         */
+        function openModel(json){
+            var str = json.params ? json2str(json.params) : '',
+                url = 'native://start?name='+json.name+str+'&callback='+json.callback;
+            if(Util.inAndroid && Util.inApp()){
+                openAndroid(json);
+            }else if(Util.inIos && Util.inIosApp && !Util.inWx){
+                openIos(json);
+            }else{
+                //openIos(json);
+                openWithIframe(url);
+
+                openIframe(json);
+            }
+        };
+
+
+        var App = window.App || {};
+        App.noop = function(){};
+        App.open = function(){
+            var len = arguments.length,
+                    _this = this,
+                    json = {
+                        name : '',
+                        params : {},
+                        callback : 'App.noop'
+                    },
+                    param;
+            json.name = arguments[0] ? arguments[0].toUpperCase() : 'LOGIN';
+            _this.noop = function(){};
+            if(len == 2){
+                if(typeof(arguments[1]) == 'function'){
+                    _this.noop =  arguments[1];
+                }else{
+                    param = arguments[1];
+                }
+            }else if(len == 3){
+                if(typeof(arguments[2]) == 'function'){
+                    _this.noop =  arguments[2];
+                }
+                param = arguments[1];
+            };
+
+            switch(json.name){
+                case 'FUND' :
+                    if(param) json.params.code = param;
+                    break;
+                case 'JRB' :
+                    if(arguments[1]){
+                        json.params.forceLogin = 'JRB';
+                        json.params.action = arguments[1];
+                        json.params.channel = 'web';
+                    }
+                    break;
+                case 'ACTIVITY' :
+                    json.params.browserUrl = param;
+                    break;
+                case 'TITLE' :
+                    json.params.text = param;
+                    break;
+                default :
+                    break;
+            }
+            openModel(json);
+        };
+        App.close = function(){
+            openModel({name:'CLOSE'});
+        };
+        App.share = function(json){
+            var json = json || window.dataForWeixin;
+            if(Util.inAndroid && Util.inApp()){
+                android.shareWebPage(json.url, json.title, json.desc,json.Channel,json.appCallback);
+            }else if(Util.inIos && Util.inIosApp && !Util.inWx){
+                var url = 'native://shareWebPage?url='+json.url+'&webTitle='+json.title+'&webDesc='+json.desc+'&callback='+json.appCallback;
+                try{
+                    safari.open = url; //兼容iphone 4
+                }catch(err){
+                    window.location.href = url;
+                }
+            }else if(Util.inWx){
+                window.dataForWeixin.url = json.url;
+                window.dataForWeixin.title = json.title;
+                window.dataForWeixin.desc = json.desc;
+                onBridgeReady();
+            }
+        }
+        App.buriedPointOnce = function(eventId){
+            if(Util.inAndroid && Util.inApp()){
+                android.buriedPointOnce(eventId);
+            }else if(Util.inIos && Util.inIosApp && !Util.inWx){
+                var url = 'native://buriedPointOnce?eventId='+eventId;
+                openWithIframe(url);
+            }
+        }
+        window.App = App;
+
+        var _ = function(dom){
+            return document.querySelector(dom);
+        };
+
+        function fromNoTitle(){
+            var bNeed = location.search.indexOf('from=notitle') == -1 ? false : true,
+                sTitle = _('#J_titleCon').innerHTML;
+            if(bNeed){
+                App.open('title', sTitle);
+                _('#J_title').style.display = 'none';
+            }
+        }
+
+    })(window,document);
+
+    ;(function() {
+        var onBridgeReady = function() {
+            WeixinJSBridge.on('menu:share:appmessage',
+            function(argv) {
+                WeixinJSBridge.invoke('sendAppMessage', {
+                    "appid": dataForWeixin.appId,
+                    "img_url": dataForWeixin.MsgImg,
+                    "img_width": "120",
+                    "img_height": "120",
+                    "link": dataForWeixin.url,
+                    "desc": dataForWeixin.desc,
+                    "title": dataForWeixin.title
+                },
+                function(res) { (dataForWeixin.callback)();
+                });
+            });
+            WeixinJSBridge.on('menu:share:timeline',
+            function(argv) { (dataForWeixin.callback)();
+                WeixinJSBridge.invoke('shareTimeline', {
+                    "img_url": dataForWeixin.TLImg,
+                    "img_width": "120",
+                    "img_height": "120",
+                    "link": dataForWeixin.url,
+                    "desc": dataForWeixin.desc,
+                    "title": dataForWeixin.title
+                },
+                function(res) {});
+            });
+            WeixinJSBridge.on('menu:share:weibo',
+            function(argv) {
+                WeixinJSBridge.invoke('shareWeibo', {
+                    "content": dataForWeixin.title,
+                    "url": dataForWeixin.url
+                },
+                function(res) { (dataForWeixin.callback)();
+                });
+            });
+            WeixinJSBridge.on('menu:share:facebook',
+            function(argv) { (dataForWeixin.callback)();
+                WeixinJSBridge.invoke('shareFB', {
+                    "img_url": dataForWeixin.TLImg,
+                    "img_width": "120",
+                    "img_height": "120",
+                    "link": dataForWeixin.url,
+                    "desc": dataForWeixin.desc,
+                    "title": dataForWeixin.title
+                },
+                function(res) {});
+            });
+        };
+        if (document.addEventListener) {
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        } else if (document.attachEvent) {
+            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }
+    })();
+
+    (function(window){
+
+        window.showTitle = false;
+        window.addEventListener('load', function(){
+            var u = navigator.userAgent,
+            inWx = (u.search(/micromessenger/ig) == -1)? false : true,
+            inApp = ((u.search(/safari/ig) == -1)? true : false);
+
+            try{
+                if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
+                    if(android){
+                        showTitle = true;
+                    }
+                }else  if(inApp && !inWx){
+                    showTitle = true;
+                }else{
+                    throw 'noInApp';
+                }
+
+            }catch(err){
+                showTitle = false;
+            }
+
+            //document.querySelector('#J_title').style.display = (showTitle? 'block' : 'none');
+
+            //APP内部分享
+            function share(url, title, desc){
+                var u = navigator.userAgent,
+                    inApp = ((u.search(/safari/ig) == -1)? true : false);
+                document.querySelector("#J_share").onclick = function(){
+                    if(u.indexOf("Android") > -1 || u.indexOf("Linux") > -1){
+                        android.shareWebPage(url, title, desc);
+                    }else if(inApp && (u.indexOf("iPhone") > -1 || u.indexOf("Mac") > -1)){
+                        try{
+                            safari.open ="native://shareWebPage?url="+url+"&webTitle="+title+"&webDesc="+desc;
+                        }catch(err){
+                            window.location.href ="native://shareWebPage?url="+url+"&webTitle="+title+"&webDesc="+desc;
+                        }
+                    }
+                };
+            }
+            share(dataForWeixin.url, dataForWeixin.title, dataForWeixin.desc);
+
+            document.querySelector('#J_titleBackBtn').onclick = function(){
+                try{
+                    javascript:android.close();
+                }catch(e){
+                    window.location.href="native://close";
+                }
+            };
+
+            //立即打开处理
+            var oOpenBtn = document.querySelector('.J_openBtn');
+            oOpenBtn.style.display = (showTitle? 'none' : 'block');
+
+            oOpenBtn.onclick = function(){
+                App.open();
+            };
+        }, false);
+
+    })(window);
+
+    //打开模块共用代码和弹层
+    (function(){
+
+        function openAppModel(json){
+            var u = navigator.userAgent,
+                inWx = (u.search(/micromessenger/ig) == -1)? false : true,
+                inApp = ((u.search(/safari/ig) == -1)? true : false),
+                name =json.name || 'LOGIN',
+                str = j2s(json.params) || '',
+                callback = json.callback || null;
+
+            try{
+                if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
+                    try{
+                        if(name == 'ACTIVITY'){
+                            android.start(json.params.browserUrl, callback);
+                        }else{
+                            android.start(name,JSON.stringify(json.params), callback);
+                        }
+                    }catch(err){
+                        if(name == 'ACTIVITY'){
+                            android.start(json.params.browserUrl, callback);
+                        }else{
+                            android.start(name, callback);
+                        }
+                    }
+                }else if(inApp && (u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1)){
+                    try{
+                        if(name == 'ACTIVITY'){
+                            safari.open ='native://start?name='+json.params.browserUrl+'&callback='+callback; //兼容iphone 4
+                        }else{
+                            safari.open ='native://start?name='+name+str+'&callback='+callback; //兼容iphone 4
+                        }
+                    }catch(err){
+                        if(name == 'ACTIVITY'){
+                            window.location.href ='native://start?name='+json.params.browserUrl+'&callback='+callback;
+                        }else{
+                            window.location.href ='native://start?name='+name+str+'&callback='+callback;
+                        }
+
+                    }
+                }else{
+                    throw 'noInApp';
+                }
+            }catch(err){
+                open(name, str);
+            };
+
+            function j2s(json){
+                var str = '';
+                for(var n in json){
+                    str += '&'+n+'='+json[n]
+                }
+                return str;
+            }
+
+            function open(name, str){
+                var ifrSrc = 'wangyin://wallet/start?module='+name+str;
+                if (!ifrSrc) return;
+                var ifr = document.createElement('iframe');
+                ifr.src = ifrSrc;
+                ifr.style.display = 'none';
+                document.body.appendChild(ifr);
+                setTimeout(function() {
+                    document.body.removeChild(ifr);
+                }, 1000);
+            }
+
+            shopLayer(true);//每次调用都弹层
+        }
+        //调用：
+        // openAppModel({name: "FUND"});  //打开基金
+        //openAppModel({name: 'FUND', params: {code: '123456'}, callback: null});  //打开基金详情页
+        //openAppModel({name: 'ACTIVITY', params: {browserUrl: 'http://qiang.wangyin.com/index#ACTIVITY'}, callback: null});  //抢吧
+
+        window.openAppModel = openAppModel;
+        window.shopLayer = shopLayer;
+
+        shopLayer();  //初始化
+
+        function shopLayer(bol){
+            var u = navigator.userAgent,
+                inWx = (u.search(/micromessenger/ig) == -1)? false : true,   //判断是否是微信
+                isAn = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1,
+                iosApp = ((u.search(/safari/ig) == -1)? true : false),
+                inApp = false;  //是否在app内打开页面
+
+            try{
+                if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
+                    if(android){
+                        inApp = true;
+                    }
+                }else  if(iosApp && !inWx){
+                    inApp = true;
+                }else{
+                    throw 'noInApp';
+                }
+            }catch(err){
+                inApp = false;
+            }
+
+            var downLoadUrl = 'javascript:;'
+            if(isAn){
+                downLoadUrl ='http://m.jdpay.com/basic/download/android/wangyin.apk ';   //直接
+            }else{
+                downLoadUrl ='https://itunes.apple.com/us/app/wang-yin-qian-bao/id832444218?ls=1&mt=8';   //打开iturns
+            }
+
+            if(!document.querySelector('.J_layerDom')){
+                var lDom = document.createElement('div');
+                lDom.className = 'J_layerDom';
+                lDom.style.cssText = 'display: none; position: fixed; z-index: 3000; left: 50%; top: 50%; margin: -85px 0 0 -140px; width: 280px; padding: 20px 0; text-align: center; background: rgba(0,0,0, .5); border-radius: 6px; color: #fff';
+                lDom.innerHTML = '<p style="margin-bottom: 30px; font-size: 18px;">您还未安装京东钱包客户端</p>\
+                <a href="javascript:;" class="J_appDownload" style="display: block; width: 90%; margin-left: 5%; font-size: 16px; line-height: 40px; border-radius: 3px; font-weight: bold; background: #d9434b; color: #fff; ">立即下载</a>' ;
+
+                document.body.appendChild(lDom);
+            }
+
+            var oDown = document.querySelector('.J_appDownload'),
+                oLayer = document.querySelector('.J_layerDom');
+
+            oDown.href = downLoadUrl;
+
+            if(bol && !inApp){   //在app内不弹层
+                oLayer.style.display = 'block';
+                setTimeout(function(){
+                    oLayer.style.display = 'none';
+                }, 6000);
+            }
+        };
+
+        document.addEventListener('load', function(){
+            setBar();
+            var logo = document.querySelector(".fb-logo img");
+            var src = logo.getAttribute('data-srcset');
+            if(src){
+                logo.src = src;
+            }
+        });
+
+        function setBar(){
+            var jrapp = document.querySelector(".download-jrApp"),
+                    jdApp = document.querySelector("#down_app"),
+                    jdBtn =  document.querySelector('.new-header-close-btn-icon'),
+                    jdHead =  document.querySelector('.new-header-append'),
+                    jdApp1 = document.querySelector(".new-header-down_app");
+
+            if(jdBtn){
+                jdBtn.click();
+            }
+            if(jrapp){
+                jdApp.style.display = 'none';
+            }
+            if(jdApp){
+                jdApp.style.display = 'none';
+                jdApp1.style.display = 'none';
+            }
+            if(jdHead){
+                jdHead.style.display = 'none';
+            }
+        };
+    })();
+</script>
+<script type="text/javascript">
+    /*
+            * @param {Object} target 目标对象。
+            * @param {Object} source 源对象。
+            * @param {boolean} deep 是否复制(继承)对象中的对象。
+            * @returns {Object} 返回继承了source对象属性的新对象。
+            */
+    var _extend = function(target, /*optional*/source, /*optional*/deep) {
+        target = target || {};
+        var sType = typeof source, i = 1, options;
+        if( sType === 'undefined' || sType === 'boolean' ) {
+            deep = sType === 'boolean' ? source : false;
+            source = target;
+            target = this;
+        }
+        if( typeof source !== 'object' && Object.prototype.toString.call(source) !== '[object Function]' )
+            source = {};
+        while(i <= 2) {
+            options = i === 1 ? target : source;
+            if( options != null ) {
+                for( var name in options ) {
+                    var src = target[name], copy = options[name];
+                    if(target === copy)
+                        continue;
+                    if(deep && copy && typeof copy === 'object' && !copy.nodeType)
+                        target[name] = this.extend(src ||
+                        (copy.length != null ? [] : {}), copy, deep);
+                    else if(copy !== undefined)
+                        target[name] = copy;
+                }
+            }
+            i++;
+        }
+        return target;
+    };
+
+
+    //CORS  跨域共享
+    function CORS( opt ){
+        var opt = opt || {};
+        this._app = new corsRequest( opt );
+        return this._app;
+    }
+
+    var corsRequest = function(opt){
+
+        this.opt = {
+            load:function(){},
+            error:function(){}
+        };
+
+        _extend( this.opt, opt );
+
+        this.request();
+    }
+    corsRequest.prototype = {
+        //创建xmlreq
+        create:function(method,url){
+            var xhr = new XMLHttpRequest();
+            if ("withCredentials" in xhr) {
+
+                xhr.open(method, url, true);
+
+            } else if ( typeof (xhr) != "undefined") {
+                //ie
+                xhr = new XDomainRequest();
+                xhr.open(method, url, true);
+            } else {
+                // 否则，浏览器不支持CORS
+                xhr = null;
+
+            }
+            return xhr;
+        },
+        //执行xhr请求
+        request:function(){
+
+            var _this = this,
+                xhr = this.create('get', this.opt.url );
+
+            if (!xhr) {
+                /*alert('CORS not supported');*/
+            } else {
+                xhr.send();
+                //请求失败
+                xhr.onerror = function(e){
+                    //回调失败方法
+                    if( _this.opt.error !== undefined &&  typeof _this.opt.error == 'function'){
+                        _this.opt.error.call(this,e);
+                    }
+                };
+                //请求成功
+                xhr.onload = function(e){
+
+                    if( _this.opt.load !== undefined &&  typeof _this.opt.load == 'function'){
+                        var _data = e.target ;
+                        if(_data.status == 200 ){
+                            //回调成功方法
+                            _this.opt.load.call(this,xhr.responseText);
+
+                        }
+
+                    }
+                }
+            }
+
+        }
+    };
+
+    //获取url参数
+    /*function getValue(url, name) {
+        var reg = new RegExp('(\\?|&)' + name + '=([^&?]*)', 'i');
+        var arr = url.match(reg);
+
+        if (arr) {
+            return arr[2];
+        }
+
+        return null;
+    }*/
+
+    function getValue(url, name) {
+        var reg = new RegExp('(\\?|&)' + name + '=([^&?]*)', 'g');
+        var arr = url.match(reg) , newArr = [];
+        if( arr !== null ){
+
+            if( arr.length > 1 ){
+                for( var i = 0 , l = arr.length ; i < l ;i++){
+
+                    newArr.push( arr[i].split('=')[1] );
+                }
+                return newArr;
+            }else{
+                return arr[0].split('=')[1];
+            }
+        }
+        return null;
+    }
+
+    //app 信息获取
+    function getInfoApp( json ){
+        var _json = eval("(" + json + ")");
+
+        //如果在钱包内
+        if( _json.version !== 'undefined' &&
+            _json.version !== '' &&
+            _json.version !== null
+             ){
+            _config._isInApp = true;
+        }
+
+
+        if( _json.isLogin == 1 ){
+            _config._auth = _json.auth;
+
+        }else{
+
+            mApp({
+                name:"LOGIN",
+                callback:'mclose'
+            }).start();
+        }
+    }
+
+    window.getInfoApp = getInfoApp;
+
+    function mclose(){
+        mApp().close();
+    }
+    window.mclose = mclose;
+    //显示
+    function display( target , status ){
+
+        if( target.length > 1 ){
+            for( var i =0 ,l = target.length ; i < l ; i++){
+                target[i].style.display = status;
+            }
+            return;
+        }
+        target.style.display = status ;
+    }
+
+    // 执行延迟加载方法 显示图片
+
+    function loadImgShow( target , oldSrc ){
+        var _realSrc = '';
+
+        if( target.length > 1 ){
+            for( var i =0 ,l = target.length ; i < l ; i++){
+                relpaceImg(target[i]);
+            }
+        }else{
+            relpaceImg(target)
+        };
+
+        function relpaceImg(obj){
+            var _realSrc = obj.getAttribute(oldSrc);
+            if( typeof _realSrc !== "undefined" && _realSrc !== undefined && _realSrc !== null ){
+                obj.setAttribute('src', _realSrc );
+            }
+
+        }
+    };
+
+    //添加class
+    function addClass(target,className){
+        var _class = target.getAttribute('class')+" "+className;
+        target.setAttribute('class',_class);
+    }
+
+    function checkClass( target , className ){
+        var reg = new RegExp('(?:^|\\s)'+target+'(?!\\S)','g');
+        if( reg.test( className ) ){
+            return true;
+        }
+        return false;
+    }
+
+    //调用客户端方法
+    mApp({
+        callback:'getInfoApp'
+    }).getInfo();
+
+    window.shareCode = '';
+
+    //dom加载完后执行
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+        var body = document.querySelector('body'),
+            loading = document.querySelector('#loading'),
+            _wapper = document.querySelector('.marketing-page'),
+            J_phone_submit  = document.getElementById('J_phone_submit') ,
+            ticketBox = document.querySelector(".ticket-box"),
+            phoneNumberBox = document.querySelector(".phoneNumber-box"),
+            fatherDayPhone = document.querySelector(".phoneNumber-box-fatherDay"),
+            failBox = document.querySelector('.fail-box'),
+            realNameBox = document.querySelector('.realName-box'),
+            J_title = document.querySelector("#J_title"),
+            returnBtn = document.querySelectorAll('.retun_btn'),
+            _section = document.querySelectorAll('.marketing-page > section'),
+            _img = document.querySelectorAll('.marketing img'),
+            _rulesBox = document.querySelector('.rules-box'),
+            rules_box = document.querySelector('.f_rules_box'),
+            mobile_info = document.querySelector('.wrapper_info .mobile_info'),
+            rData = {
+                auth:_config._auth,
+                entranceid:"2015061500000000001"
+            },
+               _ua = navigator.userAgent,
+              inWx = (_ua.search(/micromessenger/ig) == -1) ? false : true
+        ;
+
+        document.getElementsByTagName('title')[0].innerHTML = "";
+
+        if( document.querySelectorAll('.d-container')[0] !== undefined ){
+            display(loading,'none');
+        }
+
+
+        loadImgShow( _img , 'data-srcset');
+
+        if( _config._auth == ''){
+            //调用客户端方法
+            mApp({
+                callback:'getInfoApp'
+            }).getInfo();
+        }
+
+
+
+        function showPage( r ){
+            var _ua = navigator.userAgent,
+                inWx = (_ua.search(/micromessenger/ig) == -1) ? false : true ,
+                data = r.data
+            ;
+
+            //已领过和活动到期
+            if( r.code == 'A00001'){
+
+                if( typeof data == 'undefined' || ( typeof data !== 'undefined' && typeof data.description == 'undefined')  ){
+
+                    data = {};
+                    data.description = r.msg;
+                }
+
+                if( _config._isInWx && inWx ){
+                    switchStatus('fail',data,true);
+                }else if( _config._isInApp ){
+                    var J_title_html = document.querySelector('#J_title .title_content').innerHTML ;
+                    if( _config._entranceid == _config.fatherDayId ){
+                        J_title_html = '爸爸的钱包';
+                    }else if( _config._entranceid == _config.summerSpendingId ){
+                        J_title_html = '手机充值一次惠7元';
+                    }else if( _config._entranceid == _config.tanabataId ){
+                        J_title_html = '七夕话费送不停！';
+                    }else if( _config._entranceid == _config.dingfeiId ){
+                        J_title_html = '国庆话费送不停！';
+                    }else{
+                        J_title_html = '揪财神领红包';
+                    }
+                    App.open('title', J_title_html);
+                    switchStatus('fail',data);
+                }
+
+
+                // 服务器异常和客户端异常
+            }else if( r.code == 'A00002'){
+
+                if( typeof data == 'undefined' || ( typeof data !== 'undefined' && typeof data.description == 'undefined')  ){
+
+                    data = {};
+                    data.description = r.msg;
+                }
+
+                if(  _config._isInWx && inWx ){
+                    _config._reloadUrl = _config._wx_return._product;
+                }else if( _config._isInApp ){
+                    var J_title_html = document.querySelector('#J_title .title_content').innerHTML ;
+                    if( _config._entranceid == _config.fatherDayId ){
+                        J_title_html = '爸爸的钱包';
+                    }else if( _config._entranceid == _config.summerSpendingId ){
+                        J_title_html = '手机充值一次惠7元';
+                    }else if( _config._entranceid == _config.tanabataId ){
+                        J_title_html = '七夕话费送不停！';
+                    }else if( _config._entranceid == _config.dingfeiId ){
+                        J_title_html = '国庆话费送不停！';
+                    }else{
+                        J_title_html = '揪财神领红包';
+                    }
+                    App.open('title', J_title_html);
+                    _config._reloadUrl = window.location.href;
+                }
+
+                switchStatus('failOneAgin',data);
+                // 成功和输入手机号
+            }else if(r.code == 'A00000'){
+
+                _config._isRealname= data.realname ;
+
+                if( _config._isInWx && inWx ){
+                    var
+                        _search = window.location.search ,
+
+                        _hash = ( (_search !== '' || _search !== undefined) && ( _search.indexOf('code')  !==  -1 ) )? true : false ,
+
+                        _return = _config._wx_return._product
+                    ;
+
+
+                    var _codeValue = getValue( window.location.href , 'code' );
+
+                    _config._code = _codeValue !== null ? _codeValue : '';
+
+                    if(typeof data.wxCutomer !== "undefined" && data.wxCutomer !== undefined ){
+                        _config.wxCutomer = data.wxCutomer;
+                    }
+
+                    if( data.mobile ){
+                        switchStatus('mobile',data);
+                    }else{
+
+                        switchStatus('ticket',data,true);
+                    }
+                }else{
+
+                    //在钱包里面
+                    if( _config._isInApp ){
+
+                        var _search =  window.location.search ,
+                             u = navigator.userAgent,
+                            isTitle = ( ( _search !== '' || _search !== undefined)  && _search.indexOf('from_notitle') !== -1) ? true : false
+                        ;
+
+                        var J_title_html = document.querySelector('#J_title .title_content').innerHTML ;
+
+                        //if( isTitle &&  ( u.indexOf('iPhone') <= -1 || u.indexOf('Mac') <= -1 ) && typeof J_title !== 'undefined' ){
+                        //    display(J_title,'block');
+                        //}
+
+                        if( _config._entranceid == _config.fatherDayId ){
+                            document.querySelector('.fatherDay .f_rules_box .close').style.top = '2%';
+                            J_title_html = '爸爸的钱包';
+                        }else if( _config._entranceid == _config.summerSpendingId ){
+                            J_title_html = '手机充值一次惠7元';
+                        }else if( _config._entranceid == _config.tanabataId ){
+                            J_title_html = '七夕话费送不停！';
+                        }else if( _config._entranceid == _config.dingfeiId ){
+                            J_title_html = '国庆话费送不停！';
+                        }else{
+                            _rulesBox.style.top = '6%';
+                            J_title_html = '揪财神领红包';
+                        }
+
+                        App.open('title', J_title_html);
+
+                        switchStatus('ticket',data);
+                    }
+                }
+
+                if( showTitle ){
+                    _rulesBox.style.top = '40px';
+                }else{
+                    //if( document.querySelectorAll('.ticket-box')[0].offsetHeight >= window.outerHeight - 60 ){
+                    _wapper.style.paddingBottom = '160px';
+                    //}
+                }
+
+            }
+        };
+
+        //切换显示状态
+        function switchStatus( name , data , isWx ){
+
+            var _ticket = document.querySelector('.ticket-box'),
+                amount = _ticket.querySelector('.number'),
+                prizeUnit = _ticket.querySelector('.unit'),
+                prizeName = _ticket.querySelector('.prizeName'),
+                prizeLimit = _ticket.querySelector('.prizeLimit'),
+                description = _ticket.querySelector('.description'),
+                validDate = _ticket.querySelector('.validDate'),
+                failDescription = document.querySelector('.fail-description'),
+                rulesBox = document.querySelector('.rules-box'),
+                failBtn = document.querySelectorAll('.fail-wrapper .btn'),
+                failCardBtn = document.querySelector('.fail-wrapper .cardBtn'),
+                failDownload = document.querySelector('.fail-wrapper .download'),
+                failOneAgin = document.querySelector('.fail-wrapper .oneAgin'),
+                _amount = document.querySelector('.card-cont-top .amount'),
+                _number = document.querySelector('.card-cont-top .amount .number'),
+                ticketBtn = document.querySelectorAll('.ticket-box .btn-box .btn'),
+                balanceBtn = document.querySelector('.ticket-box .btn-box .balanceBtn'),
+                inputTips = document.querySelector('.phoneNumber-box .inputTips'),
+                _isWx = isWx ? true : false
+            ;
+
+            display(loading,'none');
+            display(_wapper,'block');
+
+            switch(name){
+                case "mobile":
+                    //如果是父亲节活动 展示该活动输手机号
+                    if( _config._entranceid == _config.fatherDayId ){
+                        display(_section,'none');
+                        display(fatherDayPhone,'block');
+                    }else{
+                        if( typeof data.prizeType !== undefined && data.prizeType == '01' ){
+                            inputTips.innerHTML = '请输入手机号码领取红包';
+                        }else{
+                            inputTips.innerHTML = '请输入手机号码领取优惠券';
+                        }
+                        display(_section,'none');
+                        display(phoneNumberBox,'block');
+                    }
+                    break;
+                case "realname":
+                    display(_section,'none');
+                    display(realNameBox,'block');
+                    break;
+                case "ticket":
+                    if( typeof data !== undefined && data !== undefined){
+
+                        if(data.amount&&data.amount.length > 2 ){
+
+                            if( data.amount.length == 3){
+                                _number.style.fontSize = '3.3rem';
+                                _amount.style.fontSize = '1.8rem';
+                            }else{
+                                _number.style.fontSize = '2.7rem';
+                                _amount.style.fontSize = '1.4rem';
+                            }
+                        }
+                        /*_config._isDebug &&  alert( JSON.stringify( data ) );*/
+                        _config._prizeType = (data.prizeType !== 'undefined' ? data.prizeType : "");
+                        amount.innerHTML = (data.amount !== 'undefined' ? data.amount : "");
+                        prizeUnit.innerHTML = (data.prizeUnit !== 'undefined' ? data.prizeUnit : "");
+                        prizeName.innerHTML = (data.prizeName !== 'undefined' ? data.prizeName : "");
+                        prizeLimit.innerHTML = (data.prizeLimit !== 'undefined' ? data.prizeLimit : "");
+                        if(data.description){
+                            var start=data.description.indexOf("起");
+                            if(start!=-1){
+                                data.description=data.description.substring(0,start)+"去"+data.description.substring(start+1);
+                            }
+                        }
+                        description.innerHTML = (data.description !== 'undefined' ? data.description : "");
+                        validDate.innerHTML = (data.validDate !== 'undefined' ? data.validDate : "");
+
+                        if( typeof data.prizeType !== undefined && data.prizeType == '01' ){
+
+                            prizeLimit.innerHTML  = "京东钱包现金红包";
+                            validDate.innerHTML = '';
+                            /*display(ticketBtn,'none');*/
+                        }
+
+                    }
+
+                    /*if( _isWx ){
+                        display(ticketBtn,'none');
+                    }*/
+                    display(_section,'none');
+                    display(ticketBox,'block');
+                    break;
+                case "fail":
+                    failDescription.innerHTML = (data.description !== 'undefined' ? data.description : "");
+
+                    display(failBtn,'none');
+                    /*if( !_isWx ){
+                        display(failCardBtn,'block');
+                    }*/
+
+                    display(_section,'none');
+                    display(failBox,'block');
+                    break;
+
+                case "failOneAgin":
+                    failDescription.innerHTML = (data.description !== 'undefined' ? data.description : "");
+
+                    display(failBtn,'none');
+
+                    display(failOneAgin,'block');
+
+
+                    display(_section,'none');
+                    display(failBox,'block');
+                    break;
+                case "download":
+                    failDescription.innerHTML = "本活动仅限京东钱包或微信内打开哦";
+
+                    display(failBtn,'none');
+                    display(failDownload,'block');
+
+                    display(_section,'none');
+                    display(failBox,'block');
+                    break;
+                case "rules":
+                    display(_section,'none');
+                    display(rulesBox,'block');
+                    break;
+
+            }
+
+
+        };
+
+
+        //检查当前页面是在什么环境
+        function checkSatus(){
+
+            var _ua = navigator.userAgent,
+                inWx = (_ua.search(/micromessenger/ig) == -1) ? false : true
+            ;
+
+            if( _config._isInWx && inWx ){
+                var
+                    _search = window.location.search ,
+
+                    _hash = ( (_search !== '' || _search !== undefined) && ( _search.indexOf('code')  !==  -1 ) )? true : false ,
+
+                    _return = _config._wx_return._product ,
+
+                     param = ''
+                ;
+
+                if( !_hash ){
+
+                    /*_config._isDebug &&  alert( "进微信了！");*/
+                    /*_config._isDebug &&  alert( _return );*/
+                    _config._isDebug &&  display(loading,'none');
+
+                    if( _config._param !== ''){
+                        param = '?param=flag_'+_config._param;
+                    }
+
+                    window.location.href = _return+param;
+                    return false;
+                }
+
+                var _codeValue = getValue( window.location.href , 'code' ) ;
+
+                _config._code = _codeValue !== null ? _codeValue : '';
+
+                rData.code = _config._code;
+
+            }else{
+
+                //在钱包里面
+                if( !_config._isInApp ){
+                    //如果不在钱包和微信里
+
+                    switchStatus('download');
+
+                    /*_config._isDebug && alert( "进哪去饿了");*/
+                    return false;
+                }
+
+            }
+            return true;
+        }
+
+
+        function sedRequest( datas , addStr ){
+            //执行cors请求
+            var _url = _config._requestUrl._product ,
+                _str = '',
+                _addStr = addStr || "",
+                _param = getValue( window.location.href , 'param'),
+                _paramArr = '';
+            _entranceid = '',
+            _shareCode =  ''
+            ;
+
+            //根据flag_ 标记查找对应url参数
+            if(  _param !== null ){
+                if( typeof _param !== 'string' && typeof _param == 'object' ){
+
+                    var _a = _param;
+
+                    if( _a.length > 1){
+
+                        for (var i =0 , l = _a.length; i < l; i++) {
+
+                            if( _a[i].indexOf('flag_') !== -1 ){
+                                console.log()
+                                _param = _a[i].split('flag_')[1];
+                            }
+                        };
+                    }else{
+                        if( _param[0].indexOf('flag_') !== -1 ){
+                            _param = _param[0].split('flag_')[1];
+                        }
+                    }
+                }else{
+                    if( _param.indexOf('flag_') !== -1 ){
+                        _param = _param.split('flag_')[1];
+                        if( _param.indexOf('_') !== -1 ){
+                            _shareCode = _param.split('_')[1];
+                            _param = _param.split('_')[0];
+                        }
+                    }else{
+                        _param = '';
+                    }
+                }
+
+                if( _param !== ''){
+                    _entranceid = _param;
+                }
+            }
+
+
+            _config._param = _param !== null ? _param : '';
+            _config._entranceid = _entranceid !== null ? _entranceid : '';
+
+            if( _config._entranceid !== null && _config._entranceid !== ''){
+                rData.entranceid = _config._entranceid ;
+            }
+
+            /*_config._entranceid =_config.fatherDayId
+            addClass( body , 'fatherDay' );*/
+
+            //如果是父亲节活动
+            if( _config._entranceid == _config.fatherDayId ){
+
+                document.getElementsByTagName('title')[0].innerHTML = "父亲节爸爸的钱包";
+
+                try{
+                    dataForWeixin={
+                        appId:"",
+                        MsgImg:'http://img11.360buyimg.com/cms/jfs/t1267/276/1197475274/7787/abc1ed2/55828e89N00b30545.png',
+                        TLImg: 'http://img11.360buyimg.com/cms/jfs/t1267/276/1197475274/7787/abc1ed2/55828e89N00b30545.png',
+                        url: 'http://sale.jd.com/app/act/6jrxPnXNToSVv.html',
+                        title: '你多久没给老爸打电话了？京东钱包送你八块八，马上打给他！',
+                        desc: '京东钱包父亲节送话费啦～',
+                        fakeid:"",
+                        callback:function(){}
+                    };
+                    addClass( body , 'fatherDay' );
+                }catch(e){
+
+                }
+
+                //如果是手机充值活动
+            }
+            if( _config._entranceid == _config.summerSpendingId ){
+
+                document.getElementsByTagName('title')[0].innerHTML = "手机充值一次惠7元";
+
+                try{
+                    dataForWeixin={
+                        appId:"",
+                        MsgImg:'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+                        TLImg: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+                        url: 'http://sale.jd.com/app/act/WrxyXzaV1QTkH.html',
+                        title: '手机充值一次惠7元',
+                        desc: '有钱，任性，只要分享就有优惠！',
+                        fakeid:"",
+                        callback:function(){}
+                    };
+                    addClass( body , 'summerSpending' );
+                }catch(e){
+
+                }
+
+                //如果是手机充值活动
+            }
+            //国庆话费送不停
+            if( _config._entranceid == _config.dingfeiId ){
+
+                document.getElementsByTagName('title')[0].innerHTML = "国庆话费送不停";
+
+                try{
+                    dataForWeixin={
+                        appId:"",
+                        MsgImg:'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+                        TLImg: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+                        url: 'http://sale.jd.com/app/act/WrxyXzaV1QTkH.html',
+                        title: '超级Joy迎国庆，京东钱包送话费',
+                        desc: '玩游戏，话费送不停，还有机会赢一整年话费（最高5000元）',
+                        fakeid:"",
+                        callback:function(){}
+                    };
+                    addClass( body , 'dingfeiId' );
+
+                    if(  _shareCode != '' ){
+                        shareCode = '&score='+_shareCode;
+                    }
+                }catch(e){
+
+                }
+
+                //如果是手机充值活动
+            }
+            
+            if( _config._entranceid == _config.tanabataId ){
+
+                document.getElementsByTagName('title')[0].innerHTML = "七夕，话费送不停！";
+
+                try{
+                    dataForWeixin={
+                        appId:"",
+                        MsgImg:'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+                        TLImg: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+                        url: 'http://sale.jd.com/app/act/5NOlBTkSVq4.html',
+                        title: '七夕复七夕，话费送不停！',
+                        desc: '送你一整年话费，情话“奖”不停！',
+                        fakeid:"",
+                        callback:function(){}
+                    };
+                    if( _shareCode != '' ){
+                        dataForWeixin.desc = '我的桃花运是'+_shareCode+'，还被送了五块钱！';
+                    }
+                    addClass( body , 'tanabata' );
+                }catch(e){
+
+                }
+
+            }else{
+                document.getElementsByTagName('title')[0].innerHTML = "揪财神 抢红包";
+            }
+
+            /* var r = {
+                   "code":"A00000",
+                   "codeText":"网络正常",
+                   "data":{
+                       "mobile":false,
+                       "realname":true,
+                       "prizeName":"现金红包",
+                       "prizeLimit":"满1000可使用",
+                       "validDate":"有效期：2015-06-13~06-16",
+                       "description":"10元信用卡优惠券已经存入你的账户，快去使用吧",
+                       "amount":"1.3",
+                       "prizeUnit":"元",
+                       "prizeType":"09"
+                   }
+               };
+
+           _config._isInApp = true;
+           console.log(_config._entranceid)
+
+           showPage( r );
+           return;
+*/
+
+            //检查入口
+            if( !checkSatus() ){
+                return false;
+            }
+
+            if( _config._uesCors ){
+
+                for( var key in datas ){
+                    _str += key+'='+datas[key]+'&'
+                }
+
+                /*_config._isDebug && alert("传后端参数："+_url+'?'+_str );*/
+                CORS({
+                    url:_url+'?'+_str+_addStr+shareCode,
+                    error:function(e){
+                        console.log("error");
+                        console.log(e);
+                        var r = {
+                            "code":"A00000",
+                            "data":{
+                                "description":"请求出错！"
+                            },
+                            "msg":"请求出错！"
+                        } ;
+
+                        showPage( r );
+                    },
+                    load:function(e){
+                        var r = JSON.parse(e) ,
+                            data = r.data
+                        ;
+                        showPage( r );
+                    }
+                })
+            }else{
+
+                $.ajax({
+                    type:'get',
+                    url:_url,
+                    async:"true",
+                    data:datas,
+                    dataType: 'json',
+                    success:function(r){
+
+                        showPage( r );
+                    }
+                });
+
+            };
+
+        };
+
+        if( !_config._isInApp && !inWx ){
+            setTimeout(function(){
+                rData.auth = _config._auth;
+                sedRequest(rData);
+            },1000)
+        }else{
+            rData.auth = _config._auth;
+            sedRequest(rData);
+        }
+
+
+        body.addEventListener('click',function(e){
+            var target = e.target ,
+                className = target.className
+            ;
+            //使用优惠券按钮
+            if( checkClass( 'useBtn', className ) ){
+
+                if( _config._isRealname ){
+                    switchStatus('realname');
+                    return;
+                }
+
+                //手机
+                if( _config._prizeType == '09' ){
+                    App.open('PHONE_RECHARGE');
+
+                    //信用卡
+                }else if( _config._prizeType == '12' ){
+                    App.open('CCR');
+                }
+
+                //查看卡券按钮
+            }else if(  checkClass( 'cardBtn', className ) ){
+
+                var cardUrl = 'http://m.jdpay.com/user/myCoupon#MINE';
+
+                if(isDev){
+                    cardUrl = 'http://172.24.4.61:8101/user/myCoupon';
+                };
+
+                App.open('ACTIVITY',cardUrl);
+
+                // tia
+            }else if( checkClass( 'balanceBtn', className ) ){
+
+                App.open('HOME');
+
+                //提交电话号码
+            }else if( checkClass( 'J_phone_submit', className ) ){
+
+                var J_phone_number = target.parentNode.querySelector('.mobile');
+                //document.querySelector('.J_phone_submit').parentNode.querySelector('.mobile')
+                rData.mobile = J_phone_number.value ;
+                rData.code = _config._code;
+
+                if( J_phone_number.value != ''){
+                    display(loading,'block');
+                    setTimeout(function(){
+                        sedRequest(rData, _config.wxCutomer );
+                    },500);
+                }
+                //活动规则
+            }else if( checkClass( 'rules', className ) ){
+                if( _config._entranceid == _config.fatherDayId ){
+                    display( rules_box , 'block');
+                }else{
+                    switchStatus("rules");
+                }
+                //取消规则
+            }else if( checkClass( 'closeRules', className )  ){
+                switchStatus("ticket");
+                //取消实名
+            }else if( checkClass( 'cancelRealName', className )  ){
+                switchStatus("ticket");
+                //去实名
+            }else if( checkClass( 'realname', className ) ){
+                App.open('REALNAME');
+                //去下载
+            }else if( checkClass( 'download', className ) ){
+                window.location.href = 'http://m.jdpay.com/basic/index.html';
+                //刷新
+            }else if( checkClass( 'oneAgin', className ) ){
+                //如果是父亲节活动 展示该活动输手机号
+                if(  _config._param !== null && _config._param !== '' ){
+
+                    _config._reloadUrl = _config._reloadUrl+'?param=flag_'+_config._param;
+
+                }
+                window.location.href = _config._reloadUrl ;
+                //打开父亲节活动规则
+            }else if( checkClass( 'f_rules_btn', className ) ){
+                display( rules_box , 'block');
+                //关闭父亲节活动规则
+            }else if( checkClass( 'f_close', className ) ){
+                display( rules_box , 'none');
+            }
+
+
+        },false);
+
+    });
+
+
+    console.log('loginfo-2015-08-19-14-37');
+</script>

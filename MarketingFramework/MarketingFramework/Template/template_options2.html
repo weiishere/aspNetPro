@@ -1,0 +1,309 @@
+﻿[% if(option.inputType=="textAndCheckboxForBg"){ %]
+<div class="editItemWrap">
+    <h4>[%=option.name %]</h4>
+    <!--<span>
+        <label>图片：<input role="bgImg" type="text" /></label>&nbsp;&nbsp;<label>单张满铺：<input checked="checked" type="checkbox" /></label><br />
+    </span>
+    <span>
+        颜色：<input role="color" type="text" style="width:80px" />&nbsp;<i class="dib">颜色值请添加“#”</i>
+    </span>-->
+    <span><label>图片地址：<input role="bgImg" type="text" /></label></span>
+    <span class="hide"><label>是否平铺：<input value="pp" type="checkbox" /></label></span>
+    <span class="hide">
+        适应类型：
+        <label><input value="none" name="repeatType" type="radio" />无拉伸</label>&nbsp;&nbsp;
+        <label><input value="ls" name="repeatType" type="radio" />拉伸背景图</label>&nbsp;&nbsp;
+        <label><input checked="checked" name="repeatType" value="sy" type="radio" />容器高度适应图片</label>
+    </span>
+    <span class="hide">
+        拉伸类型：
+        <label>
+            <select>
+                <option value="full">背景图宽/高度均适应容器</option>
+                <option value="cover">背景图仅宽度适应容器</option>
+                <option value="contain">背景图仅高度适应容器</option>
+                <option value="none">无拉伸</option>
+            </select>
+        </label>
+    </span>
+    <span>
+        背景颜色：<input role="color" type="text" style="width:80px" />&nbsp;<i class="dib">颜色值请添加“#”</i>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+
+[%}else if(option.inputType=="mainBg"){%]
+<div class="editItemWrap">
+    <h4>[%=option.name %]</h4>
+    <span class="hide"><label>图片地址：<input role="bgImg" type="text" /></label></span>
+    <span class="hide">
+        拉伸类型：
+        <label>
+            <select>
+                <option value="full">背景图宽/高度均适应容器</option>
+                <option value="cover">背景图仅高度适应容器</option>
+                <option value="contain">背景图仅宽度适应容器</option>
+                <option value="none">无拉伸</option>
+            </select>
+        </label>
+    </span>
+    <span>
+        背景颜色：<input role="color" type="text" style="width:80px" />&nbsp;<i class="dib">颜色值请添加“#”</i>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+
+[%}else if(option.inputType=="textAndSelect"){%]
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span>
+        <label>值：<input style="min-width:80px;width:80px" type="text" /></label>
+        &nbsp;&nbsp;<label>单位：<select><option value="%">%</option><option value="rem">rem</option><option value="px">px</option></select></label>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+[%}else if(option.inputType=="textAndSelectAndCheckbox"){%]
+
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span>
+        <label>值：<input disabled="true" style="min-width:80px;width:80px" type="text" /></label>
+        &nbsp;&nbsp;<label>单位：<select disabled="true"><option value="%">%</option><option value="rem">rem</option><option value="px">px</option></select></label>
+        &nbsp;&nbsp;<label>居中：<input type="checkbox" /></label>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+[%}else if(option.inputType=="setForButton"){%]
+
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span class="hide">
+        <label>是否透明：<input checked="checked" type="checkbox" /></label>
+    </span>
+    <span class="hide">
+        <label>背景图片：<input type="text" role="bgImg" /></label><i>默认填满按钮</i>
+    </span>
+    <span>
+        <label class="hide">按钮底色：<input type="text" role="color" /></label>
+    </span>
+    <span class="hide">
+        <label>圆角大小：<input type="text" role="radius" /></label>
+    </span>
+    <span class="hide">
+        <label>按钮文案：<input type="text" role="text" value="button" /></label>
+    </span>
+    <span class="hide">
+        <label>字体大小：<input type="text" role="fontSize" /></label>
+    </span>
+    <span class="hide">
+        <label>字体颜色：<input type="text" role="fontColor" /></label>
+    </span>
+    <span>
+        <label>
+            单击行为：
+            <select class="w-150">
+                <option value="none">无动作</option>
+                <option value="url">跳转到Url</option>
+                <option value="back">返回上一页</option>
+                <option value="query">自定义脚本</option>
+                [%
+                if(option.data.viewData.length!=0){
+                %]
+                <optgroup label="跳转到view" id="selectViewList">
+                    [%
+                    _.map(option.data.viewData,function(item){
+                    %]
+                    <option value="[%=item.value %]">[%=item.name %]</option>
+                    [%
+                    });
+                    %]
+                </optgroup>
+                [%
+                }
+                %]
+                <optgroup label="跳转到App">
+                    [%
+                    _.map(option.data.listData,function(item){
+                    %]
+                    <option value="[%=item.value %]">[%=item.name %]</option>
+                    [%
+                    });
+                    %]
+                </optgroup>
+
+            </select><br />
+            <textarea placeholder="请填写url/js脚本/基金code" style="width:300px;margin-top:10px" rows="6"></textarea>
+        </label>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+[%}else if(option.inputType=="setForTextInput"){%]
+
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span>
+        <label>边框颜色：<input type="text" role="bdColor" /></label>
+    </span>
+    <span>
+        <label>输入底色：<input type="text" role="bgColor" /></label>
+    </span>
+    <span>
+        <label>圆角大小：<input type="text" role="radius" /></label>&nbsp;<i>数值不建议大于3</i>
+    </span>
+    <span>
+        <label>字体大小：<input type="text" role="fontSize" value="1" /></label>&nbsp;<i>数值不建议大于2</i>
+    </span>
+    <span>
+        <label>输入提示：<input type="text" role="placeholder" placeholder="请在此输入" /></label>
+    </span>
+    <span>
+        <label>最大字符：<input type="text" role="maxLength" value="30" /></label>
+    </span>
+    <span>
+        <label>
+            文本验证：
+            <select>
+                <option value="0">-----无验证-----</option>
+                <option value="1">非空验证</option>
+                <option value="2">验证为手机串</option>
+                <option value="3">验证为6位验证码(整数)</option>
+                <option value="4">验证为金额</option>
+                <option value="5">验证为身份证</option>
+                <option value="6">Email地址</option>
+            </select>
+        </label>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+
+[%}else if(option.inputType=="text"){%]
+
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span>
+        <label>值：<input type="text" /></label>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+
+[%}else if(option.inputType=="numberText"){%]
+
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span>
+        <label>值：<input type="number" /></label>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+
+[%}else if(option.inputType=="setForFont"){%]
+
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span>
+        <label>文本内容：<textarea id="txtContent" rows="5" class="vt w-200"></textarea></label>
+    </span>
+    <span>
+        <label>字体大小：<input type="text" role="fontSize" class="w-200" />&nbsp;<i class="dib">原始字体大小的倍数</i></label>
+    </span>
+    <span>
+        <label>字体颜色：<input type="text" role="fontColor" /></label>
+    </span>
+    <span>
+        <label>对齐方式：<select class="w-150"><option value="tl">左对齐</option><option value="tc">居中</option><option value="tr">右对齐</option></select></label>
+    </span>
+    <span>
+        <label>文案行高：<input type="text" role="lineHeight" class="w-200" />&nbsp;<i class="dib">上下两行字体之间的距离（原始字体大小×倍数）</i></label>
+    </span>
+    <span>
+        其他配置：
+        <label><input type="checkbox" />&nbsp;加粗</label>&nbsp;&nbsp;
+        <label><input type="checkbox" />&nbsp;斜体</label>&nbsp;&nbsp;
+        <label><input type="checkbox" />&nbsp;下划线</label>&nbsp;&nbsp;
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+
+[%}else if(option.inputType=="select"){%] 
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span>
+        请选择：
+        <select class="w-150">
+            [%
+            _.map(option.data,function(item){
+            %]
+            <option value="[%=item.value %]">[%=item.name %]</option>
+            [%
+            });
+            %]
+        </select>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+
+[%}else if(option.inputType=="textEdit"){%]
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span>
+        <textarea id="roleTxtContent" cols="41" rows="15"></textarea>
+    </span>
+    <span class="hide">
+        <label>自用规则：<input type="checkbox" checked="checked"/></label>
+        <i>勾掉掉此选项，内容将将独立为此规则按钮使用</i>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+
+[%}else if(option.inputType=="htmlText"){%]
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span> 
+        <div contentEditable="true" class="editHtmlArea"></div>
+        <!--<textarea class="editHtmlArea"></textarea>-->
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+
+[%}else if(option.inputType=="setForHeight"){%]
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span>
+        <label>值：<input style="min-width:80px;width:80px" type="text" /></label>
+        &nbsp;&nbsp;<label>单位：<select><option value="%">%</option><option value="rem">rem</option><option value="px">px</option></select></label>
+        &nbsp;&nbsp;<label>固定宽纵比：<input type="checkbox" /></label><br />
+        <i>“固定宽纵比”可保证组件的宽纵比例不变，若设置了“容器高度适应图片”的背景项，也将自动保持宽纵比</i>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+[%}else if(option.inputType=="setForFit"){%]
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span>
+        <label><input type="radio" />高度自动</label>
+        <label><input type="radio" />高度随屏幕</label>
+        <label><input type="radio" />固定宽纵比</label>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+[%}else if(option.inputType=="serverModel"){%]
+<div class="editItemWrap">
+    <h4>[%=option.name %]：</h4>
+    <span>
+        <label>请求Url：<input type="text" />&nbsp;<i class="dib pl-50">请填写相对路径，若无IP信息将会加上全局服务器IP（Config.serverUrl）</i></label>
+    </span>
+    <span>
+        <label>请求参数：<textarea id="requestParam" rows="5" class="vt w-250" placeholder="请以 { key:value } 包裹为对象形式"></textarea></label>
+    </span>
+    <span>
+        <label>数据结构：<input type="text" style="min-width:140px;width:140px" /></label>
+    </span>
+    <span>
+        <label>数据别名：<input type="text" style="min-width:140px;width:140px" />&nbsp;<i>模板中的主对象名</i></label>
+    </span>
+    <span>
+        <label>数据模板：<textarea id="htmlTemplate" rows="10" class="vt w-250" placeholder="HTML模板"></textarea></label>
+    </span>
+    <i>[%=option.description %]</i>
+</div>
+[%}%]

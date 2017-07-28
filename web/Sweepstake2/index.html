@@ -1,0 +1,1178 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta content="width =device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no" name="format-detection" /><!--禁用识别手机号-->
+    <title>盈春有好礼</title>
+    <meta charset="utf-8" />
+    <style>
+        html, body { height: 100%; margin: 0; font-size: 20px; background-color: #630412; }
+        input, button, select, textarea { outline: none; -webkit-appearance: none; }
+        .mainWrap { width: 100%; min-height: 35rem; padding-bottom: 0rem; text-align: center; overflow: auto; display: none; }
+        .hidden { display: none !important; }
+        .show { display: block !important; }
+        .butStyle { background: url(img/btu_share.png) center no-repeat; background-size: 100%; height: 2.7rem; line-height: 2.7rem; font-size: 1rem; color: #e83854; }
+        #descPage { background: url(img/1.png) no-repeat; background-size: 100%; }
+            #descPage > img { width: 100%; }
+            #descPage label { color: #f5a1b1; font-size: 0.7rem; display: inline-block; width: 100%; margin: 0.1rem 0; }
+        .roleBtuWrap a { color: #fff; line-height: 2rem; font-size: 0.9rem; margin-bottom: 0.5rem; }
+
+        #indexPage { background-image: url(img/3.png); background-repeat: no-repeat; background-size: 100%; }
+            #indexPage h1 { font-size: 1rem; color: #fee27a; margin-top: 19rem; font-weight: normal; }
+            #indexPage h2 { font-size: 0.8rem; width: 88%; margin: 0 auto; color: #fff; font-weight: normal; line-height: 1rem; }
+            #indexPage h5 { font-size: 0.7rem; font-weight: normal; color: #fee27a; margin: 0.5rem 0; }
+
+        .errorPageWrap { width: 80%; padding: 0.5rem; height: 7rem; border-radius: 0.5rem; margin-top: 40% !important; padding-top: 0.5rem; line-height: 1.2rem; }
+            .errorPageWrap div { font-size: 0.8rem; }
+            .errorPageWrap button { width: 100%; height: 2rem; margin-top: 2rem; font-size: 0.8rem; background: #FFE372; border-radius: 0.2rem; color: #E04539; border: 0; box-shadow: 1px 1px 3px #333; }
+        #phonePage, #errorPage { background-image: url(img/main_bg3.png); background-repeat: no-repeat; background-size: 100%; height: 100%; padding-bottom: 0; min-height: inherit; }
+        #gamePage { height: 100%; padding-bottom: 0; min-height: inherit; }
+            #gamePage > div { width: 100%; position: relative; background: url(img/main_bg2.png); background-repeat: no-repeat; background-size: 100%; padding-top: 10%; }
+            #gamePage h1 { margin-top: 1rem; font-size: 0.8rem; color: #fff; font-weight: normal; }
+                #gamePage h1 strong { color: #fee27a; font-size: 1.5rem; margin: 0 0.3rem; }
+            #gamePage h4 { color: #f7b3c0; font-size: 0.8rem; font-weight: normal; margin: 0.5rem 0; background: url(img/speaker.png) no-repeat; background-size: 5% 110%; display: inline-block; padding-left: 0.8rem; }
+        .price_wrap { background: url(img/price_wrap.png); background-size: 100% 100%; height: 5rem; margin-bottom: 1rem; }
+            .price_wrap table { text-align: left; width: 95%; margin: 0 auto; height: 100%; }
+            .price_wrap h2 { font-size: 0.85rem; line-height: 1rem; margin: 0.2rem 0 0.2rem 0; color: #fcedc1; }
+            .price_wrap span { font-size: 0.7rem; color: #fcedc1; }
+            .price_wrap button { border: 0; padding: 0; background: url(img/btu.png) no-repeat; border-radius: 0.2rem; color: #E04539; background-size: 100% 100%; width: 4.2rem; height: 1.5rem; font-size: 0.7rem; }
+            .price_wrap .disabled { color: #999 !important; text-shadow: -1px -1px 1px #fff; }
+            .price_wrap img { width: 2.5rem; height: 2.5rem; margin: 1rem 0.2rem 1rem 1rem; }
+        #gamePage .zhuanpanWrap { position: relative; width: 16rem; height: 21rem; margin: 0 auto; margin-bottom: 0.5rem; text-align: center; background: url(img/zhuanpanwrap.png) center no-repeat; background-size: 100%; }
+            #gamePage .zhuanpanWrap .zhuanpan { width: 10rem; margin-top: 8.9rem; margin-left: -0.3rem; height: 10rem; background: url(img/zhuanpan.png); background-size: 100% 100%; display: inline-block; -webkit-transition: all 4s ease-out; }
+        .zhuanpan_no_transition { -webkit-transition: none !important; }
+        #gamePage .pointer { position: absolute; left: -0.15rem; right: 0; margin: auto; top: 12rem; background: url("img/pointer2.png"); width: 3.2rem; height: 3.5rem; background-size: 100% 100%; z-index: 500; -webkit-transform: scale(1, 1); -webkit-transition: all 0.3s ease-out; }
+            #gamePage .pointer:active { -webkit-transform: scale(1.2, 1.2) !important; }
+        .rotate { -webkit-transform: rotate(380deg) !important; }
+
+        .dialogWrap { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 800; }
+            .dialogWrap > div { background: #fff; position: absolute; z-index: 8001; -webkit-transform: translate(0, -50px); top: 0; bottom: 0; right: 0; left: 0; margin: auto; -webkit-transition: all 0.3s ease-out; opacity: 0; }
+            .dialogWrap .close { position: absolute; z-index: 600; width: 2rem; height: 2rem; right: -0.3rem; top: -0.3rem; z-index: 8002; }
+                .dialogWrap .close img { width: 100%; height: 100%; }
+        .roleWrap { width: 90%; position: relative; height: 20rem; border-radius: 0.5rem; text-align: left; line-height: 1.4rem; }
+            .roleWrap div { height: 100%; overflow: auto; margin: 0 0.5rem; font-size: 0.8rem; }
+        .show { -webkit-transform: translate(0, 0) !important; opacity: 1 !important; }
+        .phoneInputWrap { width: 90%; height: 15.3rem; border-radius: 0.5rem; }
+            .phoneInputWrap h1 { font-size: 1rem; font-weight: normal; margin-top: 1rem; color: #2b2b2b; }
+            .phoneInputWrap h2 { font-size: 0.85rem; font-weight: normal; color: #333; line-height: 1.5rem; }
+            .phoneInputWrap input { border: 0; border: solid 1px #ddd; padding: 0; font-size: 1rem; -webkit-appearance: none; }
+                .phoneInputWrap input[type="tel"] { height: 2.5rem; width: 90%; background: #eee; border-radius: 0; }
+                .phoneInputWrap input[type="number"] { height: 1.8rem; width: 57%; vertical-align: middle; border-radius: 0.2rem; font-size: 0.8rem; }
+            .phoneInputWrap .btuGetCode { margin-left: 3%; width: 30%; border: solid 1px #c9c9c9; height: 1.8rem; vertical-align: middle; border-radius: 0.2rem; }
+            .phoneInputWrap .getSubmit { width: 100%; border-top: solid 1px #eee; margin-top: 0.5rem; padding-top: 0.5rem; }
+                .phoneInputWrap .getSubmit button { width: 90%; background: #d3213d; border: 0; height: 2.8rem; vertical-align: middle; color: #fff; font-size: 1rem; }
+
+        #txt_phone2 { width: 90%; height: 2rem; border: solid 1px #ccc; font-size: 1rem; }
+        .alertWrap { position: fixed; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 8999; }
+        .alert { width: 80%; display: table; overflow: auto; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: #fff; border-radius: 0.7rem; -webkit-transform: scale(0.8, 0.8); opacity: 0; -webkit-transition: all 0.2s ease-out; z-index: 20000; }
+        .alertActive { opacity: 1; -webkit-transform: scale(1, 1) !important; }
+        .alert h1 { font-size: 1rem; text-align: center; }
+        .alert span { font-size: 0.9rem; padding: 1rem; padding-top: 0; display: block; text-align: center; }
+        .alert .buttonWrap { width: 100%; height: 2rem; border-radius: 0 0 0.7rem 0.7rem; overflow: hidden; }
+        .alert button { border: 0; border-top: solid 1px #999; background: #fff; width: 50%; float: left; height: 2rem; font-size: 1rem; color: #ef5557; }
+        /*alert .buttonWrap:before {float:left; content: ""; width: 100%;  background: #999; width: 100%; height: 1px;
+                                  -webkit-transform: scaleY(0.5); transform: scaleY(0.5); -webkit-transform-origin: 0 0; transform-origin: 0 0; }*/ . .alert button:active { background: #ccc; }
+        .alert button:first-child { border-radius: 0 0 0 0.7rem; }
+        .alert button:nth-child(2n) { border-left: solid 1px #999; border-radius: 0 0 0.7rem 0; }
+
+        .singleBtu { border-radius: 0 0 0.7rem 0.7rem !important; width: 100% !important; }
+        #alertWrap { display: none; }
+        iframe { display: none; }
+        .footer_app { position: fixed; width: 100%; color: #fff; height: 4.5rem; text-align: center; bottom: 0; background: url(http://img14.360buyimg.com/cms/jfs/t2278/276/643203285/29229/6b04c654/561e4032Ndddfd9d1.png) no-repeat; background-size: 100% 100%; z-index: 10000; }
+            .footer_app p { margin: 5px 0; font-size: 0.85rem; }
+                .footer_app p button { margin: 0; border: 0; width: 70%; height: 2.1rem; background: #d53745; color: #fff; font-size: 1rem; font-weight: bold; border-radius: 8px; }
+
+        .weakLayer { position: absolute; z-index: 10000; background: url(http://img11.360buyimg.com/cms/jfs/t1735/188/547580560/32139/3caefcff/55d355a1N90688a61.png); top: 0; left: 0; width: 100%; height: 100%; background-size: 100% 100%; display: none; }
+        #loading { position: fixed; left: 0; top: 0; width: 100%; font-size: 0.7rem; height: 100%; text-align: center; z-index: 500000; background: rgba(0,0,0,0.5); color: #eee; display: none; }
+            #loading > div { width: 7rem; margin: 0 auto; margin-top: 50%; background: #000; padding: 1rem; border-radius: 0.5rem; opacity: 0.8; }
+            #loading img { margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="mainWrap" id="descPage">
+        <label style="margin-top:75%">活动时间：2016.1.21-2016.2.14</label>
+        <div class="roleBtuWrap">
+            <a href="javascript:;">活动规则</a>
+        </div>
+        <div class="butStyle" style="margin-top:30%;">领取抽奖机会</div>
+    </div>
+
+    <div class="mainWrap" id="indexPage">
+        <h1>恭喜您获得一次抽奖机会</h1>
+        <h2>
+            <span id="pendData_">2016-2-14</span>前使用账户<span id="userPhone">用户名</span>登录京东钱包，参与活动“<span id="promotionName">盈春抽奖</span>”即可进行抽奖
+        </h2>
+        <div class="butStyle" id="goApp" style="margin-top: 1rem;">前往抽奖</div>
+    </div>
+
+    <div class="mainWrap" id="phonePage">
+        <div class="dialogWrap">
+            <div class="phoneInputWrap">
+                <h1>等等，就差这一步了</h1>
+                <h2>请输入手机号码领取</h2>
+                <input type="tel" id="txt_PhoneNumber" placeholder="请输入您的手机号" />
+                <div style="margin-top:0.5rem">
+                    <input placeholder="请输入验证码" type="number" id="text_verifyCode" /><button id="btu_getsms" class="btuGetCode">获取验证码</button>
+                </div>
+                <p class="getSubmit">
+                    <button id="btu_postVali">领取</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mainWrap" id="errorPage">
+        <div class="dialogWrap">
+            <div class="errorPageWrap">
+                <div>错误信息</div>
+                <button>前往抽奖</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="gamePage" class="mainWrap">
+        <div>
+            <div class="zhuanpanWrap">
+                <div class="pointer"></div>
+                <div class="zhuanpan"></div>
+            </div>
+
+            <h1>- 您的剩余抽奖次数为<strong>-</strong>次 -</h1>
+            <h4 style="display:none">阿**获得8.8元现金红包</h4>
+            <div class="roleBtuWrap">
+                <a href="javascript:;">活动规则</a>
+            </div>
+            <div id="price_wrap">
+                <i></i>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="alertWrap" id="alertWrap">
+        <div class="alert">
+            <h1>消息标题</h1>
+            <span>
+                **
+            </span>
+            <div class="buttonWrap">
+
+            </div>
+        </div>
+    </div>
+    <div class="weakLayer"></div>
+    <div class="dialogWrap" style="display:none" id="roleLayer">
+        <div class="roleWrap">
+            <span class="close"><img src="img/close2.png" /></span>
+            <div>
+                <h3>
+                    一、活动规则
+                </h3>
+                1、	本次大抽奖的奖品为：京东钱包账户积分、1元手机充值优惠券、5元话费优惠券、2元信用卡还款优惠券、一万元小金库体验金（1日收益）、1000元京东E卡(共20张)、10克金条（共10根）。<br />
+                2、	用户每天登录钱包－今天页－右下角抽奖即可获得1次抽奖机会，分享抽奖活动页面到微信或登录朋友圈内指定活动页面，当天可再获1次抽奖机会。同一用户每天最多可获得2次抽奖机会。<br />
+                3、	同一用户累计中奖金额不能超过5000元。<br />
+                4、	同一京东钱包账户、京东钱包绑定手机号、身份证号、京东账户、微信账户、银行卡号、终端设备，满足任一条件均视为同一用户。<br />
+                5、	在本活动期间，如存在违规行为（包括但不限于恶意套取资金、机器作弊、虚假交易等违反诚实信用原则行为），主办方将取消您的中奖资格，并有权撤销相关违规交易和奖励，必要时追究法律责任。<br />
+                6、	如出现不可抗力或情势变更的情况（包括但不限于重大灾害事件、活动受政府机关指令需要停止举办或调整的、活动遭受严重网络攻击或因系统故障需要暂停举办的），京东钱包有权暂停或取消本次活动，并可依相关法律法规的规定主张免责。<br />
+                7、	本活动规则及其未尽事宜同时受《京东钱包服务协议》及相关公告、规则约束。<br />
+                8、	在法律允许的范围内，本公司对本活动有解释权。<br />
+                9、	本次活动与Apple Inc.无关。<br />
+                <h3>
+                    二、奖品查询和使用规则：
+                </h3>
+                <h4>(一)	金条</h4>
+                1、	获奖名单将在本活动结束后5个工作日内公布在京东钱包APP内－公告，请参与用户留意。京东钱包工作人员会与中奖用户联系奖品领取事宜。<br />
+                2、	同一用户仅有获得一根金条的机会。<br />
+                3、	开奖期间请保持手机畅通，可拨打400-6227186咨询。开奖信息公布后超过7天无法联系则视为放弃中奖。<br />
+                <h4>
+                    (二)	京东钱包账户积分
+                </h4>
+                1、	用户可在京东钱包“我的-积分-积分记录”查询获赠的京东钱包账户<br />积分。<br />
+                2、	获赠积分可与该京东钱包账户内原有积分，累计使用。<br />
+                3、	积分使用规则详情请在查阅京东钱包APP《积分说明》。<br />
+                <h4>
+                    (三)	手机充值优惠券：
+                </h4>
+                1、	手机充值优惠券分为两种：（1）1元手机充值优惠券；（2）5元手机充值优惠券。<br />
+                2、	查询：用户可在京东钱包“我的-优惠券中查询获赠的手机充值优惠券。<br />
+                3、	发放时间：手机充值优惠券将在获奖之日发放到京东钱包中。<br />
+                4、	已完成京东钱包实名认证的用户可在优惠券有效期内使用；未完成京东钱包实名认证的用户须在优惠券有效期内进行实名认证，否则视为放弃该张优惠券。<br />
+                5、	优惠券有效期为3个自然日，自到账之日起算，券过期作废。<br />
+                6、	手机充值优惠券仅限在京东钱包客户端使用银行卡充值手机话费时使用，1元话费优惠券单笔话费充值实付金额大于或等于45元时方可使用；5元话费优惠券单笔话费充值实付金额大于或等于95元时方可使用。<br />
+                7、	手机话费充值时输入充值手机号及金额，点击“立即充值”后，即可选择可使用的券。<br />
+                8、	同一订单只能使用一张券，且不能与其他优惠活动同时享受。手机充值优惠券不可拆分使用、不可转赠、不可找零、不可兑现。手机充值优惠券与其他优惠券券不能叠加使用。<br />
+                9、	 当用券订单发生退款时，在券有效期内的，则券退回至用户的账户，券退回后有效期不变；如已过有效期则券不再退还，仅退用户实付金额。<br />
+                <h4>
+                    （四）2元信用卡还款优惠券：
+                </h4>
+                1、仅限京东钱包客户端信用卡还款使用，且单笔还款实付金额大于或等于500元时可使用。<br />
+                2、已完成京东钱包实名认证的用户可在优惠券有效期内使用；未完成京东钱包实名认证的用户须在优惠券有效期内进行实名认证，否则视为放弃该张优惠券。<br />
+                3、还款时选择信用卡及还款金额，点击“立即还款”后，即可选择可使用的券。<br />
+                3、同一订单只能使用一张券，且不能与其他优惠活动同时享受，券不可拆分使用、不可转赠、不可找零、不可兑现。<br />
+                4、优惠券有效期为3个自然日，自到账之日起算，券过期作废。<br />
+                5、如使用券的订单发生退款，在券有效期内的，则券退回至用户的账户，券退回后有效期不变，如已过有效期则券不再退还，仅退用户实付金额。<br />
+                <h4>
+                    （五）万元小金库体验金：
+                </h4>
+                1、	体验金为京东小金库对应的货币基金虚拟份额，小金库体验金不能用于提现、支付、转账，仅可在京东钱包“理财－京东小金库”中查询和使用。<br />
+                2、	体验金生效日（D日）：已开通京东小金库的用户，体验金自中奖之日起生效；未开通京东小金库的用户，须在体验金领取之日起算第3个自然日23：59：59前，按照流程开通小金库帐户，体验金自开通小金库之日起生效。未能在体验金领取之日起算第3个自然日23：59：59前，按照流程开通小金库帐户的，视为放弃领奖，小金库体验金不生效。<br />
+                3、	本次活动体验期：本次活动的体验期为自体验金生效之日当天。体验期结束后，体验金本金收回。<br />
+                4、	体验金收益计算方法：体验金收益=体验金数额*D日万份收益/10000。<br />
+                5、	体验金收益发放：小金库体验金收益在D+1日可在京东钱包小金库中看到，在D+2日将以货币基金份额的形式发放至用户的小金库账户中。<br />
+                6、	同一用户仅能领取一次体验金。<br />
+                <h4>
+                    （六）1000元京东E卡：
+                </h4>
+                1、	获奖名单将在本活动结束后5个工作日内公布在京东钱包APP内－公告，请参与用户留意。京东钱包工作人员会与中奖用户联系奖品领取事宜。<br />
+                2、	开奖期间请保持手机畅通，可拨打400-6227186咨询。开奖信息公布后超过7天无法联系则视为放弃中奖。<br />
+                3、	同一用户仅有获得一张京东E的机会。<br />
+                4、	E卡的使用密码将以短信的形式发放至用户参与抽奖的手机号码上。<br />
+                5、	京东E卡的使用规则请见京东商城－我的京东－资产中心－京东卡／E卡－使用规则。<br />
+            </div>
+        </div>
+    </div>
+
+    <section class="footer_app" id="J_openBtn" style="display:none">
+        <p>京东钱包诚意之作</p>
+        <p>
+            <button id="J_confirm" onclick="openApp()">打开京东钱包</button>
+        </p>
+    </section>
+    <div id="loading">
+        <div>
+            <img src="img/laoding.gif" /><br />加载中，请稍后...
+        </div>
+    </div>
+</body>
+</html>
+<script src="jquery-1.8.2.min.js"></script>
+<!--<script src="js/config.js?t=3"></script>
+<script src="js/hybrid.js?t=3"></script>
+<script src="js/share.js?t=3"></script>-->
+<script src="js/appopen.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!--<script type="text/javascript" src="http://static.jdpay.com/basic/dist/js/m-public/??wx-sdk.js,common.js,mApp.js">
+</script>-->
+<script src="http://static.jdpay.com/basic/dist/js/m-public/common.js"></script>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/wx-sdk.js"></script>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/mApp.js"></script>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/jdp-sdk.js"></script>
+
+<script>
+
+    //配置本地参数
+    var _mApp = mApp();
+    var mAppConfig = _mApp.config();
+
+    var _voucherId, _sign, userInfo;
+    var validTimes = 0;
+    var isGameRound = false;
+
+    //切换环境
+    var _host = 'beatHost',
+        _entranceId = '',
+        _wxparam = {},
+        baseUrl = "",//服务器后端地址
+        localUrl = "";//前端配置的地址
+    appUrl = "";//打开APP地址
+
+    switch (_host) {
+        //本地
+        case 'locaHost':
+            baseUrl = "http://10.9.45.230";
+            localUrl = "http://10.9.45.161";
+            appUrl = "http://172.24.4.61:8101/";
+            _wxparam.server = 'http://pux.wangyin.com/wechat/users';
+            _wxparam.param = '&appId=wx019d442781829a25&appSecret=d4624c36b6795d1d99dcf0547af5443d';
+            break;
+            //闭环
+        case 'beatHost':
+            baseUrl = 'http://172.24.5.10:8333';
+            localUrl = "http://172.25.47.49/activity/item";
+            appUrl = "http://172.24.4.61:8101/";
+            _wxparam.server = 'http://pux.wangyin.com/wechat/users';
+            _wxparam.param = '&appId=wx019d442781829a25&appSecret=d4624c36b6795d1d99dcf0547af5443d';
+            break;
+            //生产
+        case 'productHost':
+            baseUrl = 'http://m.jdpay.com';
+            localUrl = "http://static.jdpay.com/activity/item";
+            appUrl = "http://m.jdpay.com/";
+            _wxparam.server = 'https://m.jdpay.com/open/ticketSignature';
+            _wxparam.param = '';
+            break;
+    }
+
+
+    var Config = {
+        entranceId: "2016011800000000002",
+    }
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    //时间戳转换
+    function getLocalTime(date_time) {
+        var date_time = new Date(parseInt(date_time)), year = date_time.getFullYear(), month = date_time.getMonth() + 1, date = date_time.getDate();
+        return year + '-' + month + '-' + date;
+    }
+    var temp = ['qrCode', 'wxOpenId', 'auth', 'code', 'refresh_token', 'entranceId'];
+    temp.forEach(function (item) {
+        Config[item] = getParameterByName(item);
+    });
+    window.wxParam = {
+        appid: '',
+        timestamp: '',
+        noncestr: '',
+        signature: '',
+        link: baseUrl + "/marketing/entrance?entranceId=2016011800000000002",
+        title: '盈春有好礼 红包送不停',
+        desc: '京东钱包盈春有好礼，猴年hou有钱！千万话费、百万现金红包、万元京东E卡！人人领！',
+        imgUrl: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+    }
+
+    window.requestAjax = function (url, option, data, success) {
+        var _option = $.extend({
+            type: "get",
+            dataType: "json",
+            async: true,
+        }, option || {});
+        $.ajax({
+            type: _option.type,
+            dataType: _option.dataType,
+            async: _option.async,
+            url: url,
+            data: data,
+            beforeSend: function () {
+                $("#loading").show();
+            },
+            success: function (data) {
+                $("#loading").hide();
+                success(data);
+            },
+            complete: function () { },
+            error: function (data) {
+                $("#loading").hide();
+                alert("内部错误：" + JSON.stringify(data));
+            }
+        });
+    }
+
+
+    //微信分享插件
+    wxsdk({
+        debug: false,
+        type: 'jsonp',//可选
+        jsonp: {//jsonp 可配置数据
+            name: 'callbackFn',
+            isEncode: true,
+            server: _wxparam.server,
+            param: _wxparam.param,
+            fn: function (data) {//默认this指向当前对象 ，后面也是
+                var r = data.resultData;
+                this.params.appid = r.appId;
+                this.params.noncestr = r.nonceStr;
+                this.params.signature = r.signature;
+                this.params.timestamp = r.timestamp;
+            }
+        },
+        shareData: {
+            title: wxParam.title,
+            desc: wxParam.desc,
+            link: wxParam.link,
+            imgUrl: wxParam.imgUrl,
+            trigger: function (res) {
+                //如果触发的收藏 就不执行回调
+                if (res.shareTo == 'favorite' || res.scene == 'favorite') {
+                    this.isTrigger = false;
+                } else {
+                    this.isTrigger = true;
+                }
+            },
+            success: function () {
+                if (this.isTrigger) {
+                    if (mAppConfig.inAndroid) {
+                        window.scrollTo(1, 1);
+                    }
+                    //分享之后不增加抽奖机会了
+
+                    //requestAjax(baseUrl + "/marketing/lottery/get?timer=" + Math.random(), {}, {
+                    //    'wxOpenId': Config.wxOpenId,
+                    //    'entranceId': "2015112600000000002"
+                    //}, function (data) {
+                    //    if (data.code == "A00000") {
+                    //        if (data.data.mobile) {
+                    //            //绑定手机
+                    //            phonePage.show();
+                    //        } else {
+                    //            //抽奖页
+                    //            indexPage.show();
+                    //            $("#userPhone").html(data.data.wxCustomer.wyPhone);
+                    //        }
+                    //    } else if (data.code == "A00004") {
+                    //        errorPage.content = "您已经通过分享获取过抽奖机会，明天再来吧~";
+                    //        errorPage.show();
+                    //    } else {
+                    //        openAlert("", data.msg);
+                    //    }
+                    //});
+                }
+            },
+            cancel: function () { }
+        }
+    });
+    //------------------------------------------------------------------------------------------------
+    //手机验证
+    $.fn.phoneValidate = function (btu, option) {
+        var _self = this;
+        var getTime = function () {
+            var time = _option.requestTime;
+            btu.attr("disabled", true);
+            btu.html(_option.requestText.replace("requestText", time));
+            var timer = window.setInterval(function () {
+                if (time == 1) {
+                    btu.attr("disabled", false);
+                    window.clearInterval(timer);
+                    btu.html(_option.readyText);
+                    return false;
+                }
+                btu.html(_option.requestText.replace("requestText", --time));
+            }, 1000);
+        }
+        var _option = $.extend({
+            readyText: "获取验证码",
+            requestTime: 60,
+            requestText: "requestText 's后重获",
+            ajaxfn: undefined,
+            ajaxUrl: "",
+            callBack: function (data) { },
+            error: function (data) { }
+        }, option || {})
+        btu.click(function () {
+            if (!/^1\d{10}$/.test($("#txt_PhoneNumber").val())) {
+                //openAlert("", "请输入正确的手机号码！");
+                _C.loading().tips("请输入正确的手机号码！");
+                return false;
+            }
+            getTime();
+            if (_option.ajaxfn) {
+                _option.ajaxfn.call(_self);
+                return false;
+            }
+            if (_option.ajaxUrl == "") return false;
+            _option.ajaxUrl = _option.ajaxUrl.indexOf("?") == -1 ? _option.ajaxUrl + "?timer=" + Math.random() : _option.ajaxUrl + "&timer=" + Math.random();
+            requestAjax(_option.ajaxUrl, {}, { entranceId: Config.entranceId, mobile: $(_self).val() }, function (data) {
+                _option.callBack.call(_self, data);
+            });
+            /*
+            $.ajax({
+                type: "get",
+                url: _option.ajaxUrl,
+                dataType: "json",
+                data: { entranceId: Config.entranceId, mobile: $(_self).val() },
+                success: function (data) {
+                    _option.callBack.call(_self, data);
+                },
+                error: function (data) {
+                    _option.error.call(_self, data);
+                }
+            });*/
+        });
+    }
+    //messagesBox
+    var openAlert = function (title, text, buttonEvent) {
+        if (!title && !text) { return false; }
+        $("#alertWrap").show().find("h1").html(title);
+        $("#alertWrap").find("span").html(text);
+        window.setTimeout(function () { $(".alert").addClass("alertActive"); }, 10);
+        var buHtml = "";
+        if (buttonEvent) {
+            buttonEvent.forEach(function (i) { buHtml += "<button " + (buttonEvent.length == 1 ? 'class=\"singleBtu\"' : '') + ">" + i.name + "</button>"; });
+        } else {
+            buHtml = "<button class=\"singleBtu\">OK</button>";
+        }
+        $("#alertWrap").find(".buttonWrap").empty().append(buHtml);
+        var self = this;
+
+        self.closeAlert = function (fn) {
+            $(".alert").removeClass("alertActive");
+            window.setTimeout(function () {
+                $("#alertWrap").fadeOut("fast", function () {
+                    if (fn) fn();
+                });
+            }, 50);
+        }
+        $("#alertWrap button").each(function (i, item) {
+            $(this).unbind("click").click(function () {
+                if (!buttonEvent) { self.closeAlert(); return false; }
+                if (buttonEvent[i].hasOwnProperty("fn")) {
+                    buttonEvent[i].fn.call(self);
+                } else {
+                    self.closeAlert(function () { });
+                }
+            });
+        });
+    }
+
+
+    //分享层提示
+    $(".weakLayer").click(function () { $(this).hide(); });
+    //活动规则按钮
+    $(".roleBtuWrap").click(function () {
+        //openAlert("活动规则", "");
+        //$(this).parents(".mainWrap").eq(0).append($("#roleLayer").show());
+        //window.setTimeout(function () {
+        //    $("#roleLayer>div").addClass("show");
+        //}, 10);
+
+        $(this).parents(".mainWrap").eq(0).scrollTop(0);
+        $("#roleLayer").show();
+        window.setTimeout(function () { $("#roleLayer>div").addClass("show"); }, 10);
+
+    });
+    //活动规则层关闭
+    $("#roleLayer").find(".close").click(function () {
+        $("#roleLayer>div").removeClass("show");
+        window.setTimeout(function () { $("#roleLayer").hide(); }, 300);
+    });
+    function Page(domId, fn) {
+        this.domId = domId;
+        this.showBack = function () { }
+        this.show = function () {
+            $(".mainWrap").hide();
+            $("#" + this.domId).show();
+            this.showBack();
+        }
+        if (fn) { fn.call(this); }
+    }
+    //去抽奖主页
+    var indexPage = new Page("indexPage", function () {
+        $("#goApp").click(function () {
+            jdWalletReady(function (clientInfo) {
+                if (clientInfo.isInApp) {
+                    $("#J_openBtn").remove();
+                    gamePage.show();
+                } else {
+                    //var iframe = document.createElement("iframe");
+                    //iframe.setAttribute("src", "wangyin://wallet/start?module=ACTIVITY&browserUrl=" + localUrl + "/Sweepstake/index.html?role=game|wechart");
+                    //document.body.appendChild(iframe);
+                    //window.setTimeout(function () { document.removeChild(iframe); }, 5000);
+                    _mApp.start('ACTIVITY', localUrl + "/Sweepstake2/index.html?role=game|wechart");
+                }
+            });
+        });
+    });
+    //介绍页
+    var descPage = new Page("descPage", function () {
+        //打开分享提示透明层
+        $("#" + this.domId).find(".butStyle").click(function () {
+            //立即分享
+            //$(".weakLayer").show();
+            //window.setTimeout(function () { $(".weakLayer").hide(); }, 1500);
+            requestAjax(baseUrl + "/marketing/lottery/get?timer=" + Math.random(), {}, {
+                'wxOpenId': Config.wxOpenId,
+                'entranceId': "2016011800000000002"
+            }, function (data) {
+                if (data.code == "A00000") {
+                    if (data.data.mobile) {
+                        //绑定手机
+                        phonePage.show();
+                    } else {
+                        //抽奖页
+                        indexPage.show();
+                        $("#userPhone").html(data.data.wxCustomer.wyPhone);
+                        //alert(JSON.stringify(data.data));
+                        //alert(data.data.promotionName);
+                        $("#promotionName").html(data.data.promotionName);
+                    }
+                } else if (data.code == "A00004") {
+                    errorPage.content = "您今天已经领取过抽奖机会啦，明天再来吧~";
+                    errorPage.show();
+                } else {
+                    openAlert("", data.msg);
+                }
+            });
+        });
+    });
+    //手机验证页
+    var phonePage = new Page("phonePage", function () {
+        var self = this;
+        this.showBack = function () {
+            var _self = this;
+            $("#J_openBtn").hide();
+            window.setTimeout(function () { window.setTimeout(function () { $("#" + self.domId).find(".dialogWrap>div").addClass("show"); }, 10); }, 10);
+        }
+        //注册短信验证组件
+        $("#txt_PhoneNumber").phoneValidate($("#btu_getsms"), {
+            ajaxUrl: baseUrl + "/marketing/sms/sendWithName",//获取code的url，默认post
+            callBack: function (data) {
+                if (data.code != "A00000") {
+                    openAlert("出错了", data.msg);
+                } else {
+                    openAlert("发送成功", "短信验证码已经成功发送，请注意查收！");
+                }
+            },
+            error: function (data) {
+                alert(JSON.stringify(data));
+            }
+        });
+        //验证
+        $("#btu_postVali").click(function () {
+            var _url = baseUrl + "/marketing/lottery/get?entranceId=" + Config.entranceId + "&wxOpenId=" + Config.wxOpenId + "&mobile=" + $("#txt_PhoneNumber").val() + "&verifyCode=" + $("#text_verifyCode").val();
+
+            //if (!/^1\d{10}$/.test($("#txt_PhoneNumber").val())) {
+            //    _C.loading().tips("请输入正确的手机号码！");
+            //    return;
+            //}
+
+            //如果验证码不是数字
+            if (!/^[0-9]+.?[0-9]*$/.test($("#text_verifyCode").val())) {
+                _C.loading().tips("请输入正确的验证码！");
+                return;
+            }
+
+            requestAjax(_url + "&timer=" + Math.random(), {}, {}, function (data) {
+                if (data.code != "A00000" && data.code != "A00004") {
+                    openAlert("出错了", data.msg);
+                } else if (data.code == "A00004") {
+                    //openAlert("", "每天最多获得两次抽奖机会哦，明天再来吧~");
+                    errorPage.content = "您今天已经领取过抽奖机会啦，明天再来吧~";
+                    errorPage.show();
+                } else {
+                    openAlert("验证成功", "验证已经成功！", [
+                        {
+                            name: "OK", fn: function () {
+                                indexPage.show();//验证成功点击OK进入indexPage分享预备页
+                                //$("#pendData").html(getLocalTime(data.data.endDate));
+                                $("#userPhone").html(data.data.wxCustomer.wyPhone);
+                                $("#promotionName").html(data.data.promotionName);
+                                //$("#J_openBtn").show();
+                                this.closeAlert();
+                            }
+                        }
+                    ]);
+                }
+                //if (data.code != "A00000") {
+                //    openAlert("出错了", data.msg);
+                //} else {
+                //    openAlert("验证成功", "验证已经成功！", [
+                //        {
+                //            name: "OK", fn: function () {
+                //                indexPage.show();//验证成功点击OK进入indexPage分享预备页
+                //                //$("#pendData").html(getLocalTime(data.data.endDate));
+                //                $("#userPhone").html(data.data.wxCustomer.wyPhone);
+                //                this.closeAlert();
+                //            }
+                //        }
+                //    ]);
+                //}
+            });
+            /*
+            $.ajax({
+                type: "get",
+                dataType: "json",
+                url: _url,
+                //data: { entranceId: CONFIG.entranceId, wxOpenId: CONFIG.wxOpenId, mobile: $("#txt_PhoneNumber").val(), verifyCode: $("#text_verifyCode").val() },
+                success: function (data) {
+                    if (data.code != "A00000") {
+                        openAlert("出错了", data.msg);
+                    } else {
+                        openAlert("验证成功", "验证已经成功", [
+                            {
+                                name: "OK", fn: function () {
+                                    indexPage.show();//验证成功点击OK进入indexPage分享预备页
+                                    //$("#pendData").html(getLocalTime(data.data.endDate));
+                                    $("#userPhone").html(data.data.wxCustomer.wyPhone);
+                                    this.closeAlert();
+                                }
+                            }
+                        ]);
+                    }
+                },
+                error: function (data) {
+                    alert("error:" + JSON.stringify(data));
+                }
+            });*/
+        });
+    });
+    //错误页
+    var errorPage = new Page("errorPage", function () {
+        this.content = "错误信息";
+        this.showBack = function () {
+            var _self = this;
+            window.setTimeout(function () { $("#" + _self.domId).find(".errorPageWrap").addClass("show").find("div").html(_self.content); }, 10);
+        }
+        $("#" + this.domId).find("button").click(function () {
+            _mApp.start('ACTIVITY', localUrl + "/Sweepstake2/index.html?role=game|wechart");
+        });
+    });
+    //游戏页
+
+    var initPrizeList = function (prizeList) {
+        try {
+            $("#price_wrap>div").remove();
+            var _count = 3;
+            /*for (var i = 0, l = prizeList.length; i < l; i++) {
+                if (_count == 0) { break; }
+                _count--;
+                var _item = prizeList[i];
+                var html = "<div class=\"price_wrap\" id=\"price_wrap_" + _count + "\"><table id=\"pricesss_wrap_" + _count + "\"><tr><td style=\"width:23%\">" + (_item.hasOwnProperty("prizeImg") ? "<img src=\"" + _item.prizeImg + "\"  />" : "") + "</td><td style=\"width:45%\"><h2 id=\"priceName\">";
+                html += "" + _item.prizeName + "</h2><span>领取时间：" + getLocalTime(_item.createdDate) + "</span></td><td><button>按钮</button></td></tr></table></div>";
+                $("#price_wrap").append(html);
+                var button = $("#price_wrap_" + _count).find("button");
+                button.html("--");
+                if (_item.prizeType == "01" || _item.prizeType == "09" || _item.prizeType == "82") {
+                    //优惠券、现金红包
+                    var isAllow = false;
+                    _item.userStatus = _item.userStatus + "";
+                    var _length = _item.userStatus.length;
+                    if (_length >= 2) {
+                        if (_item.userStatus.substring(_length - 2, _length) == "11") {
+                            isAllow = true;
+                        }
+                    }
+                    if (isAllow) {
+                        button.click(function () {
+                            cardUrl = 'http://m.jdpay.com/user/myCoupon' // 线上;
+                            //cardUrl = 'http://172.24.4.61:8101/user/myCoupon' // 闭环;
+                            _mApp.start('ACTIVITY', cardUrl);
+                        }).html("已领取");
+                    } else {
+                        //实名页面
+                        button.click(function () {
+                            _mApp.start('REALNAME');
+                        }).html("去领取");
+                    }
+                } else if (_item.prizeType == "20") {
+                    //小金库体验金
+                    button.click(function () {
+                        _mApp.start('JRB');
+                    }).html((_item.status == "01" ? "去领奖" : "已查看"));
+                } else if (_item.prizeType == "06") {
+                    button.click(function () {
+                        openAlert("", "请耐心等待，工作人员将尽快与您联系哦~");
+                    }).html("去领奖");
+                } else {
+                    button.html("已领取").addClass("disabled")[0].disabled = true;
+                }
+                if (_item.status == "09" && _item.prizeType != "06") {
+                    button.html("已过期").addClass("disabled")[0].disabled = true;
+                }
+            }*/
+            for (var i = 0, l = prizeList.length; i < l; i++) {
+                if (_count == 0) { break; }
+                _count--;
+                var _item = prizeList[i];
+                var html = "<div class=\"price_wrap\" id=\"price_wrap_" + _count + "\"><table id=\"pricesss_wrap_" + _count + "\"><tr><td style=\"width:20%\">" + (_item.hasOwnProperty("prizeImg") ? "<img src=\"" + _item.prizeImg + "\"  />" : "") + "</td><td style=\"width:45%\"><h2 id=\"priceName\">";
+                html += "" + _item.prizeName + "</h2><span>领取时间：" + getLocalTime(_item.createdDate) + "</span></td><td><button>按钮</button></td></tr></table></div>";
+                $("#price_wrap").append(html);
+                var button = $("#price_wrap_" + _count).find("button");
+                button.html("--");
+                if (_item.prizeType == "01" || _item.prizeType == "09" || _item.prizeType == "82") {
+                    //现金红包
+                    //优惠券
+                    var isAllow = false;
+                    _item.userStatus = _item.userStatus + "";
+                    var _length = _item.userStatus.length;
+                    if (_length >= 2) {
+                        if (_item.userStatus.substring(_length - 2, _length) == "11") {
+                            isAllow = true;
+                        }
+                    }
+                    if (isAllow) {
+                        button.click(function () {
+                            //cardUrl = 'http://m.jdpay.com/user/myCoupon' // 线上;
+                            //cardUrl = 'http://172.24.4.61:8101/user/myCoupon' // 闭环;
+                            //_mApp.start('ACTIVITY', cardUrl);
+                        }).html("已领取").addClass("disabled")[0].disabled = true;
+                    } else {
+                        //实名页面
+                        button.click(function () {
+                            _mApp.start('REALNAME');
+                        }).html("去领取");
+                    }
+                } else if (_item.prizeType == "20") {
+                    //小金库体验金
+                    if (_item.status == "01") {
+                        button.click(function () {
+                            _mApp.start('JRB');
+                        }).html("去领奖");
+                    } else {
+                        button.html("已领取").addClass("disabled")[0].disabled = true;
+                    }
+                } else if (_item.prizeType == "06") {
+                    button.click(function () {
+                        openAlert("", "请耐心等待，工作人员将尽快与您联系哦~");
+                    }).html("去领奖");
+                } else {
+                    button.html("已领取").addClass("disabled")[0].disabled = true;
+                }
+                if (_item.status == "09" && _item.prizeType != "06") {
+                    button.html("已过期").addClass("disabled")[0].disabled = true;
+                }
+            }
+        } catch (e) {
+            throw e
+        }
+    }
+    var gamePage = new Page("gamePage", function () {
+        var _self = this;
+        //奖品的ID对应，用于计算转盘转动角度
+        var priceData = [
+            { index: 0, id: "2016011810000000015,2016011810000000025", msg: "1万元小金库体验金" },
+            { index: 1, id: "2016011810000000017,2016011810000000027", msg: "1000元E卡" },
+            { index: 2, id: "2016011810000000013,2016011810000000023", msg: "5元话费" },
+            { index: 3, id: "2016011810000000016,2016011810000000026", msg: "谢谢参与" },
+            { index: 4, id: "2016011810000000018,2016011810000000028", msg: "金条	" },
+            { index: 5, id: "2016011810000000014,2016011810000000024", msg: "2元信用卡还款优惠券" },
+            { index: 6, id: "2016011810000000011,2016011810000000021", msg: "10积分" },
+            { index: 7, id: "2016011810000000012,2016011810000000022", msg: "1元话费" },
+        ];
+
+        //开始抽奖动作(prizeInfo是后台返回即将抽到的奖品)
+        var zhuanpanGo = function (prizeInfo, prizeList, takeData) {
+            try {
+                prizeId = prizeInfo.prizeId;
+                var _index = -1;
+                priceData.forEach(function (item) {
+                    var ids = item.id.split(",");
+                    //for (var i = 0, l = ids.length; i < l; i++) {
+                    //    if (ids[i] == prizeId) { _index = item.index; break; }
+                    //}
+                    ids.forEach(function (item2) {
+                        if (item2 == prizeId) { _index = item.index; }
+                    });
+                    //if (ids[0] == prizeId || ids[1] == prizeId) { _index = item.index; }
+                });
+                if (_index == -1) {
+                    _C.loading().tips("无效奖品");
+                    //openAlert("", "无效奖品");
+                    return false;
+                }
+                //$(".zhuanpan").remove();
+                //$(".zhuanpanWrap").append("<div class=\"zhuanpan\"></div>");
+                //window.setTimeout(function () { $(".zhuanpan").css("-webkit-transform", "rotate(" + ((360 / 8) * _index + (360 * 4) + 22) + "deg)"); }, 10);
+
+                $(".zhuanpan").css({ "-webkit-transition": "none", "-webkit-transform": "rotate(0deg)" });
+                window.setTimeout(function () { $(".zhuanpan").css({ "-webkit-transform": "rotate(" + ((360 / 8) * _index + (360 * 4) + 22) + "deg)", "-webkit-transition": "all 4s ease-out" }); }, 100);
+
+                window.setTimeout(function () {
+                    try {
+                        //转盘停止之后执行
+                        isGameRound = false;
+                        initPrizeList(prizeList);
+
+                        if (prizeInfo.prizeType == "01" || prizeInfo.prizeType == "09" || prizeInfo.prizeType == "82" || prizeInfo.prizeType == "12") {
+                            //优惠券、现金红包
+                            prizeInfo.userStatus = prizeInfo.userStatus + "";
+                            var isAllow = false;
+                            var __length = prizeInfo.userStatus.length;
+
+                            if (__length >= 2) {
+                                if (prizeInfo.userStatus.substring(__length - 2, __length) == "11") {
+                                    isAllow = true;
+                                }
+                            }
+                            if (isAllow) {
+                                openAlert("奖品提示", prizeInfo.description, [{ name: "我知道了" }, {
+                                    name: "去查看", fn: function () {
+                                        //var bUrl = "http://m.jdpay.com/";//生产
+                                        //var bUrl = "http://172.24.4.61:8101/";//闭环
+                                        var cardUrl = "";
+                                        if (prizeInfo.prizeType == "01") {
+                                            //现金红包
+                                            cardUrl = appUrl + '/user/myPackHome';
+                                        } else if (prizeInfo.prizeType == "09") {
+                                            //优惠券
+                                            cardUrl = appUrl + '/user/myCouponHome';
+                                        } else {
+                                            //大礼包
+                                            cardUrl = appUrl + '/user/myCouponHome';
+                                        }
+                                        _mApp.start('ACTIVITY', cardUrl);
+                                        this.closeAlert();
+                                    }
+                                }]);
+                            } else {
+                                openAlert("奖品提示", prizeInfo.description, [{ name: "我知道了" }, {
+                                    name: "去领取", fn: function () {
+                                        //实名页面
+                                        _mApp.start('REALNAME');
+                                        this.closeAlert();
+                                    }
+                                }]);
+                            }
+                        } else if (prizeInfo.prizeType == "20") {
+                            openAlert("奖品提示", prizeInfo.description, [{ name: "我知道了" }, {
+                                name: (prizeInfo.status == "01" ? "去领奖" : "已查看"), fn: function () {
+                                    //实名页面
+                                    _mApp.start('JRB');
+                                    this.closeAlert();
+                                }
+                            }]);
+                        } else if (prizeInfo.prizeType == "06") {
+                            var _img=(prizeInfo.prizeName == "1000元京东E卡" ? "<img src='http://img14.360buyimg.com/cms/jfs/t2257/359/2024181744/8323/7142cfe6/5694b801N20b76dec.png' />" : "<img src='http://img10.360buyimg.com/cms/jfs/t2194/200/1313097261/6595/69336ca8/5694b80aNcaf08e92.png'/>")
+                            openAlert(_img, "恭喜您获得" + prizeInfo.prizeName + "！<br/><label style='font-size:0.7rem;color:#666;margin-top:1rem;margin-bottom:1rem;float:left'>输入准确的手机号码，稍后工作人员将与您联系！</label><input id='txt_phone2' type='tel'/>", [{
+                                name: "提交", fn: function () {
+                                    if (!/^1\d{10}$/.test($("#txt_phone2").val())) {
+                                        alert("请输入正确的手机号码！");
+                                    } else {
+                                        this.closeAlert(function () {
+                                            requestAjax(baseUrl + "/marketing/lottery/modify?mobile_voucherId=" + takeData.data.mobile_voucherId + "&mobile_sign=" + takeData.data.mobile_sign + "&mobile=" + $("#txt_phone2").val() + "&timer=" + Math.random(),
+                                                {}, {}, function (data2) {
+                                                    if (data2.code == "A00000") {
+                                                        openAlert("提交成功", "工作人员将尽快与您联系！", [{ name: "知道了" }]);
+                                                    } else {
+                                                        openAlert("", data2.msg);
+                                                    }
+                                                });
+                                        });
+                                    }
+                                }
+                            }]);
+                        } else if (prizeInfo.prizeType == "70") {
+                            openAlert("奖品提示", prizeInfo.description + "<br/>前往“我的-积分”即可查看~", [{ name: "我知道了" }]);
+                        } else {
+                            openAlert("奖品提示", prizeInfo.description, [{ name: "我知道了" }]);
+                        }
+                        $("#gamePage").scrollTop(10000);
+                    } catch (e) {
+                        _C.loading().tips(e);
+                    }
+
+                }, 4000);
+            } catch (e) {
+                throw e;
+            }
+        }
+
+        $(".pointer").click(function () {
+            //点击中间的指针进行抽奖动作
+
+            //$(".zhuanpan").css({ "-webkit-transition": "none", "-webkit-transform": "rotate(0deg)" });
+            //window.setTimeout(function () { $(".zhuanpan").css({ "-webkit-transform": "rotate(" + ((360 / 8) * 4 + (360 * 4) + 22) + "deg)", "-webkit-transition": "all 4s ease-out" }); }, 10);
+            //return false;
+
+            try {
+                if (validTimes <= 0) {
+                    openAlert("", "很遗憾，您暂时还没有抽奖机会，每天分享活动可获得一次额外机会哦~");
+                    isGameRound = false;
+                    return false;
+                }
+                if (isGameRound) { _C.loading().tips("本次抽奖尚未完成，请稍候~"); return false; }
+                isGameRound = true;
+                window.setTimeout(function () { isGameRound = false; }, 4200);
+                requestAjax(baseUrl + "/marketing/lottery/take?voucherId=" + _voucherId + "&sign=" + _sign + "&timer=" + Math.random(), {}, {}, function (prizeData) {
+                    if (prizeData.code != "A00000") {
+                        openAlert("", prizeData.msg);
+                    } else {
+                        requestAjax(baseUrl + "/marketing/lottery/show?entranceId=2016011800000000002&auth=" + userInfo.auth + "&timer=" + Math.random(), {}, {}, function (data) {
+                            if (data.code != "A00000") {
+                                openAlert("", data.msg);
+                            } else {
+
+                                _voucherId = data.data.voucherInfo.voucherId;
+                                _sign = data.data.voucherInfo.sign;
+                                prizeData.data.prizeInfo["description"] = prizeData.data.description;
+                                validTimes = data.data.voucherInfo.validTimes;
+                                $("#gamePage strong").html(validTimes);
+                                if (!data.data.hasOwnProperty("getPrizeList")) {
+                                    data.data["getPrizeList"] = [];
+                                } else {
+                                    if (!data.data.getPrizeList) { data.data.getPrizeList = []; }
+                                }
+                                zhuanpanGo(prizeData.data.prizeInfo, data.data.getPrizeList, prizeData);
+                            }
+                        });
+                    }
+                });
+            } catch (e) {
+                _C.loading().tips(e);
+            }
+        });
+        var goPrice = function () { openAlert("", "请点击抽奖"); }
+
+    });
+    gamePage.showBack = function () { }
+    //获取奖品
+    function getPrice(callBack) {
+        requestAjax(baseUrl + "/marketing/lottery/get?auth=" + userInfo.auth + "&entranceId=2016011800000000003&timer=" + Math.random(), {}, {}, function (getData) {
+            if (getData.code != "A00000" && getData.code != "A00004") {
+                //进入钱包，默认不弹
+                openAlert("", getData.msg);
+            }
+            requestAjax(baseUrl + "/marketing/lottery/show?entranceId=2016011800000000002&auth=" + userInfo.auth + "&timer=" + Math.random(), {}, {}, function (data) {
+                if (data.code == "A00000") {
+                    _voucherId = data.data.voucherInfo.voucherId;
+                    _sign = data.data.voucherInfo.sign;
+                    validTimes = data.data.voucherInfo.validTimes;
+                    $("#gamePage strong").html(validTimes);
+                    initPrizeList(data.data.getPrizeList);
+                    if (callBack) callBack(data);
+                } else {
+                    openAlert("", data.msg);
+                }
+            });
+        });
+    }
+    //进入页面获得剩余抽奖次数
+    //如果role中包含game字符，则进入抽奖页面，否则停留在介绍页
+    if (getParameterByName("role").indexOf("game") == -1) {
+        $("#J_openBtn").show();
+        descPage.show();
+    } else {
+        $("#J_openBtn").remove();
+        gamePage.show();
+    }
+
+    //钱包分享--------------------------------------------------------------------------------------------
+
+    _mApp.getInfo(function (data) {
+        //userInfo = data;
+        try {
+            if (data == "" || data == null || data == undefined) { _C.loading().tips("对不起，钱包君打盹了，请重新进入试试吧~"); }
+            userInfo = eval("(" + data + ")");
+            if (userInfo.isLogin != 1) {
+                window.func = function () { location.reload(); }
+                _mApp.start({ name: "LOGIN", callback: "func" });
+                return false;
+            }
+            gamePage.show();//钱包里面需要自动跳转到游戏页
+            if (!userInfo.auth) { userInfo.auth = getParameterByName("auth"); }
+            getPrice();
+            var _url = baseUrl + "/marketing/lottery/show?entranceId=2016011800000000002&auth=" + userInfo.auth;
+            $("#J_openBtn").remove();
+            window.JdWalletShareCallback = function (args) {
+                if (args == 'SUCCESS') {
+                    requestAjax(baseUrl + "/marketing/lottery/get?auth=" + eval("(" + data + ")").auth + "&entranceId=2016011800000000002" + "&timer=" + Math.random(), {}, {}, function (data2) {
+                        if (data2.code != "A00000") {
+                            if (data2.code == "A00004") {
+                                openAlert("", "每天最多获得两次抽奖机会哦，明天再来吧~");
+                            } else {
+                                openAlert("", data2.msg);
+                            }
+                        }
+                        requestAjax(_url + "&timer=" + Math.random(), {}, {}, function (_data) {
+                            _voucherId = _data.data.voucherInfo.voucherId;
+                            _sign = _data.data.voucherInfo.sign;
+                            validTimes = _data.data.voucherInfo.validTimes;
+                            $("#gamePage strong").html(validTimes);
+                        });
+                    });
+                }
+            };
+            window.shareCallback = function () {
+                try {
+                    _mApp.share({
+                        url: baseUrl + "/marketing/entrance?entranceId=2016011800000000002",
+                        title: wxParam.title,
+                        desc: wxParam.desc,
+                        channel: 'WX',
+                        callback: "JdWalletShareCallback"
+                    })
+                    //if (mAppConfig.inAndroid) {
+                    //    android.shareWebPage(window.location.href.split("?")[0], wxParam.title, wxParam.desc, 'WX', "JdWalletShareCallback");
+                    //} else {
+                    //    _mApp.share({
+                    //        url: baseUrl + "/markting/index/entrance?entranceId=2015112600000000002",
+                    //        title: wxParam.title,
+                    //        desc: wxParam.desc,
+                    //        channel: 'WX',
+                    //        callback: "JdWalletShareCallback"
+                    //    })
+                    //}
+                } catch (e) { };
+            };
+            if (mAppConfig.inAndroid) {
+                _mApp.setTitle("天天抽奖");
+                _mApp.setMenu(
+                    [
+                        {
+                            "menuTitle": "分享",
+                            "menuAction": "shareCallback"
+                        }
+                    ]
+                )
+            }
+            if (mAppConfig.inIos) {
+                _mApp.setTitle("天天抽奖");
+                var timer = setInterval(function () {
+                    if (window.WebViewJavascriptBridge) {
+                        _mApp.setMenu(
+                            [
+                                {
+                                    "menuTitle": "分享",
+                                    "menuAction": "shareCallback"
+                                }
+                            ]
+                        )
+                        clearInterval(timer);
+                    }
+                }, 100)
+            }
+        } catch (e) {
+            _C.loading().tips(e);
+        }
+    });
+    window.jdWalletReady = function (callback) {
+        var me = this,
+           UA = window.navigator.userAgent,
+           isIosUA = /iPad|iPhone|iPod/.test(UA),
+           isWalletClientUA = /WalletClient/.test(UA),
+           clientInfo = {};
+
+        if (!callback || typeof callback !== 'function') throw '必要参数`callback`错误';
+
+        //判断是否是在 京东钱包 Android 客户端内
+        if (typeof window.android === 'object' && isWalletClientUA) {
+            clientInfo.name = 'android';
+            clientInfo.isInApp = true;
+            callback.call(this, clientInfo);
+
+            //判断是否是在 iOS 浏览器
+        } else if (isIosUA) {
+
+            //在APP里面
+            if (isWalletClientUA) {
+
+                clientInfo.name = 'ios';
+                clientInfo.isInApp = true;
+                callback.call(this, clientInfo);
+            } else {
+                //IOS APP 第一次取不到UA信息，尝试每100ms获取一次，总共10次
+                tryToGetClientInfo(10, 100);
+            }
+        } else {
+            callback.call(this, clientInfo);
+        }
+
+        function tryToGetClientInfo(times, interval) {
+            var i = 0;
+            (function checkStatus() {
+
+                timmer = setTimeout(function () {
+
+                    if (isWalletClientUA) {
+                        clientInfo.name = 'ios';
+                        clientInfo.isInApp = true;
+                    }
+                    if (!clientInfo.isInApp && i < times) {
+                        checkStatus();
+                    } else {
+                        clearInterval(timmer);
+                        callback.call(me, clientInfo);
+                    }
+                    i++;
+                }, interval);
+            }());
+        }
+
+        document.addEventListener('WebViewJavascriptBridgeReady', function () {
+            clientInfo.name = 'ios';
+        }, false);
+    }
+</script>

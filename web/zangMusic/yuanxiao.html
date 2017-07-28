@@ -1,0 +1,583 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>元宵节</title>
+    <meta charset="utf-8" />
+    <style>
+        html, body { min-width: 320px; height: 100%; margin: 0; padding: 0; font-size: 20px; background-color: #fff; }
+        .mapAreaWrap { width: 100%; position: relative; }
+            .mapAreaWrap img { width: 100%; }
+            .mapAreaWrap div { position: absolute; background: #3425ef; opacity: 0; right: 0; bottom: 0; left: 0; margin: auto; width: 30%; height: 10%; }
+
+    </style>
+</head>
+<body>
+    <div class="mapAreaWrap">
+        <img src="http://img11.360buyimg.com/cms/jfs/t2113/273/2253798228/40728/6c620317/56c5923cNbf3dda1a.jpg" />
+        <div id="button_1" class="button" index="1" style="top:72%;bottom:0;"></div>
+    </div>
+    <div class="mapAreaWrap">
+        <img src="http://img13.360buyimg.com/cms/jfs/t1900/311/2234816728/65702/5bc2e6db/56c67d4dN3af2c899.gif" />
+        <div id="button_2" class="button" index="2" style="top:72%;bottom:0;"></div>
+    </div>
+    <div class="mapAreaWrap">
+        <img src="http://img14.360buyimg.com/cms/jfs/t2110/91/1508863040/80058/ac785261/56c67d81N8da25a15.gif" />
+        <div id="button_3" class="button" index="3" style="top:72%;bottom:0;"></div>
+    </div>
+    <div class="mapAreaWrap">
+        <img src="http://img13.360buyimg.com/cms/jfs/t2101/36/1549755828/60418/761463d2/56c67d94N113215e4.gif" />
+        <div id="button_4" class="button" index="4" style="top:72%;bottom:0;"></div>
+    </div>
+    <div class="mapAreaWrap" style="display:none">
+        <img src="http://img12.360buyimg.com/cms/jfs/t2539/35/1413944251/50941/1b539a94/56c67da5Nd6e42a6a.gif" />
+        <div id="button_5" class="button" index="5" style="top:72%;bottom:0;"></div>
+    </div>
+</body>
+</html>
+<script src="http://static.jdpay.com/basic/dist/js/m-public/mApp.js"></script>   
+<script>
+    var _mApp = mApp({ eventId: 269070 });
+    var mAppConfig = _mApp.config();
+    function goApp(type) {
+        switch (type) {
+            case "1":
+                //拍立返主页
+                if (mAppConfig.inAndroid) {
+                    _mApp.start('PAILIFAN');
+                } else {
+                    _mApp.start('NJRS');
+                }
+                break;
+            case "2":
+                //到家主页
+                //location.href = "https://m.jdpay.com/user/vJdLoginH5?url=http://pdj.jd.com/html/index.html?channel=wyqb_jt";
+                location.href = "http://daojia.jd.com/html/index.html";
+                break;
+            case "3":
+                //抢吧主页
+                _mApp.start('ACTIVITY', 'http://qiang.wangyin.com/');
+                break;
+            case "4":
+                //话费充值主页
+                _mApp.start('PHONE_RECHARGE');
+                break;
+            case "5":
+                //付款码主页
+                _mApp.start('SCAN');
+                break;
+        }
+    }
+    var buttons = document.getElementsByClassName("button");
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function () { goApp(this.getAttribute("index")); }
+    }
+    _mApp.buriedPoint();
+</script>
+
+
+<script>
+    window.isDev = false;
+    window.dataForWeixin = {
+        appId: "",
+        MsgImg: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+        TLImg: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+        url: 'http://sale.jd.com/app/act/LET8zhDcslCWK.html',
+        title: '秀智商的时候到了',
+        desc: '举头望明月 低头猜灯谜，来钱包解锁元宵节团圆福利！',
+        Channel: '',
+        fakeid: "",
+        callback: function () {
+            window.location.href = "http://sale.jd.com/app/act/LET8zhDcslCWK.html";
+            //var url = isDev ? 'http://sale.jd.com/app/act/I8MstoTHxJuQC3fN.html' : 'http://sale.jd.com/app/act/bvWJG2mKL1.html',
+            //  //entranceid = isDev ? "2015061500000000001" : "2015061800000000001"
+            //  entranceid = "2015082000000000001"
+            //;
+            //window.location.href = url + '?param=flag_' + entranceid + '_' + window.sharecode;
+            
+        },
+        appCallback: "shareCallback"
+    };
+    window.sharecode = '';
+    window.shareCallback = function (args) {
+        window.location.href = "http://sale.jd.com/app/act/LET8zhDcslCWK.html";
+        //var url = isDev ? 'http://sale.jd.com/app/act/I8MstoTHxJuQC3fN.html' : 'http://sale.jd.com/app/act/bvWJG2mKL1.html',
+        //        //entranceid = isDev ? "2015061500000000001" : "2015061800000000001"
+        //        entranceid = "2015082000000000001"
+        //;
+        //if (args == 'SUCCESS') {
+        //    window.location.href = url + '?param=flag_' + entranceid + '_' + window.sharecode;
+        //}
+    };
+
+    var n = window.navigator,
+            ua = n.userAgent,
+            Util = {
+                baseUrl: 'http://sale.jd.com/app/act/KBuoE641DZmxgYf.html', //京东域，做打开app用
+                androidDownload: 'http://m.jdpay.com/basic/download/android/wangyin.apk',
+                iosDownload: 'https://itunes.apple.com/us/app/wang-yin-qian-bao/id832444218?ls=1&mt=8',
+                inWx: (ua.search(/micromessenger/ig) == -1) ? false : true,
+                inIosApp: (ua.search(/safari/ig) == -1 && ua.indexOf('jdapp') == -1) ? true : false,
+                inAndroid: ua.indexOf('Android') > -1 || ua.indexOf('Linux') > -1,
+                inIos: ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1,
+                //检查后缀
+                check_domain: function (host) {
+                    var pattern = "/^aero$|^cat$|^coop$|^int$|^museum$|^pro$|^travel$|^xxx$|^com$|^net$|^gov$|^org$|^mil$|^edu$|^biz$|^info$|^name$|^ac$|^mil$|^co$|^ed$|^gv$|^nt$|^bj$|^hz$|^sh$|^tj$|^cq$|^he$|^nm$|^ln$|^jl$|^hl$|^js$|^zj$|^ah$|^hb$|^hn$|^gd$|^gx$|^hi$|^sc$|^gz$|^yn$|^xz$|^sn$|^gs$|^qh$|^nx$|^xj$|^tw$|^hk$|^mo$|^fj$|^ha$|^jx$|^sd$|^sx$/i";
+                    if (str.match(pattern)) {
+                        return 1;
+                    }
+                    return 0;
+                },
+                //返回域
+                get_domain: function () {
+                    var host = document.domain.replace(/^www\./, ""), arr = host.split('.'), len = arr.length, domain;
+                    if (len == 3) {
+                        domain = arr[1] + '.' + arr[2];
+                    } else if (len > 3) {
+                        var ip_pat = "^[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*$";
+                        if (host.match(ip_pat)) {
+                            return host;
+                        }
+                        if (Util.check_domain(arr[len - 2])) {
+                            domain = arr[len - 3] + "." + arr[len - 2] + "." + arr[len - 1];
+                        } else {
+                            domain = arr[len - 2] + "." + arr[len - 1];
+                        }
+                    }
+                    return domain;
+                },
+                //判断是否在app内
+                inApp: function () {
+                    if (Util.inAndroid) {
+                        return typeof (android) != 'undefined' ? true : false;
+                    } else if (Util.inIos) {
+                        return this.inIosApp;
+                    } else {
+                        return false;
+                    }
+                }
+            };
+
+    window.Util = Util;
+
+    function json2str(json) {
+        var str = '';
+        for (var i in json) {
+            str += '&' + i + '=' + json[i]
+        };
+        return str;
+    };
+
+    //打开弹出提示
+    function showLayer() {
+        var downLoadUrl = Util.inIos ? Util.iosDownload : Util.androidDownload;
+        if (!document.querySelector('.J_layerDom')) {
+            var lDom = document.createElement('div');
+            lDom.className = 'J_layerDom';
+            lDom.style.cssText = 'display: none; position: fixed; z-index: 3000; left: 50%; top: 50%; margin: -85px 0 0 -140px; width: 280px; padding: 20px 0; text-align: center; background: rgba(0,0,0, .8); border-radius: 6px; color: #fff';
+            lDom.innerHTML = '<p style="margin-bottom: 30px; font-size: 18px;">您还未安装京东钱包客户端</p><a href="' + downLoadUrl + '" class="J_appDownload" style="display: block; width: 90%; margin-left: 5%; font-size: 16px; line-height: 40px; border-radius: 3px; text-decoration:none;font-weight: bold; background: #d9434b; color: #fff; ">立即下载</a>';
+            document.body.appendChild(lDom);
+        } else {
+            document.querySelector('.J_layerDom').style.display = 'block';
+        }
+        setTimeout(function () {
+            document.querySelector('.J_layerDom').style.display = 'none';
+        }, 6000);
+    };
+
+    //构造iframe激活app
+    function openIframe(json) {
+        var str = json2str(json.params);
+        var ifrSrc = 'wangyin://wallet/start?module=' + json.name + str;
+        if (!ifrSrc) return;
+        var ifr = document.createElement('iframe');
+        ifr.src = ifrSrc;
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+        setTimeout(function () {
+            document.body.removeChild(ifr);
+        }, 2000);
+        setTimeout(function () {
+            showLayer()
+        }, 300);
+    };
+    function openWithIframe(ifrSrc) {
+        var ifr = document.createElement('iframe');
+        ifr.src = ifrSrc;
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+        setTimeout(function () {
+            document.body.removeChild(ifr);
+        }, 2000);
+    };
+    //通过打开京东域的链接
+    function openLink(json) {
+        var url = Util.baseUrl;
+        if (json.name == 'ACTIVITY') {
+            url += '?url=' + json.params.browserUrl;
+        };
+        window.location.href = url + '#' + json.name;
+    };
+
+    //android客户端打开
+    function openAndroid(json) {
+        try {
+            json.name = json.name == 'LOGIN' ? 'HOME' : json.name;
+            if (json.name == 'ACTIVITY') {
+                android.start(json.params.browserUrl);
+            } else if (json.name == 'CLOSE') {
+                android.close();
+            } else if (json.name == 'TITLE') {
+                android.setTitleName(json.params.text);
+            } else {
+                android.start(json.name, JSON.stringify(json.params), json.callback);
+            }
+        } catch (err) {
+            alert('请升级最新版京东钱包');
+        }
+    };
+
+    //ios客户端打开
+    function openIos(json) {
+        var str = json.params ? json2str(json.params) : '',
+                url = 'native://start?name=' + json.name + str + '&callback=' + json.callback;
+        if (json.name == 'CLOSE') {
+            url = 'native://close';
+        } else if (json.name == 'ACTIVITY') {
+            url = 'native://start?name=' + json.params.browserUrl;
+        } else if (json.name == 'TITLE') {
+            url = 'native://setTitleName?titleName=' + json.params.text;
+        };
+        openWithIframe(url);
+        /*  try{
+         safari.open = url; //兼容iphone 4
+         }catch(err){
+         window.location.href = url;
+         }*/
+    };
+
+
+    /**
+     * @param json {name:module name,params:params,callback:function}
+     * android && inapp
+     * ios && inapp
+     * inwx && check domain
+     */
+    function openModel(json) {
+        if (Util.inAndroid && Util.inApp()) {
+            openAndroid(json);
+        } else if (Util.inIos && Util.inIosApp && !Util.inWx) {
+            openIos(json);
+        } else if (Util.inWx) {
+            if (Util.get_domain() == 'jd.com') {
+                openIframe(json);
+            } else {
+                openLink(json);
+            }
+        } else {
+            openIframe(json);
+        }
+    };
+
+
+    var App = window.App || {};
+    App.noop = function () { };
+    App.open = function () {
+        var len = arguments.length,
+                _this = this,
+                json = {
+                    name: '',
+                    params: {},
+                    callback: 'App.noop'
+                },
+                param;
+        json.name = arguments[0] ? arguments[0].toUpperCase() : 'LOGIN';
+        _this.noop = function () { };
+        if (len == 2) {
+            if (typeof (arguments[1]) == 'function') {
+                _this.noop = arguments[1];
+            } else {
+                param = arguments[1];
+            }
+        } else if (len == 3) {
+            if (typeof (arguments[2]) == 'function') {
+                _this.noop = arguments[2];
+            }
+            param = arguments[1];
+        };
+
+        switch (json.name) {
+            case 'FUND':
+                if (param) json.params.code = param;
+                break;
+            case 'JRB':
+                if (arguments[1]) {
+                    json.params.forceLogin = 'JRB';
+                    json.params.action = arguments[1];
+                    json.params.channel = 'web';
+                }
+                break;
+            case 'ACTIVITY':
+                json.params.browserUrl = param;
+                break;
+            case 'TITLE':
+                json.params.text = param;
+                break;
+            default:
+                break;
+        }
+        openModel(json);
+    };
+    App.close = function () {
+        openModel({ name: 'CLOSE' });
+    };
+    App.share = function (json) {
+        var json = json || window.dataForWeixin;
+        if (Util.inAndroid && Util.inApp()) {
+            android.shareWebPage(json.url, json.title, json.desc, json.Channel, json.appCallback);
+        } else if (Util.inIos && Util.inIosApp && !Util.inWx) {
+            var url = 'native://shareWebPage?url=' + json.url + '&webTitle=' + json.title + '&webDesc=' + json.desc + '&callback=' + json.appCallback;
+            try {
+                safari.open = url; //兼容iphone 4
+            } catch (err) {
+                window.location.href = url;
+            }
+        } else if (Util.inWx) {
+            window.dataForWeixin.url = json.url;
+            window.dataForWeixin.title = json.title;
+            window.dataForWeixin.desc = json.desc;
+            onBridgeReady();
+        }
+    }
+    App.buriedPointOnce = function (eventId) {
+        if (Util.inAndroid && Util.inApp()) {
+            android.buriedPointOnce(eventId);
+        } else if (Util.inIos && Util.inIosApp && !Util.inWx) {
+            var url = 'native://buriedPointOnce?eventId=' + eventId;
+            openWithIframe(url);
+        }
+    }
+    window.App = App;
+
+    var onBridgeReady = function () {
+        if (!dataForWeixin) {
+            return;
+        }
+        // qq
+        WeixinJSBridge.on('menu:share:qq',
+                function (argv) {
+                    WeixinJSBridge.invoke('shareQQ', {
+                        "appid": dataForWeixin.appId,
+                        "img_url": dataForWeixin.MsgImg,
+                        "img_width": "120",
+                        "img_height": "120",
+                        "link": dataForWeixin.url,
+                        "desc": dataForWeixin.desc,
+                        "title": dataForWeixin.title
+                    },
+                            function (res) {
+                                isDev && alert(res.err_msg);
+                                switch (res.err_msg) {
+
+                                    case 'send_app_msg:cancel':
+
+                                        //用户取消
+                                        isDev && alert("用户取消");
+                                        break;
+
+                                    case 'send_app_msg:confirm':
+                                        isDev && alert("发送完成");
+                                        (dataForWeixin.callback)();
+
+
+                                    case 'send_app_msg:ok':
+
+                                        // send_app_msg:confirm 发送成功
+                                        isDev && alert("发送成功");
+                                        (dataForWeixin.callback)();
+
+                                        break;
+
+                                    case 'send_app_msg:fail':
+
+                                    default:
+                                        isDev && alert("发送失败");
+                                        // send_app_msg:fail　发送失败
+                                        break;
+
+                                }
+                            });
+                });
+        //微信好友
+        WeixinJSBridge.on('menu:share:appmessage',
+              function (argv) {
+                  WeixinJSBridge.invoke('sendAppMessage', {
+                      "appid": dataForWeixin.appId,
+                      "img_url": dataForWeixin.MsgImg,
+                      "img_width": "120",
+                      "img_height": "120",
+                      "link": dataForWeixin.url,
+                      "desc": dataForWeixin.desc,
+                      "title": dataForWeixin.title
+                  },
+                          function (res) {
+                              isDev && alert(res.err_msg);
+                              switch (res.err_msg) {
+
+                                  case 'send_app_msg:cancel':
+
+                                      //用户取消
+                                      isDev && alert("用户取消");
+                                      break;
+
+                                  case 'send_app_msg:confirm':
+                                      isDev && alert("发送完成");
+                                      (dataForWeixin.callback)();
+
+                                  case 'send_app_msg:ok':
+
+                                      // send_app_msg:confirm 发送成功
+                                      isDev && alert("发送成功");
+                                      (dataForWeixin.callback)();
+
+                                      break;
+
+                                  case 'send_app_msg:fail':
+
+                                  default:
+                                      isDev && alert("发送失败");
+                                      // send_app_msg:fail　发送失败
+                                      break;
+
+                              }
+                          });
+              });
+        // 微信朋友圈
+        WeixinJSBridge.on('menu:share:timeline',
+                function (argv) {
+                    WeixinJSBridge.invoke('shareTimeline', {
+                        "img_url": dataForWeixin.TLImg,
+                        "img_width": "120",
+                        "img_height": "120",
+                        "link": dataForWeixin.url,
+                        "desc": dataForWeixin.desc,
+                        "title": dataForWeixin.desc
+                    },
+                     function (res) {
+                         isDev && alert(res.err_msg);
+                         switch (res.err_msg) {
+
+                             case 'share_timeline:cancel':
+
+                                 //用户取消
+                                 isDev && alert("用户取消");
+                                 break;
+
+
+                             case 'share_timeline:ok':
+
+                                 // send_app_msg:confirm 发送成功
+                                 isDev && alert("发送成功");
+                                 (dataForWeixin.callback)();
+
+                                 break;
+
+                             case 'share_timeline:fail':
+
+                             default:
+                                 isDev && alert("发送失败");
+                                 // send_app_msg:fail　发送失败
+                                 break;
+
+                         }
+                     });
+                });
+        //微博
+        WeixinJSBridge.on('menu:share:weibo',
+                function (argv) {
+                    WeixinJSBridge.invoke('shareWeibo', {
+                        "content": dataForWeixin.title,
+                        "url": dataForWeixin.url
+                    },
+                            function (res) {
+                                isDev && alert(res.err_msg);
+                                switch (res.err_msg) {
+
+                                    case 'share_weibo:cancel':
+
+                                        //用户取消
+                                        isDev && alert("用户取消");
+                                        break;
+
+                                    case 'share_weibo:confirm':
+                                        isDev && alert("发送完成");
+                                        (dataForWeixin.callback)();
+                                    case 'share_weibo:ok':
+
+                                        // send_app_msg:confirm 发送成功
+                                        isDev && alert("发送成功");
+                                        (dataForWeixin.callback)();
+
+                                        break;
+
+                                    case 'share_weibo:fail':
+
+                                    default:
+                                        isDev && alert("发送失败");
+                                        // send_app_msg:fail　发送失败
+                                        break;
+
+                                }
+                            });
+                });
+    };
+    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+
+
+    var _ = function (dom) {
+        return document.querySelector(dom);
+    };
+
+    function fromNoTitle() {
+        var bNeed = location.search.indexOf('from=notitle') == -1 ? false : true,
+            sTitle = _('#J_titleCon').innerHTML;
+        if (bNeed) {
+            App.open('title', sTitle);
+            _('#J_title').style.display = 'none';
+        }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var layerBg = document.querySelector('.layerBg'), shareLayer = document.querySelector('.shareLayer');
+        shareLayer.addEventListener("click", function (e) {
+            layerBg.style.display = "none";
+            shareLayer.style.display = 'none';
+        });
+    });
+
+    _('#J_titleBackBtn') && (_('#J_titleBackBtn').ontouchstart = function () {
+        App.close();
+    });
+
+    _('#J_share') && (_('#J_share').ontouchstart = function () {
+        App.share();
+    });
+
+    _('.J_confirm') && (_('.J_confirm').ontouchstart = function () {
+        App.open();
+    });
+
+    _('#J_openApp') && (_('#J_openApp').onclick = function () {
+        App.open('PHONE_RECHARGE');
+    });
+    if (Util.inApp() && !Util.inWx) {
+        App.open('title', '秀智商的时候到了');
+        //_('#J_title') && _('#J_title').style.display = 'block';
+        // _('#J_title').parentNode.style.paddingTop = '50px';
+    } else if (Util.inAndroid || Util.inIos) {
+        _('.J_openBtn') && (_('.J_openBtn').style.display = 'block');
+        // _('body').style.paddingBottom = '70px';
+
+    };
+</script>

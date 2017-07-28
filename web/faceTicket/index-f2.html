@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>
+        刷脸赚车票
+    </title>
+    <style>
+        html, body { min-width: 320px; height: 100%; margin: 0; padding: 0; font-size: 20px; }
+        a { text-decoration: underline; }
+        input, button, select, textarea { outline: none; -webkit-appearance: none; }
+        .outWrap { height: 100%; width: 100%; position: absolute; background: #fff; }
+        .mainWrap { position: absolute; left: 0; top: 0; width: 100%; min-height: 100%; text-align: center; background-color: #fb584c; overflow: auto; }
+        .mainWrapMar { padding-bottom: 3rem !important; }
+
+        .tran { -webkit-transition: all 0.3s ease-out; }
+        .moveRight { -webkit-transform: translate3d(100%, 0,0) !important; }
+        .comeIn { -webkit-transform: translate3d(0, 0,0) !important; }
+        .moveLeft { -webkit-transform: translate3d(-100%, 0,0) !important; }
+        * { margin: 0; padding: 0; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+        .hidden { display: none; }
+        .show { display: block !important; }
+        /*header { position: absolute; z-index: 2; top: 0; left: 0; width: 100%; height: 44px; line-height: 44px; background-color: #3e74b9; text-align: center; color: #FFF; }*/
+        .mainBody { position: relative; width: 100%; height: 100%; overflow: hidden; }
+        .view-container { position: relative; width: 100%; height: 100%; }
+        .page-container { text-align: center;  padding: 0; overflow: auto;
+                          background-color:#ff6a00; -webkit-transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; }
+            .page-container content { height:auto; width: 100%; display:inline-block }
+        .page-num { position: absolute; top: 50%; left: 50%; width: 50px; height: 50px; margin-top: -25px; margin-left: -25px; font-size: 72px; }
+        /* 差速滑动组合 */
+        .slideSlow { -webkit-transition: -webkit-transform 400ms cubic-bezier(0.42, 0, 0.58, 1.0) 0.1s; -ms-transition: transform 400ms cubic-bezier(0.42, 0, 0.58, 1.0) 0.1s; }
+        .slideFast { -webkit-transition: -webkit-transform 300ms cubic-bezier(0.42, 0, 0.58, 1.0); -ms-transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1.0); }
+        .slideSlowBack { -webkit-transition: -webkit-transform 400ms cubic-bezier(0.42, 0, 0.58, 1.0); -ms-transition: transform 400ms cubic-bezier(0.42, 0, 0.58, 1.0); }
+        .slideFastBack { -webkit-transition: -webkit-transform 300ms cubic-bezier(0.42, 0, 0.58, 1.0) 0.1s; -ms-transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1.0) 0.1s; }
+        .pageInt { -webkit-transform: translateX(0); transform: translateX(0); }
+        .pageOld { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+        .pageNew { -webkit-transform: translateX(100%); transform: translateX(100%); }
+
+        table, tr, td { margin: 0; padding: 0; }
+        .trickets-list-wrap { width: 100%; height: 130px; overflow: auto; }
+        .tableList { height: 116px; width: 500px; }
+            .tableList td:first-child p { margin-left: 10px; }
+            .tableList td { height: 116px; text-align: center; vertical-align: middle; }
+                .tableList td div { background: #f5f3f1; display: block; width: 100px; border-radius: 2px; margin-right: 10px; margin-right: 10px; }
+                .tableList td > div { display: block; width: 100px; height: 116px; }
+                .tableList td:first-child > div { margin-left: 10px; }
+                .tableList td div img { width: 90px; height: 90px; padding: 5px 5px 0 5px; }
+                .tableList td div span { display: block; line-height: 21px; color: #000; font-size: 12px; }
+                .tableList td div p { height: 90px; width: 90px; border: 5px solid #f5f3f1; border-bottom: 0; background-size: auto 100%; margin: 0 !important; }
+            .tableList .feefg { background: #f5f3f1 url(../img/compensate.png?t=1) 0 0 no-repeat; background-size: 100% 100%; }
+
+
+        .view-pages { position:relative;width:100%;background:#b6ff00;overflow:hidden}
+        .view-page { position:absolute;width:100%;left:0;top:0;overflow:auto}
+            .view-page content {display:inline-block;width:100%}
+        .start { -webkit-transform: translateX(0); transform: translateX(0); }
+        .init { -webkit-transform: translateX(100%); transform: translateX(100%); }
+
+        #indexPage { background: #ff0000; }
+        #indexPage2 {background:#ccc}
+    </style>
+</head>
+<body>
+    <div class="view-pages">
+        <div class="view-page start" id="indexPage">
+            <content>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <div style="width:100%;height:130px;border:solid 0px #fff;overflow:auto">
+                    <table class="tableList">
+                        <tr></tr>
+                    </table>
+                </div>
+                <button id="btu_go">go to page222</button>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+
+            </content>
+        </div>
+        <div class="view-page init" id="indexPage2">
+            <content>
+                2sdsdfsdfgffdg
+
+                <button id="btu_go2">go to page1</button>
+            </content>
+        </div>
+    </div>
+</body>
+
+<!--<body>  
+    <div class="mainBody">
+        <div id="pages" class="view-container" style="">
+            <div class="mainWrap page-container pageInt id="indexPage">
+                <content>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <div style="width:90%;height:130px;border:solid 2px #fff;overflow:auto">
+                        <table class="tableList">
+                            <tr></tr>
+                        </table>
+                    </div>
+                    <button id="btu_go">go to page222</button>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+                    <p>1</p>
+
+                </content>
+            </div>
+            <div class="mainWrap page-container pageNew" id="indexPage">
+                <content>
+                    2
+                </content>
+            </div>
+        </div>
+    </div>
+</body>-->
+</html>
+<script src="js/jquery-1.8.2.min.js"></script>
+<script>
+    var exp = window;
+    exp.pages = new Array();
+    function Page(domId, option, fn) {
+        this.option = $.extend({
+            isAutoInit: true,
+            isFooterBar: true
+        }, option || {});
+        this.domId = domId;
+        this.indexName = "p_" + domId;
+        this.fn = fn;
+        this.showBack = function () { }
+        this.hideBack = function () { }
+        var $self = $("#" + this.domId);
+
+        var isSlideing = false;
+        this.show = function (_showBack) {
+            if (isSlideing) { return false; }
+            var _self = this;
+            if (window.set) if (set["lastPage"] == _self) { return false; }
+            isSlideing = true;
+            window.setTimeout(function () { isSlideing = false; }, 400);
+            //$self.show();
+            $self.css({ '-webkit-transform': 'translate3d(0%, 0px, 0px)', '-webkit-transition': '-webkit-transform 250ms cubic-bezier(0.42, 0, 0.58, 1.0)' });
+            if (window.set) {
+                set["lastPage"].hide();
+            }
+
+            if (!window.hasOwnProperty("set")) { window.set = {}; }
+            set["lastPage"] = _self;
+            urlRoleCommon.pageChangeEven.call(_self);
+            if (_showBack) _showBack.call(_self);
+            if (_self.showBack) _self.showBack.call(_self);
+            if (this.option.isFooterBar) {
+                //$self.find("content").addClass("mainWrapMar");
+                $("#J_openBtn").show();
+            }
+        }
+        this.hide = function () {
+            //$("#" + this.domId).hide();
+            $("#" + this.domId).css({ '-webkit-transform': 'translate3d(-100%, 0px, 0px)', '-webkit-transition': '-webkit-transform 250ms cubic-bezier(0.42, 0, 0.58, 1.0) 0.1s' });
+            this.hideBack();
+            $("#J_openBtn").hide();
+        }
+        this.init = function () {
+            if (this.fn) { this.fn(this); }
+        }
+        if (this.option.isAutoInit) this.fn();
+        pages.push(this);
+        //if (!window.hasOwnProperty("pages")) { window.pages = []; }
+        //pages.push(domId);
+    }
+    var urlRoleCommon = (function () {
+        var distoeyState = "", result = {};
+        history.replaceState(location.hash, "", location.href);
+        var _jump = function (callback) {
+            for (var p in pages) {
+                var item = pages[p];
+                if (item.__proto__ === Page.prototype) {
+                    if ("#" + item.indexName == location.hash) {
+                        _page = item;
+                        item.show(function () { if (callback) callback(); });
+                    }
+                }
+            }
+        }
+        var _page = {};
+        var _tempCallBck = function () { }
+        exp.addEventListener('popstate', function (e) {
+            result.changePageBack();
+        }, false);
+        exp.addEventListener('hashchange', function (e) {
+            _jump(function () {
+                if (_tempCallBck) _tempCallBck(_page);
+                _tempCallBck = function () { }
+                result.changeHashBack();
+            });
+        }, false);
+        result.goActive = function (hash, callBack) {
+            distoeyState = history.state;
+            location.href = hash;
+            //history.pushState(hash, "", hash);
+            if (typeof callBack == "function") { _tempCallBck = callBack; }
+        }
+        result.changePageBack = function () {/*不管hash有没有变动都触发*/ }
+        result.changeHashBack = function () { /*有变动才触发*/ }
+        result.loadDefaultActive = function () { if (location.hash) { _jump(); } }
+        result.pageChangeEven = function () { }
+        return result;
+    })();
+    /*使用urlRoleCommon.goActive("#p_indexPage",function(page){})进行跳转（在pageId前加“p_”）,由URL驱动，所以URL会有相应变化
+    urlRoleCommon.changePageBack()为全局事件(只要使用goActive就会触发)，
+    urlRoleCommon.changeHashBack()为全局事件(只要使用hash变动就会触发)
+    */
+    exp.urlRoleCommon = urlRoleCommon;
+    exp.Page = Page;
+</script>
+<script>
+    // window.onload = function(){    //注意！！ 不要这个
+    // }
+    
+    //$("#btu_go").click(function () {
+    //    $("#indexPage2").css({ '-webkit-transform': 'translate3d(0%, 0px, 0px)', '-webkit-transition': '-webkit-transform 250ms cubic-bezier(0.42, 0, 0.58, 1.0)' });
+    //    $("#indexPage").css({ '-webkit-transform': 'translate3d(-100%, 0px, 0px)', '-webkit-transition': '-webkit-transform 250ms cubic-bezier(0.42, 0, 0.58, 1.0) 0.1s' });
+    //});
+    $(".view-pages,.view-page").height($("body").height());
+
+    var page1 = new Page("indexPage", {}, function () {
+        var html = "<td><div class='feefg'></div></td><td><div class='feefg'></div></td><td><div class='feefg'></div></td><td><div class='feefg'></div></td><td><div class='feefg'></div></td>";
+        $(".tableList tr").append(html);
+        $("#btu_go").click(function () {
+            //page2.show();
+            //urlRoleCommon.goActive("#p_indexPage2", function (page) { });
+            location.href = "#indexPage2";
+        });
+    });
+    var page2 = new Page("indexPage2", {}, function () {
+        $("#btu_go2").click(function () {
+            //page1.show();
+            location.href = "#indexPage";
+        });
+    });
+    //page1.show(function () { });
+    //urlRoleCommon.goActive("#p_indexPage2", function (page) { });
+    //$(".view-page content").width($("body").width());
+</script>

@@ -1,0 +1,1037 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" name="viewport" content="initial-scale=0.5;user-scalable=no">
+
+    <title>七夕活动</title>
+    <meta charset="utf-8" />
+    <style>
+        html, body { height: 100%; }
+        .hide { display: none; }
+        #canvas { text-align:center}
+        body { margin:0;padding:0}
+        .startPage { background: #fa6683 url(img/bg.png) no-repeat; background-size: 100%; width: 100%; height: 100%; position: absolute; z-index: 2; }
+            .startPage .btuWrap { position: absolute; width: 100%; bottom: 8%; text-align: center; }
+                .startPage .btuWrap button { margin: 0; border: 0; background: url(img/btu.png) no-repeat; background-size: 100%; width: 60%; height: 8em; }
+                .startPage .btuWrap a { color: #fff; font-weight: bold; margin-top: 0.7em; font-size: 2em; display: inline-block; }
+        .loadingBg { position: fixed; top: 0px; left: 0px; background: #fff; width: 100%; height: 100%; text-align: center; display: none; }
+            .loadingBg img { margin-top: 50%; width: 30%; }
+            .loadingBg div { width: 100%; text-align: center; position: absolute; top: 55%; color: #808080; font-size: 2em; }
+        .hdmb { width: 100%; min-height: 100%; background: #fff; position: absolute; z-index: 10000; top: 0; display: none; }
+            .hdmb img { width: 100%; }
+            .hdmb div { margin: 5%; }
+        .layerBg { background: #333; opacity: 0.6; position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: 99; }
+        .shareLayer { position: absolute; top: 0; left: 0; height: 50%; width: 100%; background: url(http://img13.360buyimg.com/cms/jfs/t1279/14/507220590/16193/6ae004a5/5582748bN68c1aad8.png) no-repeat 0 0; background-size: contain; z-index: 999; }
+    </style>
+
+</head>
+<body>
+    <section id="game_page" style="overflow: hidden; height: 100%;width:100%;position:relative">
+        <div id="canvas">
+            <img src="http://img14.360buyimg.com/cms/jfs/t865/49/1034073230/6017/6f27d16f/556c0030N1f282f1f.gif"/>
+        </div>
+    </section>
+    <section id="span_hdmb" class="hdmb">
+        <img src="http://img14.360buyimg.com/cms/jfs/t1651/188/320417577/8224/fb6d2dfe/55d1c6d5N3e0c5177.png" />
+        <div>
+            <h4 style="font-weight:bold">活动时间</h4>
+            <p>
+                2015年8月18日 00:00—2015年8月25日 23:59
+            </p>
+            <h4 style="font-weight:bold">怎么获得5元优惠券</h4>
+            <p>
+                分享指定活动页面至微信朋友圈或微信好友可获得一张5元话费充值满减券（以下简称“满减券”）。
+            </p>
+            <h4 style="font-weight:bold">怎么获得一整年话费</h4>
+            <p>
+                活动结束后，在使用本满减券参加活动成功充值的用户中，抽取1名幸运用户，赠送12张话费充值现金抵用券（以下简称”抵用券”），每张抵用券金额与用户使用优惠券当次充值面额相等。
+            </p>
+            <h4 style="font-weight:bold">奖券发放规则</h4>
+            <p>
+                满减券在用户分享指定页面后，即时进入用户领券电话号码对应的京东钱包账户中，该满减券在京东钱包进行单次充值面额在100元以上时可用以减少5元的支付金额；
+                抵用券在本活动结束后10个工作日内发放至中奖用户京东钱包中，请到“我的”-“卡券”中查看，具体开奖信息请关注京东钱包-公告。同一用户累计中奖金额不得超过5000元，满减券与抵用券不能同时使用。
+            </p>
+            <h4 style="font-weight:bold">奖券使用规则</h4>
+            <p>
+                1.仅限京东钱包客户端手机话费充值使用，且单笔话费充值实付金额大于或等于95元时可使用，同一订单只能使用一张抵用券；
+                2.充值时输入充值手机号及金额，点击“立即充值”后，即可选择可使用的抵用券；
+                3.抵用券须在2015年9月1日至2016年8月31日期间使用，每个自然月仅可使用一张，分12个月使用，抵用券在相应自然月内有效，过期作废；
+                4.抵用券不可拆分使用、不可转赠、不可找零、不可兑现；
+                5.如使用抵用券的订单发生退款，在抵用券有效期内的，则抵用券退回至用户的账户，抵用券退回后有效期不变，如已过有效期则抵用券不再退还，仅退用户实付金额。
+            </p>
+            <h4 style="font-weight:bold">其他</h4>
+            <p>
+                1．在本活动期间，如存在违规行为（包含但不限于恶意套取资金、机器作弊、虚假交易等违反诚实信用原则行为），主办方将取消您的领券资格，并有权撤销相关违规交易，不予发放相关奖品，必要时追究法律责任；<br />
+                2．如用户有作弊刷单等违规行为，将取消一切奖励并追究责任；<br />
+                3．本活动规则及其未尽事宜同时受《京东钱包服务协议》及相关公告、规则约束；<br />
+                4. 在法律允许的范围内，网银在线对本次活动有解释权。
+            </p>
+        </div>
+    </section>
+    <div class="layerBg" style="display:none">
+    </div>
+    <div class="shareLayer" style="display:none">
+    </div>
+</body>
+</html>
+<script>
+    console.log("loginof-9:22");
+    window.isDev = true;
+    window.dataForWeixin = {
+        appId: "",
+        MsgImg: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+        TLImg: 'http://img13.360buyimg.com/cms/jfs/t790/61/1403238732/5911/2dcd4cf2/559f6b56Na06dce77.png',
+        url: 'http://sale.jd.com/app/act/5NOlBTkSVq4.html',
+        title: '七夕复七夕，话费送不停！',
+        desc: '送你一整年话费，情话“奖”不停！',
+        Channel: '',
+        fakeid: "",
+        callback: function () {
+            var url = isDev ? 'http://sale.jd.com/app/act/I8MstoTHxJuQC3fN.html' : 'http://sale.jd.com/app/act/bvWJG2mKL1.html',
+              //entranceid = isDev ? "2015061500000000001" : "2015061800000000001"
+              entranceid = "2015082000000000001"
+            ;
+            window.location.href = url + '?param=flag_' + entranceid + '_' + window.sharecode;
+        },
+        appCallback: "shareCallback"
+    };
+    window.sharecode = '';
+    window.shareCallback = function (args) {
+
+        var url = isDev ? 'http://sale.jd.com/app/act/I8MstoTHxJuQC3fN.html' : 'http://sale.jd.com/app/act/bvWJG2mKL1.html',
+                //entranceid = isDev ? "2015061500000000001" : "2015061800000000001"
+                entranceid = "2015082000000000001"
+        ;
+        if (args == 'SUCCESS') {
+            window.location.href = url + '?param=flag_' + entranceid + '_' + window.sharecode;
+        }
+    };
+
+    var n = window.navigator,
+            ua = n.userAgent,
+            Util = {
+                baseUrl: 'http://sale.jd.com/app/act/KBuoE641DZmxgYf.html', //京东域，做打开app用
+                androidDownload: 'http://m.jdpay.com/basic/download/android/wangyin.apk',
+                iosDownload: 'https://itunes.apple.com/us/app/wang-yin-qian-bao/id832444218?ls=1&mt=8',
+                inWx: (ua.search(/micromessenger/ig) == -1) ? false : true,
+                inIosApp: (ua.search(/safari/ig) == -1 && ua.indexOf('jdapp') == -1) ? true : false,
+                inAndroid: ua.indexOf('Android') > -1 || ua.indexOf('Linux') > -1,
+                inIos: ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1,
+                //检查后缀
+                check_domain: function (host) {
+                    var pattern = "/^aero$|^cat$|^coop$|^int$|^museum$|^pro$|^travel$|^xxx$|^com$|^net$|^gov$|^org$|^mil$|^edu$|^biz$|^info$|^name$|^ac$|^mil$|^co$|^ed$|^gv$|^nt$|^bj$|^hz$|^sh$|^tj$|^cq$|^he$|^nm$|^ln$|^jl$|^hl$|^js$|^zj$|^ah$|^hb$|^hn$|^gd$|^gx$|^hi$|^sc$|^gz$|^yn$|^xz$|^sn$|^gs$|^qh$|^nx$|^xj$|^tw$|^hk$|^mo$|^fj$|^ha$|^jx$|^sd$|^sx$/i";
+                    if (str.match(pattern)) {
+                        return 1;
+                    }
+                    return 0;
+                },
+                //返回域
+                get_domain: function () {
+                    var host = document.domain.replace(/^www\./, ""), arr = host.split('.'), len = arr.length, domain;
+                    if (len == 3) {
+                        domain = arr[1] + '.' + arr[2];
+                    } else if (len > 3) {
+                        var ip_pat = "^[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*$";
+                        if (host.match(ip_pat)) {
+                            return host;
+                        }
+                        if (Util.check_domain(arr[len - 2])) {
+                            domain = arr[len - 3] + "." + arr[len - 2] + "." + arr[len - 1];
+                        } else {
+                            domain = arr[len - 2] + "." + arr[len - 1];
+                        }
+                    }
+                    return domain;
+                },
+                //判断是否在app内
+                inApp: function () {
+                    if (Util.inAndroid) {
+                        return typeof (android) != 'undefined' ? true : false;
+                    } else if (Util.inIos) {
+                        return this.inIosApp;
+                    } else {
+                        return false;
+                    }
+                }
+            };
+
+    window.Util = Util;
+
+    function json2str(json) {
+        var str = '';
+        for (var i in json) {
+            str += '&' + i + '=' + json[i]
+        };
+        return str;
+    };
+
+    //打开弹出提示
+    function showLayer() {
+        var downLoadUrl = Util.inIos ? Util.iosDownload : Util.androidDownload;
+        if (!document.querySelector('.J_layerDom')) {
+            var lDom = document.createElement('div');
+            lDom.className = 'J_layerDom';
+            lDom.style.cssText = 'display: none; position: fixed; z-index: 3000; left: 50%; top: 50%; margin: -85px 0 0 -140px; width: 280px; padding: 20px 0; text-align: center; background: rgba(0,0,0, .8); border-radius: 6px; color: #fff';
+            lDom.innerHTML = '<p style="margin-bottom: 30px; font-size: 18px;">您还未安装京东钱包客户端</p><a href="' + downLoadUrl + '" class="J_appDownload" style="display: block; width: 90%; margin-left: 5%; font-size: 16px; line-height: 40px; border-radius: 3px; text-decoration:none;font-weight: bold; background: #d9434b; color: #fff; ">立即下载</a>';
+            document.body.appendChild(lDom);
+        } else {
+            document.querySelector('.J_layerDom').style.display = 'block';
+        }
+        setTimeout(function () {
+            document.querySelector('.J_layerDom').style.display = 'none';
+        }, 6000);
+    };
+
+    //构造iframe激活app
+    function openIframe(json) {
+        var str = json2str(json.params);
+        var ifrSrc = 'wangyin://wallet/start?module=' + json.name + str;
+        if (!ifrSrc) return;
+        var ifr = document.createElement('iframe');
+        ifr.src = ifrSrc;
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+        setTimeout(function () {
+            document.body.removeChild(ifr);
+        }, 2000);
+        setTimeout(function () {
+            showLayer()
+        }, 300);
+    };
+    function openWithIframe(ifrSrc) {
+        var ifr = document.createElement('iframe');
+        ifr.src = ifrSrc;
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+        setTimeout(function () {
+            document.body.removeChild(ifr);
+        }, 2000);
+    };
+    //通过打开京东域的链接
+    function openLink(json) {
+        var url = Util.baseUrl;
+        if (json.name == 'ACTIVITY') {
+            url += '?url=' + json.params.browserUrl;
+        };
+        window.location.href = url + '#' + json.name;
+    };
+
+    //android客户端打开
+    function openAndroid(json) {
+        try {
+            json.name = json.name == 'LOGIN' ? 'HOME' : json.name;
+            if (json.name == 'ACTIVITY') {
+                android.start(json.params.browserUrl);
+            } else if (json.name == 'CLOSE') {
+                android.close();
+            } else if (json.name == 'TITLE') {
+                android.setTitleName(json.params.text);
+            } else {
+                android.start(json.name, JSON.stringify(json.params), json.callback);
+            }
+        } catch (err) {
+            alert('请升级最新版京东钱包');
+        }
+    };
+
+    //ios客户端打开
+    function openIos(json) {
+        var str = json.params ? json2str(json.params) : '',
+                url = 'native://start?name=' + json.name + str + '&callback=' + json.callback;
+        if (json.name == 'CLOSE') {
+            url = 'native://close';
+        } else if (json.name == 'ACTIVITY') {
+            url = 'native://start?name=' + json.params.browserUrl;
+        } else if (json.name == 'TITLE') {
+            url = 'native://setTitleName?titleName=' + json.params.text;
+        };
+        openWithIframe(url);
+        /*  try{
+         safari.open = url; //兼容iphone 4
+         }catch(err){
+         window.location.href = url;
+         }*/
+    };
+
+
+    /**
+     * @param json {name:module name,params:params,callback:function}
+     * android && inapp
+     * ios && inapp
+     * inwx && check domain
+     */
+    function openModel(json) {
+        if (Util.inAndroid && Util.inApp()) {
+            openAndroid(json);
+        } else if (Util.inIos && Util.inIosApp && !Util.inWx) {
+            openIos(json);
+        } else if (Util.inWx) {
+            if (Util.get_domain() == 'jd.com') {
+                openIframe(json);
+            } else {
+                openLink(json);
+            }
+        } else {
+            openIframe(json);
+        }
+    };
+
+
+    var App = window.App || {};
+    App.noop = function () { };
+    App.open = function () {
+        var len = arguments.length,
+                _this = this,
+                json = {
+                    name: '',
+                    params: {},
+                    callback: 'App.noop'
+                },
+                param;
+        json.name = arguments[0] ? arguments[0].toUpperCase() : 'LOGIN';
+        _this.noop = function () { };
+        if (len == 2) {
+            if (typeof (arguments[1]) == 'function') {
+                _this.noop = arguments[1];
+            } else {
+                param = arguments[1];
+            }
+        } else if (len == 3) {
+            if (typeof (arguments[2]) == 'function') {
+                _this.noop = arguments[2];
+            }
+            param = arguments[1];
+        };
+
+        switch (json.name) {
+            case 'FUND':
+                if (param) json.params.code = param;
+                break;
+            case 'JRB':
+                if (arguments[1]) {
+                    json.params.forceLogin = 'JRB';
+                    json.params.action = arguments[1];
+                    json.params.channel = 'web';
+                }
+                break;
+            case 'ACTIVITY':
+                json.params.browserUrl = param;
+                break;
+            case 'TITLE':
+                json.params.text = param;
+                break;
+            default:
+                break;
+        }
+        openModel(json);
+    };
+    App.close = function () {
+        openModel({ name: 'CLOSE' });
+    };
+    App.share = function (json) {
+        var json = json || window.dataForWeixin;
+        if (Util.inAndroid && Util.inApp()) {
+            android.shareWebPage(json.url, json.title, json.desc, json.Channel, json.appCallback);
+        } else if (Util.inIos && Util.inIosApp && !Util.inWx) {
+            var url = 'native://shareWebPage?url=' + json.url + '&webTitle=' + json.title + '&webDesc=' + json.desc + '&callback=' + json.appCallback;
+            try {
+                safari.open = url; //兼容iphone 4
+            } catch (err) {
+                window.location.href = url;
+            }
+        } else if (Util.inWx) {
+            window.dataForWeixin.url = json.url;
+            window.dataForWeixin.title = json.title;
+            window.dataForWeixin.desc = json.desc;
+            onBridgeReady();
+        }
+    }
+    App.buriedPointOnce = function (eventId) {
+        if (Util.inAndroid && Util.inApp()) {
+            android.buriedPointOnce(eventId);
+        } else if (Util.inIos && Util.inIosApp && !Util.inWx) {
+            var url = 'native://buriedPointOnce?eventId=' + eventId;
+            openWithIframe(url);
+        }
+    }
+    window.App = App;
+
+    var onBridgeReady = function () {
+        if (!dataForWeixin) {
+            return;
+        }
+        // qq
+        WeixinJSBridge.on('menu:share:qq',
+                function (argv) {
+                    WeixinJSBridge.invoke('shareQQ', {
+                        "appid": dataForWeixin.appId,
+                        "img_url": dataForWeixin.MsgImg,
+                        "img_width": "120",
+                        "img_height": "120",
+                        "link": dataForWeixin.url,
+                        "desc": dataForWeixin.desc,
+                        "title": dataForWeixin.title
+                    },
+                            function (res) {
+                                isDev && alert(res.err_msg);
+                                switch (res.err_msg) {
+
+                                    case 'send_app_msg:cancel':
+
+                                        //用户取消
+                                        isDev && alert("用户取消");
+                                        break;
+
+                                    case 'send_app_msg:confirm':
+                                        isDev && alert("发送完成");
+                                        (dataForWeixin.callback)();
+
+
+                                    case 'send_app_msg:ok':
+
+                                        // send_app_msg:confirm 发送成功
+                                        isDev && alert("发送成功");
+                                        (dataForWeixin.callback)();
+
+                                        break;
+
+                                    case 'send_app_msg:fail':
+
+                                    default:
+                                        isDev && alert("发送失败");
+                                        // send_app_msg:fail　发送失败
+                                        break;
+
+                                }
+                            });
+                });
+        //微信好友
+        WeixinJSBridge.on('menu:share:appmessage',
+              function (argv) {
+                  WeixinJSBridge.invoke('sendAppMessage', {
+                      "appid": dataForWeixin.appId,
+                      "img_url": dataForWeixin.MsgImg,
+                      "img_width": "120",
+                      "img_height": "120",
+                      "link": dataForWeixin.url,
+                      "desc": dataForWeixin.desc,
+                      "title": dataForWeixin.title
+                  },
+                          function (res) {
+                              isDev && alert(res.err_msg);
+                              switch (res.err_msg) {
+
+                                  case 'send_app_msg:cancel':
+
+                                      //用户取消
+                                      isDev && alert("用户取消");
+                                      break;
+
+                                  case 'send_app_msg:confirm':
+                                      isDev && alert("发送完成");
+                                      (dataForWeixin.callback)();
+
+                                  case 'send_app_msg:ok':
+
+                                      // send_app_msg:confirm 发送成功
+                                      isDev && alert("发送成功");
+                                      (dataForWeixin.callback)();
+
+                                      break;
+
+                                  case 'send_app_msg:fail':
+
+                                  default:
+                                      isDev && alert("发送失败");
+                                      // send_app_msg:fail　发送失败
+                                      break;
+
+                              }
+                          });
+              });
+        // 微信朋友圈
+        WeixinJSBridge.on('menu:share:timeline',
+                function (argv) {
+                    WeixinJSBridge.invoke('shareTimeline', {
+                        "img_url": dataForWeixin.TLImg,
+                        "img_width": "120",
+                        "img_height": "120",
+                        "link": dataForWeixin.url,
+                        "desc": dataForWeixin.desc,
+                        "title": dataForWeixin.desc
+                    },
+                     function (res) {
+                         isDev && alert(res.err_msg);
+                         switch (res.err_msg) {
+
+                             case 'share_timeline:cancel':
+
+                                 //用户取消
+                                 isDev && alert("用户取消");
+                                 break;
+
+
+                             case 'share_timeline:ok':
+
+                                 // send_app_msg:confirm 发送成功
+                                 isDev && alert("发送成功");
+                                 (dataForWeixin.callback)();
+
+                                 break;
+
+                             case 'share_timeline:fail':
+
+                             default:
+                                 isDev && alert("发送失败");
+                                 // send_app_msg:fail　发送失败
+                                 break;
+
+                         }
+                     });
+                });
+        //微博
+        WeixinJSBridge.on('menu:share:weibo',
+                function (argv) {
+                    WeixinJSBridge.invoke('shareWeibo', {
+                        "content": dataForWeixin.title,
+                        "url": dataForWeixin.url
+                    },
+                            function (res) {
+                                isDev && alert(res.err_msg);
+                                switch (res.err_msg) {
+
+                                    case 'share_weibo:cancel':
+
+                                        //用户取消
+                                        isDev && alert("用户取消");
+                                        break;
+
+                                    case 'share_weibo:confirm':
+                                        isDev && alert("发送完成");
+                                        (dataForWeixin.callback)();
+                                    case 'share_weibo:ok':
+
+                                        // send_app_msg:confirm 发送成功
+                                        isDev && alert("发送成功");
+                                        (dataForWeixin.callback)();
+
+                                        break;
+
+                                    case 'share_weibo:fail':
+
+                                    default:
+                                        isDev && alert("发送失败");
+                                        // send_app_msg:fail　发送失败
+                                        break;
+
+                                }
+                            });
+                });
+    };
+    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+
+
+    var _ = function (dom) {
+        return document.querySelector(dom);
+    };
+
+    function fromNoTitle() {
+        var bNeed = location.search.indexOf('from=notitle') == -1 ? false : true,
+            sTitle = _('#J_titleCon').innerHTML;
+        if (bNeed) {
+            App.open('title', sTitle);
+            _('#J_title').style.display = 'none';
+        }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var layerBg = document.querySelector('.layerBg'), shareLayer = document.querySelector('.shareLayer');
+        shareLayer.addEventListener("click", function (e) {
+            layerBg.style.display = "none";
+            shareLayer.style.display = 'none';
+        });
+    });
+
+    _('#J_titleBackBtn') && (_('#J_titleBackBtn').ontouchstart = function () {
+        App.close();
+    });
+
+    _('#J_share') && (_('#J_share').ontouchstart = function () {
+        App.share();
+    });
+
+    _('.J_confirm') && (_('.J_confirm').ontouchstart = function () {
+        App.open();
+    });
+
+    _('#J_openApp') && (_('#J_openApp').onclick = function () {
+        App.open('PHONE_RECHARGE');
+    });
+    if (Util.inApp() && !Util.inWx) {
+        App.open('title', '七夕，话费送不停！');
+        //_('#J_title') && _('#J_title').style.display = 'block';
+        // _('#J_title').parentNode.style.paddingTop = '50px';
+    } else if (Util.inAndroid || Util.inIos) {
+        _('.J_openBtn') && (_('.J_openBtn').style.display = 'block');
+        // _('body').style.paddingBottom = '70px';
+
+    };
+</script>
+<script>
+    //game
+    
+    function seriesLoadScripts(scripts, callback) {
+        if (typeof (scripts) != "object") var scripts = [scripts];
+        var HEAD = document.getElementsByTagName("head").item(0) || document.documentElement;
+        var s = new Array(), last = scripts.length - 1, recursiveLoad = function (i) {  //递归
+            s[i] = document.createElement("script");
+            s[i].setAttribute("type", "text/javascript");
+            s[i].onload = s[i].onreadystatechange = function () { //Attach handlers for all browsers
+                if (!/*@cc_on!@*/0 || this.readyState == "loaded" || this.readyState == "complete") {
+                    this.onload = this.onreadystatechange = null; this.parentNode.removeChild(this);
+                    if (i != last) recursiveLoad(i + 1); else if (typeof (callback) == "function") callback();
+                }
+            }
+            s[i].setAttribute("src", scripts[i]);
+            HEAD.appendChild(s[i]);
+        };
+        recursiveLoad(0);
+    }
+    var pingyu = "";
+    seriesLoadScripts("http://lufylegend.com/js/lufylegend-1.9.10.min.js", function () {
+        (function (exp) {
+            exp.onresize = function () { LGlobal.resize(); }
+            LGlobal.destroy = true; //保证游戏中的不用的对象能够顺利被释放
+            //获取随机数
+            exp.getRedom = function (minNum, maxNum) {
+                switch (arguments.length) {
+                    case 1: return parseInt(Math.random() * minNum + 1);
+                    case 2: return parseInt(Math.random() * (maxNum - minNum + 1) + minNum);
+                    default: return 0;
+                }
+            }
+            var backLayer, shooter, arrow, heartLayer, arrowLayer, hdmb;
+            var heartTimer, heartTimer2;
+            var hitHeart = null;
+            var con_x, con_y = 0;
+
+            var reSetValue = function (_exp) {
+                _exp.isStop = false;
+            }
+            var levelName = [
+                "桃花爆棚，爱破苍穹",
+                "桃花犯命，注意身体",
+                "桃花乱袭，且行且惜",
+                "桃花沾衣，多多知己",
+                "桃花偶遇，莫失良机",
+                "桃花将近，戒躁戒急",
+                "桃花未至，勿忘初心",
+                "桃花无边，顺其自然", ];
+            reSetValue(exp);
+            var imgData = new Array(
+                { name: "bg", path: "http://img12.360buyimg.com/cms/jfs/t1729/178/572233072/98202/4e619fd8/55d42523N75bb4e6a.png" },
+                { name: "btu", path: "http://img10.360buyimg.com/cms/jfs/t1771/160/381707384/10933/2df2363c/55d157faNbc72cc18.png" },
+                { name: "btu_2", path: "http://img12.360buyimg.com/cms/jfs/t1678/183/307064183/6780/31df23e2/55d19a6cNca795f08.png" },
+                { name: "btu_3", path: "http://img14.360buyimg.com/cms/jfs/t1270/84/1336802582/5853/51cb8111/55d19a7dNd8024992.png" },
+                { name: "backBg", path: "http://img13.360buyimg.com/cms/jfs/t1756/272/446883046/10043/a13cc335/55d2d768N72a370bc.png" },
+                { name: "shotter_1", path: "http://img14.360buyimg.com/cms/jfs/t1834/272/407285632/13780/fa43e163/55d157faN7bc484ad.png" },
+                { name: "shotter_2", path: "http://img14.360buyimg.com/cms/jfs/t1810/208/371396113/16950/5f3e20d7/55d15770N8aa74a4e.png" },
+                { name: "heart", path: "http://img13.360buyimg.com/cms/jfs/t1807/138/355206890/60583/3545c487/55d15770N9445a5f5.png" },
+                { name: "heart2", path: "http://img14.360buyimg.com/cms/jfs/t1753/238/445688957/3263/1cc8ce61/55d15770N311914e6.png" },
+                { name: "hdmb", path: "http://img12.360buyimg.com/cms/jfs/t1405/215/391526019/303686/9f930658/55d32e3fN84612f6a.jpg" },
+                { name: "heart3", path: "http://img13.360buyimg.com/cms/jfs/t1828/161/374257907/3209/55bf0509/55d1580eN8878dfe2.png" },
+                { name: "cloud", path: "http://img11.360buyimg.com/cms/jfs/t1762/155/395887903/5050/5dae8379/55d157faNe7075c18.png" },
+                { name: "arrow", path: "http://img12.360buyimg.com/cms/jfs/t1756/164/382459419/17174/598aa749/55d15770N8a88f393.png" },
+                { name: "bg_2", path: "http://img13.360buyimg.com/cms/jfs/t1681/130/896612540/54304/9a3765ae/55d4224bNb4d0c5e3.png" },
+                { name: "layerBg", path: "http://img11.360buyimg.com/cms/jfs/t1735/188/547580560/32139/3caefcff/55d355a1N90688a61.png" },
+                { name: "arrow_in", path: "http://img11.360buyimg.com/cms/jfs/t1816/131/355665033/11432/52304884/55d15770N7c898df6.png" });
+
+            function main() {
+                LGlobal.stageScale = LStageScaleMode.EXACT_FIT;
+                LSystem.screen(LStage.FULL_SCREEN);
+                backLayer = new LSprite();
+                heartLayer = new LSprite();//心层
+                arrowLayer = new LSprite();//箭层
+                backLayer.graphics.drawRect(1, "#cccccc", [0, 0, LGlobal.width, LGlobal.height], true, "#000000");
+                //背景显示
+                addChild(backLayer);
+                loadingLayer = new LoadingSample1();
+                backLayer.addChild(loadingLayer);
+
+                LLoadManage.load(imgData, function (progress) {
+                    //document.getElementById("loadingBg_div").innerHTML = progress + "%";
+                    loadingLayer.setProgress(progress);
+                }, gameInit);
+            }
+            //读取完所有图片，进行游戏标题画面的初始化工作
+            function gameInit(result) {
+                //取得图片读取结果
+                imglist = result;
+                //document.getElementById("loadingBg").style.display = "none";
+                //移除进度条层//移除或者这样写 loadingLayer.remove();
+                backLayer.removeChild(loadingLayer);
+                //加入欢迎页
+                backLayer.addChild(new LBitmap(new LBitmapData(imglist["bg"])));
+                //加入冒泡的心心
+                startheartLayer = new LSprite();
+                backLayer.addChild(startheartLayer);
+                heartTimer2 = window.setInterval(function () {
+                    var startHeart = new Heart2();
+                    startheartLayer.addChild(startHeart);
+                }, 300);
+                var btu = new LSprite(); var textLayer = new LSprite(); var link = new LTextField();
+                link.text = "活动规则"; link.size = 32; link.color = "#ffffff";
+                btu.addChild(new LBitmap(new LBitmapData(imglist["btu"])));
+                btu.x = (LGlobal.width - btu.getWidth()) / 2;
+                link.x = (LGlobal.width - link.getWidth()) / 2;
+                btu.y = 730;
+                textLayer.addChild(link);
+                textLayer.y = 850;
+                btu.addEventListener(LMouseEvent.MOUSE_UP, function () {
+                    gameStart();
+                    //gamePause();
+                });
+                //加入活动规则
+                hdmb = new LSprite();
+                exp.hdmb_y, exp.hdmb_con = 0;
+                hdmb.addChild(new LBitmap(new LBitmapData(imglist["hdmb"])));
+                exp.isDrop = true;
+                var hdmb_height = hdmb.getHeight();
+                hdmb.addEventListener(LMouseEvent.MOUSE_DOWN, function (e) {
+                    isDrop = false;
+                    hdmb_y = e.selfY;
+                });
+                hdmb.addEventListener(LMouseEvent.MOUSE_MOVE, function (e) {
+                    isDrop = true;
+                    hdmb_con = e.selfY - hdmb_y;
+                    hdmb.y += hdmb_con;
+                    if (hdmb.y >= 0) { hdmb.y = 0; }
+                    if (hdmb.y <= LGlobal.height - hdmb_height) { hdmb.y = LGlobal.height - hdmb_height }
+                });
+                hdmb.x = LGlobal.width;
+                hdmb.addEventListener(LMouseEvent.MOUSE_UP, function () {
+                    if (!isDrop) hdmb.x = LGlobal.width;//backLayer.removeChild(hdmb);
+                });
+                
+                textLayer.addEventListener(LMouseEvent.MOUSE_UP, function () {
+                    //打开活动规则模板
+                    //document.getElementById("span_hdmb").style.display = "block";
+                    hdmb.x = 0;
+                    //backLayer.addChild(hdmb);
+                });
+                backLayer.addChild(btu);
+                
+                backLayer.addChild(textLayer);
+                backLayer.addChild(hdmb);
+                backLayer.addEventListener(LEvent.ENTER_FRAME, function () {
+                    for (var item in startheartLayer.childList) {
+                        if (startheartLayer.childList.hasOwnProperty(item)) {
+                            startheartLayer.childList[item].onframe();
+                        }
+                    }
+                });
+
+            }
+            //游戏开始
+            var gameStart = function () {
+                backLayer.die();
+                backLayer.removeAllChild();
+                heartLayer = new LSprite();//心层
+                arrowLayer = new LSprite();//箭层
+                //绘制背景
+                backLayer.addChild(new LBitmap(new LBitmapData(imglist["backBg"])));
+                var f_heart = new Heart();
+                f_heart.x = 100;
+                heartLayer.addChild(f_heart);
+                heartTimer = window.setInterval(function () {
+                    //加入心
+                    if (getRedom(1, 2) <= 2) {
+                        heart = new Heart();
+                        heartLayer.addChild(heart);
+                    }
+                }, 1000);
+                //加入弓
+                shooter = new Shooter();
+                backLayer.addChild(shooter);
+                //加入箭
+                arrow = new Arrow();
+                //backLayer.addChild(arrow);
+                backLayer.addChild(heartLayer);
+                backLayer.addChild(arrowLayer);
+                arrowLayer.addChild(arrow);
+                backLayer.addEventListener(LEvent.ENTER_FRAME, onframe);
+                backLayer.addEventListener(LMouseEvent.MOUSE_DOWN, function () {
+                    if (arrow.state == 1) arrow.state = 2;
+                    shooter.state = 2;
+                });
+                backLayer.addEventListener(LMouseEvent.MOUSE_UP, function () {
+                    if (arrow.state == 2) arrow.state = 3;
+                    shooter.state = 1;
+                });
+
+            }
+            //回到主界面
+            var backMainPage = function () {
+
+            }
+            //游戏暂停,显示结果
+            var gamePause = function () {
+                isStop = isStop ? false : true;
+                backLayer.die();
+                backLayer.removeAllChild();
+                backLayer.addChild(new LBitmap(new LBitmapData(imglist["bg_2"])));
+                var resultText = new LTextField();
+                resultText.text = pingyu = levelName[getRedom(0, 7)];
+                resultText.color = "#f96884";
+                resultText.size = 42;
+                resultText.x = (LGlobal.width - resultText.getWidth()) / 2 + 20;
+                resultText.y = 265;
+                backLayer.addChild(resultText);
+                var btu_2 = new LSprite();
+                btu_2.addChild(new LBitmap(new LBitmapData(imglist["btu_2"])));
+                btu_2.x = 35; btu_2.y = 800;
+                var btu_3 = new LSprite();
+                btu_3.addChild(new LBitmap(new LBitmapData(imglist["btu_3"])));
+                btu_3.x = 325; btu_3.y = 800;
+                //分享描述
+                window.dataForWeixin.desc = '我的桃花运是“' + resultText.text + '”，还被送了五块钱！';
+                window.sharecode = resultText.text;
+
+                //var layerBg = document.querySelector('.layerBg'), shareLayer = document.querySelector('.shareLayer');
+                //shareLayer.addEventListener("click", function (e) {
+                //    layerBg.style.display = "none";
+                //    shareLayer.style.display = 'none';
+                //});
+                btu_2.addEventListener(LMouseEvent.MOUSE_UP, function () {
+                    
+                    //分享领卷
+                    if (Util.inApp() && !Util.inWx) {
+                        App.share();
+                    } else if (Util.inWx) {
+                        //layerBg.style.display = "block";
+                        //shareLayer.style.display = 'block';
+                        var _layerBg = new LSprite();
+                        _layerBg.addChild(new LBitmap(new LBitmapData(imglist["layerBg"])));
+                        _layerBg.addEventListener(LMouseEvent.MOUSE_UP, function () {
+                            backLayer.removeChild(_layerBg);
+                            delete _layerBg;
+                        });
+                        backLayer.addChild(_layerBg);
+                    } else {
+                        window.location.href = 'http://m.jdpay.com/basic/index.html';
+                    }
+                    
+                });
+                btu_3.addEventListener(LMouseEvent.MOUSE_UP, function () {
+                    //重新来一次
+                    isStop = false;
+                    window.clearInterval(heartTimer);
+                    window.clearInterval(heartTimer2);
+                    //main();
+                    gameStart();
+                });
+                backLayer.addChild(btu_2);
+                backLayer.addChild(btu_3);
+            }
+            //游戏结束
+            var gameOver = function (type, food) {
+
+            }
+            function onframe() {
+                if (!isStop) {
+                    shooter.run();
+                    for (var item in arrowLayer.childList) {
+                        if (arrowLayer.childList.hasOwnProperty(item)) {
+                            var _arrow = arrowLayer.childList[item];
+                        }
+                    }
+
+                    if (arrow.y <= 0 || arrow.x >= LGlobal.width) {
+                        arrow.remove();
+                        delete arrow;
+                        arrow = new Arrow();
+                        arrowLayer.addChild(arrow);
+                    } else {
+                        _arrow.run();
+                    }
+
+                    for (var item in heartLayer.childList) {
+                        if (heartLayer.childList.hasOwnProperty(item)) {
+                            heartLayer.childList[item].run();
+                        }
+                    }
+                    //for (var i=0; i < heartLayer.childList.length; i++) {
+                    //    console.log(heartLayer.getChildAt(i));
+                    //    heartLayer.getChildAt(i).run();
+                    //}
+                }
+            }
+            function Shooter() {
+                base(this, LSprite, []); var self = this; self.setView();
+            }
+            Shooter.prototype.state = 1;
+            Shooter.prototype.setView = function () {
+                var self = this;
+                self.addChild(new LBitmap(new LBitmapData(imglist["shotter_1"])));
+                self.y = 710;
+                self.x = (LGlobal.width - self.getWidth()) / 2;
+            }
+            Shooter.prototype.run = function () {
+                var self = this;
+                self.removeAllChild();
+                if (self.state == 1) {
+                    self.y = 710;
+                    self.addChild(new LBitmap(new LBitmapData(imglist["shotter_1"])));
+                } else {
+                    self.y = 730;
+                    self.addChild(new LBitmap(new LBitmapData(imglist["shotter_2"])));
+                }
+            }
+
+            function Arrow() {
+                base(this, LSprite, []); var self = this; self.setView();
+            }
+            Arrow.prototype.setView = function () {
+                var self = this;
+                self.addChild(new LBitmap(new LBitmapData(imglist["arrow"])));
+                self.y = 540;
+                self.x = (LGlobal.width - self.getWidth()) / 2;
+            }
+            Arrow.prototype.state = 1;//1静止、2预备、3飞行、4射中
+            Arrow.prototype.scaleSpeed = 0.97;
+            Arrow.prototype.run = function () {
+                var self = this;
+                switch (self.state) {
+                    case 1:
+                        self.y = self.y;
+                        break;
+                    case 2:
+                        self.y = 660;
+                        break;
+                    case 3:
+                        self.y = self.y * (0.92) - 1;
+                        self.scaleX = self.scaleX * self.scaleSpeed;
+                        self.scaleY = self.scaleY * self.scaleSpeed * 0.98;
+                        break;
+                    case 4:
+                        self.removeAllChild();
+                        self.addChild(new LBitmap(new LBitmapData(imglist["arrow_in"])));
+                        self.x = hitHeart.x + con_x; self.y = hitHeart.y + con_y;
+                        break;
+                }
+            }
+            function Heart() {
+                base(this, LSprite, []); var self = this; self.setView();
+            }
+            Heart.prototype.size = 0.7;
+            Heart.prototype.setView = function () {
+                var self = this;
+                //self.size = getRedom(3, 5) * 0.1;
+                var _cloud = new LSprite();
+                _cloud.addChild(new LBitmap(new LBitmapData(imglist["cloud"])));
+                self.addChild(_cloud);
+                var bitmap = new LBitmap(new LBitmapData(imglist["heart"]));
+                bitmap.rotate = getRedom(0, 30);
+                self.addChild(bitmap);
+                _cloud.y = self.getHeight() * 0.65;
+                //_cloud.x = self.getWidth() * getRedom(1, 5)/10;
+
+                var _readom = getRedom(5, 10) / 10;//0.5~1
+                self.y = 300 * getRedom(0, 10) / 10;
+                self.x = -self.getWidth();
+                self.scaleX = self.scaleX * self.size * _readom;
+                self.scaleY = self.scaleY * self.size * _readom;
+                self.speed = parseInt(self.speed * _readom);
+            }
+            Heart.prototype.speed = 10;
+            Heart.prototype.state = 1;//1飘动、2射中
+            //被射中
+            Heart.prototype.hitIn = function () {
+                var self = this;
+                hitHeart = self;
+                arrow.state = 4;
+                con_x = arrow.x - self.x;
+                con_y = ((arrow.y - self.y) <= self.getHeight() / 3 || ((self.y + self.getHeight()) - arrow.y) <= self.getHeight() / 3) ? self.getHeight() / 2 : (arrow.y - self.y);
+                arrow.removeAllChild();
+                arrow.addChild(new LBitmap(new LBitmapData(imglist["arrow_in"])));
+                arrow.x = hitHeart.x + con_x; arrow.y = hitHeart.y + con_y;
+                var _t = window.setInterval(function () {
+                    gamePause();
+                    window.clearInterval(_t);
+                }, 500);
+            }
+            Heart.prototype.run = function () {
+                var self = this;
+                for (var item in arrowLayer.childList) {
+                    if (arrowLayer.childList.hasOwnProperty(item)) {
+                        var _arrow = arrowLayer.childList[item];
+                        if (_arrow.state == 4) { break; }
+                        var SW = self.getWidth(); var PW = _arrow.getWidth();
+                        if (LGlobal.hitTestRect(self, _arrow)) {
+                            if (((_arrow.x - self.x) < SW / 2) && (((self.x + SW) - (_arrow.x + PW)) < SW / 2) && (_arrow.y - self.y <= 90) && (_arrow.y - self.y >= 0)) {
+                                //与篮子发生碰撞
+                                arrow = _arrow;
+                                self.hitIn();
+                            }
+                        }
+                    }
+                }
+                switch (self.state) {
+                    case 1:
+                        self.x += self.speed;
+                        break;
+                    case 2:
+                        break;
+                }
+                if (self.x >= LGlobal.width) {
+                    heartLayer.removeChild(self);
+                    self.remove();
+                }
+
+            }
+            function Heart2() {
+                base(this, LSprite, []); var self = this; self.setView();
+            }
+            Heart2.prototype.speed_x = 1;
+            Heart2.prototype.speed_y = 10;
+            Heart2.prototype.speed_alpha = 0.05;
+            Heart2.prototype.setView = function () {
+                var self = this;
+                self.addChild(new LBitmap(new LBitmapData(imglist["heart" + getRedom(2, 3)])));
+                self.x = (LGlobal.width - self.getWidth()) / 2;
+                self.y = LGlobal.height / 2;
+                self.speed_x = getRedom(-5, 5);
+                self.speed_y = getRedom(8, 12);
+                self.speed_alpha = getRedom(3, 5) * 0.01;
+                self.alpha = 1;
+            }
+            Heart2.prototype.onframe = function () {
+                var self = this;
+                self.x += self.speed_x;
+                self.y -= self.speed_y;
+                self.alpha -= self.speed_alpha;
+                if (self.x < 0 || self.x > LGlobal.width || self.y < 0 || self.alpha <= 0) {
+                    self.remove();
+                    delete self;
+                }
+            };
+            exp.getRedom = function (minNum, maxNum) {
+                switch (arguments.length) {
+                    case 1: return parseInt(Math.random() * minNum + 1);
+                    case 2: return parseInt(Math.random() * (maxNum - minNum + 1) + minNum);
+                    default: return 0;
+                }
+            }
+            var loadImages = function (url, callBack) {
+                var img = new Image(); //创建一个Image对象，实现图片的预下载
+                img.onload = function () { img.onload = null; callBack(img); }
+                img.src = url;
+            }
+            init(30, "canvas", 640, 960, function () {
+                main();
+            });
+        })(window);
+    });
+    
+</script>

@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <iframe src="HtmlPage2.html" name="iferm" id="iferm"></iframe>
+</body>
+    <script>
+        var iferm = document.getElementById("iferm");
+        iferm.onload = function () {
+            var links = iferm.contentDocument.getElementsByTagName("a");
+            iferm.contentWindow.open = function () { return false;}
+            //for (var i in links) {
+            //    links[i].onclick = function () {
+            //        var _self = this;
+
+            //    }
+            //}
+        };
+    </script>
+</html>

@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<!--<html>
+<head>
+    <title>ifream传值</title>
+    <script>
+        var tranVal = function () {
+            document.getElementById("frame1").style.display = "block";
+            var postForm = document.createElement("form");
+            postForm.method = "post";
+            postForm.action = "http://localhost:11592/Handler/getPostData.ashx";
+            postForm.target = "frame1";//用来将数据提交到frame1上
+
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "data";//这个是传值的名称，要记住
+            var strA = "1234567890";
+            //循环500000次后，保证字符串的大小大于2M
+            for (var i = 0; i < 500000; i++) strA += "1234567890";
+            input.value = strA;
+            postForm.appendChild(input);
+            document.body.appendChild(postForm);
+            postForm.submit();
+            //用完之后，不要忘记删掉
+            postForm.removeChild(input);
+            document.body.removeChild(postForm);
+        }
+    </script>
+</head>
+<body>
+    <iframe id="frame1" name="frame1" src="" style="display:none"></iframe>
+    <button onclick="tranVal()">
+        传递值
+    </button>
+</body>
+
+</html>-->
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title> </title>
+    <script src="script/jquery-1.8.3.js"></script>
+    <script src="http://think2011.net/localResizeIMG/dist/lrz.bundle.js?v=a1a6749"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.fn.uplodingForPost = function (url, key, option) {
+                var fileBtu = $(this)[0];
+                var _option = $.extend({
+                    imgPreviewId: "",
+                    onProgress: function (statu, text,imgData) { }
+                }, option || {});
+                window.addEventListener("DOMContentLoaded", function () {
+                    fileBtu.addEventListener('change', ProcessFile, false);
+                }, false);
+                ProcessFile = function (e) {
+                    var file = fileBtu.files[0];
+                    if (file) {
+                        _option.onProgress.call(fileBtu, 2, "加载图片中", "");
+                        lrz(file, { width: 300 }).then(function (str) {
+                            //console.log(str.base64);
+                            _option.onProgress.call(fileBtu, 1, "上传图片中", str.base64);
+                            if (_option.imgPreviewId) { document.getElementById(_option.imgPreviewId).src = str.base64; }
+                            postToUrl(url, [{ key: key, value: str.base64 }], function () { });
+                        });
+
+                        //_option.onProgress.call(fileBtu, 2, "加载图片中");
+                        //var reader = new FileReader();
+                        //reader.onload = function (event) {
+                        //    _option.onProgress.call(fileBtu, 1, "上传图片中");
+                        //    var base64Data = event.target.result;
+                        //    if (_option.imgPreviewId) { document.getElementById(_option.imgPreviewId).src = base64Data; }
+                        //    postToUrl(url, [{ key: key, value: base64Data }], function () { });
+                        //};
+                    }
+                    var postToUrl = function (url, postParam, progress) {
+                        var _progress = progress || function (status) { }
+                        var frame = document.createElement("iframe");
+                        frame.id = "frameForPost"; frame.name = "frameForPost";
+                        document.getElementsByTagName("body").item(0).appendChild(frame);
+                        frame.onload = function () {
+                            //console.log(document.readyState);
+                            _option.onProgress.call(fileBtu, 0, "上传完成");
+                            //document.body.removeChild(frame);
+                            _progress();
+                        }
+                        console.log(document.readyState);
+                        var postForm = document.createElement("form");
+                        postForm.method = "post";
+                        postForm.action = url;
+                        postForm.target = "frameForPost";
+                        for (var i = 0; i < postParam.length; i++) {
+                            var _item = postParam[i];
+                            var input = document.createElement("input");
+                            input.type = "hidden";
+                            input.name = _item.key;
+                            input.value = _item.value;
+                            postForm.appendChild(input);
+                        }
+                        document.body.appendChild(postForm);
+                        postForm.submit();
+                        //postForm.removeChild(input);
+                        //document.body.removeChild(postForm);
+                    }
+                    //reader.readAsDataURL(file);
+                }
+                _option.onProgress.call(fileBtu, 3, "组件已就绪", "");
+                //window.uplodingError = function () {
+                //    alert("error");
+                //}
+            }
+            $("#input_file").uplodingForPost("http://10.9.45.161/Handler/getPostData.ashx", "data", {
+                imgPreviewId: "img_demo", onProgress: function (state, text, base64) {
+                    //state=0表达上传已经完成
+                    document.getElementById("result").innerHTML = text;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    请选取一个图像文件: <input type="file" id="input_file" name="file" />
+    <div id="result">预备。。。</div>
+    <img id="img_demo" src="" />
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="avatar">
+        <img id="avatarImg" />
+        <input id="avatarFile" accept="image/*" name="avatarFile" type="file" value="" />
+    </div>
+</body>
+</html>
+<script src="script/jquery-1.8.3.js"></script>
+<script>
+    $(function () {
+        var inputFile = document.getElementById('avatarFile'),
+       uploadInfo = {},
+       jcropContainer;
+
+        // 监听文件改变
+        inputFile.addEventListener('click', function () { this.value = null; }, false);
+        inputFile.addEventListener('change', readData, false);
+
+        // 文件改变响应
+        function readData(evt) {
+            alert(1);
+            evt.stopPropagation();
+            evt.preventDefault();
+
+            uploadInfo = {};
+            var file = evt.dataTransfer !== undefined ? evt.dataTransfer.files[0] : evt.target.files[0];
+            uploadInfo.type = file.type;
+            uploadInfo.name = file.name;
+            alert(2);
+            if (!file.type.match(/image.*/)) { return; }
+            alert(3);
+            var reader = new FileReader(),
+           oImg = $("#avatarImg")[0];
+            alert(reader);
+            reader.onload = (function () {
+                alert("success");
+                return function (e) {
+                    uploadInfo.imageBase64 = e.target.result;
+                    oImg.src = uploadInfo.imageBase64;
+                    alert(uploadInfo.imageBase64);
+                    //var imageObj = new Image();
+                    //imageObj.src = uploadInfo.imageBase64;
+                    //imageObj.onload = function () {
+                    //    $.GSActionSheet.popupNoneAnimation('jcropActionSheet');
+                    //    $('#jrcopAvatarWrap').html(['<img src="', uploadInfo.imageBase64, '"/>'].join(''));
+                    //    window.scrollTo(0, 1);
+                    //    $('#jrcopAvatarWrap img').Jcrop({
+                    //        bgColor: 'black',
+                    //        bgOpacity: .6,
+                    //        setSelect: [0, 0, 150, 150],
+                    //        aspectRatio: 1,
+                    //        onSelect: imgSelect
+                    //    });
+                    //    // 获取图片信息及压缩比例
+                    //    uploadInfo.target_width = $('.jcrop-holder').width();
+                    //    uploadInfo.target_height = $('.jcrop-holder').height();
+                    //}
+
+                }
+            })(file);
+
+            reader.readAsDataURL(file);
+
+            // 图片裁剪回调
+            //function imgSelect(container) {
+            //    jcropContainer = container;
+            //}
+        }
+
+        // 图片裁剪操作选择按钮
+        $('#cropCancel').on('click', function () {
+            $.GSActionSheet.closeNoneAnimation('jcropActionSheet');
+        });
+        $('#cropNow').on('click', function () {
+            $.GSActionSheet.closeNoneAnimation('jcropActionSheet');
+            cropAndUploadImage();
+        });
+
+
+        /*
+       * ajax进行图片裁切，并上传到服务器
+       * params{
+       * imageBase64: 要上传的图片base64码
+       * jcropContainer: 裁切容器的位置信息{
+       * h: 高度
+       * w: 宽度
+       * x: 左上角X的坐标值
+       * y: 左上角Y的坐标值
+       * x2: 右下角X的坐标值
+       * y2: 右下角Y的坐标值
+       * }
+       *
+       * */
+        function cropAndUploadImage() {
+            var params = jcropContainer;
+            $.extend(true, params, uploadInfo);
+            console.log(params);
+            // params.imageBase64 = uploadInfo.imageBase64;
+            // params.type = uploadInfo.type;
+            // params.name = uploadInfo.name;
+            // params.scale = uploadInfo.scale;
+            // params.source_width = uploadInfo.sourceWidth;
+            // params.source_height = uploadInfo.sourceHeight;
+            var request = $.ajax({
+                url: '/user/upload',
+                type: "post",
+                data: params,
+                dataType: 'json'
+            });
+            request.success(function (data) {
+                if (data.status == 'success') {
+                    console.log(data);
+                    $('input[name="avatar"]').val(data.result['image1'][0]);
+                    //头像上传成功，提交用户信息修改
+                    $('#avatarImg')[0].src = data.result['image1'][1];
+                    infoChange({ 'avatar': data.result['image1'][0] });
+                }
+                if (data.status == 'error') {
+                    alert(data.message);
+                }
+            })
+        }
+
+    })
+</script>-->

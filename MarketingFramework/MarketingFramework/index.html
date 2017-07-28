@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>营销活动前端视觉配置系统</title>
+    <meta charset="utf-8" />
+    
+</head>
+<body style="display:none">
+    <div style="position:relative;overflow:initial" class="tc m-5">营销活动前端视觉配置系统（版本：<i id="headerVersionCode"></i>）<b class="fr" id="headerRunatMod">单页模式</b>
+    </div>
+    <div class="outWrap clear">
+        <section class="leftBar">
+            <nav id="projectList">
+                <tp>projectList({array:[]})</tp>
+            </nav>
+        </section>
+        <section class="subLeftBar" id="viewListWrap">
+            <nav>
+                <tp>viewsList({array:[]})</tp>
+            </nav>
+        </section>
+        <section class="editWrap">
+            <div class="showModelList1" id="showModelList1">
+                <nav>
+                    <tp>modsList({array:[]})</tp>
+                </nav>
+            </div>
+            <div class="phoneViewWrap">
+                <div class="phoneTitle">空白页</div>
+                <!--显示页-->
+                <div class="phoneScreen" id="phoneScreen">
+                    <div id="phoneView" class="phoneView">
+
+                    </div>
+                </div>
+                
+                <div class="operationWrap" id="operationWrap"save>
+                    <button role="checkCode">代码</button>
+                    <!--<button role="save">保存</button>-->
+                    <button role="preview">预览</button>
+                    <button role="release">发布</button>
+                    <button role="reset">重置</button>
+                </div>
+            </div>
+            <div class="showModelList" id="showModelList">
+                <nav>
+                    <tp>activeModsList({array:[]})</tp>
+                </nav>
+            </div>
+            <div class="modelEditView" id="modelEditView" style="visibility:hidden">
+                <i title="控件动态guid" id="Modelguid"></i>
+                <form action="#">
+                    <b id="ModelCodeTrg" title="为此组件注入脚本"></b>
+                    <fieldset>
+                        <legend>参数配置</legend>
+                        <div style="margin:7px;display:none" id="ModelCodeEdit">
+                            <textarea class="w100" rows="10" placeholder="请在此注入脚本"></textarea>
+                        </div>
+                        <a class="ml-10" href="javascript:;" id="trg_more">更多配置▼</a>
+                    </fieldset>
+                    <div class="modelEditBtusWrap">
+                        <button type="submit" name="submit">应用配置</button>
+                        <button type="reset">重置</button>
+                    </div> 
+                </form>
+            </div>
+        </section>
+    </div>
+    <div class="outWrap" id="resultCodeWrap" style="display:none">
+        <textarea id="resultCode" style="width:100%;min-height:80rem;border:none;font-size:14px;font-family:'Microsoft YaHei'"></textarea>
+        <!--<div contentEditable="true" id="resultCode" style="width:100%;height:auto;border:none;font-size:14px;font-family:'Microsoft YaHei'"></div>-->
+    </div>
+    <div id="pageLoading" class="pageLoading">
+        <div>0%</div>
+    </div>
+
+    <div class="dailogWrap" id="dailogWrap">
+        <div>
+            <h3 class="title"></h3>
+            <span class="close">X</span>
+            <div class="dailogContent"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    Global_data = {
+        queryAddress: "",
+        RootPath: "/MarketingFramework/",
+        webSiteCache: false,
+        versionCode: "1.4.1.060516_beta",
+        runatMod: window.location.hash.substring(1) || "easyPage",
+        screenWidth: 320,
+        screenHeight:568
+        //"multifunction"//"singlePage"//"easyPage"
+    };
+</script>
+<script src="Frame/require.js" data-main="Frame/main" defer async="true"></script>
+<!--<script>
+    Global_data = {
+        queryAddress: "http://172.25.47.49",
+        RootPath: "/MarketingFramework/",
+        webSiteCache: true,
+        versionCode: "1.4.1.060528_beta",
+        runatMod: window.location.hash.substring(1) || "easyPage",
+        screenWidth: 320,
+        screenHeight:568
+        //"multifunction"//"singlePage"//"easyPage"
+    };
+</script>
+<script src="http://172.25.47.49/MarketingFramework/Frame/require.js" data-main="http://172.25.47.49/MarketingFramework/Frame/main" defer async="true"></script>-->

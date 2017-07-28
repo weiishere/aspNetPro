@@ -1,0 +1,82 @@
+﻿
+
+
+<div id="master_template" class="dhidden">
+    <div id="projectList" class="projectList">
+        <ul>
+            [%
+            for(var i in array){%]
+                [%
+                    if(array[i].disable){
+                        %]<li id="[%=array[i].index %]" class="disable"><div><h2>[%=array[i].name %]</h2></div></li>[%
+                    }else{
+                        %]<li id="[%=array[i].index %]"><div><h2>[%=array[i].name %]</h2></div></li>[%
+                    }
+                %]
+            [%}%]
+        </ul>
+    </div>
+    <div id="viewsList" class="viewsList">
+        <ul>
+            [%
+            _.map(array,function(item){
+            %]
+            [%
+            if(item.disable){
+                %]<li id="[%=item.index %]" class="disable"><div><h2>[%=item.name %]</h2></div></li>[%
+                }else{
+                %]
+                <li id="[%=item.index %]"><div><h2>[%=item.name %]</h2></div>[%=(item.isNew==true?"<span>x</span>":"") %]</li>[%
+            }
+            %]
+            [%
+            });
+            %]
+            <li role="add">
+                <div><h2><img style="width:20px" src="http://172.25.47.49/MarketingFramework/Style/images/add.png" /></h2></div>
+            </li>
+        </ul>
+    </div>
+    <div id="modsList" class="modsList">
+        <ul>
+            [%
+            _.map(array,function(item){
+            if(item.index!="m0"){
+                if(item.disable){
+            %]<li id="[%=item.index %]" draggable="false" class="disable"><div><h2>[%=item.name %]</h2></div></li>[%
+            }else{
+            %]
+            <li id="[%=item.index %]" draggable="true"><div><h2>[%=item.name %]</h2></div></li>[%
+                }
+            }
+            });
+            %]
+        </ul>
+    </div>
+    <div id="activeModsList">
+        <ul>
+            
+            [%
+            _.map(array,function(item){
+            %]
+                
+                
+                [%
+                if(item.model.index!="m0"){
+
+                %]<li id="[%=item.guid %]" m="[%=item.model.index %]"><div><h2>[%=item.model.name %]<br /></h2></div><span>x</span></li>[%
+                }else{
+                %]<li id="[%=item.guid %]" m="[%=item.model.index %]"><div><h2>[%=item.model.name %]<br /></h2></div></li>[%
+                }
+                %]
+                
+            [%
+            });
+            %]
+            <!--<li role="mainScreen"><div><h2>主屏</h2></div></li>-->
+            <li role="add" title="添加控件到主屏">
+                <div><h2><img style="width:20px" src="http://172.25.47.49/MarketingFramework/Style/images/add.png"></h2></div>
+            </li>
+        </ul>
+    </div>
+</div>

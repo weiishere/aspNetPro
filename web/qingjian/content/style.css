@@ -1,0 +1,116 @@
+﻿html { }
+body,
+div,
+p { margin: 0; padding: 0; }
+ul { list-style: none; }
+body { width: 100%; *cursor: default; overflow: hidden; font: 16px/1.5 "Microsoft YaHei",Helvetica,STHeiti STXihei,Microsoft JhengHei,Arial; }
+#pageContain { overflow: hidden; }
+.page { display: none; width: 100%; height: 100%; overflow: hidden; position: absolute; top: 0; left: 0; }
+.contain { width: 100%; height: 100%; display: none; position: relative; z-index: 0; }
+.current .contain, .slide .contain { display: block; }
+.current { display: block; z-index: 1; }
+.slide { display: block; z-index: 2; }
+.swipe { display: block; z-index: 3; transition-duration: 0ms !important; -webkit-transition-duration: 0ms !important; }
+
+#navBar { z-index: 3; position: absolute; top: 10%; right: 3%; }
+    #navBar .active { background: #666; color: #fff; }
+    #navBar li { cursor: pointer; margin-bottom: 1rem; transition: all .7s ease; border-radius: 50%; line-height: 1rem; text-align: center; width: 1rem; height: 1rem; font-size: 0.6rem; }
+
+.page1 { background: #bfdaca; }
+.page2 { background: #ffffff; }
+.page3 { background: #feb27c; }
+.page4 { background: #bfdaca url(img/16.png) center no-repeat; background-size: contain; }
+.page5 { background: url(img/17.png); background-size: 100% 100%; }
+
+
+
+.youshang { width: 50%; height: 30%; background: url(img/2.png) no-repeat; background-size: 100% 100%; position: absolute; right: 0; top: 0; -webkit-transform: translate(15rem, 0); -webkit-transition: all 1s ease; }
+.step1 .youshang { -webkit-transform: translate(0, 0); }
+.step1 .wedding {}
+.zuoxia { width: 50%; height: 30%; background: url(img/1.png) no-repeat; background-size: 100% 100%; position: absolute; left: 0; bottom: 0; -webkit-transform: translate(-15rem, 0); -webkit-transition: all 1s ease; }
+.step1 .zuoxia { -webkit-transform: translate(0, 0); }
+
+.center { width: 20rem; height: 20rem; background: url(img/3.png); background-size: 100% 100%; position: absolute; left: 0; bottom: 0; right: 0; top: 0; margin: auto; opacity: 0; -webkit-transform: scale(3, 3) rotate(-45deg); }
+.step2 .center { opacity: 1; -webkit-transform: scale(1, 1) rotate(0deg);  -webkit-transition: all 1s ease;}
+.name { width: 10rem; height: 7rem; background: url(img/4.png); background-size: 100% 100%; position: absolute; left: 0; bottom: 0; right: 0; top: 0; margin: auto;  opacity: 0; -webkit-transform: scale(1, 3); }
+.step2 .name { opacity: 1; -webkit-transform: scale(1, 1);-webkit-transition: all 1.5s ease; }    
+
+.wedding { width: 13rem; height: 4rem; background: url(img/5.png); background-size: 100% 100%; position: absolute; left: 1rem; top: 2rem;  opacity: 0; -webkit-transform: translate(-15rem, 0); }
+.step2 .wedding { opacity: 1; -webkit-transform: scale(1, 1);-webkit-transition: all 2s ease; }
+.step2 .youshang, .step2 .zuoxia { -webkit-transform: translate(0, 0); opacity: 1; }
+
+/*.youshang { width: 50%; height: 30%; background: url(img/2.png); background-size: 100% 100%; position: absolute; right: 0; top: 0; -webkit-transform: translate(15rem, 0); -webkit-transition: all 1s ease; }
+.zuoxia { width: 50%; height: 30%; background: url(img/1.png); background-size: 100% 100%; position: absolute; left: 0; bottom: 0; -webkit-transform: translate(-15rem, 0); -webkit-transition: all 1s ease; }
+.center { width: 20rem; height: 20rem; background: url(img/3.png); background-size: 100% 100%; position: absolute; left: 0; bottom: 0; right: 0; top: 0; margin: auto; -webkit-transition: all 1s ease; opacity: 0; -webkit-transform: scale(3, 3) rotate(-45deg); }
+.name { width: 10rem; height: 7rem; background: url(img/4.png); background-size: 100% 100%; position: absolute; left: 0; bottom: 0; right: 0; top: 0; margin: auto; -webkit-transition: all 1.5s ease; opacity: 0; -webkit-transform: scale(1, 3); }
+.current .youshang ,.current .zuoxia ,.current .center ,.current .name { -webkit-transform: translate(0, 0); opacity: 1; -webkit-transform: scale(1, 1) rotate(0deg); }
+
+.wedding { width: 13rem; height: 4rem; background: url(img/5.png); background-size: 100% 100%; position: absolute; left: 1rem; top: 2rem; -webkit-transition: all 2s ease; opacity: 0; -webkit-transform: translate(-15rem, 0); }
+.step2 .wedding { opacity: 1; -webkit-transform: scale(1, 1); }
+.step2 .youshang, .step2 .zuoxia { -webkit-transform: translate(0, 0); opacity: 1; }*/
+
+
+.zuoshang_1 { width: 50%; height: 30%; background: url(img/8.png); background-size: 100% 100%; position: absolute; left: 0; top: 0; -webkit-transform: translate(5rem, 5rem); opacity: 0; -webkit-transition: all 1s ease; }
+.center_1 { width: 10rem; height: 22rem; background: url(img/10.png) no-repeat; background-size: 100%; position: absolute; left: 0; bottom: 0; right: 0; top: 0; margin: auto; -webkit-transition: all 1s ease; opacity: 0; -webkit-transform: translate(0, 10rem); text-align: center; }
+    .center_1 h3 { margin-top: -1.5rem; color: #d43636; font-size: 1rem; font-weight: normal; -webkit-transform: scale(3, 1); -webkit-transition: all 2s ease; opacity: 0; }
+    .center_1 h4 { position: absolute; bottom: -5rem; width: 100%; text-align: center; color: #d43636; font-size: 1rem; font-weight: normal; -webkit-transform: scale(3, 1); -webkit-transition: all 2s ease; opacity: 0; }
+    .center_1 img { width: 200%; margin-top: 100%; margin-left: -50%; }
+.youxia_1 { width: 50%; height: 30%; background: url(img/9.png); background-size: 100% 100%; position: absolute; right: 0; bottom: 0; -webkit-transform: translate(-5rem, -5rem); opacity: 0; -webkit-transition: all 1s ease; }
+.current .youxia_1, .current .zuoshang_1, .current .center_1 { -webkit-transform: translate(0, 0); opacity: 1; }
+.current h3, .current h4 { -webkit-transform: scale(1, 1); opacity: 1; }
+
+.page3 span { font-size: 0.7rem; display: inline-block; padding-bottom: 1rem; color: #333; }
+.page3 h2 { color: #d43636; }
+.page3_1 { width: 45%; height: 80%; background: #d17a6e; background-size: 100% 100%; position: absolute; left: 5%; top: 20%; border-radius: 0.5rem 0 0 0; -webkit-transition: all 0.5s ease; opacity: 0; -webkit-transform: translate(0,100%); text-align: center; }
+.page3_2 { width: 45%; height: 80%; background: #d17a6e; background-size: 100% 100%; position: absolute; right: 5%; bottom: 20%; border-radius: 0 0 0.5rem 0; -webkit-transition: all 0.5s ease; opacity: 0; -webkit-transform: translate(0,-100%); text-align: center; }
+.page3_1 > div { width: 90%; position: absolute; top: 1rem; left: 5%; padding-top: 5%; border: dotted 1px #ffffff; border-radius: 0.5rem; opacity: 0; -webkit-transform: scale(0.7, 0.7); -webkit-transition: all 2s ease; }
+.page3_2 > div { width: 90%; position: absolute; bottom: 1rem; right: 5%; padding-top: 5%; border: dotted 1px #ffffff; border-radius: 0.5rem; opacity: 0; -webkit-transform: scale(0.7, 0.7); -webkit-transition: all 2s ease; }
+.page3_1 img, .page3_2 img { width: 90%; opacity: 0; }
+
+.current .page3_1, .current .page3_2 { opacity: 1; -webkit-transform: translate(0,0); opacity: 1; }
+    .current .page3_1 div, .current .page3_2 div { -webkit-transform: scale(1, 1); opacity: 1; }
+.current img { opacity: 1; }
+
+
+.sayTop { position: absolute; top: 0; left: 0; width: 100%; -webkit-transform: translate(0, 5rem); background: url(img/6.png); background-size: 100% 100%; height: 8rem; opacity: 0; -webkit-transition: all 1s ease; }
+.say { width: 100%; height: 16rem; background-size: 100% 100%; position: absolute; left: 0; bottom: 0; right: 0; top: 0; margin: auto; -webkit-transition: all 1s ease; opacity: 0; -webkit-transform: scale(1, 1.3); text-align: center; color: #d43636; font-size: 1.2rem; }
+    .say span { display: inline-block; width: 100%; -webkit-transform: scale(1, 0.2); }
+.sayBottom { position: absolute; bottom: 0; left: 0; width: 100%; -webkit-transform: translate(0, -5rem); background: url(img/7.png); background-size: 100% 100%; height: 7rem; opacity: 0; -webkit-transition: all 1s ease; }
+
+.current .sayTop, .current .sayBottom, .current .say { -webkit-transform: translate(0, 0); opacity: 1; }
+    .current .say span { -webkit-transition: all 1s ease; -webkit-transform: scale(1, 1); }
+
+.page5_bottom { position: absolute; bottom: 0; left: 0; right: 0; width: 97%; margin: auto; -webkit-transform: translate(0, 5rem) scale(3, 1); background: url(img/18.png) bottom no-repeat; background-size: 100% 100%; height: 10rem; opacity: 0; -webkit-transition: all 1s ease; font-size: 0.5rem; color: #666; }
+    .page5_bottom span { position: absolute; bottom: 0.5rem; left: 0; width: 100%; }
+.page5 .baidu, .page5 .gaode { font-size: 0.6rem; color: #000; text-align: center; }
+.page5 img { width: 100%; height: 100%; border: solid 1px #ccc; opacity: 0.8; }
+.page5 .baidu { position: absolute; top: 0; bottom: 0; height: 10rem; margin: auto; left: 0; width: 50%; -webkit-transform: translate(200%,0); border-left: solid 1px #ccc; }
+.page5 .gaode { position: absolute; top: 0; bottom: 0; height: 10rem; margin: auto; right: 0; width: 50%; -webkit-transform: translate(-200%,0); }
+
+.page5_content { position: absolute; top: 0; left: 0; width: 100%; -webkit-transform: scale(0, 0); text-align: center; color: #f00; background-size: 100% 100%; height: 8rem; opacity: 0; -webkit-transition: all 1s ease; }
+
+.current .page5_content { -webkit-transform: scale(1, 1); opacity: 1; }
+.current .page5_bottom, .current .baidu, .current .gaode { -webkit-transition: all 1s ease; -webkit-transform: scale(1, 1); opacity: 1; }
+
+/*.xin { position: fixed; width: 2rem; height: 5rem; background: url(img/xin.png); background-size: 100% 100%; z-index: 10002; bottom: 0; left: 0;-webkit-transition: all 8s ease; }
+.xin1 {width: 3rem; height: 8rem; -webkit-transform: translate(25rem,-50rem)}*/
+
+.buttonList { position: fixed; top: 0; left: 0; width: 100%; height: 2rem; z-index: 1000; }
+    .buttonList button { border: solid 1px #eee; border-radius: 0.5rem; margin: 0 0rem; height: 1.5rem; background: transparent; color: #eee; line-height: 1.2rem; }
+        .buttonList button:active { background:#fff;color:#000 }
+.up { width: 60px; height: 23px; position: fixed; z-index: 1000; left: 0; right: 0; margin: auto; bottom: 1rem; -webkit-animation: upup 0.5s infinite linear; }
+
+@-webkit-keyframes upup {
+    0% { -webkit-transform: translate(0,0.3rem); }
+    25% { -webkit-transform: translate(0,0); }
+    50% { -webkit-transform: translate(0,-0.3rem); }
+    75% { -webkit-transform: translate(0,0); }
+    100% { -webkit-transform: translate(0,0.3rem); }
+}
+
+/*.loading { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,1); z-index: 100000;color:#eee }
+    .loading p { width:100%;text-align:center;margin-top:50%}    
+.loading div { width: 80%; height: 1rem; left: 0; right: 0; top: 0; position: absolute; bottom: 0; margin: auto; border: solid 1px #fff; background-size: 100% 100%; text-align: center; line-height: 1rem; overflow: hidden; }
+    .loading s { position:absolute;border:solid 0.5rem #000;border-left:solid 1rem #fff;width:0;height:0;left:0;right:0;margin:auto;margin-top:1rem;} 
+       .loading div i { position: absolute; color: #ccc; width: 100%; height: 1rem; text-align: center; z-index: 100001; left: 0; }
+        .loading div span { width: 100%; position: absolute; height: 100%; background: #fff; left: -100%; }*/

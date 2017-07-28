@@ -1,0 +1,308 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>JD Finance</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <style>
+        html { }
+        body,
+        div,
+        p { margin: 0; padding: 0; }
+        ul { list-style: none; }
+        body { width: 100%; *cursor: default; overflow: hidden; font: 16px/1.5 "Microsoft YaHei",Helvetica,STHeiti STXihei,Microsoft JhengHei,Arial; }
+        #pageContain { overflow: hidden; }
+        .page { display: none; width: 100%; height: 100%; overflow: hidden; position: absolute; top: 0; left: 0; }
+        .contain { width: 100%; height: 100%; display: none; position: relative; z-index: 0; }
+        .current .contain, .slide .contain { display: block; }
+        .current { display: block; z-index: 1; }
+        .slide { display: block; z-index: 2; }
+        .swipe { display: block; z-index: 3; transition-duration: 0ms !important; -webkit-transition-duration: 0ms !important; }
+
+        .loading { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,1); z-index: 100000; color: #eee; }
+            .loading p { width: 100%; text-align: center; height: 4rem; left: 0; right: 0; top: -30%; position: absolute; bottom: 0; margin: auto; }
+            .loading div { width: 80%; height: 1rem; left: 0; right: 0; top: 0; position: absolute; bottom: 0; margin: auto; background-size: 100% 100%; text-align: center; line-height: 1rem; overflow: hidden; }
+            .loading s { position: absolute; border: solid 0.5rem #000; border-left: solid 1rem #fff; border-right-width: 0; width: 0; height: 0; left: 0; right: 0; margin: auto; margin-top: 1rem; }
+                .loading s:active { border-left-color: #ffd800; }
+            .loading div i { position: absolute; color: #ccc; width: 100%; height: 1rem; text-align: center; z-index: 100001; left: 0; }
+            .loading div span { width: 100%; position: absolute; height: 100%; background: #fff; left: -100%; -webkit-transition: all 0.3s ease; }
+    </style>
+    <!--<link href="content/style.css" rel="stylesheet" />-->
+</head>
+<!--[if lte IE 7]>
+<body scroll="no">
+<![endif]-->
+<!--[if gt IE 7]><!-->
+<body>
+    <!--<![endif]-->
+    <div class="lightBalls">
+        <s class="lightBall light1"></s>
+        <s class="lightBall light2"></s>
+        <s class="lightBall light3"></s>
+        <s class="lightBall light4"></s>
+        <s class="lightBall light5"></s>
+    </div>
+    <div id="pageContain">
+        <div class="page page1">
+            <div class="contain">
+                <div class="bg">
+                    <div class="title">京东金融科技</div>
+                    <div class="title2">一键式高效部署金融服务</div>
+                    <div class="highlight"><s></s><s></s></div>
+                    <div class="highlight2"><s></s><s></s></div>
+                    <div class="highlight3"><s></s><s></s></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page page2">
+            <div class="contain">
+                <div class="bg">
+                    <div class="title">
+                        <h2>- 企业简介 -</h2>
+                        <p>
+                            京东金融企业服务平台，致力于将京东金融
+                            所累积的<font style="color:#ffd800">技术、产品、用户、资金端、资产
+                            端</font>开放给银行、证券、保险等各类金融机构
+                            及其他非金融机构，为企业客户提供菜单式、
+                            嵌入式服务。
+                        </p>
+                    </div>
+                    <s class="lightBall light1"></s>
+                    <s class="lightBall light2"></s>
+                    <s class="lightBall light3"></s>
+                    <s class="lightBall light4"></s>
+                    <s class="lightBall light5"></s>
+                </div>
+            </div>
+        </div>
+
+        <div class="page page3">
+            <div class="contain">
+                <div class="bg">
+                    <div class="title">
+                        <h2>- 开放生态 -</h2>
+                        <ul>
+                            <li style="background-position:0.1rem 0"></li>
+                            <li style="background-position:-3.35rem 0"></li>
+                            <li style="background-position:-6.8rem 0"></li>
+                            <li style="background-position:0.1rem -3.87rem"></li>
+                            <li style="background-position:-3.35rem -3.87rem"></li>
+                            <li style="background-position:-6.8rem -3.87rem"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page page4">
+            <div class="contain">
+                <div class="bg">
+                    <div class="title">
+                        <h2>- 业务布局 -</h2>
+                        <section>
+                            <div><span>支付</span></div>
+                            <div><span>供应链<br/>金融</span></div>
+                            <div><span>众筹</span></div>
+                            <div><span>消费金融</span></div>
+                            <div><span>证券</span></div>
+                            <div><span>保险</span></div>
+                            <div><span>财富管理</span></div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page page5">
+            <div class="contain">
+                <div class="bg">
+                    <div class="title">
+                        <h2>- 科技风控 -</h2>
+                        <section>
+                            <div>底层数据技<br/>术生态系统</div>
+                            <div><span>天网系统</span><s></s></div>
+                            <div><span>天盾系统</span><s></s></div>
+                            <div><span>天策系统</span><s></s></div>
+                            <div><span>天机系统</span><s></s></div>
+
+                            <div><span>风险控制</span><s></s></div>
+                            <div><span>量化运营</span><s></s></div>
+                            <div><span>用户洞察</span><s></s></div>
+                            <div><span>数据征信</span><s></s></div>
+                        </section>
+                    </div>
+                    <div class="bottom">
+                        <span>四大风控系统</span>
+                        <span>四大数据模型</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page page6">
+            <div class="contain">
+                <div class="bg">
+                    <div class="title"><h2>- 科技风控 -<br />等你一起创造</h2></div>
+                    <div class="title2">咨询合作</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="buttonList">
+        <button id="btu_replay">重播</button>
+        <button id="btu_music">音乐</button>
+    </div>
+    <audio id="music" controls="controls" loop="loop" preload="auto" src="./content/mus.mp3" style="display:none">
+        你的浏览器不支持audio标签
+    </audio>
+    <ul id="navBar">
+        <li></li>
+        <li style="opacity: 0.7;"></li>
+        <li style="opacity: 0.4;"></li>
+        <li style="opacity: 0.1;"></li>
+        <li style="opacity: 0;"></li>
+        <li style="opacity: 0;"></li>
+    </ul>
+    <div class="loading">
+        <div>
+            <i>0%</i>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://static.jdpay.com/basic/dist/js/m-public/??zepto.min.js"></script>
+    <script type="text/javascript" src="content/demo/js/fullPage.min.js"></script>
+    <script src="content/fastclick.js"></script>
+    <script type="text/javascript">
+        $("html").css("font-size", $(window).width() / 10);
+        var isPlay = true;
+        var isLoding = false;
+        var runPage;
+        //window.addEventListener('load', function () { FastClick.attach(document.body); }, false);
+        document.querySelector("#btu_replay").onclick = function () {
+            location.reload();
+        }
+        //document.querySelector("#btu_init").onclick = function () {
+        //    loadCommon.init();
+        //}
+
+        document.querySelector("#btu_music").onclick = function () {
+            if (isPlay) {
+                isPlay = false;
+                document.getElementById('music').pause(); return false;
+            } else {
+                isPlay = true;
+                document.getElementById('music').play(); return false
+            }
+        }
+        var getName = function (key) {//获取单个参数
+            return (document.location.search.match(new RegExp("(?:^\\?|&)" + key + "=(.*?)(?=&|$)")) || ['', null])[1];
+        }
+        if (getName("name")) { document.querySelector("#gname").innerText = decodeURIComponent(getName("name")); }
+        var loadCommon = {
+            path: "/jdFinance/content/",
+            imgList: [
+                "img/bg.png",
+                "img/bg1.gif",
+                "img/bgc.png",
+                "img/icon_1.png",
+                "img/icon_2.png",
+                "img/icon_3.png",
+                "img/icon_4.png",
+                "img/icon_5.png",
+                "img/icon_6.png",
+                "img/icon_7.png",
+                "img/icon_8.png",
+                "img/light.png",
+                "img/page1_1.png",
+                "img/page3_1.png"
+            ],
+            count: 0,
+            load: function (url) {
+                var _self = this;
+                var img = new Image();
+                img.onload = function () {
+                    _self.count++;
+                }
+                img.onerror = function () {
+                    _self.count++;
+                    alert("错误：" + url);
+                }
+                img.src = url;
+            },
+            init: function () {
+                if (isLoding) { return false; }
+                isLoding = true;
+                var _self = this;
+                var head = document.getElementsByTagName('head').item(0);
+                var css = document.createElement('link');
+                css.href = "content/style.css?t=" + Math.random();
+                css.rel = 'stylesheet';
+                css.type = 'text/css';
+                head.appendChild(css);
+
+                //var music = document.querySelector("#music");
+                //music.src = _self.path + "wenwenxinfu.mp3";
+                //var _t2 = window.setInterval(function () {
+                //    if (music.readyState == 4) {
+                //        _self.count++;
+                //        window.clearInterval(_t2);
+                //    }
+                //}, 50);
+                var imgs = document.getElementsByTagName('img');
+                for (var i = 0; i < imgs.length; i++) {
+                    var src = imgs.item(i).getAttribute("dsrc");
+                    imgs.item(i).setAttribute("src", src);
+                }
+                _self.imgList.forEach(function (item) {
+                    _self.load(_self.path + item);
+                });
+                var length = _self.imgList.length;
+                var _t = window.setInterval(function () {
+                    document.querySelector(".loading i").innerText = parseInt((_self.count / length) * 100) + "%";
+                    //document.querySelector(".progress").style.left = -(((length - _self.count) / length) * 100) + "%";
+                    if (_self.count == length) {
+                        isLoding = false;
+                        document.getElementById('music').play();
+                        document.querySelector(".loading").style.display = "none";
+                        window.clearInterval(_t);
+                        runPage = new FullPage({
+                            id: 'pageContain', slideTime: 800, continuous: false,
+                            effect: {
+                                transform: {
+                                    translate: 'Y',
+                                    scale: [0.1, 1],
+                                    rotate: [0, 0]
+                                },
+                                opacity: [0, 1]
+                            },
+                            mode: 'wheel,touch,nav:navBar',
+                            easing: 'ease',
+                            continuous: true,
+                            callback: function (index, thisPage) {       // callback when pageChange
+                                var _index = parseInt($("#navBar li.active").attr("data-page"));
+                                $("#navBar").css("-webkit-transform", "translate3d(0,-" + (_index) * 0.62 + "rem,0)");
+                                var ts = 30;
+                                var _t = 0, _t2 = 0;
+                                $("#navBar li[data-page='" + _index + "']").css("opacity", 1);
+                                for (var i = _index - 1; i >= 0; i--) {
+                                    _t++; 
+                                    $("#navBar li[data-page='" + i + "']").css("opacity", (100 - (ts * _t)) / 100);
+                                }
+                                for (var i = parseInt(index)+1; i < $("#navBar li").size() ; i++) {
+                                    _t2++;
+                                    $("#navBar li[data-page='" + i + "']").css("opacity", (100 - (ts * _t2)) / 100);
+                                }
+                            }
+                        });
+                        //runPage.next();
+                        //window.setTimeout(function () { runPage.next(); }, 800);
+                    }
+                }, 100);
+            }
+        }
+        loadCommon.init();
+    </script>
+</body>
+</html>
